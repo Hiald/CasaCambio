@@ -12,8 +12,7 @@ namespace CambioTotalAD
             cnMysql = cn;
         }
 
-
-        public int adActualizarInsertarCuenta(int adtipoOperacion, int adidCuentBanc, int adidusuario, int aditipocuenta, int adimoneda
+        public int adOperacionCuentaBancaria(int adtipoOperacion, int adidCuentBanc, int adidusuario, int aditipocuenta, int adimoneda
                                         , int adibanco, string adbanco, string adnumerocuenta,string adnombrecuenta, int itipodeclaracion
                                         , string adtitular, string adfecReg, string adhoraReg)
         {
