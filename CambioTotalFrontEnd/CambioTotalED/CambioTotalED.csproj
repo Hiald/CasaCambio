@@ -41,7 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="edCuentaBancaria.cs" />
+    <Compile Include="edDivisa.cs" />
     <Compile Include="edMaestro.cs" />
+    <Compile Include="edTransaccion.cs" />
     <Compile Include="edUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="tdMaestro.cs" />
+    <Compile Include="tdOperacion.cs" />
     <Compile Include="tdUsuario.cs" />
     <Compile Include="td_aglobal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

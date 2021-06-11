@@ -9,3 +9,9 @@ C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalFrontEnd\
 C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalFrontEnd\FrontendUtil\obj\Debug\FrontendUtil.csproj.CoreCompileInputs.cache
 C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalFrontEnd\FrontendUtil\obj\Debug\FrontendUtil.dll
 C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalFrontEnd\FrontendUtil\obj\Debug\FrontendUtil.pdb
+C:\Users\jonat\OneDrive\Escritorio\repos\CasaCambio\CambioTotalFrontEnd\FrontendUtil\bin\Debug\FrontendUtil.dll
+C:\Users\jonat\OneDrive\Escritorio\repos\CasaCambio\CambioTotalFrontEnd\FrontendUtil\bin\Debug\FrontendUtil.pdb
+C:\Users\jonat\OneDrive\Escritorio\repos\CasaCambio\CambioTotalFrontEnd\FrontendUtil\obj\Debug\FrontendUtil.csprojAssemblyReference.cache
+C:\Users\jonat\OneDrive\Escritorio\repos\CasaCambio\CambioTotalFrontEnd\FrontendUtil\obj\Debug\FrontendUtil.csproj.CoreCompileInputs.cache
+C:\Users\jonat\OneDrive\Escritorio\repos\CasaCambio\CambioTotalFrontEnd\FrontendUtil\obj\Debug\FrontendUtil.dll
+C:\Users\jonat\OneDrive\Escritorio\repos\CasaCambio\CambioTotalFrontEnd\FrontendUtil\obj\Debug\FrontendUtil.pdb
