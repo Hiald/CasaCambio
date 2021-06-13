@@ -479,15 +479,15 @@
             var vmonto1 = $('#txInput1').val();
             var vmonto2 = $('#txInput2').val();
             if (paramtipo == 1) {
-                $('#lbl1').text("Dólares");
-                $('#lbl2').text("Soles");
-                $('#txInput2').val(parseFloat(vmonto1 * vCompra).toFixed(2));
-                return;
-            } else {
-                // si es 0
                 $('#lbl1').text("Soles");
                 $('#lbl2').text("Dólares");
                 $('#txInput2').val(parseFloat(vmonto1 / vVenta).toFixed(2));
+                return;
+            } else {
+                // si es 0
+                $('#lbl1').text("Dólares");
+                $('#lbl2').text("Soles");
+                $('#txInput2').val(parseFloat(vmonto1 * vCompra).toFixed(2));
                 return;
             }
 
@@ -535,17 +535,20 @@
 
         var valorInicial = 0; //0: soles a dolares | 1: dolares a soles
         $('#btncambiar').on("click", function () {
-            if (valorInicial == 1) {
+            setTimeout(function () {
+                if (valorInicial == 1) {
+                    CambioDivisa(0);
+                    valorInicial = 0;
+                    return;
+                }
                 CambioDivisa(1);
-                valorInicial = 0;
+                valorInicial = 1;
                 return;
-            }
-            CambioDivisa(0);
-            valorInicial = 1;
+            }, 500);
         });
 
         $('#txInput1').keyup(function () {
-            if (valorInicial = 1) {
+            if (valorInicial == 1) {
                 CambioDivisa(1);
                 return;
             }
@@ -555,20 +558,18 @@
         $('#txInput2').keyup(function () {
             var vmonto1 = $('#txInput1').val();
             var vmonto2 = $('#txInput2').val();
-            if (valorInicial = 1) {
-                $('#lbl1').text("Dólares");
-                $('#lbl2').text("Soles");
-                $('#txInput1').val(parseFloat(vmonto2 / vCompra).toFixed(2));
-                return;
-            } else {
-                // si es 0
+            if (valorInicial == 1) {
                 $('#lbl1').text("Soles");
                 $('#lbl2').text("Dólares");
                 $('#txInput1').val(parseFloat(vmonto2 * vVenta).toFixed(2));
                 return;
+            } else {
+                // si es 0
+                $('#lbl1').text("Dólares");
+                $('#lbl2').text("Soles");
+                $('#txInput1').val(parseFloat(vmonto2 / vCompra).toFixed(2));
+                return;
             }
-
-           
 
         });
 

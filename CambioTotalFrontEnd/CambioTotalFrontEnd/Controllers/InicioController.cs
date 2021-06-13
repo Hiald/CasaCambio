@@ -12,6 +12,18 @@ namespace CambioTotalFrontEnd.Controllers
         {
             return View();
         }
-       
+
+        public ActionResult inicio(int? ivalorsesion, string valorlogin)
+        {
+            if (ivalorsesion != 1 || ivalorsesion == null)
+            {
+                ivalorsesion = 0;
+            }
+
+            ViewBag.GIvalorError = valorlogin;
+            ViewBag.GIvalorSesion = ivalorsesion;
+            return View();
+        }
+
     }
 }
