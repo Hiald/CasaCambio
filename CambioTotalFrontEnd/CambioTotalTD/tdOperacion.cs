@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 
 namespace CambioTotalTD
 {
-    public class tdOperacion:td_aglobal
+    public class tdOperacion : td_aglobal
     {
         adOperacion iadOperacion;
 
@@ -26,7 +26,7 @@ namespace CambioTotalTD
                     using (MySqlTransaction scope = con.BeginTransaction())
                     {
                         iadOperacion = new adOperacion(con);
-                        iRespuesta = iadOperacion.adOperacionCuentaBancaria(tdtipoOperacion,tdidCuentBanc, tdidusuario, tditipocuenta, tdimoneda
+                        iRespuesta = iadOperacion.adOperacionCuentaBancaria(tdtipoOperacion, tdidCuentBanc, tdidusuario, tditipocuenta, tdimoneda
                                         , tdibanco, tdbanco, tdnumerocuenta, tdnombrecuenta, tditipodeclaracion
                                         , tdtitular, tdfecReg, tdhoraReg);
                         scope.Commit();

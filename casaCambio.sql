@@ -858,5 +858,71 @@ DELIMITER ;
 31lunes: 07am-10am
 01martes: 7pm-8pm
 02miercoles: 6pm-8pm
-03jueves:
+03jueves: 6pm-7pm
+08martes: 5pm-6pm
+09miercoles: 4pm-6pm
+10jueves: 12pm - 1pm  /  3pm - 4pm
+11viernes: 04pm - 
+
+
+
+
+ENLACE: https://mail5015.site4now.net
+CLAVE PARA TODAS LAS CUENTAS: Tu@C4mbioTotal
+
+
+contacto@tucambiototal.com
+informes@tucambiototal.com
+iramos@tucambiototal.com
+lramos@tucambiototal.com
+mmagallanes@tucambiototal.com
+gerencia@tucambiototal.com
+administracion@tucambiototal.com
+
+
+
+
+
+LISTA:
+- calculadora de euros opción (por verse)
+- paso 13 similar (4 pasos)
+- mostrar texto pequeño cuadro cambio""
+- "trabajaos constantemente para ti" -- Y ofrecerte el que más te convenga."
+- todo un solo color
+- amarillo tono mas claro
+- comparativa con BCP API (ahorro) cocos y lucas
+- 19. alerta (notificacion al correo)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 */

@@ -248,9 +248,9 @@ namespace CambioTotalAD
                 throw ex;
             }
         }
-        
+
         #region POR AGREGAR
-        
+
         public int test(int adidalumno, string addireccionip, string addireccionmac, int adtipoconexion)
         {
             try

@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 
 namespace CambioTotalTD
 {
-    public class tdMaestro:td_aglobal
+    public class tdMaestro : td_aglobal
     {
         adMaestro iadMaestro;
 

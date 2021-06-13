@@ -14,7 +14,7 @@ namespace CambioTotalAD
         }
 
         public int adOperacionCuentaBancaria(int adtipoOperacion, int adidCuentBanc, int adidusuario, int aditipocuenta, int adimoneda
-                                        , int adibanco, string adbanco, string adnumerocuenta,string adnombrecuenta, int itipodeclaracion
+                                        , int adibanco, string adbanco, string adnumerocuenta, string adnombrecuenta, int itipodeclaracion
                                         , string adtitular, string adfecReg, string adhoraReg)
         {
             try
@@ -54,7 +54,7 @@ namespace CambioTotalAD
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("_idusuario", MySqlDbType.Int32).Value = adidusuario;
-                    cmd.Parameters.Add("_nombres", MySqlDbType.VarChar,50).Value = adnombres;
+                    cmd.Parameters.Add("_nombres", MySqlDbType.VarChar, 50).Value = adnombres;
                     using (MySqlDataReader mdrd = cmd.ExecuteReader())
                     {
                         if (mdrd != null)
@@ -109,7 +109,7 @@ namespace CambioTotalAD
             }
         }
 
-        public int adOperaciondivisa(int adtipoOperacion, int adiddivisa, int adidusuario, int aditipobusqueda, 
+        public int adOperaciondivisa(int adtipoOperacion, int adiddivisa, int adidusuario, int aditipobusqueda,
             decimal addmonto, decimal addsolesventa, decimal addsolescompra, decimal adddolaresventa, decimal adddolarescompra,
             int aditipopromocion, string addtfecha, string advhora, string addtfecharegistro)
         {
@@ -300,7 +300,7 @@ namespace CambioTotalAD
                                 enUsuario.iddivisa = (mdrd.IsDBNull(pos_iddivisa) ? 0 : mdrd.GetInt32(pos_iddivisa));
                                 enUsuario.idpromocion = (mdrd.IsDBNull(pos_idpromocion) ? 0 : mdrd.GetInt32(pos_idpromocion));
                                 enUsuario.idcuentabancaria = (mdrd.IsDBNull(pos_idcuentabancaria) ? 0 : mdrd.GetInt32(pos_idcuentabancaria));
-                                enUsuario.idusuarioadministrador = (mdrd.IsDBNull(pos_idusuarioadministrador) ? 0: mdrd.GetInt32(pos_idusuarioadministrador));
+                                enUsuario.idusuarioadministrador = (mdrd.IsDBNull(pos_idusuarioadministrador) ? 0 : mdrd.GetInt32(pos_idusuarioadministrador));
                                 enUsuario.dtfecha = (mdrd.IsDBNull(pos_dtfecha) ? "-" : mdrd.GetString(pos_dtfecha));
                                 enUsuario.itipodivisa = (mdrd.IsDBNull(pos_itipodivisa) ? 0 : mdrd.GetInt32(pos_itipodivisa));
                                 enUsuario.ddolaresventa = (mdrd.IsDBNull(pos_ddolaresventa) ? 0 : mdrd.GetDecimal(pos_ddolaresventa));
@@ -318,7 +318,7 @@ namespace CambioTotalAD
                                 enUsuario.itipotrasaccion = (mdrd.IsDBNull(pos_itipotrasaccion) ? 0 : mdrd.GetInt32(pos_itipotrasaccion));
                                 enUsuario.digv = (mdrd.IsDBNull(pos_digv) ? 0 : mdrd.GetInt32(pos_digv));
                                 enUsuario.vbancoreceptor = (mdrd.IsDBNull(pos_vbancoreceptor) ? "_" : mdrd.GetString(pos_vbancoreceptor));
-                                enUsuario.dtfecharegistro = (mdrd.IsDBNull(pos_dtfecharegistro) ? "_": mdrd.GetString(pos_dtfecharegistro));
+                                enUsuario.dtfecharegistro = (mdrd.IsDBNull(pos_dtfecharegistro) ? "_" : mdrd.GetString(pos_dtfecharegistro));
                                 slenUsuario.Add(enUsuario);
                             }
                         }
