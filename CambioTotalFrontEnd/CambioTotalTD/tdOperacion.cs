@@ -155,7 +155,7 @@ namespace CambioTotalTD
 
         }
 
-        public List<edTransaccion> tdListartransaccion(int tdidusuario, string tddtfecha)
+        public List<edTransaccion> tdListartransaccion(int tdidusuario, string tddtfecha, int tdestado)
         {
             List<edTransaccion> renUsuario = new List<edTransaccion>();
             try
@@ -166,7 +166,7 @@ namespace CambioTotalTD
                     using (MySqlTransaction scope = con.BeginTransaction())
                     {
                         iadOperacion = new adOperacion(con);
-                        renUsuario = iadOperacion.adListartransaccion(tdidusuario, tddtfecha);
+                        renUsuario = iadOperacion.adListartransaccion(tdidusuario, tddtfecha, tdestado);
                         scope.Commit();
                     }
                 }

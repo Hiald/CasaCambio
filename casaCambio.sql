@@ -63,6 +63,8 @@ CREATE TABLE t_usuario (
   `i_tipodocumento` INT NULL,
   `v_documento` VARCHAR(20) NULL,
   `v_ubigeo` VARCHAR(20) NULL,
+  `v_ruc` VARCHAR(25) NULL,
+  `v_razonsocial` VARCHAR(150) NULL,
   `d_fechanac` DATE DEFAULT NULL,
   `b_estado` BIT(1) NOT NULL,
   `dt_fecharegistro` DATETIME NOT NULL,
@@ -163,8 +165,9 @@ CREATE TABLE t_transaccion (
   `dt_fecharegistro` DATETIME NOT NULL,
   `dt_fechamodificacion` DATETIME NOT NULL,
   `idusuario_Modificacion` INT NULL,
+  `v_horamodificacion` VARCHAR(25) NULL,
   FOREIGN KEY (`idusuario`) REFERENCES t_usuario(`idusuario`),
-  FOREIGN KEY (`iddivisa`) REFERENCES t_divisa(`iddivisa`),
+  -- FOREIGN KEY (`iddivisa`) REFERENCES t_divisa(`iddivisa`),
   FOREIGN KEY (`idcuentabancaria`) REFERENCES t_cuenta_bancaria(`idcuentabancaria`),
   PRIMARY KEY (`idtransaccion`)
 );
@@ -226,6 +229,8 @@ BEGIN
         ,u.v_documento
         ,a.v_correo
         ,a.i_tipo_usuario
+        ,u.v_ruc
+        ,u.v_razonsocial
         ,1 as '_resultado'
   FROM t_usuario u
     LEFT JOIN t_acceso a ON a.idusuario = u.idusuario
@@ -248,6 +253,8 @@ BEGIN
         ,'0' as 'v_documento'
         ,'0' as 'v_correo'
         ,0 as 'i_tipo_usuario'
+        ,'0' as 'v_ruc'
+        ,'0' as 'v_razonsocial'
         ,1 as '_resultado';
 
     END;
@@ -270,7 +277,9 @@ CREATE PROCEDURE `sp_insertar_usuario`
   ,IN _i_tipo_usuario INT
   ,IN _v_correo VARCHAR(100)
   ,IN _v_clave VARCHAR(500)
-  ,IN _v_token VARCHAR(500))
+  ,IN _v_token VARCHAR(500)
+  ,IN _v_ruc VARCHAR(25)
+  ,IN _v_razonsocial VARCHAR(150))
 BEGIN
 
 IF EXISTS(SELECT idusuario FROM t_acceso WHERE v_correo = _v_correo) THEN
@@ -284,6 +293,8 @@ BEGIN
       ,v_apellidos
       ,i_tipodocumento
       ,v_documento
+      ,v_ruc
+      ,v_razonsocial
       ,b_estado
       ,dt_fecharegistro
       ,v_horaregistro)
@@ -292,6 +303,8 @@ BEGIN
       ,_v_apellidos
       ,_i_tipodocumento
       ,_v_documento
+      ,_v_ruc
+      ,_v_razonsocial
       ,1
       ,STR_TO_DATE(_dt_fecharegistro, '%Y-%m-%d')
       ,_v_horaregistro);
@@ -339,7 +352,7 @@ BEGIN
     UPDATE t_acceso
       SET  
       v_correo = _v_correo,
-     v_clave = _v_clave
+      v_clave = _v_clave
     WHERE idusuario = _idusuario;
 
   END;
@@ -389,6 +402,8 @@ CREATE PROCEDURE `sp_actualizar_usuario`(
   ,IN _v_telefono VARCHAR(10)
   ,IN _i_tipodocumento INT
   ,IN _v_documento VARCHAR(20)
+  ,IN _v_ruc VARCHAR(25)
+  ,IN _v_razonsocial VARCHAR(150)
   ,IN _v_ubigeo VARCHAR(20)
   ,IN _d_fechanac VARCHAR(20)
   ,IN _dt_fechamodificacion VARCHAR(20)
@@ -412,6 +427,8 @@ BEGIN
       ,v_telefono = _v_telefono
       ,i_tipodocumento = _i_tipodocumento
       ,v_documento = _v_documento
+      ,v_ruc = _vruc
+      ,v_razonsocial = _v_razonsocial
       ,v_ubigeo = _v_ubigeo
       ,d_fechanac = STR_TO_DATE(_d_fechanac, '%Y-%m-%d')
       ,dt_fechamodificacion = STR_TO_DATE(_dt_fechamodificacion, '%Y-%m-%d')
@@ -427,7 +444,7 @@ DELIMITER ;
 
 /*DROP procedure IF EXISTS `sp_filtrar_usuario`;*/
 DELIMITER $$
-CREATE PROCEDURE `sp_filtrar_usuario`(IN _idusuario INT )
+CREATE PROCEDURE `sp_filtrar_usuario`(IN _idusuario INT)
 BEGIN
 
   SELECT 
@@ -447,11 +464,15 @@ BEGIN
   ,u.v_telefono
   ,u.i_tipodocumento
   ,u.v_documento
+  ,u.v_ruc
+  ,u.v_razonsocial
   ,DATE_FORMAT(u.d_fechanac, '%d-%m-%Y') as 'd_fechanac'
   ,u.b_estado
   ,DATE_FORMAT(u.dt_fecharegistro, '%d-%m-%Y') as 'dt_fecharegistro'
   ,u.v_horaregistro
-  FROM t_usuario u
+  ,a.v_correo
+  ,a.i_tipo_usuario
+  FROM t_usuario u INNER JOIN t_acceso a ON u.idusuario = a.idusuario
     WHERE u.idusuario = _idusuario AND u.b_estado = 1;
 
 END$$
@@ -472,7 +493,8 @@ SELECT
   ,sm.b_estado
   ,DATE_FORMAT(sm.dt_fecharegistro, '%d-%m-%Y') as 'dt_fecharegistro'
 FROM t_maestro as m 
-  INNER JOIN t_maestro_parametro as sm WHERE m.idmaestro = sm.idmaestro
+  INNER JOIN t_maestro_parametro as sm 
+  WHERE m.idmaestro = sm.idmaestro
     AND sm.b_estado = 1 
     AND m.b_estado = 1 
     AND m.idmaestro = _idmaestro;
@@ -664,7 +686,7 @@ DELIMITER ;
 
 /*DROP procedure IF EXISTS `sp_listar_divisa`;*/
 DELIMITER $$
-CREATE PROCEDURE `sp_listar_divisa`(IN _iddivisa INT,IN _dt_fecha VARCHAR(50))
+CREATE PROCEDURE `sp_listar_divisa`(IN _iddivisa INT, IN _dt_fecha VARCHAR(50))
 BEGIN
 
   SELECT
@@ -677,14 +699,13 @@ BEGIN
     ,d.d_dolares_venta
     ,d.d_dolares_compra
     ,d.i_tipo_promocion
-    ,DATE_FORMAT(d.dt_fecha, '%d-%m-%Y') as 'dt_fecha',
+    ,DATE_FORMAT(d.dt_fecha, '%d-%m-%Y') as 'dt_fecha'
     ,d.v_hora
     ,DATE_FORMAT(d.dt_fecharegistro, '%d-%m-%Y') as 'dt_fecharegistro'
     ,DATE_FORMAT(d.dt_fechamodificacion, '%d-%m-%Y') as 'dt_fechamodificacion'
     ,d.v_horamodificacion
   FROM t_divisa d
-    WHERE
-     AND (DATE_FORMAT(d.dt_fecha, '%d-%m-%Y') = STR_TO_DATE(_dt_fecha, '%Y-%m-%d') OR (_dt_fecha = 'vacio')
+    WHERE ((DATE_FORMAT(d.dt_fecha, '%d-%m-%Y') = STR_TO_DATE(_dt_fecha, '%Y-%m-%d')) OR (_dt_fecha = 'vacio'))
      AND d.b_estado = 1
      AND ((d.iddivisa = _iddivisa) OR (_iddivisa = 0));
 
@@ -752,7 +773,7 @@ BEGIN
     ,b_estado
     ,dt_fecharegistro)
   VALUES (
-    ,_idusuario
+     _idusuario
     ,_iddivisa
     ,_idpromocion
     ,_idcuentabancaria
@@ -777,7 +798,9 @@ BEGIN
     ,STR_TO_DATE(_dt_fecharegistro, '%Y-%m-%d'));
 
   END;
-  ELSE 
+  END IF;
+
+  IF (_itipo_operacion = 0) THEN
   BEGIN
   
     UPDATE t_transaccion SET
@@ -785,11 +808,21 @@ BEGIN
       v_imagen_ruta = _v_imagen_ruta,
       i_estado = _i_estado,
       v_operacion = _v_operacion,
-      i_origen_fondo = _i_origen_fondo,
       d_igv = _d_igv,
-      v_banco_receptor = _v_banco_receptor,
       dt_fechamodificacion = STR_TO_DATE(_dt_fecharegistro, '%Y-%m-%d'),
-      idusuario_Modificacion = _idusuario_Modificacion
+      idusuario_Modificacion = _idusuario_Modificacion,
+      v_horamodificacion = _v_hora
+    WHERE idtransaccion = _idtransaccion;
+  
+  END;
+  END IF;
+
+  IF (_itipo_operacion = 3) THEN
+  BEGIN
+  
+    UPDATE t_transaccion SET
+      idusuario_administrador = _idusuario_administrador,
+      i_estado = _i_estado
     WHERE idtransaccion = _idtransaccion;
   
   END;
@@ -799,10 +832,21 @@ END$$
 DELIMITER ;
 
 -- --------------------------------------------------------------------------
+/*PROCESO
+
+estado:
+1: cotizado
+2: abonado
+3: validando (administrador)
+4: en curso de abono
+5: finalizado
+6: reembolsado
+7: error
+*/
 
 /*DROP procedure IF EXISTS `sp_listar_transaccion`;*/
 DELIMITER $$
-CREATE PROCEDURE `sp_listar_transaccion`(IN _idusuario INT, IN _dt_fecha VARCHAR(50))
+CREATE PROCEDURE `sp_listar_transaccion`(IN _idusuario INT, IN _dt_fecha VARCHAR(50), IN _itipo INT)
 BEGIN
 
   SELECT 
@@ -834,13 +878,13 @@ BEGIN
   ,DATE_FORMAT(t.dt_fecharegistro, '%d-%m-%Y') as 'dt_fecharegistro'
   FROM t_transaccion t
     LEFT JOIN t_usuario u ON u.idusuario = t.idusuario
-    WHERE
-     AND (DATE_FORMAT(d.dt_fecha, '%d-%m-%Y') = STR_TO_DATE(_dt_fecha, '%Y-%m-%d') OR (_dt_fecha = 'vacio')
+    WHERE ((DATE_FORMAT(t.dt_fecha, '%d-%m-%Y') = STR_TO_DATE(_dt_fecha, '%Y-%m-%d')) OR (_dt_fecha = 'vacio'))
      AND ((t.idusuario = _idusuario) OR (_idusuario = 0))
-     AND t.b_estado = 1 ORDER BY t.idtransaccion DESC;
+     AND t.b_estado = 1 AND ((t.i_estado = _itipo) OR (_itipo = 0)) ORDER BY t.idtransaccion DESC;
 
 END$$
 DELIMITER ;
+
 
 -- --------------------------------------------------------------------------
 
@@ -897,32 +941,21 @@ LISTA:
 
 
 
+LISTA 2:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+1- ¿Qué es la programación?
+2- Un breve paseo por la tecnología
+3- Arquitectura de entornos web
+4- Algoritmos y diagramas de flujo
+5- Iniciamos con Scratch
+6- ¿Qué es HTML?
+7- Ejemplos y ejercicios
+8- Practicamos HTML a fondo
+9- ¿Qué es CSS?
+10- Practicamos CSS a fondo
+11- Uso de CSS en la practica
+12- ¿Javascript, qué es eso?
+13- presentacion final
 
 
 */

@@ -36,7 +36,8 @@ namespace CambioTotalTD
         }
 
         public int tdInsertarUsuario(string tdnombres, string tdapellidos, int tdtipodocumento, string tddocumento,
-            string tdfecharegistro, string tdhoraregistro, int tdtipousuario, string tdcorreo, string tdclave, string tdtoken)
+            string tdfecharegistro, string tdhoraregistro, int tdtipousuario, string tdcorreo, string tdclave, string tdtoken, 
+            string tdruc, string tdrazonsocial)
         {
             int iRespuesta = -1;
             try
@@ -48,7 +49,8 @@ namespace CambioTotalTD
                     {
                         iadUsuario = new adUsuario(con);
                         iRespuesta = iadUsuario.adInsertarUsuario(tdnombres, tdapellidos, tdtipodocumento, tddocumento,
-                                                    tdfecharegistro, tdhoraregistro, tdtipousuario, tdcorreo, tdclave, tdtoken);
+                                                    tdfecharegistro, tdhoraregistro, tdtipousuario, tdcorreo, tdclave, tdtoken
+                                                    , tdruc, tdrazonsocial);
                         scope.Commit();
                     }
                 }
@@ -115,7 +117,8 @@ namespace CambioTotalTD
         public int tdActualizarCuenta(int tdidusuario, int tdidprovincia, int tdidciudad, int tdiddistrito, string tddireccion, string tdnombres,
                                     string tdapellidos, int tdigenero, string tdimagenruta, string tdimagendniruta1, string tdimagendniruta2,
                                     string tdcelular1, string tdcelular2, string tdtelefono, int tditipodocumento, string tddocumento, string tdubigeo,
-                                    string tdfechanacimiento, string tdfechamodificacion, string tdhoramodificacion, int tdidusuariomod)
+                                    string tdfechanacimiento, string tdfechamodificacion, string tdhoramodificacion, int tdidusuariomod,
+                                    string tdruc, string tdrazonsocial)
         {
             int iRespuesta = -1;
             try
@@ -129,7 +132,7 @@ namespace CambioTotalTD
                         iRespuesta = iadUsuario.adActualizarCuenta(tdidusuario, tdidprovincia, tdidciudad, tdiddistrito, tddireccion,
                                     tdnombres, tdapellidos, tdigenero, tdimagenruta, tdimagendniruta1, tdimagendniruta2,
                                     tdcelular1, tdcelular2, tdtelefono, tditipodocumento, tddocumento, tdubigeo,
-                                    tdfechanacimiento, tdfechamodificacion, tdhoramodificacion, tdidusuariomod);
+                                    tdfechanacimiento, tdfechamodificacion, tdhoramodificacion, tdidusuariomod, tdruc, tdrazonsocial);
                         scope.Commit();
                     }
                 }
@@ -143,7 +146,7 @@ namespace CambioTotalTD
 
         }
 
-        public edUsuario tdFiltrarUsuario(string tdusuario)
+        public edUsuario tdFiltrarUsuario(int tdusuario)
         {
             edUsuario renUsuario = new edUsuario();
             try

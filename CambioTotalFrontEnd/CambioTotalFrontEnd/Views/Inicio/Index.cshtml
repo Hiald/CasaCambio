@@ -4,15 +4,16 @@
 
 <!-- preloader area end -->
 <!-- Banners Start -->
-<section class="banner" style="background-image: url('../../assets/img/banner-bg2.png')">
+<section class="banner" style="background: linear-gradient(rgb(8 8 8 / 50%), rgb(14 14 14 / 50%)), url(../../assets/img2.jpeg);
+    background-size: cover;background-position: center; background-repeat: no-repeat;padding-bottom: 40px;position: relative;">
     <div class="laptop">
-        <img src="~/assets/img/laptop-man.png" class="man-lap" alt="">
+        @*<img src="~/assets/img/laptop-man.png" class="man-lap" alt="">*@
     </div>
     <!-- Main-menu Strat -->
     <div class="mein-menu">
         <nav class="navbar navbar-expand-lg navbar-light ">
             <div class="container">
-                <a class="navbar-brand" href="index-2.html">
+                <a class="navbar-brand" href="@Url.Action("Index","Inicio")">
                     <h4 style="color:white;">TuCambioTotal</h4>
                     <!-- <img src="assets/img/logo.png" class="logo" alt="logo"> -->
                 </a>
@@ -24,11 +25,11 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="">Inicio</a>
+                            <a class="nav-link" aria-current="page" href="@Url.Action("Index","Inicio")">Inicio</a>
                         </li>
-                        <li class="nav-item">
+                        @*<li class="nav-item">
                             <a class="nav-link" href="#divfeature">Nosotros</a>
-                        </li>
+                        </li>*@
                         <li class="nav-item">
                             <a class="nav-link" href="#divcomousar">¿Cómo funciona?</a>
                         </li>
@@ -36,7 +37,7 @@
                             <a class="nav-link" href="#divfaq">Preguntas frecuentes</a>
                         </li>
                         <li class="nav-item">
-                            <button class="button button-1">Iniciar sesión</button>
+                            <button class="button button-1" onclick="window.location.href = '/Inicio/inicio';">Iniciar sesión</button>
                         </li>
                     </ul>
                 </div>
@@ -50,10 +51,10 @@
             <div class="row align-items-center">
                 <div class="col-lg-7 ">
                     <div class="banner-content" style="margin-left: 3%;">
-                        <h1 class="head">Obtén el mejor tipo de cambio</h1>
+                        <h1 class="head">CAMBIA TU DINERO DESDE DONDE ESTÉS.</h1>
                         <p class="text">
-                            Nacimos con el sueño de ofrecer la mejor experiencia <br>
-                            de cambiar dinero en el Perú.
+                            FÁCIL, RÁPIDO Y SEGURO.
+                            COTIZA CON NOSOTROS.
                         </p>
                     </div>
                 </div>
@@ -98,8 +99,9 @@
                                 </div>
                             </form>
                         </div>
-                        <a href="#" style="color:white;">¿Monto mayor a $10.000 o S/ 30.000?</a>
-                        <a href="#" class="button button-1">Cambiar ahora</a>
+                        @*<label id="lblahorro"></label>*@
+                        <a href="https://web.whatsapp.com/send?phone=51941645017&text=Deseo%20enviar%20montos%20mayores%20a%2010%20000" target="_blank" style="color:black;font-size: 21px;">¿Monto mayor a $10.000 o S/ 30.000?</a>
+                        <a href="#" id="btnInicio" class="button button-1">Cambiar ahora</a>
                     </div>
                 </div>
             </div>
@@ -111,30 +113,11 @@
 <!-- How-use Start -->
 <div class="how-use" id="divcomousar">
     <div class="usesape">
-        <img src="~/assets/img/use-bg.png" class="usesape-img" alt="">
+        @*<img src="~/assets/img/use-bg.png" class="usesape-img" alt="">*@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <div class="photo">
-                    <img src="~/assets/img/use-img.png" class="use-img" alt="">
-                </div>
-                <!-- <div class="video-box">
-                    <div class="video-img">
-                        <img src="assets/img/video-play-img.png" alt="">
-
-                        <a class="youtube-video mfp-iframe video-play-btn video-icon"
-                            href="https://www.youtube.com/watch?v=4DCTTrGjGU4">
-                            <i class="fas fa-play"></i>
-                        </a>
-                    </div>
-                    <div class="video-text">
-                        <p class="text">test</p>
-                        <span><i class="far fa-clock"></i> 2:32 minutos</span>
-                    </div>
-                </div> -->
-            </div>
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="content">
                     <h3 class="subtitle" style="color:green;">Realiza tu cambio ahora</h3>
                     <h2 class="title">Es muy fácil!</h2>
@@ -147,7 +130,7 @@
                         </div>
                         <div class="text-box">
                             <span style="color:green;">Paso 1</span>
-                            <h4>Ingresa el monto y regístrate o inicia sesión</h4>
+                            <h5>Ingresa el monto en soles o dólares que deseas cambiar</h5>
                         </div>
                     </div>
                     <div class="install">
@@ -156,7 +139,7 @@
                         </div>
                         <div class="text-box">
                             <span style="color:green;">Paso 2</span>
-                            <h4>Agrega o selecciona tu cuenta bancaria</h4>
+                            <h5>Indícanos desde qué banco y cuenta de ahorros deseas que te depositemos</h5>
                         </div>
                     </div>
                     <div class="install">
@@ -165,7 +148,16 @@
                         </div>
                         <div class="text-box">
                             <span style="color:green;">Paso 3</span>
-                            <h4>¡Realiza el depósito y listo! Llegará rápidamente a tu cuenta</h4>
+                            <h6>Transfiere el monto a cambiar a nuestra cuenta e indícanos el número de operación que te da el banco tras hacer la transferencia</h6>
+                        </div>
+                    </div>
+                    <div class="install">
+                        <div class="tumb">
+                            <img src="~/assets/img/use-icon-3.png" alt="">
+                        </div>
+                        <div class="text-box">
+                            <span style="color:green;">Paso 4</span>
+                            <h5>Te confirmamos que ya depositamos los soles o dólares que necesitabas. ¡Listo!</h5>
                         </div>
                     </div>
                 </div>
@@ -241,70 +233,6 @@
     </div>
 </section>
 
-<!-- Feature Start -->
-<div class="feature" id="divfeature">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10 m-auto">
-                <div class="upper-content text-center">
-                    <h3 class="subtitle" style="color:green;">Nuestras características</h3>
-                    <h2 class="title">Tenemos la mejor opción</h2>
-                    <p class="text">Buscamos el mejor tipo de cambio para que ahorres</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="feature-box">
-                    <div class="tumb">
-                        <img src="~/assets/img/feature-icon-1.png" alt="">
-                    </div>
-                    <div class="text-box">
-                        <h3 class="subtitle">Costo</h3>
-                        <p class="text">
-                            Encuentra el mejor tipo de cambio aquí
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="feature-box">
-                    <div class="tumb">
-                        <img src="~/assets/img/feature-icon-2.png" alt="">
-                    </div>
-                    <div class="text-box">
-                        <h3 class="subtitle">Rapidez</h3>
-                        <p class="text">Te enviamos el cambio lo más pronto posible.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="feature-box">
-                    <div class="tumb">
-                        <img src="~/assets/img/feature-icon-3.png" alt="">
-                    </div>
-                    <div class="text-box">
-                        <h3 class="subtitle">Tipos de pago</h3>
-                        <p class="text">Podrás agregar varios bancos en tu cuenta.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="feature-box">
-                    <div class="tumb">
-                        <img src="~/assets/img/feature-icon-4.png" alt="">
-                    </div>
-                    <div class="text-box">
-                        <h3 class="subtitle">Montos mayores</h3>
-                        <p class="text">También puedes hacer transacciones con montos pesados. </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <!-- Faq Start -->
 <div class="faq" id="divfaq">
     <div class="sape">
@@ -326,19 +254,16 @@
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                 <img src="~/assets/img/faq-icon.png" alt="" class="icon">
-                                ¿Qué debo hacer una vez tenga mi monto a transferir?
+                                ¿Cómo puedo empezar a cambiar dinero?
                             </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Regístrate o Inicia sesión en la plataforma TuCambiototal, una vez hecho esto podrás
-                                agregar una cuenta bancaria
-                                en la cual deberás colocar el CCI (Cuenta interbancaraia) de dicho banco y
-                                seguidamente podrás realizar el abono
-                                a nuestra cuenta. Hecho esto solo es cuestión de minutos o ver nuestro cronograma de
-                                horarios para que recibas
-                                el monto elegido.
+                                Regístrate y/o Ingresa a tu perfil de usuario desde la web o tu app, luego:
+                                1) Calcula el monto a cambiar e indica tu banco de origen y cuenta destino.
+                                2) Transfiere desde tu banca móvil o app de banco a nuestro número de cuenta indicado.
+                                3) Coloca tu número de operación de la transferencia bancaria en el campo indicado y listo.
                             </div>
                         </div>
                     </div>
@@ -347,15 +272,14 @@
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                 <img src="~/assets/img/faq-icon.png" alt="" class="icon">
-                                ¿Qué bancos puedo utilizar?
+                                ¿Cuánto cuesta usar TU CAMBIO TOTAL?
                             </button>
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Puedes agregar los bancos que desees tales como BCP, BBVA, Interbank, Scotiabank,
-                                Banco Pichincha,
-                                Banco Azteca, Cajas, etc. Algunos bancos tendrán un plazo más de demora.
+                                El uso de nuestra plataforma es completamente gratuito.
+                                Los usuarios pueden efectuar operaciones de cambio de moneda al tipo de cambio establecido por TU CAMBIO TOTAL.
                             </div>
                         </div>
                     </div>
@@ -364,17 +288,13 @@
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                 <img src="~/assets/img/faq-icon.png" alt="" class="icon">
-                                ¿Puedo usar el número de cuenta de destino de otra persona que no sea yo?
+                                ¿Con qué bancos trabajan?
                             </button>
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Comofer is currently serviced in Belgium, Canada, Denmark, Finland, France, Germany,
-                                Ireland, Italy, Netherlands, Norway, Spain,
-                                Sweden, United Kingdom and the United States. We will update you when we expand the
-                                list. CPP for AppTig console only allows players from other consoles to play
-                                together in the same matchmaking pools.
+                                Al nivel nacional operamos con el BCP, Interbank y BBVA.
                             </div>
                         </div>
                     </div>
@@ -383,17 +303,13 @@
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                 <img src="~/assets/img/faq-icon.png" alt="" class="icon">
-                                How can I use Comofer to find the best ways to send money?
+                                ¿Puedo depositar desde ventanilla, agente o cajero?
                             </button>
                         </h2>
                         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Comofer is currently serviced in Belgium, Canada, Denmark, Finland, France, Germany,
-                                Ireland, Italy, Netherlands, Norway, Spain,
-                                Sweden, United Kingdom and the United States. We will update you when we expand the
-                                list. CPP for AppTig console only allows players from other consoles to play
-                                together in the same matchmaking pools.
+                                Solo aceptamos transferencias online (desde banco por internet o la app del banco).
                             </div>
                         </div>
                     </div>
@@ -402,17 +318,15 @@
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                                 <img src="~/assets/img/faq-icon.png" alt="" class="icon">
-                                How can I use Comofer to find the best ways to send money?
+                                ¿Cómo se hace una transferencia?
                             </button>
                         </h2>
                         <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Comofer is currently serviced in Belgium, Canada, Denmark, Finland, France, Germany,
-                                Ireland, Italy, Netherlands, Norway, Spain,
-                                Sweden, United Kingdom and the United States. We will update you when we expand the
-                                list. CPP for AppTig console only allows players from other consoles to play
-                                together in the same matchmaking pools.
+                                Una vez efectuado la operación en nuestra plataforma, debes ingresar a banca por internet o banca móvil de tu banco del cual transferirás el monto acordado.
+                                Luego, estando en tu banca móvil o banca por internet de tu Banco, diríjase a la sección transferencia a otras cuentas, escriba el monto a transferir y haga uso de su clave token, tarjeta de coordenadas o algún dispositivo que su banco le entregue para hacer este tipo de operaciones.
+                                Seguidamente registra el número de operación en nuestra plataforma y listo. Nosotros hacemos lo demás.
                             </div>
                         </div>
                     </div>
@@ -421,17 +335,35 @@
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                                 <img src="~/assets/img/faq-icon.png" alt="" class="icon">
-                                How can I use Comofer to find the best ways to send money?
+                                ¿A dónde me depositan a cambiar dólares o soles?
                             </button>
                         </h2>
                         <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Comofer is currently serviced in Belgium, Canada, Denmark, Finland, France, Germany,
-                                Ireland, Italy, Netherlands, Norway, Spain,
-                                Sweden, United Kingdom and the United States. We will update you when we expand the
-                                list. CPP for AppTig console only allows players from other consoles to play
-                                together in the same matchmaking pools.
+                                El dinero se le deposita a la cuenta en Soles o Dólares (Según sea el caso) que usted registre a su nombre en nuestra plataforma.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingSix">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                <img src="~/assets/img/faq-icon.png" alt="" class="icon">
+                                ¿Qué necesito para registrar mis cuentas bancarias?
+                            </button>
+                        </h2>
+                        <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                             data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Lo puedes realizar cuando te inscribe como usuario o en tu primera operación; para ello, necesitas la siguiente información:
+                                <ul>
+                                    <li>Tipo de Cuenta (Cuenta de Ahorro o Cuenta Corriente)</li>
+                                    <li>Moneda (soles y dólares)</li>
+                                    <li>Número de cuenta</li>
+                                    <li>* Debe ingresar el número de cuenta sin espacios ni guiones</li>
+                                </ul>
+                                
                             </div>
                         </div>
                     </div>
@@ -444,6 +376,10 @@
             </div>
         </div>
     </div>
+</div>
+
+<div>
+    <div id="WhatsappBtn" style="z-index: 999;"></div>
 </div>
 
 @section Scripts{
@@ -469,6 +405,7 @@
                 setTimeout(function () {
                     $('#txInput1').val(100);
                     $('#txInput2').val(parseFloat((100 * vCompra) - vValorAjuste).toFixed(2));
+                    //$('#lblahorro').text("Ahorro estimado: " + (parseFloat((100 * 4) - vValorAjuste).toFixed(2) - (parseFloat((100 * vCompra) - vValorAjuste).toFixed(2)) ) );
                 }, 500);
             }
         });
@@ -533,7 +470,7 @@
             }
         }
 
-        var valorInicial = 0; //0: soles a dolares | 1: dolares a soles
+        var valorInicial = 0; //0: dolares a soles  | 1: soles a dolares
         $('#btncambiar').on("click", function () {
             setTimeout(function () {
                 if (valorInicial == 1) {
@@ -571,6 +508,22 @@
                 return;
             }
 
+        });
+
+        $('#btnInicio').click(function () {
+            var vmonto1 = $('#txInput1').val();
+            var vmonto2 = $('#txInput2').val();
+            var tipoCambio = valorInicial;
+            //0: dolares a soles  | 1: soles a dolares
+            if (vmonto1.length == 0 || vmonto2.length == 0) {
+                alert("Ingrese montos válidos");
+                return;
+            }
+
+            localStorage.setItem("SESSION_TIPO", valorInicial);
+            localStorage.setItem("SESSION_MONTO1", vmonto1);
+            localStorage.setItem("SESSION_MONTO2", vmonto2);
+            window.location.href = "/Inicio/Inicio";
         });
 
     </script>

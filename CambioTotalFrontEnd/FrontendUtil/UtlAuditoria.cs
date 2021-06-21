@@ -18,6 +18,8 @@ namespace FrontendUtil
         private const string SESSION_TIPOUSUARIO = "SESSION_TIPOUSUARIO";
         private const string SESSION_CELULAR = "SESSION_CELULAR";
         private const string SESSION_IMAGENUSUARIO = "SESSION_IMAGENUSUARIO";
+        private const string SESSION_SRUC = "SESSION_SRUC";
+        private const string SESSION_SRAZONSOCIAL = "SESSION_SRAZONSOCIAL";
 
         #region "Obtiene Datos del Usuario"
 
@@ -57,6 +59,14 @@ namespace FrontendUtil
         {
             return ((HttpContext.Current.Session[SESSION_IMAGENUSUARIO] == null) ? "/imagenalumno/vacio.png" : HttpContext.Current.Session[SESSION_IMAGENUSUARIO].ToString());
         }
+        public static string ObtenerRUC()
+        {
+            return ((HttpContext.Current.Session[SESSION_SRUC] == null) ? "-" : HttpContext.Current.Session[SESSION_SRUC].ToString());
+        }
+        public static string ObtenerRazonSocial()
+        {
+            return ((HttpContext.Current.Session[SESSION_SRAZONSOCIAL] == null) ? "-" : HttpContext.Current.Session[SESSION_SRAZONSOCIAL].ToString());
+        }
         public static string ObtenerFechaSistema()
         {
             return DateTime.Now.ToShortDateString();
@@ -74,7 +84,9 @@ namespace FrontendUtil
                 HttpContext.Current.Session[SESSION_SDOCUMENTO] = DVariables["SDOCUMENTO"];
                 HttpContext.Current.Session[SESSION_TIPOUSUARIO] = DVariables["TIPOUSUARIO"];
                 HttpContext.Current.Session[SESSION_CELULAR] = DVariables["CELULAR"];
-                HttpContext.Current.Session[SESSION_IMAGENUSUARIO] = DVariables["IMAGENUSUARIO"];
+                //HttpContext.Current.Session[SESSION_IMAGENUSUARIO] = DVariables["IMAGENUSUARIO"];
+                HttpContext.Current.Session[SESSION_SRUC] = DVariables["SRUC"];
+                HttpContext.Current.Session[SESSION_SRAZONSOCIAL] = DVariables["SRAZONSOCIAL"];
                 HttpContext.Current.Session.Timeout = 24 * 60;
             }
             catch (ArgumentOutOfRangeException kfe)
@@ -188,7 +200,10 @@ namespace FrontendUtil
                 HttpContext.Current.Session[SESSION_SDOCUMENTO] == null ||
                 HttpContext.Current.Session[SESSION_TIPOUSUARIO] == null ||
                 HttpContext.Current.Session[SESSION_CELULAR] == null ||
-                HttpContext.Current.Session[SESSION_IMAGENUSUARIO] == null)
+                HttpContext.Current.Session[SESSION_SRUC] == null ||
+                HttpContext.Current.Session[SESSION_SRAZONSOCIAL] == null
+                //|| HttpContext.Current.Session[SESSION_IMAGENUSUARIO] == null
+                )
                 {
                     return true;
                 }
@@ -224,6 +239,8 @@ namespace FrontendUtil
                 HttpContext.Current.Session[SESSION_SDOCUMENTO] = null;
                 HttpContext.Current.Session[SESSION_TIPOUSUARIO] = null;
                 HttpContext.Current.Session[SESSION_CELULAR] = null;
+                HttpContext.Current.Session[SESSION_SRUC] = null;
+                HttpContext.Current.Session[SESSION_SRAZONSOCIAL] = null;
                 HttpContext.Current.Session[SESSION_IMAGENUSUARIO] = null;
                 return true;
             }

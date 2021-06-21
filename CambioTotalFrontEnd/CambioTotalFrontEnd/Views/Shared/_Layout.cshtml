@@ -8,7 +8,7 @@
     <title>Cambio Total - Tu casa de cambio favorita</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="shortcut icon" href="~/assets/img.png">
     <!--=== Reset Css ===-->
     <link rel="stylesheet" href="~/assets/css/normalize.css">
     <!--=== Bootstrap ===-->
@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="~/assets/css/style.css">
     <!--=== Responsive Css ===-->
     <link rel="stylesheet" href="~/assets/css/responsive.css">
+    <link href="~/assets/css/floating-wpp.css" rel="stylesheet" />
     <style>
         .loader-1 .loader-outter {
             position: absolute;
@@ -62,7 +63,7 @@
             left: 0;
             width: 100%;
             box-shadow: 0px 5px 89.61px 13.39px rgb(23 29 113 / 5%);
-            background: -webkit-linear-gradient(top, #3dad52 100%, #3dad52 100%);
+            background: -webkit-linear-gradient(top, #00a24f 100%, #00a24f 100%);
             z-index: 99999;
             padding: 10px 0 10px;
         }
@@ -78,7 +79,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            padding-bottom: 120px;
+            padding-bottom: 0;
             position: relative;
             z-index: 1;
         }
@@ -96,11 +97,38 @@
                 background: rgba(255, 255, 255, 0.17);
             }
 
+            .banner .hero-area .hero-form {
+                border-radius: 20px;
+                background: rgb(255 255 255 / 99%);
+                box-shadow: 0px 5px 89.61px 13.39px rgb(23 29 113 / 26%);
+                padding: 20px 20px 50px;
+            }
+
         .tcambiar {
             color: black !important;
         }
 
         @@media (max-width: 414px) {
+
+            .banner .hero-area .hero-form {
+                border-radius: 20px;
+                background: rgb(255 255 255 / 21%);
+                box-shadow: 0px 5px 89.61px 13.39px rgb(23 29 113 / 26%);
+                padding: 20px 20px 50px;
+            }
+
+            .how-use .use-box .install {
+                display: flex !important;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+                border-radius: 10px;
+                box-shadow: 0px 5px 89.61px 13.39px rgb(23 29 113 / 5%);
+                background: rgba(255, 255, 255, 0.205);
+                margin-top: 20px;
+                padding: 20px 20px 20px;
+            }
+
             .about .upper-content p.text {
                 color: #2c8c51;
                 padding: 0 0 0 !important;
@@ -127,7 +155,7 @@
             }
 
             .banner {
-                background-image: unset !important;
+                /*background-image: unset !important;*/
                 /* background-image: url(assets/img/banner-bg2.png); */
                 background-color: #2c8c51 !important;
             }
@@ -194,7 +222,7 @@
         }
 
         .how-use .content h2.title {
-            color: #2c8c51;
+            color: #00a24f;
             margin: 20px 0 26px;
         }
 
@@ -226,6 +254,19 @@
             margin-top: 120px;
             padding: 0px 0px 30px;
             background: #f4f2ff;
+        }
+
+        .how-use .use-box .install {
+            display: table-cell;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: 0px 5px 89.61px 13.39px rgb(23 29 113 / 5%);
+            background: rgba(255, 255, 255, 0.205);
+            margin-top: 20px;
+            padding: 20px 20px 20px;
+            
         }
     </style>
 </head>
@@ -275,7 +316,12 @@
                             <li>|</li>
                             <li><a href="#divfaq">FAQ</a></li>
                             <li>|</li>
-                            <li><a href="#">Iniciar sesión</a></li>
+                            <li><a href="@Url.Action("inicio","Inicio")">Iniciar sesión</a></li>
+                        </ul>
+                        <ul class="footer-link" style="text-align:center;">
+                            <li><a href="@Url.Action("politicadeprivacidad","Inicio")">Política de privacidad</a></li>
+                            <li>|</li>
+                            <li><a href="@Url.Action("terminosycondiciones","Inicio")">Términos y condiciones</a></li>
                         </ul>
                     </div>
                 </div>
@@ -304,9 +350,9 @@
     </div>
 
     <!--====== Scroll To Top Start ======-->
-    <div id="scrollUp" title="Scroll To Top">
+    @*<div id="scrollUp" title="Scroll To Top">
         <i class="fas fa-arrow-up"></i>
-    </div>
+    </div>*@
 
     <!--====== Scroll To Top End ======-->
     <!--==================================================================-->
@@ -322,6 +368,23 @@
 
     <!--=== All Active ===-->
     <script src="~/assets/js/main.js"></script>
+
+    <script src="~/assets/css/floating-wpp.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#WhatsappBtn').floatingWhatsApp({
+                phone: '51941645017',
+                popupMessage: '¡Hola! ¿Cómo podemos ayudarte?',
+                message: "Tengo algunas consultas acerca de CambioTotal.",
+                showPopup: true,
+                showOnIE: false,
+                headerTitle: '¡Bienvenid@@!',
+                headerColor: '#25D366',
+                backgroundColor: '#25D366',
+                buttonImage: '<img src="../../assets/css/whatsapp.svg" />'
+            });
+        });
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 

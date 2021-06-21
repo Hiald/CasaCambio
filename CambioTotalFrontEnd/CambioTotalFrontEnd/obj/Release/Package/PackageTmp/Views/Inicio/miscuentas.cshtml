@@ -1,0 +1,551 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutCuenta.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Mis cuentas</a></li>
+                        <li class="breadcrumb-item active">Gestión de cuentas</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">MÓDULO CUENTAS</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <p class="text-muted font-14">
+                        <button type="button" class="btn btn-success btn-rounded mb-3" data-toggle="modal" data-target="#modalUsuario"><i class="mdi mdi-plus"></i>Agregar Cuenta</button>
+                    </p>
+                    <!-- end nav-->
+                    <div class="tab-content">
+                        <div class="tab-pane show active" id="basic-datatable-preview">
+                            <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                                <thead>
+                                    <tr>
+                                        <th>Tipo de cuenta</th>
+                                        <th>Banco</th>
+                                        <th>Moneda</th>
+                                        <th>Numero de cuenta</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalUsuario" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dark-header-modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header modal-colored-header bg-success">
+                    <h4 class="modal-title" id="dark-header-modalLabel">Agregar Cuenta</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="txcuenta">*Nombre de la cuenta</label>
+                                <input type="text" id="txcuenta" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="slctipocuenta">*Tipo de cuenta</label>
+                                <select class="form-control" id="slctipocuenta">
+                                    <option value="0">Seleccione</option>
+                                    <option value="1">Ahorro</option>
+                                    <option value="2">Corriente</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="slcbanco">*Banco</label>
+                                <select class="form-control" id="slcbanco">
+                                    <option value="0">Seleccione</option>
+                                    <option value="1">(BCP) - Banco de Crédito del Perú</option>
+                                    <option value="2">(Interbank) - Banco Internacional del Perú</option>
+                                    <option value="3">(BBVA) - BBVA Continental</option>
+                                    <option value="4">(BanBif) - BanBif</option>
+                                    <option value="5">(Scotiabank) - Scotiabank</option>
+                                    <option value="6">(Falabella) - Banco Falabella</option>
+                                    <option value="7">(Pichincha) - Banco Pichincha</option>
+                                    <option value="8">(Bancomercio) - Banco de Comercio</option>
+                                    <option value="9">(Citibank) - Citibank Perú</option>
+                                    <option value="10">(Mibanco) - Mi Banco</option>
+                                    <option value="11">(GNB) - Banco GNB</option>
+                                    <option value="12">(Ripley) - Banco Ripley</option>
+                                    <option value="13">(Nacion) - Banco de la Nación</option>
+                                    <option value="14">(Otro) - Otro</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="slcmoneda">*Moneda</label>
+                                <select class="form-control" id="slcmoneda">
+                                    <option value="0">Seleccione</option>
+                                    <option value="1">Soles (S/.)</option>
+                                    <option value="2">Dólares ($)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="txnumerocuenta">*Número de cuenta</label>
+                                <input type="text" id="txnumerocuenta" class="form-control">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light btn-rounded mb-3" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success btn-rounded mb-3" id="btnAgregar"><i class="mdi mdi-plus"></i>Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalEditarUsuario" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dark-header-modalLabel" aria-hidden="true">
+        <input type="hidden" value="" data-idusuario="" id="hddusuario" />
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header modal-colored-header bg-success">
+                    <h4 class="modal-title" id="dark-header-modalLabel">EDITAR USUARIO</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <form id="frmUsuarioEditar">
+                                <div class="form-group mb-3">
+                                    <label for="idGradoEditar">Grado</label>
+                                    <select class="form-control" id="idGradoEditar"></select>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="idNombresEditar">Nombres</label>
+                                    <input type="text" id="idNombresEditar" placeholder="Nombres" class="form-control">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="idApPaternoEditar">Apellido Paterno</label>
+                                    <input type="text" id="idApPaternoEditar" placeholder="Apellido Paterno" class="form-control">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="idApMaternoEditar">Apellido Materno</label>
+                                    <input type="text" id="idApMaternoEditar" placeholder="Apellido Materno" class="form-control">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-6">
+                            <form id="frm2Editar">
+                                <div class="form-group mb-3">
+                                    <label for="idTipoUsuarioEditar">Tipo Usuario</label>
+                                    <select class="form-control" id="idTipoUsuarioEditar">
+                                        <option value="0">Seleccionar</option>
+                                        <option value="1">Administrador</option>
+                                        <option value="2">Profesor</option>
+                                        <option value="3">Alumno</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <img src="" id="simageneditar" height="65" class="rounded" alt="imagen">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="idUsuarioEditar">Usuario</label>
+                                    <input type="text" id="idUsuarioEditar" name="example-email" class="form-control" placeholder="Usuario">
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="idContraseniaEditar">Contraseña</label>
+                                    <input type="password" id="idContraseniaEditar" class="form-control">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light btn-rounded mb-3" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success btn-rounded mb-3" id="btnActualizar" onclick="fn_Actualizar()"><i class="mdi mdi-plus"></i>Actualizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalEliminarAlumno" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <input type="hidden" value="" data-idalumnoEliminar="" id="hddAlumnoEliminar" />
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body p-4">
+                    <div class="text-center">
+                        <i class="dripicons-wrong h1 text-danger"></i>
+                        <h4 class="mt-2">¿Seguro de Eliminar este alumno?</h4>
+                        <button type="button" onclick="fn_ConfirmarEliminar()" id="mdEliminar" class="btn btn-success my-2" data-dismiss="modal">Eliminar</button>
+                        <button type="button" id="" class="btn btn-light my-2" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="fill-info-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="info-header-modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-colored-header bg-info">
+                <h4 class="modal-title" id="info-header-modalLabel">Mi cuenta</h4>
+            </div>
+            <div class="modal-body">
+                <p>¡La cuenta se ha creado!</p>
+                <br />
+                <p>Ahora puedes continuar debajo con tu operación :)</p>
+                <br />
+                <button type="button" class="btn btn-info" id="btnIrOperacion">Ir a operaciones</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<input type="hidden" id="hddidusuario" value="@ViewBag.GIdusuario" />
+
+@section scripts{
+    <script>
+        $("#frmUsuario").submit(false);
+        $('#frm2').submit(false);
+        $('#frm2Editar').submit(false);
+
+        //tipo operacion 1 reg, 0 upd
+        $("#btnAgregar").click(function () {
+            $('#divcarga').addClass("is-active");
+            var txcuenta = $('#txcuenta').val();
+            var slctipocuenta = $('#slctipocuenta option:selected').attr('value');
+            var slcbanco = $('#slcbanco option:selected').attr('value');
+            var slcmoneda = $('#slcmoneda option:selected').attr('value');
+            var txnumerocuenta = $('#txnumerocuenta').val();
+            var sfecharegistro = moment().format("YYYY-MM-DD");
+            var shora = moment().format("hh:mm:ss");
+            var paramidusuario = $('#hddidusuario').val();
+
+            if (txcuenta == "" || slctipocuenta == 0 || slcbanco == 0 || slcmoneda == 0 || txnumerocuenta == "") {
+                alert("Falta completar campos");
+                return;
+            }
+
+            $.ajax({
+                type: 'post',
+                url: RutaPrincipal + 'Inicio/OperacionCuentaBancaria',
+                data: {
+                    "wtipoOperacion": 1,
+                    "widCuentBanc": 0,
+                    "widusuario": paramidusuario,
+                    "witipocuenta": slctipocuenta,
+                    "wimoneda": slcmoneda,
+                    "wibanco": slcbanco,
+                    "wbanco": "",
+                    "wnumerocuenta": txnumerocuenta,
+                    "wnombrecuenta": txcuenta,
+                    "witipodeclaracion": 0,
+                    "wtitular": "",
+                    "wfecReg": sfecharegistro,
+                    "whoraReg": shora
+                },
+            }).done(function (result) {
+                $('#divcarga').removeClass("is-active");
+                NotificacionSuccessDerecha("Cuenta creada correctamente");
+                $('#txcuenta').val("");
+                $('#txnumerocuenta').val("");
+                $('#modalUsuario').modal("hide");
+                fnlistarTabla();
+
+                if (GResultado == 1) {
+                    $('#fill-info-modal').modal("show");
+                }
+
+            });
+
+        });
+
+        var GResultado = 0;
+        var gconteo = 0;
+        function fnlistarTabla() {
+            var paraidusuario = $('#hddidusuario').val();
+            $('#basic-datatable').DataTable
+                ({
+                    "ajax": {
+                        "url": '/Inicio/ListarCuentaBancaria',
+                        "type": "POST",
+                        "datatype": "json",
+                        "data": {
+                            "widusuario": paraidusuario,
+                            "wnombres": ""
+                        }
+                    },
+                    //"bServerSide": true,
+                    "bProcessing": true,
+                    "bDestroy": true,
+                    "language": {
+                        "info": "",
+                        "infoEmpty": "",
+                        "infoFiltered": "",
+                        "emptyTable": "No se encontraron registros",
+                        "sZeroRecords": "No se encontraron registros.",
+                        "processing": "Cargando. Por favor espere...",
+                        "oPaginate": {
+                            "sFirst": "Primero",
+                            "sLast": "Último",
+                            "sNext": "Siguiente",
+                            "sPrevious": "Anterior"
+                        },
+                        "sSearch": "Buscar:"
+                    },
+                    "columns": [
+                        //idcuentabancaria
+                        {
+                            "mData": "itipocuenta",
+                            "sClass": "center",
+                            "mRender": function (data, type, value) {
+                                var sretornar;
+                                if (value.itipocuenta == 1) {
+                                    sretornar = "Ahorro";
+                                } else {
+                                    sretornar = "Corriente";
+                                }
+                                return sretornar;
+                            }
+                        },
+                        {
+                            "mData": "ibanco",
+                            "sClass": "center",
+                            "mRender": function (data, type, value) {
+                                switch (value.ibanco) {
+                                    case 1: return "(BCP) - Banco de Crédito del Perú"; break;
+                                    case 2: return "(Interbank) - Banco Internacional del Perú"; break;
+                                    case 3: return "(BBVA) - BBVA Continental"; break;
+                                    case 4: return "(BanBif) - BanBif"; break;
+                                    case 5: return "(Scotiabank) - Scotiabank"; break;
+                                    case 6: return "(Falabella) - Banco Falabella"; break;
+                                    case 7: return "(Pichincha) - Banco Pichincha"; break;
+                                    case 8: return "(Bancomercio) - Banco de Comercio"; break;
+                                    case 9: return "(Citibank) - Citibank Perú"; break;
+                                    case 10: return "(Mibanco) - Mi Banco"; break;
+                                    case 11: return "(GNB) - Banco GNB"; break;
+                                    case 12: return "(Ripley) - Banco Ripley"; break;
+                                    case 13: return "(Nacion) - Banco de la Nación"; break;
+                                    case 14: return "(Otro) - Otro"; break;
+                                }
+
+                            }
+                        },
+                        {
+                            "mData": "imoneda",
+                            "sClass": "center",
+                            "mRender": function (data, type, value) {
+                                if (value.imoneda == 1) {
+                                    return "Soles (S/.)";
+                                } else {
+                                    return "Dólares ($)";
+                                }
+
+                            }
+                        },
+                        { "sName": "vnumerocuenta", "mDataProp": "vnumerocuenta" }
+                        //{},
+                        //{}
+                    ],
+                    "aoColumnDefs":
+                        [
+                            //{
+                            //    "mRender": function (data, type, row) {
+                            //        var strHtml = "<button class='btn btn-warning' onclick='fn_Editar("
+                            //            + row.idusuario + ", " +
+                            //            row.idnivel + ", " +
+                            //            row.tipousuario + ", " +
+                            //            row.idgrado + ", " +
+                            //            row.idsede + ", " +
+                            //            "\"" + row.Susuario + "\"" + ", " +
+                            //            "\"" + row.Snombres + "\"" + ", " +
+                            //            "\"" + row.SApellidoPaterno + "\"" + ", " +
+                            //            "\"" + row.SApellidoMaterno + "\"" + ", " +
+                            //            "\"" + row.simagenruta + "\"" +
+                            //            ")' >Editar</button>";
+                            //        return strHtml;
+                            //    },
+                            //    "sWidth": "5px",
+                            //    "sClass": "css-center",
+                            //    "bSort": false,
+                            //    "aTargets": [4]
+                            //},
+                            //{
+                            //    "mRender": function (data, type, row) {
+                            //        var strHtml = "<button class='btn btn-danger' onclick='fnEliminar(" + row.idusuario + ");' >Eliminar</button>";
+                            //        return strHtml;
+                            //    },
+                            //    "sWidth": "5px",
+                            //    "sClass": "css-center",
+                            //    "bSort": false,
+                            //    "aTargets": [5]
+                            //}
+                        ]
+                });
+
+            var iInicioTablas = $('#basic-datatable').dataTable().fnGetData().length;
+            if (iInicioTablas == 0 && gconteo == 0) {
+                GResultado = 1;
+            }
+            gconteo = 1;
+
+        }
+
+        $(document).ready(function () {
+            fnlistarTabla();
+        });
+
+
+        $('#btnIrOperacion').click(function () {
+            window.location.href = "/Inicio/principal";
+        });
+
+                //function fn_Editar(idusuario, idnivel, tipousuario, idgrado,
+                //    idsede, Susuario, Snombres, SApellidoPaterno, SApellidoMaterno, Simagen) {
+
+                //    $('#idTipoUsuarioEditar option').removeAttr('selected');
+                //    $('#idGradoEditar option').removeAttr('selected');
+                //    if (Simagen == "-") {
+                //        $('#simageneditar').attr("alt", "No hay imagen en este usuario");
+                //    } else {
+                //        $('#simageneditar').attr("src", Simagen);
+                //    }
+                //    $('#hddusuario').attr("data-idusuario", idusuario);
+
+                //    $('#idTipoUsuarioEditar option[value="' + tipousuario + '"]').attr('selected', 'selected');
+                //    fn_listarGradoEditar(1, idgrado);
+                //    $("#idUsuarioEditar").val(Susuario);
+                //    $('#idContraseniaEditar').val("");
+                //    $("#idNombresEditar").val(Snombres);
+                //    $("#idApMaternoEditar").val(SApellidoMaterno);
+                //    $("#idApPaternoEditar").val(SApellidoPaterno);
+                //    $('#modalEditarUsuario').modal("show");
+                //}
+
+                //function fn_Actualizar() {
+                //    var iIdUsuario = $('#hddusuario').attr("data-idusuario");
+
+                //    var iIdTipoUsuarioEdit = $('#idTipoUsuarioEditar option:selected').attr('value');
+                //    var iIdGradoEdit = $('#idGradoEditar option:selected').attr('value');
+                //    var ipUsuarioEdit = $('#idUsuarioEditar').val();
+                //    var ipContraseniEdit = $('#idContraseniaEditar').val();
+                //    var sNombreEdit = $('#idNombresEditar').val();
+                //    var sApellidoPaternoEdit = $("#idApPaternoEditar").val();
+                //    var sApellidoMaternoEdit = $("#idApMaternoEditar").val();
+
+                //    if (iIdTipoUsuarioEdit.trim() == 0) {
+                //        NotificacionAvisoDerecha("SELECCIONA EL TIPO DE USUARIO");
+                //        return;
+                //    }
+                //    if (iIdGradoEdit.trim() == 0) {
+                //        NotificacionAvisoDerecha("SELECCIONA EL GRADO");
+                //        return;
+                //    }
+                //    if (ipUsuarioEdit.trim() == "") {
+                //        NotificacionAvisoDerecha("INGRESE UN NOMBRE DE USUARIO");
+                //        return;
+                //    }
+
+                //    if (ipContraseniEdit.trim() == "") {
+                //        NotificacionAvisoDerecha("INGRESE UNA CONTRASEÑA");
+                //        return;
+                //    }
+                //    if (sNombreEdit.trim() == "") {
+                //        NotificacionAvisoDerecha("INGRESE EL NOMBRE");
+                //        return;
+                //    }
+                //    if (sApellidoPaternoEdit.trim() == "") {
+                //        NotificacionAvisoDerecha("INGRESE EL APELLIDO PATERNO");
+                //        return;
+                //    }
+                //    if (sApellidoMaternoEdit.trim() == "") {
+                //        NotificacionAvisoDerecha("INGRESE EL APELLIDO MATERNO");
+                //        return;
+                //    }
+
+                //    if (ipContraseniEdit.length < 5) {
+                //        NotificacionAvisoDerecha("INGRESE UNA CONTRASEÑA MAYOR A 5 CARACTERES");
+                //        return;
+                //    }
+
+                //    $('#divcarga').addClass("is-active");
+                //    $.ajax({
+                //        type: "POST",
+                //        url: RutaPrincipal + "Login/ActualizarUsuario",
+                //        data: {
+                //            "widusuario": iIdUsuario,
+                //            "widnivel": 1,
+                //            "widgrado": iIdGradoEdit,
+                //            "wsusuario": ipUsuarioEdit,
+                //            "wsclave": ipContraseniEdit,
+                //            "wstipousuario": iIdTipoUsuarioEdit,
+                //            "widsede": 1,
+                //            "wnombres": sNombreEdit,
+                //            "wamaterno": sApellidoMaternoEdit,
+                //            "wapaterno": sApellidoPaternoEdit
+                //        },
+                //        success: function (data) {
+                //            $('#divcarga').removeClass("is-active");
+                //            $('#modalEditarUsuario').modal("hide");
+                //            fnlistarTabla();
+                //            NotificacionSuccessDerecha("Datos actualizados correctamente.");
+                //        },
+                //        error: function (data) {
+                //            console.log(data);
+                //        }
+                //    });
+                //}
+
+                //function fnEliminar(widalumno) {
+                //    $('#hddAlumnoEliminar').attr("data-idalumnoEliminar", widalumno);
+                //    $('#modalEliminarAlumno').modal("show");
+                //}
+
+                //function fn_ConfirmarEliminar() {
+                //    var pidalumno = $('#hddAlumnoEliminar').attr("data-idalumnoEliminar");
+                //    $('#divcarga').addClass("is-active");
+                //    $.ajax({
+                //        type: "POST",
+                //        url: "/Login/DesactivarUsuario",
+                //        data: {
+                //            "widusuario": pidalumno
+                //        },
+                //        async: false,
+                //        success: function (data) {
+                //            $('#modalEliminarAlumno').modal("hide");
+                //            $('#hddAlumnoEliminar').attr("data-idalumnoEliminar", "");
+                //            $('#divcarga').removeClass("is-active");
+                //            NotificacionSuccessDerecha("Cuenta eliminada.");
+                //            fnlistarTabla();
+                //        },
+                //        error: function (data) {
+                //            console.log(data);
+                //        }
+                //    });
+
+                //}
+
+    </script>
+}

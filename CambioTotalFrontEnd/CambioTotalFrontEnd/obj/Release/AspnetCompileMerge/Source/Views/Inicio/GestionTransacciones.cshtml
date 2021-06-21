@@ -1,0 +1,492 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutCuenta.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Principal</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Transacciones</a></li>
+                        <li class="breadcrumb-item active">Gestión</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">GESTIÓN TRANSACCIONES</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <p class="text-muted font-14">
+                        <button type="button" class="btn btn-success btn-rounded mb-3" data-toggle="modal" data-target="#modalUsuario"><i class="mdi mdi-plus"></i>AGREGAR USUARIO</button>
+                    </p>
+                    <!-- end nav-->
+                    <div class="tab-content">
+                        <div class="tab-pane show active" id="basic-datatable-preview">
+                            <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                                <thead>
+                                    <tr>
+                                        <th>Usuario</th>
+                                        <th>Estado</th>
+                                        <th>Fecha Registro</th>
+                                        <th>Tipo de cambio</th>
+                                        <th>Envió / Recibirá</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalUsuario" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dark-header-modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header modal-colored-header bg-success">
+                    <h4 class="modal-title" id="dark-header-modalLabel">USUARIO</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <form id="frmUsuario">
+                                <div class="form-group mb-3">
+                                    <label for="idGrado">Grado</label>
+                                    <select class="form-control" id="idGrado"></select>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="idNombres">Nombres</label>
+                                    <input type="text" id="idNombres" placeholder="Nombres" class="form-control">
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="idApPaterno">Apellido Paterno</label>
+                                    <input type="text" id="idApPaterno" placeholder="Apellido Paterno" class="form-control">
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="idApMaterno">Apellido Materno</label>
+                                    <input type="text" id="idApMaterno" placeholder="Apellido Materno" class="form-control">
+                                </div>
+
+                            </form>
+                        </div> <!-- end col -->
+
+                        <div class="col-lg-6">
+                            <form id="frm2">
+                                <div class="form-group mb-3">
+                                    <label for="idTipoUsuario">Tipo Usuario</label>
+                                    <select class="form-control" id="idTipoUsuario">
+                                        <option value="0">Seleccionar</option>
+                                        <option value="1">Administrador</option>
+                                        <option value="2">Profesor</option>
+                                        <option value="3">Alumno</option>
+                                        <option value="4">Supervisor</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="simagen">Imagen</label>
+                                    <input type="file" id="simagen" class="form-control" placeholder="Imagen" accept="image/png, image/jpeg, image/jpg">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="idUsuario">Usuario</label>
+                                    <input type="text" id="idUsuario" name="example-email" class="form-control" placeholder="Usuario">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="idContrasenia">Contraseña</label>
+                                    <input type="password" id="idContrasenia" class="form-control">
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light btn-rounded mb-3" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success btn-rounded mb-3" id="btnAgregar"><i class="mdi mdi-plus"></i>Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalEditarOperacion" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dark-header-modalLabel" aria-hidden="true">
+        <input type="hidden" value="" data-idusuario="" id="hddusuario" />
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header modal-colored-header bg-success">
+                    <h4 class="modal-title" id="dark-header-modalLabel">VER OPERACION</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="txnombresE">Usuario</label>
+                                <input type="text" id="txnombresE" placeholder="Nombres" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="txfecha">Fecha y Hora</label>
+                                <input type="text" id="txfecha" placeholder="Fecha y hora" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="txdivisa">Tipo de Compra y Venta Realizada</label>
+                                <input type="text" id="txdivisa" placeholder="Tipo compra" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="txestadoE">Estado actual</label>
+                                <input type="text" id="txestadoE" placeholder="Estado" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="txOperacionNro">Nro de Operación</label>
+                                <input type="text" id="txOperacionNro" placeholder="No hay datos todavía" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="txEnvioE">El envió</label>
+                                <input type="text" id="txEnvioE" placeholder="" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="txRecibeE">El Recibiría</label>
+                                <input type="text" id="txRecibeE" placeholder="" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="txTipoCambioE">Tipo de cambio</label>
+                                <input type="text" id="txTipoCambioE" placeholder="" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="txTipoTransaccionE">Tipo de transacción</label>
+                                <input type="text" id="txTipoTransaccionE" placeholder="" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="txBancoReceptorE">Banco Receptor</label>
+                                <input type="text" id="txBancoReceptorE" placeholder="" class="form-control" disabled>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light btn-rounded mb-3" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-info btn-rounded mb-3" id="btnActualizar" onclick="fn_Actualizar(4)"><i class="mdi mdi-plus"></i>ENVIÉ EL ABONO</button>
+                    <button type="button" class="btn btn-success btn-rounded mb-3" id="btnfinalizar" onclick="fn_Actualizar(5)"><i class="mdi mdi-plus"></i>ABONO LLEGADO</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalEliminarAlumno" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <input type="hidden" value="" data-idalumnoEliminar="" id="hddAlumnoEliminar" />
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body p-4">
+                    <div class="text-center">
+                        <i class="dripicons-wrong h1 text-danger"></i>
+                        <h4 class="mt-2">¿Seguro de Eliminar este alumno?</h4>
+                        <button type="button" onclick="fn_ConfirmarEliminar()" id="mdEliminar" class="btn btn-success my-2" data-dismiss="modal">Eliminar</button>
+                        <button type="button" id="" class="btn btn-light my-2" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="hddidusuario" value="@ViewBag.GIdusuario" />
+<input type="hidden" id="hddtransaccionid" value="" />
+
+@section scripts{
+    <script>
+
+        function fnlistarTabla() {
+            var paraidusuario = $('#hddidusuario').val();
+            $('#basic-datatable').dataTable({
+                "ajax": {
+                    "url": "/Inicio/ListarOperacionAdmin",
+                    "type": "POST",
+                    "datatype": "json",
+                    "data": {
+                        "widusuario": 0,
+                        "wdtfecha": "vacio",
+                        "westado": 0
+                    }
+                },
+                //"bServerSide": true,
+                "bProcessing": true,
+                "bDestroy": true,
+                "language": {
+                    "info": "",
+                    "infoEmpty": "",
+                    "infoFiltered": "",
+                    "emptyTable": "No se encontraron registros",
+                    "sZeroRecords": "No se encontraron registros.",
+                    "processing": "Cargando. Por favor espere...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "sLengthMenu": "Mostrando _MENU_ filas",
+                    "sSearch": "Buscar:"
+                },
+                "columns": [
+                    //idcuentabancaria
+                    {
+                        "mData": "vnombres",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            var sretornar;
+                            sretornar = value.vnombres + " " + value.vapellidos
+                            return sretornar;
+                        }
+                    },
+                    {
+                        "mData": "iestado",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            switch (value.iestado) {
+                                case 1: return "TRANSACCIÓN CREADA"; break;
+                                case 2: return "ABONADO"; break;
+                                case 3: return "VALIDANDO"; break; //administrador
+                                case 4: return "EN CURSO DE ABONO"; break;
+                                case 5: return "FINALIZADO"; break;
+                                case 6: return "REEMBOLSADO"; break;
+                                case 7: return "ERROR"; break;
+                            }
+
+                        }
+                    },
+                    {
+                        "mData": "dtfecha",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            return value.dtfecha + " | " + value.vhora;
+                        }
+                    },
+                    {
+                        "mData": "itipocambio",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            if (value.itipocambio == 0) {
+                                return "Dólares a Soles";
+                            } else {
+                                return "Soles a Dólares";
+                            }
+
+                        }
+                    },
+                    {
+                        "mData": "denvio",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            if (value.itipocambio == 0) {
+                                return " $ " + value.denvio + " | " + " S/. " + value.drecibo;
+                            } else {
+                                return " S/. " + value.denvio + " | " + " $ " + value.drecibo;
+                            }
+
+                        }
+                    },
+
+                    //{ "sName": "vnumerocuenta", "mDataProp": "vnumerocuenta" },
+                    {}
+                    //,{}
+                ],
+                "aoColumnDefs":
+                    [
+                        {
+                            "mRender": function (data, type, row) {
+                                var strHtml = "<button class='btn btn-warning' onclick='fn_Editar("
+                                    + row.idtransaccion + ", " +
+                                    + row.idusuario + ", " +
+                                    "\"" + encodeURIComponent(row.vnombres) + "\"" + ", " +
+                                    "\"" + encodeURIComponent(row.vapellidos) + "\"" + ", " +
+                                    //row.idcuentabancaria int
+                                    "\"" + encodeURIComponent(row.dtfecha) + "\"" + ", " +
+                                    + row.itipodivisa + ", " +
+                                    "\"" + encodeURIComponent(row.ddolaresventa) + "\"" + ", " +
+                                    "\"" + encodeURIComponent(row.ddolarescompra) + "\"" + ", " +
+                                    "\"" + encodeURIComponent(row.vhora) + "\"" + ", " +
+                                    //row.vimagen string
+                                    //row.vimagenruta string
+                                    + row.iestado + ", " +
+                                    "\"" + encodeURIComponent(row.voperacion) + "\"" + ", " +
+                                    "\"" + encodeURIComponent(row.denvio) + "\"" + ", " +
+                                    "\"" + encodeURIComponent(row.drecibo) + "\"" + ", " +
+                                    + row.itipocambio + ", " +
+                                    + row.itipotrasaccion + ", " +
+                                    "\"" + encodeURIComponent(row.vbancoreceptor) + "\"" +
+                                    ")' >Ver Detalle</button>";
+                                return strHtml;
+                            },
+                            "sWidth": "5px",
+                            "sClass": "css-center",
+                            "bSort": false,
+                            "aTargets": [5]
+                        },
+                        //{
+                        //    "mRender": function (data, type, row) {
+                        //        var strHtml = "<button class='btn btn-danger' onclick='fnEliminar(" + row.idusuarioadministrador + ");' >Eliminar</button>";
+                        //        return strHtml;
+                        //    },
+                        //    "sWidth": "5px",
+                        //    "sClass": "css-center",
+                        //    "bSort": false,
+                        //    "aTargets": [5]
+                        //}
+                    ]
+            });
+
+        }
+        fnlistarTabla();
+
+
+        //var paramidusuarioadmin = $('#hddidusuario').val();
+        //var decfecharegistro = moment().format("YYYY-MM-DD");
+        //var dechora = moment().format("hh:mm:ss");
+        function fn_Editar(pidtransaccion, idusuario, paramvnombres, paramvapellidos, paramdtfecha, itipodivisa,
+            paramddolaresventa, paramddolarescompra, paramvhora, paramiestado, paramvoperacion, paramdenvio, paramdrecibo, paramitipocambio,
+            paramitipotrasaccion, paramvbancoreceptor) {
+
+            $('#hddtransaccionid').val(pidtransaccion);
+            $('#txnombresE').val(decodeURIComponent(paramvnombres) + " " + decodeURIComponent(paramvapellidos));
+            $('#txfecha').val(decodeURIComponent(paramdtfecha) + " " + decodeURIComponent(paramvhora));
+            $('#txdivisa').val("Venta: " + decodeURIComponent(paramddolaresventa) + " | Compra: " + decodeURIComponent(paramddolarescompra));
+            $('#txOperacionNro').val(decodeURIComponent(paramvoperacion));
+            $('#txEnvioE').val(decodeURIComponent(paramdenvio));
+            $('#txRecibeE').val(decodeURIComponent(paramdrecibo));
+
+            //0: dolares a soles COMPRA | 1: soles a dolares VENTA
+            if (paramitipocambio == 0) {
+                $('#txTipoCambioE').val("Dólares a Soles");
+            } else {
+                $('#txTipoCambioE').val("Soles a Dólares");
+            }
+
+            if (paramitipotrasaccion == 0) {
+                $('#txTipoTransaccionE').val("Compra");
+            } else {
+                $('#txTipoTransaccionE').val("Venta");
+            }
+
+            $('#txBancoReceptorE').val(decodeURIComponent(paramvbancoreceptor));
+            /*
+            estado:
+            1: cotizado
+            2: abonado
+            3: validando (administrador)
+            4: en curso de abono
+            5: finalizado
+            6: reembolsado
+            7: error
+            */
+            switch (paramiestado) {
+                case 1: $('#txestadoE').val("Cotizado"); break;
+                case 2: $('#txestadoE').val("Abonado"); break;
+                case 3: $('#txestadoE').val("Validando"); break;
+                case 4: $('#txestadoE').val("Depósito a usuario en curso"); break;
+                case 5: $('#txestadoE').val("Finalizado"); break;
+                case 6: $('#txestadoE').val("Reembolso"); break;
+                case 7: $('#txestadoE').val("Error"); break;
+            }
+
+            if (paramiestado == 1) {
+                $('#btnActualizar').css("display", "none");
+                $('#btnfinalizar').css("display", "none");
+            }
+            if (paramiestado == 2) {
+                $('#btnActualizar').css("display", "block");
+                $('#btnfinalizar').css("display", "none");
+            }
+            if (paramiestado == 3) {
+                $('#btnActualizar').css("display", "none");
+                $('#btnfinalizar').css("display", "block");
+            }
+            if (paramiestado == 4) {
+                $('#btnActualizar').css("display", "none");
+                $('#btnfinalizar').css("display", "block");
+            }
+            if (paramiestado == 5) {
+                $('#btnActualizar').css("display", "none");
+                $('#btnfinalizar').css("display", "none");
+            }
+
+            $('#modalEditarOperacion').modal('show');
+
+        }
+
+        function fn_Actualizar(paramestado) {
+            var idtransaccionparam = $('#hddtransaccionid').val();
+            var hddidusuarioE = $('#hddidusuario').val();
+            var iparamestado = parseInt(paramestado);
+            $('#divcarga').addClass("is-active");
+            $.ajax({
+                type: 'post',
+                url: RutaPrincipal + 'Inicio/OperacionTranscaccion',
+                data: {
+                    "itipooperacion": 3,
+                    "idtransaccion": idtransaccionparam,
+                    "idusuario": 0,
+                    "iddivisa": 0,
+                    "idpromocion": 0,
+                    "idcuentabancaria": 0,
+                    "idusuarioadministrador": hddidusuarioE, //usuario que hizo la transaccion (admin) igual en upd
+                    "dtfecha": "",
+                    "itipodivisa": 0,
+                    "dolaresventa": 0,
+                    "dolarescompra": 0,
+                    "hora": "",
+                    "imagenruta": "",
+                    "itipoenvio": 0,
+                    "iestado": iparamestado,
+                    "voperacion": "",
+                    "iorigenfondo": 0,
+                    "denvio": 0,
+                    "drecibo": 0,
+                    "itipocambio": 0,
+                    "itipotrasaccion": 0,
+                    "digv": 0,
+                    "vbancoreceptor": "",
+                    "dtfecharegistro": "",
+                    "dtfechamodificacion": "",
+                    "idusuarioModificacion": 0
+                },
+            }).done(function (result) {
+                $('#divcarga').removeClass("is-active");
+                NotificacionSuccessDerecha("Transaccion Cambiada");
+                $('#modalEditarOperacion').modal("hide");
+                fnlistarTabla();
+            });
+        }
+
+    </script>
+}

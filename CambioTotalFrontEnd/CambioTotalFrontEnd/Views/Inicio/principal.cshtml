@@ -1,0 +1,623 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutCuenta.cshtml";
+}
+
+<style>
+    .content-page {
+        background-image: url(../../Content/img/cimg_fondo.png);
+        background-size: cover;
+    }
+
+    .rightbar-overlay { /* pantalla gris de carga */
+        display: none;
+    }
+
+    .footer {
+        display: none;
+    }
+
+    .hero-form .courrency-select {
+        display: block;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 20px;
+        box-shadow: 0px 5px 26.1px 3.9px rgb(23 29 113 / 5%);
+        height: 30px;
+        /* padding: 0px 8px; */
+        background: rgba(255, 255, 255, 0.17);
+    }
+
+        .hero-form .courrency-select .form-group .form-control {
+            background: transparent;
+            border: none;
+            font-family: "Poppins", sans-serif;
+            font-size: 18px;
+            line-height: 1.556;
+            font-weight: 500;
+            color: #000;
+        }
+
+    .hero-form {
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.055);
+        box-shadow: 0px 5px 20px 0px rgb(23 29 113 / 26%);
+        padding: 45px 20px 50px;
+    }
+
+        .hero-form p.text {
+            font-family: "Poppins", sans-serif;
+            font-size: 18px;
+            line-height: 1.556;
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .hero-form a.button.button-1 {
+            border-radius: 20px;
+            background-color: #ffb400;
+            box-shadow: 0px 5px 13.28px 2.72px rgb(0 0 0 / 10%);
+            height: 70px;
+            width: 100%;
+            border: none;
+            font-size: 18px;
+            font-family: "Roboto", sans-serif;
+            color: white;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1.556;
+            text-align: center;
+            margin-top: 40px;
+            transition: 0.1s;
+        }
+</style>
+<br />
+<br />
+<div class="row justify-content-center text-center">
+    <div class="col-12">
+        <h1 class="upper-text">Hola @ViewBag.GNombreUsuario 😃</h1>
+        <div class="divcambio mb-4" style="display: inline-flex;align-content: center;">
+            Compra:&nbsp;<strong id="txcompra"></strong>&nbsp;
+            Venta:&nbsp;<strong id="txventa"></strong>
+        </div>
+        <br />
+        <div class="row text-center justify-content-center">
+            <div class="col-md-4">
+                <label for="slcBanco">¿Desde qué banco nos envías tu dinero?</label>
+                <select class="custom-select mb-3" id="slcBanco">
+                    <option value="0">Seleccione</option>
+                    <option value="1">(BCP) - Banco de Crédito del Perú</option>
+                    <option value="2">(Interbank) - Banco Internacional del Perú</option>
+                    <option value="3">(BBVA) - BBVA Continental</option>
+                    <option value="4">(BanBif) - BanBif</option>
+                    <option value="5">(Scotiabank) - Scotiabank</option>
+                    <option value="6">(Falabella) - Banco Falabella</option>
+                    <option value="7">(Pichincha) - Banco Pichincha</option>
+                    <option value="8">(Bancomercio) - Banco de Comercio</option>
+                    <option value="9">(Citibank) - Citibank Perú</option>
+                    <option value="10">(Mibanco) - Mi Banco</option>
+                    <option value="11">(GNB) - Banco GNB</option>
+                    <option value="12">(Ripley) - Banco Ripley</option>
+                    <option value="13">(Nacion) - Banco de la Nación</option>
+                    <option value="14">(Otro) - Otro</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="slccuentabancaria">¿En qué cuenta deseas recibir tu dinero?</label>
+                <select class="custom-select mb-3" id="slccuentabancaria">
+                    <option value="0">Seleccione</option>
+
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="slcorigen">Origen de tus fondos</label>
+                <select class="custom-select mb-3" id="slcorigen">
+                    <option value="0">Seleccione</option>
+                    <option value="1">Ahorros</option>
+                    <option value="2">Alquiler de bienes muebles</option>
+                    <option value="3">Alquiler de bienes Inmuebles</option>
+                    <option value="4">Donación/Sorteo</option>
+                    <option value="5">Ingresos por trabajo independiente</option>
+                    <option value="6">Ingresos por trabajo dependiente</option>
+                    <option value="7">Ingresos por regalía</option>
+                    <option value="8">Préstamos</option>
+                    <option value="9">Venta de bien mueble</option>
+                    <option value="10">Venta de bien inmueble</option>
+                    <option value="11">Transferencias del Exterior</option>
+                    <option value="12">Herencia</option>
+                    <option value="13">Actividades relacionadas a la venta de Oro</option>
+                    <option value="14">No Especificado</option>
+                </select>
+            </div>
+            <div class="col-lg-4 mt-3">
+                <div class="hero-form">
+                    <div class="courrency-select-Ip1">
+                        <label class="text tcambiar" style="font-weight:800;">Enviaré&nbsp;</label>
+                        <label for="" id="lbl1">Dólares</label>
+                    </div>
+                    <div class="courrency-select">
+                        <form action="#!" id="faq_form">
+                            <div class="form-group">
+                                <input type="text" name="number" id="txInput1" placeholder="00.0" maxlength="10"
+                                       class="form-control tcambiar">
+                            </div>
+                        </form>
+                    </div>
+                    <button class="btn btn-info" id="btncambiar" style="margin-left: 0%;margin-bottom: 5%;margin-top: 0%;
+                width: 70px !important;border-radius: 60px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                            <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
+                            <path fill-rule="evenodd"
+                                  d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
+                        </svg>
+                    </button>
+
+                    <div class="courrency-select-Ip1">
+                        <label class="text tcambiar" style="font-weight:800;">Recibiré:&nbsp;</label>
+                        <label for="" id="lbl2">Soles</label>
+                    </div>
+                    <div class="courrency-select">
+                        <form action="#!" id="faq_form2">
+                            <div class="form-group">
+                                <input type="text" name="number" id="txInput2" placeholder="00.0" maxlength="10"
+                                       class="form-control tcambiar">
+                            </div>
+                        </form>
+                    </div>
+                    <a href="#" style="color:white;">¿Monto mayor a $10.000 o S/ 30.000?</a>
+                    <button id="btnCrearOperacion" class="btn btn-success">Cambiar ahora</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="fill-info-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="info-header-modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-colored-header bg-info">
+                <h4 class="modal-title" id="info-header-modalLabel">Solicitud creada</h4>
+                @*<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>*@
+            </div>
+            <div class="modal-body">
+                <p>¡Muchas gracias por confiar en nosotros! Por favor abona el monto a la siguiente cuenta</p>
+                <br />
+                <strong></strong>
+                <p>Una vez abonado, por favor ingresa el número de operación debajo</p>
+                <br />
+                <div class="form-group">
+                    <input type="text" id="txOperacion" class="form-control" placeholder="Mi número de operación">
+                </div>
+            </div>
+            <div class="modal-footer">
+                @*<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>*@
+                <button class="btn btn-secondary" onclick="fnDesconectar();">Cerrar sesión</button>
+                <button type="button" class="btn btn-info" id="btnenviarInfo">Enviar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div id="modalfin" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalfinmodalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-colored-header bg-success">
+                <h4 class="modal-title" id="modalfinmodalLabel">Envío realizado</h4>
+                @*<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>*@
+            </div>
+            <div class="modal-body">
+                <h5>¡Genial! el envío se ha realizado, por favor puedes ir revisando tu cuenta en los próximos minutos</h5>
+                <p>*Recuerda que si tu transacción se realizó despues de las 4pm, se realizará el abono al siguiente día útil</p>
+                <br />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<input type="hidden" id="hddidusuario" value="@ViewBag.GIdusuario" />
+<input type="hidden" id="hddtransaccionid" value="" />
+<input type="hidden" id="hddtipousuario" value="@ViewBag.GrolUsuario" />
+
+@section scripts{
+
+    <script>
+        $('#divcarga').removeClass("is-active");
+
+        function fn_listarCuentasBancarias() {
+            $('#slccuentabancaria').find('option').remove();
+            if ($('#hddtipousuario').val() == "3") {
+                return;
+            }
+            var paramidusuario = $('#hddidusuario').val();
+            $.ajax({
+                type: "POST",
+                url: "/Inicio/ListarCuentaBancaria",
+                data: {
+                    "widusuario": paramidusuario,
+                    "wnombres": "vacio"
+                },
+                success: function (data) {
+                    if (data.aaData === "") {
+                        alert("No hay cuentas bancarias tuyas, intenta agregar una por favor");
+                        window.location.href = "/Inicio/miscuentas";
+                    }
+                    $('#slccuentabancaria').append($("<option></option>")
+                        .attr("value", "0")
+                        .text("Seleccione una opción"));
+                    $.each(data.aaData, function (index, value) {
+                        $('#slccuentabancaria').append($("<option></option>")
+                            .attr("value", value.idcuentabancaria)
+                            .text(value.vnombrecuenta + " - " + value.vnumerocuenta));
+                    });
+                },
+                error: function (data) {
+                    console.log("err:" + data);
+                }
+            });
+        }
+        fn_listarCuentasBancarias();
+
+        function fn_ValidarTransacciones() {
+            $('#divcarga').addClass("is-active");
+            var paramidusuario = $('#hddidusuario').val();
+            $.ajax({
+                type: "POST",
+                url: "/Inicio/ListarOperacion",
+                data: {
+                    "widusuario": paramidusuario,
+                    "wdtfecha": "vacio",
+                    "westado": 1
+                },
+                success: function (data) {
+                    if (data.sData === "") {
+                        //si no hay alguna transaccion activa, no hace nada
+                        $('#divcarga').removeClass("is-active");
+                        return;
+                    } else {
+                        $.each(data.sData, function (index, value) {
+                            if (value.iestado == 1) {
+                                $('#fill-info-modal').modal({ backdrop: 'static', keyboard: false, show: true });
+                                $('#hddtransaccionid').val(value.idtransaccion);
+                            } else {
+
+                            }
+
+                        });
+                    }
+                    $('#divcarga').removeClass("is-active");
+                },
+                error: function (data) {
+                    console.log("ERR2: " + data);
+                }
+            });
+
+
+
+        }
+        fn_ValidarTransacciones();
+
+        function fn_ValidarFinal(paramestado) {
+            $('#divcarga').addClass("is-active");
+            var paramidusuario = $('#hddidusuario').val();
+            $.ajax({
+                type: "POST",
+                url: "/Inicio/ListarOperacion",
+                data: {
+                    "widusuario": paramidusuario,
+                    "wdtfecha": "vacio",
+                    "westado": parseInt(paramestado)
+                },
+                success: function (data) {
+                    if (data.sData === "") {
+                        //si no hay alguna transaccion activa, no hace nada
+                        $('#divcarga').removeClass("is-active");
+                        return;
+                    } else {
+                        $.each(data.sData, function (index, value) {
+                            if (value.iestado == 4) {
+                                $('#modalfin').modal("show");
+                                $('#hddtransaccionid').val(value.idtransaccion);
+                            }
+                        });
+                    }
+                    $('#divcarga').removeClass("is-active");
+                },
+                error: function (data) {
+                    console.log("ERR2: " + data);
+                }
+            });
+        }
+        fn_ValidarFinal(4);
+
+        var vCompra = "";
+        var vVenta = "";
+        var vValorAjuste = 0.0;
+        $.ajax({
+            url: 'https://operations.roblex.pe/valuation/active-valuation',
+            type: 'GET',
+            dataType: 'json',
+            cors: false,
+            contentType: 'application/json',
+            secure: false,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+            },
+            success: function (data) {
+                vCompra = data.amountBuy;
+                vVenta = data.amountSale;
+                $('#txcompra').text(parseFloat(data.amountBuy).toFixed(2));
+                $('#txventa').text(parseFloat(data.amountSale).toFixed(2));
+
+                if (localStorage.getItem("SESSION_TIPO") != null || localStorage.getItem("SESSION_MONTO1") != null
+                    || localStorage.getItem("SESSION_MONTO2") != null) {
+                    var itipo = localStorage.getItem("SESSION_TIPO");
+                    var monto1 = localStorage.getItem("SESSION_MONTO1");
+                    var monto2 = localStorage.getItem("SESSION_MONTO2");
+                    //0: dolares a soles  | 1: soles a dolares
+                    if (itipo == 0) {
+                        $('#lbl1').text("Dólares");
+                        $('#lbl2').text("Soles");
+                    } else {
+                        $('#lbl1').text("Soles");
+                        $('#lbl2').text("Dólares");
+                    }
+                    $('#txInput1').val(monto1);
+                    $('#txInput2').val(monto2);
+
+                } else {
+                    setTimeout(function () {
+                        $('#txInput1').val(100);
+                        $('#txInput2').val(parseFloat((100 * vCompra) - vValorAjuste).toFixed(2));
+                    }, 500);
+                }
+
+            }
+        });
+
+        //paramtipo 0: dolares a soles COMPRA | 1: soles a dolares VENTA
+        //tipoinput 0: input 1 a input 2 | 1: input 2 a input 1
+        function CambioDivisa(paramtipo) {
+            var vmonto1 = $('#txInput1').val();
+            var vmonto2 = $('#txInput2').val();
+            if (paramtipo == 1) {
+                $('#lbl1').text("Soles");
+                $('#lbl2').text("Dólares");
+                $('#txInput2').val(parseFloat(vmonto1 / vVenta).toFixed(2));
+                return;
+            } else {
+                // si es 0
+                $('#lbl1').text("Dólares");
+                $('#lbl2').text("Soles");
+                $('#txInput2').val(parseFloat(vmonto1 * vCompra).toFixed(2));
+                return;
+            }
+
+
+        }
+
+
+        var txt = document.getElementById('txInput1');
+        var txt2 = document.getElementById('txInput2');
+        txt.addEventListener('keyup', myFunc);
+        txt2.addEventListener('keyup', myFunc2);
+
+        function myFunc(e) {
+            var val = this.value;
+            var re = /^([0-9]+[\.]?[0-9]?[0-9]?|[0-9]+)$/g;
+            var re1 = /^([0-9]+[\.]?[0-9]?[0-9]?|[0-9]+)/g;
+            if (re.test(val)) {
+                //do something here
+
+            } else {
+                val = re1.exec(val);
+                if (val) {
+                    this.value = val[0];
+                } else {
+                    this.value = "";
+                }
+            }
+        }
+
+        function myFunc2(e) {
+            var val = this.value;
+            var re = /^([0-9]+[\.]?[0-9]?[0-9]?|[0-9]+)$/g;
+            var re1 = /^([0-9]+[\.]?[0-9]?[0-9]?|[0-9]+)/g;
+            if (re.test(val)) {
+                //do something here
+
+            } else {
+                val = re1.exec(val);
+                if (val) {
+                    this.value = val[0];
+                } else {
+                    this.value = "";
+                }
+            }
+        }
+
+        var valorInicial = 0; //0: dolares a soles  | 1: soles a dolares
+        $('#btncambiar').on("click", function () {
+            setTimeout(function () {
+                if (valorInicial == 1) {
+                    CambioDivisa(0);
+                    valorInicial = 0;
+                    return;
+                }
+                CambioDivisa(1);
+                valorInicial = 1;
+                return;
+            }, 500);
+        });
+
+        $('#txInput1').keyup(function () {
+            if (valorInicial == 1) {
+                CambioDivisa(1);
+                return;
+            }
+            CambioDivisa(0);
+        });
+
+        $('#txInput2').keyup(function () {
+            var vmonto1 = $('#txInput1').val();
+            var vmonto2 = $('#txInput2').val();
+            if (valorInicial == 1) {
+                $('#lbl1').text("Soles");
+                $('#lbl2').text("Dólares");
+                $('#txInput1').val(parseFloat(vmonto2 * vVenta).toFixed(2));
+                return;
+            } else {
+                // si es 0
+                $('#lbl1').text("Dólares");
+                $('#lbl2').text("Soles");
+                $('#txInput1').val(parseFloat(vmonto2 / vCompra).toFixed(2));
+                return;
+            }
+
+        });
+
+        $('#btnCrearOperacion').click(function () {
+
+            var slccuentabancaria = $('#slccuentabancaria option:selected').attr('value');
+            var txcuentabancaria = $('#slccuentabancaria option:selected').text();
+            var slcorigen = $('#slcorigen option:selected').attr('value');
+            var paramidusuario = $('#hddidusuario').val();
+            var txenvio = $('#txInput1').val();
+            var txrecibo = $('#txInput2').val();
+            var sfecharegistro = moment().format("YYYY-MM-DD");
+            var shora = moment().format("hh:mm:ss");
+            if (slccuentabancaria == 0) {
+                alert("Seleccione una cuenta bancaria");
+                return;
+            }
+            if (slcorigen == 0) {
+                alert("Seleccione una tipo de origen");
+                return;
+            }
+            if (txenvio == "" || txrecibo == "") {
+                alert("Ingrese montos válidos");
+                return;
+            }
+            //1 ins, 2 upd
+            /*PROCESO
+                estado:
+                1: cotizado
+                2: abonado
+                3: validando (administrador)
+                4: en curso de abono
+                5: finalizado
+                6: reembolsado
+                7: error
+                */
+            var tipotransaccionver = 0;
+            if (valorInicial == 0) {
+                tipotransaccionver = 0; //compra
+            } else {
+                tipotransaccionver = 1; //venta
+            }
+
+            $('#divcarga').addClass("is-active");
+            $.ajax({
+                type: 'post',
+                url: RutaPrincipal + 'Inicio/OperacionTranscaccion',
+                data: {
+                    "itipooperacion": 1,
+                    "idtransaccion": 0,
+                    "idusuario": paramidusuario,
+                    "iddivisa": 0, //este campo es al leer todo los dias t_divisa
+                    "idpromocion": 0, //stand by
+                    "idcuentabancaria": slccuentabancaria,
+                    "idusuarioadministrador": 0, //usuario que hizo la transaccion (admin)
+                    "dtfecha": sfecharegistro,
+                    "itipodivisa": 0, //no hay tipo de promo
+                    "dolaresventa": vVenta,
+                    "dolarescompra": vCompra,
+                    "hora": shora,
+                    "imagenruta": "", //vacio al inicio
+                    "itipoenvio": 0, //0 ahora , 1 lo deseo mas tarde (standby)
+                    "iestado": 1, //cotizado (o sea creado el requerimiento)
+                    "voperacion": "", //vacio en este caso
+                    "iorigenfondo": slcorigen,
+                    "denvio": txenvio,
+                    "drecibo": txrecibo,
+                    "itipocambio": valorInicial, //0: dolares a soles COMPRA | 1: soles a dolares VENTA
+                    "itipotrasaccion": tipotransaccionver,
+                    "digv": 0, //standby
+                    "vbancoreceptor": txcuentabancaria,
+                    "dtfecharegistro": sfecharegistro, //solo para upd
+                    "dtfechamodificacion": "",//solo para upd
+                    "idusuarioModificacion": 0 //solo para upd (admin)
+                },
+            }).done(function (result) {
+                $('#divcarga').removeClass("is-active");
+                NotificacionSuccessDerecha("Transaccion creada");
+                $('#txcuenta').val("");
+                $('#txnumerocuenta').val("");
+                $('#fill-info-modal').modal({ backdrop: 'static', keyboard: false, show: true });
+                fn_ValidarTransacciones();
+            });
+
+        });
+
+        //actualizacion
+        $('#btnenviarInfo').click(function () {
+            var idtransaccionparam = $('#hddtransaccionid').val();
+            var sfecharegistro = moment().format("YYYY-MM-DD");
+            var shora = moment().format("hh:mm:ss");
+            var paramoperacion = $('#txOperacion').val();
+            if (paramoperacion == "") {
+                alert("Completar el campo número de operación");
+                return;
+            }
+            $('#divcarga').addClass("is-active");
+            $.ajax({
+                type: 'post',
+                url: RutaPrincipal + 'Inicio/OperacionTranscaccion',
+                data: {
+                    "itipooperacion": 0,
+                    "idtransaccion": idtransaccionparam,
+                    "idusuario": 0,
+                    "iddivisa": 0,
+                    "idpromocion": 0,
+                    "idcuentabancaria": 0,
+                    "idusuarioadministrador": 0, //usuario que hizo la transaccion (admin) igual en upd
+                    "dtfecha": "",
+                    "itipodivisa": 0,
+                    "dolaresventa": 0,
+                    "dolarescompra": 0,
+                    "hora": shora, //para upd
+                    "imagenruta": "", //en upd por ahora vacio
+                    "itipoenvio": 0,
+                    "iestado": 2, //abonado (debe validar el admin si pago o no, caso contrario retorna al paso 1)
+                    "voperacion": paramoperacion, //upd si va
+                    "iorigenfondo": 0,
+                    "denvio": 0,
+                    "drecibo": 0,
+                    "itipocambio": 0,
+                    "itipotrasaccion": 0,
+                    "digv": 0, //standby igual para upd
+                    "vbancoreceptor": "",
+                    "dtfecharegistro": sfecharegistro, //solo para upd
+                    "dtfechamodificacion": sfecharegistro,//solo para upd
+                    "idusuarioModificacion": 0 //solo para upd (admin)
+                },
+            }).done(function (result) {
+                $('#divcarga').removeClass("is-active");
+                NotificacionSuccessDerecha("Transaccion creada, por favor espera la confirmación");
+                $('#txcuenta').val("");
+                $('#txnumerocuenta').val("");
+                $('#fill-info-modal').modal("hide");
+            });
+        });
+
+    </script>
+}

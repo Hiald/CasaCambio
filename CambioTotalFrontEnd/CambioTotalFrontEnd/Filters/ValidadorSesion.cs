@@ -14,8 +14,8 @@ namespace CambioTotalFrontEnd.Filters
             {
                 filterContext.Result = new RedirectToRouteResult(
                     new RouteValueDictionary {
-                            { "controller", "Login" },
-                            { "action", "Index" },
+                            { "controller", "Inicio" },
+                            { "action", "inicio" },
                             { "ivalorsesion", 1 },
                             { "valorlogin", "vacio" }
                         });

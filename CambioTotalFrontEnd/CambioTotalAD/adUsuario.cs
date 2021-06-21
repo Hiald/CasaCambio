@@ -20,7 +20,7 @@ namespace CambioTotalAD
                 using (MySqlCommand cmd = new MySqlCommand("sp_obtener_usuario", cnMysql))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("_idusuario", MySqlDbType.VarChar, 100).Value = adcorreo;
+                    cmd.Parameters.Add("_usuario", MySqlDbType.VarChar, 100).Value = adcorreo;
                     cmd.Parameters.Add("_clave", MySqlDbType.VarChar, 500).Value = adclave;
 
                     using (MySqlDataReader mdrd = cmd.ExecuteReader())
@@ -38,6 +38,8 @@ namespace CambioTotalAD
                             int pos_vdocumento = mdrd.GetOrdinal("v_documento");
                             int pos_vcorreo = mdrd.GetOrdinal("v_correo");
                             int pos_itipousuario = mdrd.GetOrdinal("i_tipo_usuario");
+                            int pos_ruc = mdrd.GetOrdinal("v_ruc");
+                            int pos_razonsocial = mdrd.GetOrdinal("v_razonsocial");
                             int pos_resultado = mdrd.GetOrdinal("_resultado");
 
                             while (mdrd.Read())
@@ -54,6 +56,8 @@ namespace CambioTotalAD
                                 senUsuario.sdocumento = (mdrd.IsDBNull(pos_vdocumento) ? "-" : mdrd.GetString(pos_vdocumento));
                                 senUsuario.scorreo = (mdrd.IsDBNull(pos_vcorreo) ? "-" : mdrd.GetString(pos_vcorreo));
                                 senUsuario.itipousuario = (mdrd.IsDBNull(pos_itipousuario) ? 0 : mdrd.GetInt32(pos_itipousuario));
+                                senUsuario.sruc = (mdrd.IsDBNull(pos_ruc) ? "-" : mdrd.GetString(pos_ruc));
+                                senUsuario.srazonsocial = (mdrd.IsDBNull(pos_razonsocial) ? "-" : mdrd.GetString(pos_razonsocial));
                                 senUsuario._resultado = (mdrd.IsDBNull(pos_resultado) ? 0 : mdrd.GetInt32(pos_resultado));
                             }
                         }
@@ -69,7 +73,8 @@ namespace CambioTotalAD
         }
 
         public int adInsertarUsuario(string adnombres, string adapellidos, int adtipodocumento, string addocumento,
-            string adfecharegistro, string adhoraregistro, int adtipousuario, string adcorreo, string adclave, string adtoken)
+            string adfecharegistro, string adhoraregistro, int adtipousuario, string adcorreo, string adclave, string adtoken,
+            string adruc, string adrazonsocial)
         {
             try
             {
@@ -86,6 +91,8 @@ namespace CambioTotalAD
                 cmd.Parameters.Add("_v_correo", MySqlDbType.VarChar, 100).Value = adcorreo;
                 cmd.Parameters.Add("_v_clave", MySqlDbType.VarChar, 500).Value = adclave;
                 cmd.Parameters.Add("_v_token", MySqlDbType.VarChar, 500).Value = adtoken;
+                cmd.Parameters.Add("_v_ruc", MySqlDbType.VarChar, 25).Value = adruc;
+                cmd.Parameters.Add("_v_razonsocial", MySqlDbType.VarChar, 150).Value = adrazonsocial;
                 result = Convert.ToInt32(cmd.ExecuteScalar());
                 return result;
             }
@@ -141,7 +148,7 @@ namespace CambioTotalAD
         public int adActualizarCuenta(int adidusuario, int adidprovincia, int adidciudad, int adiddistrito, string addireccion, string adnombres,
                                     string adapellidos, int adigenero, string adimagenruta, string adimagendniruta1, string adimagendniruta2, string adcelular1,
                                     string adcelular2, string adtelefono, int aditipodocumento, string addocumento, string adubigeo, string adfechanacimiento,
-                                    string adfechamodificacion, string adhoramodificacion, int adidusuariomod)
+                                    string adfechamodificacion, string adhoramodificacion, int adidusuariomod, string adruc, string adrazonsocial)
         {
             try
             {
@@ -164,6 +171,8 @@ namespace CambioTotalAD
                 cmd.Parameters.Add("_v_telefono", MySqlDbType.VarChar, 10).Value = adtelefono;
                 cmd.Parameters.Add("_i_tipodocumento", MySqlDbType.Int32).Value = aditipodocumento;
                 cmd.Parameters.Add("_v_documento", MySqlDbType.VarChar, 20).Value = addocumento;
+                cmd.Parameters.Add("_v_ruc", MySqlDbType.VarChar, 25).Value = adruc;
+                cmd.Parameters.Add("_v_razonsocial", MySqlDbType.VarChar, 150).Value = adrazonsocial;
                 cmd.Parameters.Add("_v_ubigeo", MySqlDbType.VarChar, 20).Value = adubigeo;
                 cmd.Parameters.Add("_d_fechanac", MySqlDbType.VarChar, 20).Value = adfechanacimiento;
                 cmd.Parameters.Add("_dt_fechamodificacion", MySqlDbType.VarChar, 20).Value = adfechamodificacion;
@@ -179,7 +188,7 @@ namespace CambioTotalAD
             }
         }
 
-        public edUsuario adFiltrarUsuario(string adusuario)
+        public edUsuario adFiltrarUsuario(int adusuario)
         {
             try
             {
@@ -208,10 +217,14 @@ namespace CambioTotalAD
                             int pos_vtelefono = mdrd.GetOrdinal("v_telefono");
                             int pos_itipodocumento = mdrd.GetOrdinal("i_tipodocumento");
                             int pos_vdocumento = mdrd.GetOrdinal("v_documento");
+                            int pos_vruc = mdrd.GetOrdinal("v_ruc");
+                            int pos_vrazonsocial = mdrd.GetOrdinal("v_razonsocial");
                             int pos_dfechanac = mdrd.GetOrdinal("d_fechanac");
                             int pos_bestado = mdrd.GetOrdinal("b_estado");
                             int pos_dtfecharegistro = mdrd.GetOrdinal("dt_fecharegistro");
                             int pos_vhoraregistro = mdrd.GetOrdinal("v_horaregistro");
+                            int pos_vcorreo = mdrd.GetOrdinal("v_correo");
+                            int pos_tipousuario = mdrd.GetOrdinal("i_tipo_usuario");
 
                             while (mdrd.Read())
                             {
@@ -232,10 +245,14 @@ namespace CambioTotalAD
                                 senUsuario.stelefono = (mdrd.IsDBNull(pos_vtelefono) ? "-" : mdrd.GetString(pos_vtelefono));
                                 senUsuario.itipodocumento = (mdrd.IsDBNull(pos_itipodocumento) ? 0 : mdrd.GetInt32(pos_itipodocumento));
                                 senUsuario.sdocumento = (mdrd.IsDBNull(pos_vdocumento) ? "-" : mdrd.GetString(pos_vdocumento));
+                                senUsuario.sruc = (mdrd.IsDBNull(pos_vruc) ? "-" : mdrd.GetString(pos_vruc));
+                                senUsuario.srazonsocial = (mdrd.IsDBNull(pos_vrazonsocial) ? "-" : mdrd.GetString(pos_vrazonsocial));
                                 senUsuario.sfechanacimiento = (mdrd.IsDBNull(pos_dfechanac) ? "-" : mdrd.GetString(pos_dfechanac));
                                 senUsuario.iestado = (mdrd.IsDBNull(pos_bestado) ? 0 : mdrd.GetInt32(pos_bestado));
                                 senUsuario.sfecharegistro = (mdrd.IsDBNull(pos_dtfecharegistro) ? "-" : mdrd.GetString(pos_dtfecharegistro));
                                 senUsuario.shoraregistro = (mdrd.IsDBNull(pos_vhoraregistro) ? "-" : mdrd.GetString(pos_vhoraregistro));
+                                senUsuario.scorreo = (mdrd.IsDBNull(pos_vcorreo) ? "-" : mdrd.GetString(pos_vcorreo));
+                                senUsuario.itipousuario = (mdrd.IsDBNull(pos_tipousuario) ? 0 : mdrd.GetInt32(pos_tipousuario));
                             }
                         }
                     }

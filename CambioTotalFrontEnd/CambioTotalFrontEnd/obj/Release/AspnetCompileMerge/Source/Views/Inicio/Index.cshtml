@@ -2,770 +2,529 @@
     ViewBag.Title = "Home Page";
 }
 
-<!doctype html>
-<html class="no-js" lang="es">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Cambio Total - Tu casa de cambio favorita</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!--=== Reset Css ===-->
-    <link rel="stylesheet" href="~/assets/css/normalize.css">
-    <!--=== Bootstrap ===-->
-    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
-    <!--=== Fontawesome icon ===-->
-    <link rel="stylesheet" href="~/assets/css/font-awesome-5.10.2.min.css">
-    <!--=== Owl-Carousel ===-->
-    <link rel="stylesheet" href="~/assets/css/plugin/owl.carousel.min.css">
-    <!--=== Magnific Popup===-->
-    <link rel="stylesheet" href="~/assets/css/plugin/magnific-popup.css">
-    <!--=== Magnific Popup===-->
-    <link rel="stylesheet" href="~/assets/css/plugin/nice-select.css">
-    <!--=== Main Css ===-->
-    <link rel="stylesheet" href="~/assets/css/style.css">
-    <!--=== Responsive Css ===-->
-    <link rel="stylesheet" href="~/assets/css/responsive.css">
-    <style>
-        .loader-1 .loader-outter {
-            position: absolute;
-            border: 4px solid #f5c830;
-            border-left-color: transparent;
-            border-bottom: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            animation: loader-1-outter 1s cubic-bezier(0.42, 0.61, 0.58, 0.41) infinite;
-        }
-
-        .loader-1 .loader-inner {
-            position: absolute;
-            border: 4px solid #f5c830;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            left: calc(50% - 20px);
-            top: calc(50% - 20px);
-            border-right: 0;
-            border-top-color: transparent;
-            animation: loader-1-inner 1s cubic-bezier(0.42, 0.61, 0.58, 0.41) infinite;
-        }
-
-        @@media (max-width: 1899px) {
-            .banner .hero-area {
-                padding: 100px 0 208px;
-            }
-        }
-
-        .banner .mein-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            box-shadow: 0px 5px 89.61px 13.39px rgb(23 29 113 / 5%);
-            background: -webkit-linear-gradient(top, #257b70 100%, #257b70 100%);
-            z-index: 99999;
-            padding: 10px 0 10px;
-        }
-
-        ::placeholder {
-            /* Chrome, Firefox, Opera, Safari 10.1+ */
-            color: black !important;
-            opacity: 1;
-            /* Firefox */
-        }
-
-        .banner {
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            padding-bottom: 120px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .banner .hero-area .hero-form .courrency-select-Ip1 {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            align-items: center;
-            margin-bottom: -77px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 20px;
-            height: 77px;
-            padding: 0 20px;
-            background: rgba(255, 255, 255, 0.17);
-        }
-
-        .tcambiar {
-            color: black !important;
-        }
-
-        @@media (max-width: 414px) {
-            .about .upper-content p.text {
-                color: #2c8c51;
-                padding: 0 0 0 !important;
-            }
-
-            .footer .footer-box .footer-link li {
-                display: grid;
-                margin-left: 40px;
-                color: #142645;
-            }
-
-            .footer .footer-box .footer-link {
-                text-align: left;
-                margin-top: 10px;
-            }
-
-            .footer .footer-box .footer-link li:first-child {
-                margin-left: 40px;
-            }
-
-            .feature .upper-content p.text {
-                color: #2c8c51;
-                padding: 0 0 0 !important;
-            }
-
-            .banner {
-                background-image: unset !important;
-                /* background-image: url(assets/img/banner-bg2.png); */
-                background-color: #2c8c51 !important;
-            }
-
-            .form-control {
-                color: white !important;
-            }
-
-            ::placeholder {
-                /* Chrome, Firefox, Opera, Safari 10.1+ */
-                color: white !important;
-                opacity: 1;
-                /* Firefox */
-            }
-
-            .courrency-select-Ip1 label {
-                color: white;
-            }
-
-            .tcambiar {
-                color: white !important;
-            }
-
-            .divcambio {
-                color: white;
-            }
-        }
-
-        #scrollUp {
-            position: fixed;
-            display: none;
-            height: 45px;
-            width: 40px;
-            right: 2%;
-            bottom: 3%;
-            border-radius: 4px;
-            background: -webkit-linear-gradient(top, #2c8c51 100%, #2c8c51 100%);
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.4s ease-in-out 0s;
-            z-index: 500;
-            color: black;
-        }
-
-        .banner .mein-menu.nav-fixed {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            box-shadow: 0px 5px 89.61px 13.39px rgb(23 29 113 / 5%);
-            background: -webkit-linear-gradient(top, #2c8c51 100%, #2c8c51 100%);
-            z-index: 99999;
-            padding: 10px 0 10px;
-        }
-
-        .about .upper-content h2.title {
-            color: #2c8c51;
-            margin: 17px 0 10px;
-        }
-
-        .feature .upper-content h2.title {
-            color: #2c8c51;
-            margin: 19px 0 26px;
-        }
-
-        .how-use .content h2.title {
-            color: #2c8c51;
-            margin: 20px 0 26px;
-        }
-
-        .faq .content h2.title {
-            color: #2c8c51;
-            margin: 19px 0 26px;
-        }
-
-        .about .upper-content p.text {
-            color: #2c8c51;
-            padding: 0 100px 0;
-        }
-
-        .feature .upper-content p.text {
-            color: #2c8c51;
-            padding: 0 100px 0;
-        }
-
-        .how-use .content p.text {
-            color: #2c8c51;
-        }
-
-        .faq .content p.text {
-            color: #2c8c51;
-            padding-right: 92px;
-        }
-
-        .footer {
-            margin-top: 120px;
-            padding: 0px 0px 30px;
-            background: #f4f2ff;
-        }
-    </style>
-</head>
-
-<body>
-
-    <!-- preloader area start -->
-    <div class="preloader" id="preloader">
-        <div class="loader loader-1">
-            <div class="loader-outter"></div>
-            <div class="loader-inner"></div>
-        </div>
+<!-- preloader area end -->
+<!-- Banners Start -->
+<section class="banner" style="background: linear-gradient(rgb(8 8 8 / 50%), rgb(14 14 14 / 50%)), url(../../assets/img2.jpeg);
+    background-size: cover;background-position: center; background-repeat: no-repeat;padding-bottom: 40px;position: relative;">
+    <div class="laptop">
+        @*<img src="~/assets/img/laptop-man.png" class="man-lap" alt="">*@
     </div>
-    <!-- preloader area end -->
-    <!-- Banners Start -->
-    <section class="banner" style="background-image: url('../../assets/img/banner-bg2.png')">
-        <div class="laptop">
-            <img src="~/assets/img/laptop-man.png" class="man-lap" alt="">
-        </div>
-        <!-- Main-menu Strat -->
-        <div class="mein-menu">
-            <nav class="navbar navbar-expand-lg navbar-light ">
-                <div class="container">
-                    <a class="navbar-brand" href="index-2.html">
-                        <h4 style="color:white;">TuCambioTotal</h4>
-                        <!-- <img src="assets/img/logo.png" class="logo" alt="logo"> -->
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#divfeature">Nosotros</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#divcomousar">¿Cómo funciona?</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#divfaq">Preguntas frecuentes</a>
-                            </li>
-                            <li class="nav-item">
-                                <button class="button button-1">Regístrate</button>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <!-- Main-menu End -->
-        <!-- Banner Start -->
-        <div class="hero-area">
+    <!-- Main-menu Strat -->
+    <div class="mein-menu">
+        <nav class="navbar navbar-expand-lg navbar-light ">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-7 ">
-                        <div class="banner-content" style="margin-left: 3%;">
-                            <h1 class="head">Obtén el mejor tipo de cambio</h1>
-                            <p class="text">
-                                Nacimos con el sueño de ofrecer la mejor experiencia <br>
-                                de cambiar dinero en el Perú.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="hero-form">
-                            <p class="text tcambiar">Me gustaría cambiar</p>
-                            <div class="divcambio" style="display: inline-flex;align-content: center;">
-                                Compra:&nbsp;<strong id="txcompra">3.816</strong>&nbsp;
-                                Venta: <strong id="txventa">3.851</strong>
-                            </div>
-                            <p class="text tcambiar">Enviaré</p>
-                            <div class="courrency-select-Ip1">
-                                <label for="">Soles</label>
-                            </div>
-                            <div class="courrency-select">
-                                <form action="#!" id="faq_form">
-                                    <div class="form-group">
-                                        <input type="text" name="number" placeholder="00.0" maxlength="8"
-                                               class="form-control tcambiar">
-                                    </div>
-                                </form>
-                            </div>
-                            <a class="button button-1" style="margin-left: 45%;margin-bottom: -9%;
-                            margin-top: -5%;width: 70px !important;border-radius: 60px;
-                            background-color: white;color: black;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                     class="bi bi-arrow-repeat" viewBox="0 0 16 16">
-                                    <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
-                                    <path fill-rule="evenodd"
-                                          d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
-                                </svg>
-                            </a>
-                            <p class="text tcambiar">Recibiré</p>
-                            <div class="courrency-select-Ip1">
-                                <label for="">Dólares</label>
-                            </div>
-                            <div class="courrency-select">
-                                <form action="#!" id="faq_form2">
-                                    <div class="form-group">
-                                        <input type="text" name="number" placeholder="00.0" maxlength="8"
-                                               class="form-control tcambiar">
-                                    </div>
-                                </form>
-                            </div>
-                            <a href="#" style="color:white;">¿Monto mayor a $10.000 o S/ 30.000?</a>
-                            <a href="#" class="button button-1">Regístrate ahora</a>
-                        </div>
-                    </div>
+                <a class="navbar-brand" href="@Url.Action("Index","Inicio")">
+                    <h4 style="color:white;">TuCambioTotal</h4>
+                    <!-- <img src="assets/img/logo.png" class="logo" alt="logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="@Url.Action("Index","Inicio")">Inicio</a>
+                        </li>
+                        @*<li class="nav-item">
+                            <a class="nav-link" href="#divfeature">Nosotros</a>
+                        </li>*@
+                        <li class="nav-item">
+                            <a class="nav-link" href="#divcomousar">¿Cómo funciona?</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#divfaq">Preguntas frecuentes</a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="button button-1" onclick="window.location.href = '/Inicio/inicio';">Iniciar sesión</button>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <!-- Banner End -->
-    </section>
-
-    <!-- How-use Start -->
-    <div class="how-use" id="divcomousar">
-        <div class="usesape">
-            <img src="~/assets/img/use-bg.png" class="usesape-img" alt="">
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="photo">
-                        <img src="~/assets/img/use-img.png" class="use-img" alt="">
-                    </div>
-                    <!-- <div class="video-box">
-                        <div class="video-img">
-                            <img src="assets/img/video-play-img.png" alt="">
-
-                            <a class="youtube-video mfp-iframe video-play-btn video-icon"
-                                href="https://www.youtube.com/watch?v=4DCTTrGjGU4">
-                                <i class="fas fa-play"></i>
-                            </a>
-                        </div>
-                        <div class="video-text">
-                            <p class="text">test</p>
-                            <span><i class="far fa-clock"></i> 2:32 minutos</span>
-                        </div>
-                    </div> -->
-                </div>
-                <div class="col-lg-6">
-                    <div class="content">
-                        <h3 class="subtitle" style="color:green;">Realiza tu cambio ahora</h3>
-                        <h2 class="title">Es muy fácil!</h2>
-                        <p class="text">Tenemos pasos simples para que cambies tu dinero</p>
-                    </div>
-                    <div class="use-box">
-                        <div class="install">
-                            <div class="tumb">
-                                <img src="~/assets/img/use-icon-1.png" alt="">
-                            </div>
-                            <div class="text-box">
-                                <span style="color:green;">Paso 1</span>
-                                <h4>Ingresa el monto y regístrate o inicia sesión</h4>
-                            </div>
-                        </div>
-                        <div class="install">
-                            <div class="tumb">
-                                <img src="~/assets/img/use-icon-2.png" alt="">
-                            </div>
-                            <div class="text-box">
-                                <span style="color:green;">Paso 2</span>
-                                <h4>Agrega o selecciona tu cuenta bancaria</h4>
-                            </div>
-                        </div>
-                        <div class="install">
-                            <div class="tumb">
-                                <img src="~/assets/img/use-icon-3.png" alt="">
-                            </div>
-                            <div class="text-box">
-                                <span style="color:green;">Paso 3</span>
-                                <h4>¡Realiza el depósito y listo! Llegará rápidamente a tu cuenta</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </nav>
     </div>
-
-    <!-- About Us Start -->
-    <section class="about">
-        <div class="sape">
-            <img src="~/assets/img/about-bg.png" class="about-sape" alt="">
-        </div>
+    <!-- Main-menu End -->
+    <!-- Banner Start -->
+    <div class="hero-area">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-10 m-auto">
-                    <div class="upper-content text-center">
-                        <h3 class="subtitle" style="color:green;">Tenemos el mejor tipo de cambio para ti</h3>
-                        <h2 class="title">¿Porqué usar TuCambioTotal?</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-7 ">
+                    <div class="banner-content" style="margin-left: 3%;">
+                        <h1 class="head">CAMBIA TU DINERO DESDE DONDE ESTÉS.</h1>
                         <p class="text">
-                            Buscamos en tiempo real muchos datos para comparar los tipos de cambios existentes cada día.
-                            Trabajamos constantemente para ti.
+                            FÁCIL, RÁPIDO Y SEGURO.
+                            COTIZA CON NOSOTROS.
                         </p>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="about-photo">
-                        <img src="~/assets/img/about-img.png" alt="" class="about-img">
-                    </div>
-                </div>
-                <div class="col-lg-7 offset-lg-1">
-                    <div class="content">
-                        <div class="compare-box">
-                            <div class="tumb">
-                                <img src="~/assets/img/about-icon-1.png" alt="">
-                            </div>
-                            <div class="text-box">
-                                <h3 class="subtitle">Ahorra</h3>
-                                <p class="text">
-                                    Puedes ahorrar dinero cada vez que hagas una transacción con nosotros.
-                                </p>
-                            </div>
+                <div class="col-lg-5">
+                    <div class="hero-form">
+                        <p class="text tcambiar">Me gustaría cambiar</p>
+                        <div class="divcambio" style="display: inline-flex;align-content: center;">
+                            Compra:&nbsp;<strong id="txcompra"></strong>&nbsp;
+                            Venta:&nbsp;<strong id="txventa"></strong>
                         </div>
-                        <div class="compare-box">
-                            <div class="tumb">
-                                <img src="~/assets/img/about-icon-2.png" alt="">
-                            </div>
-                            <div class="text-box">
-                                <h3 class="subtitle">Somos confiables</h3>
-                                <p class="text">
-                                    Te brindamos el apoyo constante para que tus cambios de soles a dólares
-                                    sean seguros.
-                                </p>
-                            </div>
+                        <p class="text tcambiar">Enviaré</p>
+                        <div class="courrency-select-Ip1">
+                            <label for="" id="lbl1">Dólares</label>
                         </div>
-                        <div class="compare-box">
-                            <div class="tumb">
-                                <img src="~/assets/img/about-icon-3.png" alt="">
-                            </div>
-                            <div class="text-box">
-                                <h3 class="subtitle">Obtén tu dinero rápidamente</h3>
-                                <p class="text">
-                                    Hacemos lo posible para que tu cambio llegue a tu cuenta bancaria lo más rápido
-                                    posible.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Feature Start -->
-    <div class="feature" id="divfeature">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 m-auto">
-                    <div class="upper-content text-center">
-                        <h3 class="subtitle" style="color:green;">Nuestras características</h3>
-                        <h2 class="title">Tenemos la mejor opción</h2>
-                        <p class="text">Buscamos el mejor tipo de cambio para que ahorres</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="feature-box">
-                        <div class="tumb">
-                            <img src="~/assets/img/feature-icon-1.png" alt="">
-                        </div>
-                        <div class="text-box">
-                            <h3 class="subtitle">Costo</h3>
-                            <p class="text">
-                                Encuentra el mejor tipo de cambio aquí
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="feature-box">
-                        <div class="tumb">
-                            <img src="~/assets/img/feature-icon-2.png" alt="">
-                        </div>
-                        <div class="text-box">
-                            <h3 class="subtitle">Rapidez</h3>
-                            <p class="text">Te enviamos el cambio lo más pronto posible.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="feature-box">
-                        <div class="tumb">
-                            <img src="~/assets/img/feature-icon-3.png" alt="">
-                        </div>
-                        <div class="text-box">
-                            <h3 class="subtitle">Tipos de pago</h3>
-                            <p class="text">Podrás agregar varios bancos en tu cuenta.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="feature-box">
-                        <div class="tumb">
-                            <img src="~/assets/img/feature-icon-4.png" alt="">
-                        </div>
-                        <div class="text-box">
-                            <h3 class="subtitle">Montos mayores</h3>
-                            <p class="text">También puedes hacer transacciones con montos pesados. </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Faq Start -->
-    <div class="faq" id="divfaq">
-        <div class="sape">
-            <img src="~/assets/img/question-bg.png" alt="" class="faq-bg">
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="content">
-                        <h3 class="subtitle" style="color:green;">¿Cómo te podemos ayudar?</h3>
-                        <h2 class="title">Preguntas Frecuentes</h2>
-                        <p class="text">Respondemos a las dudas que tengas</p>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                    <img src="~/assets/img/faq-icon.png" alt="" class="icon">
-                                    ¿Qué debo hacer una vez tenga mi monto a transferir?
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Regístrate o Inicia sesión en la plataforma TuCambiototal, una vez hecho esto podrás
-                                    agregar una cuenta bancaria
-                                    en la cual deberás colocar el CCI (Cuenta interbancaraia) de dicho banco y
-                                    seguidamente podrás realizar el abono
-                                    a nuestra cuenta. Hecho esto solo es cuestión de minutos o ver nuestro cronograma de
-                                    horarios para que recibas
-                                    el monto elegido.
+                        <div class="courrency-select">
+                            <form action="#!" id="faq_form">
+                                <div class="form-group">
+                                    <input type="text" name="number" id="txInput1" placeholder="00.0" maxlength="10"
+                                           class="form-control tcambiar">
                                 </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    <img src="~/assets/img/faq-icon.png" alt="" class="icon">
-                                    ¿Qué bancos puedo utilizar?
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Puedes agregar los bancos que desees tales como BCP, BBVA, Interbank, Scotiabank,
-                                    Banco Pichincha,
-                                    Banco Azteca, Cajas, etc. Algunos bancos tendrán un plazo más de demora.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    <img src="~/assets/img/faq-icon.png" alt="" class="icon">
-                                    ¿Puedo usar el número de cuenta de destino de otra persona que no sea yo?
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Comofer is currently serviced in Belgium, Canada, Denmark, Finland, France, Germany,
-                                    Ireland, Italy, Netherlands, Norway, Spain,
-                                    Sweden, United Kingdom and the United States. We will update you when we expand the
-                                    list. CPP for AppTig console only allows players from other consoles to play
-                                    together in the same matchmaking pools.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingFour">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                    <img src="~/assets/img/faq-icon.png" alt="" class="icon">
-                                    How can I use Comofer to find the best ways to send money?
-                                </button>
-                            </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Comofer is currently serviced in Belgium, Canada, Denmark, Finland, France, Germany,
-                                    Ireland, Italy, Netherlands, Norway, Spain,
-                                    Sweden, United Kingdom and the United States. We will update you when we expand the
-                                    list. CPP for AppTig console only allows players from other consoles to play
-                                    together in the same matchmaking pools.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingFive">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                    <img src="~/assets/img/faq-icon.png" alt="" class="icon">
-                                    How can I use Comofer to find the best ways to send money?
-                                </button>
-                            </h2>
-                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
-                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Comofer is currently serviced in Belgium, Canada, Denmark, Finland, France, Germany,
-                                    Ireland, Italy, Netherlands, Norway, Spain,
-                                    Sweden, United Kingdom and the United States. We will update you when we expand the
-                                    list. CPP for AppTig console only allows players from other consoles to play
-                                    together in the same matchmaking pools.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingSix">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                    <img src="~/assets/img/faq-icon.png" alt="" class="icon">
-                                    How can I use Comofer to find the best ways to send money?
-                                </button>
-                            </h2>
-                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
-                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Comofer is currently serviced in Belgium, Canada, Denmark, Finland, France, Germany,
-                                    Ireland, Italy, Netherlands, Norway, Spain,
-                                    Sweden, United Kingdom and the United States. We will update you when we expand the
-                                    list. CPP for AppTig console only allows players from other consoles to play
-                                    together in the same matchmaking pools.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="question">
-                        <img src="~/assets/img/question-man.png" alt="" class="question-man">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer Start -->
-    <div class="footer">
-        <div class="container">
-            <!-- <div class="row">
-                <div class="col-12">
-                    <div class="subcribe-box" style="background: url('assets/img/subscribe-bg.png');">
-                        <h3 class="subcribe">To get exclusive updates and benefits </h3>
-                        <div class="form-group">
-                            <form action="#">
-                                <input type="email" class="form-control " placeholder="Enter Your Email" name="email">
-                                <button class="button-1">Subscribe</button>
                             </form>
                         </div>
-                    </div>
-                </div>
-            </div> -->
-
-            <div class="row align-items-center">
-                <div class="col-lg-3">
-                    <div class="footer-box">
-                        <h4 class="logo" style="margin-top:15%;">Tu cambio total</h4>
-                        <!-- <a href="#"><img class="logo" src="assets/img/logo.png" alt=""> </a> -->
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="footer-box">
-                        <ul class="footer-link">
-                            <li><a href="#divfeature">Acerca de nosotros</a></li>
-                            <li>|</li>
-                            <li><a href="#divcomousar">¿Cómo funciona?</a></li>
-                            <li>|</li>
-                            <li><a href="#divfaq">FAQ</a></li>
-                            <li>|</li>
-                            <li><a href="#">Regístrate</a></li>
-                        </ul>
+                        <a class="button button-1" id="btncambiar" style="margin-left: 45%;margin-bottom: -9%;
+                            margin-top: -5%;width: 70px !important;border-radius: 60px;
+                            background-color: white;color: black;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                                <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
+                                <path fill-rule="evenodd"
+                                      d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
+                            </svg>
+                        </a>
+                        <p class="text tcambiar">Recibiré</p>
+                        <div class="courrency-select-Ip1">
+                            <label for="" id="lbl2">Soles</label>
+                        </div>
+                        <div class="courrency-select">
+                            <form action="#!" id="faq_form2">
+                                <div class="form-group">
+                                    <input type="text" name="number" id="txInput2" placeholder="00.0" maxlength="10"
+                                           class="form-control tcambiar">
+                                </div>
+                            </form>
+                        </div>
+                        @*<label id="lblahorro"></label>*@
+                        <a href="https://web.whatsapp.com/send?phone=51941645017&text=Deseo%20enviar%20montos%20mayores%20a%2010%20000" target="_blank" style="color:black;font-size: 21px;">¿Monto mayor a $10.000 o S/ 30.000?</a>
+                        <a href="#" id="btnInicio" class="button button-1">Cambiar ahora</a>
                     </div>
                 </div>
             </div>
-            <div class="row align-items-center">
-                <div class="col-12">
-                    <div class="raka"></div>
+        </div>
+    </div>
+    <!-- Banner End -->
+</section>
+
+<!-- How-use Start -->
+<div class="how-use" id="divcomousar">
+    <div class="usesape">
+        @*<img src="~/assets/img/use-bg.png" class="usesape-img" alt="">*@
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="content">
+                    <h3 class="subtitle" style="color:green;">Realiza tu cambio ahora</h3>
+                    <h2 class="title">Es muy fácil!</h2>
+                    <p class="text">Tenemos pasos simples para que cambies tu dinero</p>
                 </div>
-                <div class="col-md-6">
-                    <div class="footer-bottom">
-                        <p class="text">
-                            &copy; Todos los derechos reservados <a href="#">TuCambiototal</a> | <a href="#">2021</a>
-                        </p>
+                <div class="use-box">
+                    <div class="install">
+                        <div class="tumb">
+                            <img src="~/assets/img/use-icon-1.png" alt="">
+                        </div>
+                        <div class="text-box">
+                            <span style="color:green;">Paso 1</span>
+                            <h5>Ingresa el monto en soles o dólares que deseas cambiar</h5>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="footer-bottom">
-                        <div class="social-style">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                    <div class="install">
+                        <div class="tumb">
+                            <img src="~/assets/img/use-icon-2.png" alt="">
+                        </div>
+                        <div class="text-box">
+                            <span style="color:green;">Paso 2</span>
+                            <h5>Indícanos desde qué banco y cuenta de ahorros deseas que te depositemos</h5>
+                        </div>
+                    </div>
+                    <div class="install">
+                        <div class="tumb">
+                            <img src="~/assets/img/use-icon-3.png" alt="">
+                        </div>
+                        <div class="text-box">
+                            <span style="color:green;">Paso 3</span>
+                            <h6>Transfiere el monto a cambiar a nuestra cuenta e indícanos el número de operación que te da el banco tras hacer la transferencia</h6>
+                        </div>
+                    </div>
+                    <div class="install">
+                        <div class="tumb">
+                            <img src="~/assets/img/use-icon-3.png" alt="">
+                        </div>
+                        <div class="text-box">
+                            <span style="color:green;">Paso 4</span>
+                            <h5>Te confirmamos que ya depositamos los soles o dólares que necesitabas. ¡Listo!</h5>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!--====== Scroll To Top Start ======-->
-    <div id="scrollUp" title="Scroll To Top">
-        <i class="fas fa-arrow-up"></i>
+<!-- About Us Start -->
+<section class="about">
+    <div class="sape">
+        <img src="~/assets/img/about-bg.png" class="about-sape" alt="">
     </div>
-    <!--====== Scroll To Top End ======-->
-    <!--==================================================================-->
-    <script src="~/assets/js/jquery.min.js"></script>
-    <script src="~/assets/js/proper-min.js"></script>
-    <script src="~/assets/js/bootstrap.min.js"></script>
-    <!--=== All Plugin ===-->
-    <script src="~/assets/js/plugin/waypoint.min.js"></script>
-    <script src="~/assets/js/plugin/owl.carousel.min.js"></script>
-    <script src="~/assets/js/plugin/jquery.rcounter.js"></script>
-    <script src="~/assets/js/plugin/jquery.magnific-popup.min.js"></script>
-    <script src="~/assets/js/plugin/jquery.nice-select.min.js"></script>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 m-auto">
+                <div class="upper-content text-center">
+                    <h3 class="subtitle" style="color:green;">Tenemos el mejor tipo de cambio para ti</h3>
+                    <h2 class="title">¿Porqué usar TuCambioTotal?</h2>
+                    <p class="text">
+                        Buscamos en tiempo real muchos datos para comparar los tipos de cambios existentes cada día.
+                        Trabajamos constantemente para ti.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="about-photo">
+                    <img src="~/assets/img/about-img.png" alt="" class="about-img">
+                </div>
+            </div>
+            <div class="col-lg-7 offset-lg-1">
+                <div class="content">
+                    <div class="compare-box">
+                        <div class="tumb">
+                            <img src="~/assets/img/about-icon-1.png" alt="">
+                        </div>
+                        <div class="text-box">
+                            <h3 class="subtitle">Ahorra</h3>
+                            <p class="text">
+                                Puedes ahorrar dinero cada vez que hagas una transacción con nosotros.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="compare-box">
+                        <div class="tumb">
+                            <img src="~/assets/img/about-icon-2.png" alt="">
+                        </div>
+                        <div class="text-box">
+                            <h3 class="subtitle">Somos confiables</h3>
+                            <p class="text">
+                                Te brindamos el apoyo constante para que tus cambios de soles a dólares
+                                sean seguros.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="compare-box">
+                        <div class="tumb">
+                            <img src="~/assets/img/about-icon-3.png" alt="">
+                        </div>
+                        <div class="text-box">
+                            <h3 class="subtitle">Obtén tu dinero rápidamente</h3>
+                            <p class="text">
+                                Hacemos lo posible para que tu cambio llegue a tu cuenta bancaria lo más rápido
+                                posible.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <!--=== All Active ===-->
-    <script src="~/assets/js/main.js"></script>
+<!-- Faq Start -->
+<div class="faq" id="divfaq">
+    <div class="sape">
+        <img src="~/assets/img/question-bg.png" alt="" class="faq-bg">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="content">
+                    <h3 class="subtitle" style="color:green;">¿Cómo te podemos ayudar?</h3>
+                    <h2 class="title">Preguntas Frecuentes</h2>
+                    <p class="text">Respondemos a las dudas que tengas</p>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                <img src="~/assets/img/faq-icon.png" alt="" class="icon">
+                                ¿Cómo puedo empezar a cambiar dinero?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                             data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Regístrate y/o Ingresa a tu perfil de usuario desde la web o tu app, luego:
+                                1) Calcula el monto a cambiar e indica tu banco de origen y cuenta destino.
+                                2) Transfiere desde tu banca móvil o app de banco a nuestro número de cuenta indicado.
+                                3) Coloca tu número de operación de la transferencia bancaria en el campo indicado y listo.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <img src="~/assets/img/faq-icon.png" alt="" class="icon">
+                                ¿Cuánto cuesta usar TU CAMBIO TOTAL?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                             data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                El uso de nuestra plataforma es completamente gratuito.
+                                Los usuarios pueden efectuar operaciones de cambio de moneda al tipo de cambio establecido por TU CAMBIO TOTAL.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <img src="~/assets/img/faq-icon.png" alt="" class="icon">
+                                ¿Con qué bancos trabajan?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                             data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Al nivel nacional operamos con el BCP, Interbank y BBVA.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <img src="~/assets/img/faq-icon.png" alt="" class="icon">
+                                ¿Puedo depositar desde ventanilla, agente o cajero?
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                             data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Solo aceptamos transferencias online (desde banco por internet o la app del banco).
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                <img src="~/assets/img/faq-icon.png" alt="" class="icon">
+                                ¿Cómo se hace una transferencia?
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                             data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Una vez efectuado la operación en nuestra plataforma, debes ingresar a banca por internet o banca móvil de tu banco del cual transferirás el monto acordado.
+                                Luego, estando en tu banca móvil o banca por internet de tu Banco, diríjase a la sección transferencia a otras cuentas, escriba el monto a transferir y haga uso de su clave token, tarjeta de coordenadas o algún dispositivo que su banco le entregue para hacer este tipo de operaciones.
+                                Seguidamente registra el número de operación en nuestra plataforma y listo. Nosotros hacemos lo demás.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingSix">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                <img src="~/assets/img/faq-icon.png" alt="" class="icon">
+                                ¿A dónde me depositan a cambiar dólares o soles?
+                            </button>
+                        </h2>
+                        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                             data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                El dinero se le deposita a la cuenta en Soles o Dólares (Según sea el caso) que usted registre a su nombre en nuestra plataforma.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingSix">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                <img src="~/assets/img/faq-icon.png" alt="" class="icon">
+                                ¿Qué necesito para registrar mis cuentas bancarias?
+                            </button>
+                        </h2>
+                        <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                             data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Lo puedes realizar cuando te inscribe como usuario o en tu primera operación; para ello, necesitas la siguiente información:
+                                <ul>
+                                    <li>Tipo de Cuenta (Cuenta de Ahorro o Cuenta Corriente)</li>
+                                    <li>Moneda (soles y dólares)</li>
+                                    <li>Número de cuenta</li>
+                                    <li>* Debe ingresar el número de cuenta sin espacios ni guiones</li>
+                                </ul>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="question">
+                    <img src="~/assets/img/question-man.png" alt="" class="question-man">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-</body>
+<div>
+    <div id="WhatsappBtn" style="z-index: 999;"></div>
+</div>
 
-</html>
+@section Scripts{
+    <script>
+        var vCompra = "";
+        var vVenta = "";
+        var vValorAjuste = 0.0;
+        $.ajax({
+            url: 'https://operations.roblex.pe/valuation/active-valuation',
+            type: 'GET',
+            dataType: 'json',
+            cors: false,
+            contentType: 'application/json',
+            secure: false,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+            },
+            success: function (data) {
+                vCompra = data.amountBuy;
+                vVenta = data.amountSale;
+                $('#txcompra').text(parseFloat(data.amountBuy).toFixed(2));
+                $('#txventa').text(parseFloat(data.amountSale).toFixed(2));
+                setTimeout(function () {
+                    $('#txInput1').val(100);
+                    $('#txInput2').val(parseFloat((100 * vCompra) - vValorAjuste).toFixed(2));
+                    //$('#lblahorro').text("Ahorro estimado: " + (parseFloat((100 * 4) - vValorAjuste).toFixed(2) - (parseFloat((100 * vCompra) - vValorAjuste).toFixed(2)) ) );
+                }, 500);
+            }
+        });
+
+        //paramtipo 0: dolares a soles | 1: soles a dolares
+        //tipoinput 0: input 1 a input 2 | 1: input 2 a input 1
+        function CambioDivisa(paramtipo) {
+            var vmonto1 = $('#txInput1').val();
+            var vmonto2 = $('#txInput2').val();
+            if (paramtipo == 1) {
+                $('#lbl1').text("Soles");
+                $('#lbl2').text("Dólares");
+                $('#txInput2').val(parseFloat(vmonto1 / vVenta).toFixed(2));
+                return;
+            } else {
+                // si es 0
+                $('#lbl1').text("Dólares");
+                $('#lbl2').text("Soles");
+                $('#txInput2').val(parseFloat(vmonto1 * vCompra).toFixed(2));
+                return;
+            }
+
+
+        }
+
+        var txt = document.getElementById('txInput1');
+        var txt2 = document.getElementById('txInput2');
+        txt.addEventListener('keyup', myFunc);
+        txt2.addEventListener('keyup', myFunc2);
+
+        function myFunc(e) {
+            var val = this.value;
+            var re = /^([0-9]+[\.]?[0-9]?[0-9]?|[0-9]+)$/g;
+            var re1 = /^([0-9]+[\.]?[0-9]?[0-9]?|[0-9]+)/g;
+            if (re.test(val)) {
+                //do something here
+
+            } else {
+                val = re1.exec(val);
+                if (val) {
+                    this.value = val[0];
+                } else {
+                    this.value = "";
+                }
+            }
+        }
+
+        function myFunc2(e) {
+            var val = this.value;
+            var re = /^([0-9]+[\.]?[0-9]?[0-9]?|[0-9]+)$/g;
+            var re1 = /^([0-9]+[\.]?[0-9]?[0-9]?|[0-9]+)/g;
+            if (re.test(val)) {
+                //do something here
+
+            } else {
+                val = re1.exec(val);
+                if (val) {
+                    this.value = val[0];
+                } else {
+                    this.value = "";
+                }
+            }
+        }
+
+        var valorInicial = 0; //0: dolares a soles  | 1: soles a dolares
+        $('#btncambiar').on("click", function () {
+            setTimeout(function () {
+                if (valorInicial == 1) {
+                    CambioDivisa(0);
+                    valorInicial = 0;
+                    return;
+                }
+                CambioDivisa(1);
+                valorInicial = 1;
+                return;
+            }, 500);
+        });
+
+        $('#txInput1').keyup(function () {
+            if (valorInicial == 1) {
+                CambioDivisa(1);
+                return;
+            }
+            CambioDivisa(0);
+        });
+
+        $('#txInput2').keyup(function () {
+            var vmonto1 = $('#txInput1').val();
+            var vmonto2 = $('#txInput2').val();
+            if (valorInicial == 1) {
+                $('#lbl1').text("Soles");
+                $('#lbl2').text("Dólares");
+                $('#txInput1').val(parseFloat(vmonto2 * vVenta).toFixed(2));
+                return;
+            } else {
+                // si es 0
+                $('#lbl1').text("Dólares");
+                $('#lbl2').text("Soles");
+                $('#txInput1').val(parseFloat(vmonto2 / vCompra).toFixed(2));
+                return;
+            }
+
+        });
+
+        $('#btnInicio').click(function () {
+            var vmonto1 = $('#txInput1').val();
+            var vmonto2 = $('#txInput2').val();
+            var tipoCambio = valorInicial;
+            //0: dolares a soles  | 1: soles a dolares
+            if (vmonto1.length == 0 || vmonto2.length == 0) {
+                alert("Ingrese montos válidos");
+                return;
+            }
+
+            localStorage.setItem("SESSION_TIPO", valorInicial);
+            localStorage.setItem("SESSION_MONTO1", vmonto1);
+            localStorage.setItem("SESSION_MONTO2", vmonto2);
+            window.location.href = "/Inicio/Inicio";
+        });
+
+    </script>
+}

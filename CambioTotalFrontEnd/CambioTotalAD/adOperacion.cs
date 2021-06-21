@@ -249,7 +249,7 @@ namespace CambioTotalAD
             }
         }
 
-        public List<edTransaccion> adListartransaccion(int adidusuario, string addtfecha)
+        public List<edTransaccion> adListartransaccion(int adidusuario, string addtfecha, int adestado)
         {
             try
             {
@@ -258,7 +258,8 @@ namespace CambioTotalAD
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("_idusuario", MySqlDbType.Int32).Value = adidusuario;
-                    cmd.Parameters.Add("_dtfecha", MySqlDbType.VarChar, 50).Value = addtfecha;
+                    cmd.Parameters.Add("_dt_fecha", MySqlDbType.VarChar, 50).Value = addtfecha;
+                    cmd.Parameters.Add("_itipo", MySqlDbType.Int32).Value = adestado;
                     using (MySqlDataReader mdrd = cmd.ExecuteReader())
                     {
                         if (mdrd != null)
@@ -305,20 +306,20 @@ namespace CambioTotalAD
                                 enUsuario.itipodivisa = (mdrd.IsDBNull(pos_itipodivisa) ? 0 : mdrd.GetInt32(pos_itipodivisa));
                                 enUsuario.ddolaresventa = (mdrd.IsDBNull(pos_ddolaresventa) ? 0 : mdrd.GetDecimal(pos_ddolaresventa));
                                 enUsuario.ddolarescompra = (mdrd.IsDBNull(pos_ddolarescompra) ? 0 : mdrd.GetDecimal(pos_ddolarescompra));
-                                enUsuario.vhora = (mdrd.IsDBNull(pos_vhora) ? "_" : mdrd.GetString(pos_vhora));
+                                enUsuario.vhora = (mdrd.IsDBNull(pos_vhora) ? "-" : mdrd.GetString(pos_vhora));
                                 enUsuario.vimagen = (mdrd.IsDBNull(pos_vimagen) ? "-" : mdrd.GetString(pos_vimagen));
                                 enUsuario.vimagenruta = (mdrd.IsDBNull(pos_vimagenruta) ? "-" : mdrd.GetString(pos_vimagenruta));
                                 enUsuario.itipoenvio = (mdrd.IsDBNull(pos_itipoenvio) ? 0 : mdrd.GetInt32(pos_itipoenvio));
                                 enUsuario.iestado = (mdrd.IsDBNull(pos_iestado) ? 0 : mdrd.GetInt32(pos_iestado));
-                                enUsuario.voperacion = (mdrd.IsDBNull(pos_voperacion) ? "_" : mdrd.GetString(pos_voperacion));
+                                enUsuario.voperacion = (mdrd.IsDBNull(pos_voperacion) ? "-" : mdrd.GetString(pos_voperacion));
                                 enUsuario.iorigenfondo = (mdrd.IsDBNull(pos_iorigenfondo) ? 0 : mdrd.GetInt32(pos_iorigenfondo));
                                 enUsuario.denvio = (mdrd.IsDBNull(pos_denvio) ? 0 : mdrd.GetInt32(pos_denvio));
                                 enUsuario.drecibo = (mdrd.IsDBNull(pos_drecibo) ? 0 : mdrd.GetInt32(pos_drecibo));
                                 enUsuario.itipocambio = (mdrd.IsDBNull(pos_itipocambio) ? 0 : mdrd.GetInt32(pos_itipocambio));
                                 enUsuario.itipotrasaccion = (mdrd.IsDBNull(pos_itipotrasaccion) ? 0 : mdrd.GetInt32(pos_itipotrasaccion));
                                 enUsuario.digv = (mdrd.IsDBNull(pos_digv) ? 0 : mdrd.GetInt32(pos_digv));
-                                enUsuario.vbancoreceptor = (mdrd.IsDBNull(pos_vbancoreceptor) ? "_" : mdrd.GetString(pos_vbancoreceptor));
-                                enUsuario.dtfecharegistro = (mdrd.IsDBNull(pos_dtfecharegistro) ? "_" : mdrd.GetString(pos_dtfecharegistro));
+                                enUsuario.vbancoreceptor = (mdrd.IsDBNull(pos_vbancoreceptor) ? "-" : mdrd.GetString(pos_vbancoreceptor));
+                                enUsuario.dtfecharegistro = (mdrd.IsDBNull(pos_dtfecharegistro) ? "-" : mdrd.GetString(pos_dtfecharegistro));
                                 slenUsuario.Add(enUsuario);
                             }
                         }

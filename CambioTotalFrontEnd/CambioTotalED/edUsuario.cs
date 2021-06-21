@@ -28,5 +28,7 @@ namespace CambioTotalED
         public int iestado { get; set; }
         public string sfecharegistro { get; set; }
         public string shoraregistro { get; set; }
+        public string sruc { get; set; }
+        public string srazonsocial { get; set; }
     }
 }
