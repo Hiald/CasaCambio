@@ -133,6 +133,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\10.png" />
+    <Content Include="assets\2.png" />
+    <Content Include="assets\3.png" />
+    <Content Include="assets\4.png" />
+    <Content Include="assets\5.png" />
+    <Content Include="assets\6.png" />
+    <Content Include="assets\7.png" />
+    <Content Include="assets\8.png" />
     <Content Include="assets\css\app-dark.min.css" />
     <Content Include="assets\css\app.min.css" />
     <Content Include="assets\css\bootstrap.min.css" />
@@ -465,6 +473,7 @@
     <Content Include="assets\img2.jpeg" />
     <Content Include="assets\img3.jpeg" />
     <Content Include="assets\img4.jpeg" />
+    <Content Include="assets\logo.PNG" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">

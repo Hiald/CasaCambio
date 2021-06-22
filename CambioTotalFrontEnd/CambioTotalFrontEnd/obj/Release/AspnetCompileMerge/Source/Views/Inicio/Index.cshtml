@@ -1,7 +1,38 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<style>
+    .banner .mein-menu .navbar #navbarNavDropdown ul.navbar-nav li.nav-item a.nav-link {
+        font-family: "Poppins", sans-serif;
+        color: #fff;
+        font-size: 15px;
+        line-height: 1.556;
+        font-weight: 600;
+        padding-right: 0;
+        padding-left: 0;
+    }
 
+    @@media (max-width: 414px) {
+        .imgimg {
+            max-width: 100% !important;
+        }
+    }
+
+    .about .content .compare-box .text-box h3.subtitle {
+        color: #000;
+    }
+
+    .about .content .compare-box .text-box p.text {
+        color: #000;
+    }
+
+    @@media (max-width: 1899px) {
+        .faq .question .question-man {
+            right: 7%;
+            width: 22%;
+        }
+    }
+</style>
 <!-- preloader area end -->
 <!-- Banners Start -->
 <section class="banner" style="background: linear-gradient(rgb(8 8 8 / 50%), rgb(14 14 14 / 50%)), url(../../assets/img2.jpeg);
@@ -15,7 +46,7 @@
             <div class="container">
                 <a class="navbar-brand" href="@Url.Action("Index","Inicio")">
                     <h4 style="color:white;">TuCambioTotal</h4>
-                    <!-- <img src="assets/img/logo.png" class="logo" alt="logo"> -->
+                    @*<img src="~/assets/logo.PNG" class="logo" alt="logo">*@
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
@@ -28,13 +59,16 @@
                             <a class="nav-link" aria-current="page" href="@Url.Action("Index","Inicio")">Inicio</a>
                         </li>
                         @*<li class="nav-item">
-                            <a class="nav-link" href="#divfeature">Nosotros</a>
-                        </li>*@
+                                <a class="nav-link" href="#divfeature">Nosotros</a>
+                            </li>*@
                         <li class="nav-item">
                             <a class="nav-link" href="#divcomousar">¿Cómo funciona?</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#divfaq">Preguntas frecuentes</a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="button button-1" style="background-color:#f5ae08;border: 0;color:#fff;" onclick="window.location.href = '/Inicio/registro';">Regístrate</button>
                         </li>
                         <li class="nav-item">
                             <button class="button button-1" onclick="window.location.href = '/Inicio/inicio';">Iniciar sesión</button>
@@ -72,7 +106,7 @@
                         <div class="courrency-select">
                             <form action="#!" id="faq_form">
                                 <div class="form-group">
-                                    <input type="text" name="number" id="txInput1" placeholder="00.0" maxlength="10"
+                                    <input type="text" name="number" id="txInput1" value="100.00" placeholder="100.00" maxlength="10"
                                            class="form-control tcambiar">
                                 </div>
                             </form>
@@ -121,12 +155,12 @@
                 <div class="content">
                     <h3 class="subtitle" style="color:green;">Realiza tu cambio ahora</h3>
                     <h2 class="title">Es muy fácil!</h2>
-                    <p class="text">Tenemos pasos simples para que cambies tu dinero</p>
+                    <p class="text">Pasos simples para que cambies tu dinero de forma rápida y segura</p>
                 </div>
                 <div class="use-box">
                     <div class="install">
                         <div class="tumb">
-                            <img src="~/assets/img/use-icon-1.png" alt="">
+                            <img class="imgimg" src="~/assets/2.png" />
                         </div>
                         <div class="text-box">
                             <span style="color:green;">Paso 1</span>
@@ -135,7 +169,7 @@
                     </div>
                     <div class="install">
                         <div class="tumb">
-                            <img src="~/assets/img/use-icon-2.png" alt="">
+                            <img class="imgimg" style="max-width: 80%;" src="~/assets/3.png" />
                         </div>
                         <div class="text-box">
                             <span style="color:green;">Paso 2</span>
@@ -144,16 +178,16 @@
                     </div>
                     <div class="install">
                         <div class="tumb">
-                            <img src="~/assets/img/use-icon-3.png" alt="">
+                            <img class="imgimg" style="max-width: 65%;" src="~/assets/4.png" />
                         </div>
                         <div class="text-box">
                             <span style="color:green;">Paso 3</span>
-                            <h6>Transfiere el monto a cambiar a nuestra cuenta e indícanos el número de operación que te da el banco tras hacer la transferencia</h6>
+                            <h5>Transfiere el monto a cambiar a nuestra cuenta e indícanos el número de operación que te da el banco tras hacer la transferencia</h5>
                         </div>
                     </div>
                     <div class="install">
                         <div class="tumb">
-                            <img src="~/assets/img/use-icon-3.png" alt="">
+                            <img class="imgimg" style="max-width: 75%;" src="~/assets/5.png" />
                         </div>
                         <div class="text-box">
                             <span style="color:green;">Paso 4</span>
@@ -169,7 +203,7 @@
 <!-- About Us Start -->
 <section class="about">
     <div class="sape">
-        <img src="~/assets/img/about-bg.png" class="about-sape" alt="">
+        @*<img src="~/assets/img/about-bg.png" class="about-sape" alt="">*@
     </div>
     <div class="container">
         <div class="row">
@@ -187,14 +221,14 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="about-photo">
-                    <img src="~/assets/img/about-img.png" alt="" class="about-img">
+                    <img src="~/assets/img4.jpeg" alt="" class="about-img" style="border-radius: 10%;">
                 </div>
             </div>
             <div class="col-lg-7 offset-lg-1">
                 <div class="content">
                     <div class="compare-box">
                         <div class="tumb">
-                            <img src="~/assets/img/about-icon-1.png" alt="">
+                            <img src="~/assets/6.png" alt="">
                         </div>
                         <div class="text-box">
                             <h3 class="subtitle">Ahorra</h3>
@@ -205,7 +239,7 @@
                     </div>
                     <div class="compare-box">
                         <div class="tumb">
-                            <img src="~/assets/img/about-icon-2.png" alt="">
+                            <img src="~/assets/7.png" alt="">
                         </div>
                         <div class="text-box">
                             <h3 class="subtitle">Somos confiables</h3>
@@ -217,7 +251,7 @@
                     </div>
                     <div class="compare-box">
                         <div class="tumb">
-                            <img src="~/assets/img/about-icon-3.png" alt="">
+                            <img src="~/assets/8.png" alt="">
                         </div>
                         <div class="text-box">
                             <h3 class="subtitle">Obtén tu dinero rápidamente</h3>
@@ -236,7 +270,7 @@
 <!-- Faq Start -->
 <div class="faq" id="divfaq">
     <div class="sape">
-        <img src="~/assets/img/question-bg.png" alt="" class="faq-bg">
+        @*<img src="~/assets/img/question-bg.png" alt="" class="faq-bg">*@
     </div>
     <div class="container">
         <div class="row">
@@ -363,7 +397,7 @@
                                     <li>Número de cuenta</li>
                                     <li>* Debe ingresar el número de cuenta sin espacios ni guiones</li>
                                 </ul>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -371,7 +405,7 @@
             </div>
             <div class="col-lg-3">
                 <div class="question">
-                    <img src="~/assets/img/question-man.png" alt="" class="question-man">
+                    <img src="~/assets/10.png" alt="" class="question-man">
                 </div>
             </div>
         </div>
@@ -403,8 +437,8 @@
                 $('#txcompra').text(parseFloat(data.amountBuy).toFixed(2));
                 $('#txventa').text(parseFloat(data.amountSale).toFixed(2));
                 setTimeout(function () {
-                    $('#txInput1').val(100);
-                    $('#txInput2').val(parseFloat((100 * vCompra) - vValorAjuste).toFixed(2));
+                    //$('#txInput1').val(100.00);
+                    $('#txInput2').val(parseFloat((100.00 * vCompra) - vValorAjuste).toFixed(2));
                     //$('#lblahorro').text("Ahorro estimado: " + (parseFloat((100 * 4) - vValorAjuste).toFixed(2) - (parseFloat((100 * vCompra) - vValorAjuste).toFixed(2)) ) );
                 }, 500);
             }
