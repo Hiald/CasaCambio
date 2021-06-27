@@ -32,6 +32,42 @@
             width: 22%;
         }
     }
+
+    .banner .hero-area .hero-form .courrency-select {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 23px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 20px;
+        box-shadow: 0px 5px 26.1px 3.9px rgb(23 29 113 / 5%);
+        height: 77px;
+        padding: 0 8px;
+        background: #00a24f;
+    }
+
+        .banner .hero-area .hero-form .courrency-select .form-group .form-control {
+            background: transparent;
+            border: none;
+            font-family: "Poppins", sans-serif;
+            font-size: 24px;
+            line-height: 1.556;
+            font-weight: 500;
+            color: #fff !important;
+        }
+
+    #lbl1 {
+        font-size: 25px;
+        color: white;
+        font-weight: 600;
+    }
+
+    #lbl2 {
+        font-size: 25px;
+        color: white;
+        font-weight: 600;
+    }
 </style>
 <!-- preloader area end -->
 <!-- Banners Start -->
@@ -44,9 +80,9 @@
     <div class="mein-menu">
         <nav class="navbar navbar-expand-lg navbar-light ">
             <div class="container">
-                <a class="navbar-brand" href="@Url.Action("Index","Inicio")">
-                    <h4 style="color:white;">TuCambioTotal</h4>
-                    @*<img src="~/assets/logo.PNG" class="logo" alt="logo">*@
+                <a class="navbar-brand" style="display: inline-flex;" href="@Url.Action("Index","Inicio")">
+                    <img src="~/assets/tucambio.png" height="45" class="logo" alt="logo">
+                    <h4 style="color:white;margin-top: 4%;">TuCambioTotal</h4>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
@@ -86,9 +122,15 @@
                 <div class="col-lg-7 ">
                     <div class="banner-content" style="margin-left: 3%;">
                         <h1 class="head">CAMBIA TU DINERO DESDE DONDE ESTÉS.</h1>
-                        <p class="text">
+                        <p class="text" style="font-size: 25px;">
                             FÁCIL, RÁPIDO Y SEGURO.
                             COTIZA CON NOSOTROS.
+                        </p>
+                        <p class="text" style="font-size: 16px;">
+                            ✅ TRANSFERENCIAS INMEDIATAS EN
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCA3MiAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjcyIiBoZWlnaHQ9IjIwIiBmaWxsPSIjMDAyQThEIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTcuOTE2NCAxNS40NzU0QzE3LjkxNjQgMTUuNDc1NCAxNy43Nzk2IDE2LjE1OCAxOC4zNzg0IDE2LjIxNDVDMTguNjgxMiAxNi4yMjQ3IDE5LjAwMzEgMTYuMjI0NyAxOS4zNDE0IDE2LjIyNDdDMjEuNTAwNCAxNi4yMjQ3IDIzLjQ3NTYgMTUuMzg5NiAyMy41MTk4IDEzLjMzODJDMjMuNTYwNSAxMS41MjAxIDIyLjAyMzQgMTAuOTcyMiAyMC4xNzEyIDEwLjk3MjJIMTguODY0M0wxNy45MTY0IDE1LjQ3NTRaTTI3LjcxMTggMTMuNDM4NUMyNy43MTE4IDE2LjE1OTMgMjUuNTQxNiAxOS43NDg4IDE4LjAzNTcgMTkuMzA3QzE3LjE1NiAxOS4yNTQ3IDE2LjYxNTUgMTkuMTc4MyAxNS44MjIgMTguOTczMUMxMi45OTQ4IDE4LjI0MDggMTMuOTg5MyAxNC43Mjk5IDEzLjk4OTMgMTQuNzI5OUwxNi44NjYgMS4xNDM3N0MxOC40NDkgMC44NzIzMjkgMjAuMjI0MiAwLjcwNzUxIDIyLjA0NzggMC43MDc1MUMyNi4wNjIyIDAuNzA3NTEgMjguNzIyMyAyLjIxNTA5IDI4LjcyMjMgNS4wMzY1NkMyOC43MjIzIDcuNjc4MzMgMjYuMjk5NiA5LjExNDEyIDI0LjQ2NTcgOS40Mzk1MUMyNS45MTkgOS41NTM3OCAyNy43MTE4IDEwLjczNDMgMjcuNzExOCAxMy40Mzg1Wk0yMC4zNzIzIDMuODYyNDJMMTkuNjQ2NiA3LjM2MjdDMTkuNjQ2NiA3LjM2MjcgMTkuNDY2MyA4LjExMjAzIDIwLjA4MSA4LjExMjAzSDIwLjkyNzZDMjMuMTA1NCA4LjExMjAzIDI0LjYxMzcgNy4yMTQwMyAyNC42NTE2IDUuNjMyMUMyNC42ODIzIDQuMzI3MTUgMjMuNjE0OCAzLjc2MTc1IDIyLjA5ODggMy43NjE3NUMyMS40MDU5IDMuNzYxNzUgMjAuNjc4MiAzLjgxMTQ1IDIwLjM3MjMgMy44NjI0MlpNNDYuMDY1MyAxOS4zNTZINDMuNjgyNUw0Ny40NjA4IDEuMjQ0NjJDNDkuMDIzNCAwLjg2MDE4MSA1MC42NjgyIDAuNzg0MTQ0IDUyLjU3MzEgMC44MDExMzVDNTcuMjIyNyAwLjgyMDY3NiA1OS4zNTQyIDIuNjkyNzMgNTkuMzU0MiA1Ljk1NTk4QzU5LjM1NDIgOC45NDYwOCA1Ny4xMTc4IDEzLjM0NTYgNTAuNjg3IDEzLjM0NTZDNTAuMDI4MyAxMy4zNDU2IDQ5LjQ2MTggMTMuMjY2MiA0OS4wNTI5IDEzLjIzNzNDNDkuMDUyOSAxMy4yMzczIDQ4LjUyOTEgMTUuNzU1NSA0OC4yMTc2IDE3LjIzOTNDNDcuODI1IDE5LjEwMiA0Ni42NzQ5IDE5LjM1NiA0Ni4wNjUzIDE5LjM1NlpNNTEuMjM0MyAzLjk5NDI5TDUwLjE4MzkgOS4wNDQyQzUwLjE4MzkgOS4wNDQyIDQ5Ljg0NTIgMTAuMTE3NyA1MS4wNTQ0IDEwLjExNzdDNTEuMjAzNiAxMC4xMjQ0IDUxLjM2NTYgMTAuMTI5MSA1MS41NDM5IDEwLjEyOTFDNTQuMjQ3MSAxMC4xMDcgNTUuNjM1NCA4LjIyOTg4IDU1LjYzNTQgNi4yODY0NkM1NS42MzU0IDQuMzc0NDggNTQuMzk0NyAzLjkwNDIzIDUyLjkwMTEgMy45MDQyM0M1Mi4xMzgzIDMuOTA0MjMgNTEuNTY1OCAzLjk0MjQ2IDUxLjIzNDMgMy45OTQyOVpNMzQuMjUwMSAxMS4zNTQzQzM0LjI1MDEgMTQuMjEzMiAzNS44MDk1IDE2LjA0MTEgMzguNDg0OCAxNi4wNDExQzM5LjU4NjIgMTYuMDQxMSA0MC43ODk4IDE1Ljg0NDQgNDIuNDEzMSAxNC41NzY4TDQxLjc3NjggMTcuNjIxN0M0MS43NzY4IDE3LjYyMTcgNDEuNiAxOC42MzE5IDQwLjU0NTcgMTkuMDI0NEMzOS42ODkyIDE5LjM2NjMgMzguNzg1NiAxOS41MjE4IDM3LjQxNiAxOS41MjE4QzMzLjYwMSAxOS41MjE4IDI5Ljg3ODIgMTcuNTIxOSAyOS44NzgyIDExLjU5NkMyOS44NzgyIDYuMDUyOTUgMzMuMjE0MSAwLjQxODk0NSAzOS42NTM2IDAuNDE4OTQ1QzQwLjkxNzEgMC40MTg5NDUgNDEuODEwMyAwLjYwODQwMiA0Mi45NTQgMS4wMDEzM0M0NC43MTc3IDEuNjA3MDkgNDQuOTMxOSAyLjYyNDA0IDQ0LjgxNTEgMy4yMzM2MUM0NC42OTU4IDMuODU3NjMgNDQuMjc5NyA1LjM1NzE0IDQ0LjI3OTcgNS4zNTcxNEM0My4xNzAyIDQuMzAxOTYgNDEuMjM3OCA0LjAwNTAzIDQwLjE2MzUgNC4wMDUwM0MzNi4wNDczIDQuMDA1MDMgMzQuMjUwMSA4LjQwNjI5IDM0LjI1MDEgMTEuMzU0M1pNNy4wNTIwNSA4Ljk4Nzk2QzUuNjEyNyA3LjMyNjE4IDQuMDk0MzUgNi4zMjE1NSAyLjk3MzM1IDUuNzQ4OTNDMi45NzMzNSA1Ljc0ODkzIDIuNDI3MjEgNS40NjA1IDIuMTQxOTcgNS4yOTQ4M0MyLjU1NzY2IDQuMjk5OTcgMy4xMDQ2IDMuNTg5MjkgMy4xMDQ2IDMuNTg5MjlDMy4xODE5OSAzLjQ4MTgyIDQuODM4NzYgMS40MDg4NCA2LjI5NjA3IDIuMTM2OTNDNy44ODc4MiAyLjg5OTQzIDguMDQ5NzkgNi4zOTkyOCA3LjA1MjA1IDguOTg3OTZaTTY2LjE4NDkgOC45ODc5NkM2NC43NDU2IDcuMzI2MTggNjMuMjI3MiA2LjMyMTU1IDYyLjEwNjIgNS43NDg5M0M2Mi4xMDYyIDUuNzQ4OTMgNjEuNTYwMSA1LjQ2MDUgNjEuMjc0OCA1LjI5NDgzQzYxLjY5MDUgNC4yOTk5NyA2Mi4yMzc1IDMuNTg5MjkgNjIuMjM3NSAzLjU4OTI5QzYyLjMxNDkgMy40ODE4MiA2My45NzE2IDEuNDA4ODQgNjUuNDI5IDIuMTM2OTNDNjcuMDIwNyAyLjg5OTQzIDY3LjE4MjcgNi4zOTkyOCA2Ni4xODQ5IDguOTg3OTZaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTExLjk5MDYgMTEuNjM0NEMxMC40Mzg3IDE0LjI3MzcgNi4yMDUyNiAxNy4yODIgNS4wMDU2NiAxNy43MzMyQzIuNjcyNjkgMTguNzcyNiAxLjA5MzMxIDE2Ljg0NDkgMC45NTg0NzQgMTYuNjQyN0MwLjUyMzIzNyAxNi4wNDU5IDAuNDE3NTIgMTUuOTE5NyAwLjIwNjg4MiAxNS40ODQzQzAuMTY1NzkyIDE1LjU1NjUgNC42ODUzMiAxMy4zMTc5IDYuMzA0NTkgMTAuNDIxN0M4LjA1ODMgNy45MzQwOSA4LjIxMTEgMy4wNTQ1MSA2LjI5NTgxIDIuMTM2OTZDNi44NzUwNyAyLjQ0NzQ5IDguMjM5ODIgMy4yODE3NyA5LjQ3MTMzIDQuNDUwMzdDMTAuNyA1LjU1OTUgMTEuNzYyIDcuMDEzOTkgMTEuNzM5MyA2Ljk5NTNDMTEuODY4OSA3LjE4MjYzIDEzLjQwOCA5LjIyMjQ4IDExLjk5MDYgMTEuNjM0NFpNNzAuODcyMSA2Ljk5NTNDNzEuMDAxOCA3LjE4MjYzIDcyLjU0MDkgOS4yMjI0OCA3MS4xMjM1IDExLjYzNDRDNjkuNTcyIDE0LjI3MzcgNjUuMzM4MSAxNy4yODIgNjQuMTM4NSAxNy43MzMyQzYxLjgwNTYgMTguNzcyNiA2MC4yMjYyIDE2Ljg0NDkgNjAuMDkxMyAxNi42NDI3QzU5LjY1NjEgMTYuMDQ1OSA1OS41NTA0IDE1LjkxOTcgNTkuMzM5NyAxNS40ODQzQzU5LjI5ODYgMTUuNTU2NSA2My44MTg2IDEzLjMxNzkgNjUuNDM3NCAxMC40MjE3QzY3LjE5MTIgNy45MzQwOSA2Ny4zNDM5IDMuMDU0NTEgNjUuNDI4NyAyLjEzNjk2QzY2LjAwNzkgMi40NDc0OSA2Ny4zNzI3IDMuMjgxNzcgNjguNjA0MiA0LjQ1MDM3QzY5LjgzMjkgNS41NTk1IDcwLjg5NTMgNy4wMTM5OSA3MC44NzIxIDYuOTk1M1oiIGZpbGw9IiNGRjc4MDAiLz4KPC9zdmc+Cg==">
+                            <br>
+                            ✅ TRANSFERENCIAS INTERBANCARIAS HASTA EN 24 HORAS TODOS LOS BANCOS
                         </p>
                     </div>
                 </div>
@@ -434,8 +476,8 @@
             success: function (data) {
                 vCompra = data.amountBuy;
                 vVenta = data.amountSale;
-                $('#txcompra').text(parseFloat(data.amountBuy).toFixed(2));
-                $('#txventa').text(parseFloat(data.amountSale).toFixed(2));
+                $('#txcompra').text(parseFloat(data.amountBuy).toFixed(3));
+                $('#txventa').text(parseFloat(data.amountSale).toFixed(3));
                 setTimeout(function () {
                     //$('#txInput1').val(100.00);
                     $('#txInput2').val(parseFloat((100.00 * vCompra) - vValorAjuste).toFixed(2));

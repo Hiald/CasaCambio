@@ -166,6 +166,7 @@ CREATE TABLE t_transaccion (
   `dt_fechamodificacion` DATETIME NOT NULL,
   `idusuario_Modificacion` INT NULL,
   `v_horamodificacion` VARCHAR(25) NULL,
+  `v_operacion_fin` VARCHAR(25) NULL,
   FOREIGN KEY (`idusuario`) REFERENCES t_usuario(`idusuario`),
   -- FOREIGN KEY (`iddivisa`) REFERENCES t_divisa(`iddivisa`),
   FOREIGN KEY (`idcuentabancaria`) REFERENCES t_cuenta_bancaria(`idcuentabancaria`),
@@ -842,6 +843,7 @@ estado:
 5: finalizado
 6: reembolsado
 7: error
+https://docs.google.com/document/d/1JgDcS6pYB0X8CCWtZrb7O7YNDP7JPsgR0FrNGKCCzko/edit
 */
 
 /*DROP procedure IF EXISTS `sp_listar_transaccion`;*/
@@ -914,6 +916,7 @@ DELIMITER ;
 ENLACE: https://mail5015.site4now.net
 CLAVE PARA TODAS LAS CUENTAS: Tu@C4mbioTotal
 
+test@tucambiototal.com
 
 contacto@tucambiototal.com
 informes@tucambiototal.com
@@ -922,6 +925,10 @@ lramos@tucambiototal.com
 mmagallanes@tucambiototal.com
 gerencia@tucambiototal.com
 administracion@tucambiototal.com
+
+
+
+
 
 
 

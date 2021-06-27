@@ -143,7 +143,9 @@
                                 </div>
 
                                 <div class="form-group mb-0 text-center">
-                                    <button class="btn btn-primary" id="btncrearcuenta"> Crear cuenta </button>
+                                    <button type="button" id="btnsiguiente" class="btn btn-primary">
+                                        Siguiente
+                                    </button>
                                 </div>
 
                             </form>
@@ -167,11 +169,154 @@
     </div>
     <!-- end page -->
 
+    <div class="modal fade" id="RegModal" tabindex="-1" role="dialog" aria-labelledby="RegModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Estás a un paso de terminar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <strong>PEP:&nbsp;</strong><p>Son personas naturales, nacionales o extranjeras, que cumples o que en los últimos cinco (5) años hayan cumplido funciones públicas destacas</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>¿Es usted una persona expuesta Políticamente&nbsp;<strong>PEP</strong>?</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="tp1" value="1">
+                                <label class="form-check-label" for="exampleRadios1">
+                                    Sí
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="tp1" value="2">
+                                <label class="form-check-label" for="exampleRadios2">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label>¿Tienes vínculo familiar consanguíneo con una persona&nbsp;<strong>PEP</strong>?</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="tp2" value="1">
+                                <label class="form-check-label" for="exampleRadios1">
+                                    Sí
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="tp2" value="2">
+                                <label class="form-check-label" for="exampleRadios2">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label>¿Tienes vínculo de afinidad con una persona&nbsp;<strong>PEP</strong>?</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="tp3" value="1">
+                                <label class="form-check-label" for="exampleRadios1">
+                                    Sí
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="tp3" value="2">
+                                <label class="form-check-label" for="exampleRadios2">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label>¿Eres cónyuge o conviviente de una persona&nbsp;<strong>PEP</strong>?</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="tp4" value="1">
+                                <label class="form-check-label" for="exampleRadios1">
+                                    Sí
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="tp4" value="2">
+                                <label class="form-check-label" for="exampleRadios2">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <hr />
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">Declaro bajo juramento que la información brindada es verdadera y exacta.</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-info" id="btncrearcuenta"> Crear cuenta </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="~/assets/js/vendor.min.js"></script>
     <script src="~/assets/js/app.min.js"></script>
     <script src="~/assets/js/moment.js"></script>
 
     <script>
+        $('#btnsiguiente').click(function () {
+            $('#divcarga').addClass("is-active");
+            var itipocuenta = $('input[name="rbt"]:checked').val();
+            var snombre = $('#txnombre').val();
+            var sapellido = $('#txapellido').val();
+            var itipodocumento = $('#slctipodocumento option:selected').val();
+            var sdocumento = $('#txdocumento').val();
+            var sruc = $('#txruc').val();
+            var srazonsocial = $('#txrazonsocial').val();
+            var scorreo = $('#txcorreo').val();
+            var sclave = $('#password').val();
+            var repsclave = $('#passwordrep').val();
+            var sfecharegistro = moment().format("YYYY-MM-DD");
+            var shora = moment().format("hh:mm:ss");
+            //1 personal, 2 empresa
+
+            if (itipocuenta == 1) {
+                if (snombre == "" || sapellido == "" || sdocumento == "" || scorreo == "") {
+                    alert("Falta completar campos");
+                    $('#divcarga').removeClass("is-active");
+                    return;
+                }
+            } else {
+                if (snombre == "" || sapellido == "" || sdocumento == "" || scorreo == "" || sruc == "" || srazonsocial == "") {
+                    alert("Falta completar campos");
+                    $('#divcarga').removeClass("is-active");
+                    return;
+                }
+            }
+
+            if (sclave.length <= 6) {
+                alert("La contraseña debe ser mayor a 6 dígitos");
+                $('#divcarga').removeClass("is-active");
+                return;
+            }
+
+            if (sclave != repsclave) {
+                alert("¡Ups! Las contraseñas no coinciden.");
+                $('#divcarga').removeClass("is-active");
+                return;
+            }
+
+
+            if ($("#checkbox-signup").prop('checked') == false) {
+                alert("Por favor, acepta los términos y condiciones");
+                return;
+            }
+
+            $("#RegModal").modal("show");
+
+        });
+
         $('#frm1').submit(false);
         function NotificacionInfoDerecha(mensaje) {
             $.NotificationApp.send("Aviso!", mensaje, "top-right", "rgba(0,0,0,0.2)", "info")
@@ -221,38 +366,7 @@
             var sfecharegistro = moment().format("YYYY-MM-DD");
             var shora = moment().format("hh:mm:ss");
             //1 personal, 2 empresa
-            if (itipocuenta == 1) {
-                if (snombre == "" || sapellido == "" || sdocumento == "" || scorreo == "") {
-                    alert("Falta completar campos");
-                    $('#divcarga').removeClass("is-active");
-                    return;
-                }
-            } else {
-                if (snombre == "" || sapellido == "" || sdocumento == "" || scorreo == "" || sruc == "" || srazonsocial == "") {
-                    alert("Falta completar campos");
-                    $('#divcarga').removeClass("is-active");
-                    return;
-                }
-            }
-
-            if (sclave.length <= 6) {
-                alert("La contraseña debe ser mayor a 6 dígitos");
-                $('#divcarga').removeClass("is-active");
-                return;
-            }
-
-            if (sclave != repsclave) {
-                alert("¡Ups! Las contraseñas no coinciden.");
-                $('#divcarga').removeClass("is-active");
-                return;
-            }
-
-            if ($("#checkbox-signup").prop('checked') == false) {
-                alert("Por favor, acepta los términos y condiciones");
-                return;
-            }
-
-
+           
             $.ajax({
                 type: "POST",
                 url: RutaPrincipal + 'Inicio/CrearUsuario',
@@ -281,7 +395,7 @@
                     }
                 },
                 error: function (msg) {
-
+                    $('#divcarga').removeClass("is-active");
                     //location.reload();
                 },
                 complete: function (data) {

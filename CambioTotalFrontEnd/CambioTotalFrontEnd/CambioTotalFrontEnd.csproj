@@ -474,6 +474,8 @@
     <Content Include="assets\img3.jpeg" />
     <Content Include="assets\img4.jpeg" />
     <Content Include="assets\logo.PNG" />
+    <Content Include="assets\tucambio.png" />
+    <Content Include="assets\tucambio2.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
@@ -557,6 +559,7 @@
     <Content Include="Views\Inicio\GestionTransacciones.cshtml" />
     <Content Include="Views\Inicio\politicadeprivacidad.cshtml" />
     <Content Include="Views\Inicio\terminosycondiciones.cshtml" />
+    <Content Include="Views\Inicio\mihistorial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CambioTotalED\CambioTotalED.csproj">

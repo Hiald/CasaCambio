@@ -438,5 +438,66 @@ namespace CambioTotalFrontEnd.Controllers
             return View();
         }
 
+        public ActionResult mihistorial()
+        {
+            ViewBag.MenuPrincipal = "active";
+            int irolusuario = UtlAuditoria.ObtenerTipoUsuario();
+            string susuario = UtlAuditoria.ObtenerNombre() + " " + UtlAuditoria.ObtenerApellido();
+            int gidusuario = UtlAuditoria.ObtenerIdUsuario();
+            ViewBag.GrolUsuario = irolusuario;
+            ViewBag.GNombreUsuario = susuario;
+            ViewBag.GgradoUsuario = 0;
+            ViewBag.GIdusuario = gidusuario;
+            ViewBag.GImagenUsuario = UtlAuditoria.ObtenerImagenUsuario();
+            return View();
+        }
+
+        //lista las transacciones de la persona
+        [HttpPost]
+        public JsonResult ListarOperacionUsuario(int widusuario, string wdtfecha, int westado)
+        {
+            try
+            {
+                var objResultado = new object();
+                itOperacion = new tdOperacion();
+                List<edTransaccion> edtransaccion = new List<edTransaccion>();
+                edtransaccion = itOperacion.tdListartransaccion(widusuario, wdtfecha, westado);
+
+                if (edtransaccion.Count == 0)
+                {
+                    objResultado = new
+                    {
+                        PageStart = 1,
+                        pageSize = 100,
+                        SearchText = string.Empty,
+                        ShowChildren = UtlConstantes.bValorTrue,
+                        iTotalRecords = 0,
+                        iTotalDisplayRecords = 1,
+                        aaData = ""
+                    };
+                    return Json(objResultado);
+                }
+
+                objResultado = new
+                {
+                    PageStart = 1,
+                    pageSize = 100,
+                    SearchText = string.Empty,
+                    ShowChildren = UtlConstantes.bValorTrue,
+                    iTotalRecords = edtransaccion.Count,
+                    iTotalDisplayRecords = 1,
+                    aaData = edtransaccion
+                };
+                return Json(objResultado);
+            }
+            catch (Exception ex)
+            {
+                //UtlLog.toWrite(UtlConstantes.PizarraWEB, UtlConstantes.LogNamespace_PizarraWEB, this.GetType().Name.ToString(), MethodBase.GetCurrentMethod().Name, UtlConstantes.LogTipoError, "", ex.StackTrace.ToString(), ex.Message.ToString());
+                return Json(ex);
+            }
+
+        }
+
+
     }
 }
