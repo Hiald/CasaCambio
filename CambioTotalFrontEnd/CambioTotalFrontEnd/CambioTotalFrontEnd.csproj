@@ -560,6 +560,7 @@
     <Content Include="Views\Inicio\politicadeprivacidad.cshtml" />
     <Content Include="Views\Inicio\terminosycondiciones.cshtml" />
     <Content Include="Views\Inicio\mihistorial.cshtml" />
+    <Content Include="Views\Inicio\divisa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CambioTotalED\CambioTotalED.csproj">

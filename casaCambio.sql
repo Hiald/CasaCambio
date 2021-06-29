@@ -97,7 +97,7 @@ CREATE TABLE t_acceso (
 CREATE TABLE t_cuenta_bancaria (
   `idcuentabancaria` INT NOT NULL AUTO_INCREMENT,
   `idusuario` INT NOT NULL,
-  `i_tipo_cuenta` INT NOT NULL,
+  `i_tipo_cuenta` INT NOT NULL, /* ahorro, corriente */
   `i_moneda` INT NOT NULL,
   `i_banco` INT NOT NULL, /* maestro_parametro */
   `v_banco` VARCHAR(150) NOT NULL, /* si es otro banco */
@@ -656,7 +656,7 @@ BEGIN
     ,_d_dolares_compra
     ,_i_tipo_promocion
     ,STR_TO_DATE(_dt_fecha, '%Y-%m-%d')
-    ,_v_horaregistro
+    ,_v_hora
     ,1
     ,STR_TO_DATE(_dt_fecharegistro, '%Y-%m-%d'));
 
@@ -674,7 +674,7 @@ BEGIN
       i_tipo_promocion = _i_tipo_promocion,
       dt_fecha = STR_TO_DATE(_dt_fecha, '%Y-%m-%d'),
       dt_fechamodificacion = STR_TO_DATE(_dt_fecharegistro, '%Y-%m-%d'),
-      v_horamodificacion = _v_horaregistro
+      v_horamodificacion = _v_hora
     WHERE iddivisa = _iddivisa;
   
   END;
@@ -706,7 +706,7 @@ BEGIN
     ,DATE_FORMAT(d.dt_fechamodificacion, '%d-%m-%Y') as 'dt_fechamodificacion'
     ,d.v_horamodificacion
   FROM t_divisa d
-    WHERE ((DATE_FORMAT(d.dt_fecha, '%d-%m-%Y') = STR_TO_DATE(_dt_fecha, '%Y-%m-%d')) OR (_dt_fecha = 'vacio'))
+    WHERE ((DATE_FORMAT(d.dt_fecha, '%Y-%m-%d') = STR_TO_DATE(_dt_fecha, '%Y-%m-%d')) OR (_dt_fecha = 'vacio'))
      AND d.b_estado = 1
      AND ((d.iddivisa = _iddivisa) OR (_iddivisa = 0));
 
@@ -915,6 +915,18 @@ DELIMITER ;
 
 ENLACE: https://mail5015.site4now.net
 CLAVE PARA TODAS LAS CUENTAS: Tu@C4mbioTotal
+para leer correos:
+- mail.tucambiototal.com
+- puerto 110
+- utilizar mensajes con conexion segura SSL (NO CHECK)
+
+para enviar correos:
+- mail.tucambiototal.com
+- correo completo
+- clave
+- 25 
+- no segura
+
 
 test@tucambiototal.com
 
@@ -927,7 +939,7 @@ gerencia@tucambiototal.com
 administracion@tucambiototal.com
 
 
-
+admin@tucambiototal.com  | tucambiototal
 
 
 

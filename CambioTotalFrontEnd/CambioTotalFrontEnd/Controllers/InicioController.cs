@@ -438,6 +438,7 @@ namespace CambioTotalFrontEnd.Controllers
             return View();
         }
 
+        [ValidadorSesion]
         public ActionResult mihistorial()
         {
             ViewBag.MenuPrincipal = "active";
@@ -498,6 +499,105 @@ namespace CambioTotalFrontEnd.Controllers
 
         }
 
+        /* -------------------------------------------------------------------------------------------- */
+        [ValidadorSesion]
+        public ActionResult divisa()
+        {
+            ViewBag.MenuPrincipal = "active";
+            int irolusuario = UtlAuditoria.ObtenerTipoUsuario();
+            string susuario = UtlAuditoria.ObtenerNombre() + " " + UtlAuditoria.ObtenerApellido();
+            int gidusuario = UtlAuditoria.ObtenerIdUsuario();
+            ViewBag.GrolUsuario = irolusuario;
+            ViewBag.GNombreUsuario = susuario;
+            ViewBag.GgradoUsuario = 0;
+            ViewBag.GIdusuario = gidusuario;
+            ViewBag.GImagenUsuario = UtlAuditoria.ObtenerImagenUsuario();
+            return View();
+        }
+
+        //lista las divisas de pagina principal
+        [HttpPost]
+        public JsonResult ListarDivisas(int widdivisa, string wdtfecha)
+        {
+            try
+            {
+                var objResultado = new object();
+                itOperacion = new tdOperacion();
+                List<edDivisa> eddivisa = new List<edDivisa>();
+                eddivisa = itOperacion.tdListardivisa(widdivisa, wdtfecha);
+                if (eddivisa.Count == 0)
+                {
+                    objResultado = new
+                    {
+                        PageStart = 1,
+                        pageSize = 100,
+                        SearchText = string.Empty,
+                        ShowChildren = UtlConstantes.bValorTrue,
+                        iTotalRecords = 0,
+                        iTotalDisplayRecords = 1,
+                        aaData = ""
+                    };
+                    return Json(objResultado);
+                }
+
+                objResultado = new
+                {
+                    PageStart = 1,
+                    pageSize = 100,
+                    SearchText = string.Empty,
+                    ShowChildren = UtlConstantes.bValorTrue,
+                    iTotalRecords = eddivisa.Count,
+                    iTotalDisplayRecords = 1,
+                    aaData = eddivisa
+                };
+                return Json(objResultado);
+            }
+            catch (Exception ex)
+            {
+                //UtlLog.toWrite(UtlConstantes.PizarraWEB, UtlConstantes.LogNamespace_PizarraWEB, this.GetType().Name.ToString(), MethodBase.GetCurrentMethod().Name, UtlConstantes.LogTipoError, "", ex.StackTrace.ToString(), ex.Message.ToString());
+                return Json(ex);
+            }
+
+        }
+
+        //registra la divisa del dia
+        [HttpPost]
+        public JsonResult OperacionDivisa(int wtOperacion, int widdivisa, int iusuario, int witipobusqueda,
+            decimal wmonto, decimal wsolesventa, decimal wsolescompra, decimal wdolaresventa, decimal wdolarescompra,
+            int itipopromocion, string wdfecha, string wvhora, string wfechreg)
+        {
+            try
+            {
+                var objResultado = new object();
+                int iresultado = 0;
+                itOperacion = new tdOperacion();
+                iresultado = itOperacion.tdOperaciondivisa(wtOperacion, widdivisa, iusuario, witipobusqueda,
+                                                        wmonto, wsolesventa, wsolescompra, wdolaresventa, wdolarescompra,
+                                                        itipopromocion, wdfecha, wvhora, wfechreg);
+
+                if (iresultado == 0 || iresultado == -1 || iresultado == -2)
+                {
+                    objResultado = new
+                    {
+                        iResultado = -3,
+                        iResultadoIns = "Error en el servidor"
+                    };
+                    return Json(objResultado);
+                }
+                objResultado = new
+                {
+                    iResultado = 1,
+                    iResultadoIns = "OK"
+                };
+                return Json(objResultado);
+            }
+            catch (Exception ex)
+            {
+                //UtlLog.toWrite(UtlConstantes.PizarraWEB, UtlConstantes.LogNamespace_PizarraWEB, this.GetType().Name.ToString(), MethodBase.GetCurrentMethod().Name, UtlConstantes.LogTipoError, "", ex.StackTrace.ToString(), ex.Message.ToString());
+                return Json(ex);
+            }
+
+        }
 
     }
 }

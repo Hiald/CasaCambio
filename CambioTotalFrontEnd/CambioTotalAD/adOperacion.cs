@@ -150,7 +150,7 @@ namespace CambioTotalAD
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("_iddivisa", MySqlDbType.Int32).Value = adiddivisa;
-                    cmd.Parameters.Add("_dtfecha", MySqlDbType.VarChar, 50).Value = addtfecha;
+                    cmd.Parameters.Add("_dt_fecha", MySqlDbType.VarChar, 50).Value = addtfecha;
                     using (MySqlDataReader mdrd = cmd.ExecuteReader())
                     {
                         if (mdrd != null)
@@ -166,7 +166,7 @@ namespace CambioTotalAD
                             int pos_ddolarescompra = mdrd.GetOrdinal("d_dolares_compra");
                             int pos_itipopromocion = mdrd.GetOrdinal("i_tipo_promocion");
                             int pos_dtfecha = mdrd.GetOrdinal("dt_fecha");
-                            int pos_vhora = mdrd.GetOrdinal("i_tipo_declaracion");
+                            int pos_vhora = mdrd.GetOrdinal("v_hora");
                             int pos_dtfecharegistro = mdrd.GetOrdinal("dt_fecharegistro");
                             int pos_dtfechamodificacion = mdrd.GetOrdinal("dt_fechamodificacion");
                             int pos_vhoramodificacion = mdrd.GetOrdinal("v_horamodificacion");
@@ -176,11 +176,11 @@ namespace CambioTotalAD
                                 enUsuario.iddivisa = (mdrd.IsDBNull(pos_iddivisa) ? 0 : mdrd.GetInt32(pos_iddivisa));
                                 enUsuario.idusuario = (mdrd.IsDBNull(pos_idusuario) ? 0 : mdrd.GetInt32(pos_idusuario));
                                 enUsuario.itipobusqueda = (mdrd.IsDBNull(pos_itipobusqueda) ? 0 : mdrd.GetInt32(pos_itipobusqueda));
-                                enUsuario.dmonto = (mdrd.IsDBNull(pos_dmonto) ? 0 : mdrd.GetInt32(pos_dmonto));
-                                enUsuario.dsolesventa = (mdrd.IsDBNull(pos_dsolesventa) ? 0 : mdrd.GetInt32(pos_dsolesventa));
-                                enUsuario.dsolescompra = (mdrd.IsDBNull(pos_dsolescompra) ? 0 : mdrd.GetInt32(pos_dsolescompra));
-                                enUsuario.ddolaresventa = (mdrd.IsDBNull(pos_ddolaresventa) ? 0 : mdrd.GetInt32(pos_ddolaresventa));
-                                enUsuario.ddolarescompra = (mdrd.IsDBNull(pos_ddolarescompra) ? 0 : mdrd.GetInt32(pos_ddolarescompra));
+                                enUsuario.dmonto = (mdrd.IsDBNull(pos_dmonto) ? 0 : mdrd.GetDecimal(pos_dmonto));
+                                enUsuario.dsolesventa = (mdrd.IsDBNull(pos_dsolesventa) ? 0 : mdrd.GetDecimal(pos_dsolesventa));
+                                enUsuario.dsolescompra = (mdrd.IsDBNull(pos_dsolescompra) ? 0 : mdrd.GetDecimal(pos_dsolescompra));
+                                enUsuario.ddolaresventa = (mdrd.IsDBNull(pos_ddolaresventa) ? 0 : mdrd.GetDecimal(pos_ddolaresventa));
+                                enUsuario.ddolarescompra = (mdrd.IsDBNull(pos_ddolarescompra) ? 0 : mdrd.GetDecimal(pos_ddolarescompra));
                                 enUsuario.itipopromocion = (mdrd.IsDBNull(pos_itipopromocion) ? 0 : mdrd.GetInt32(pos_itipopromocion));
                                 enUsuario.dtfecha = (mdrd.IsDBNull(pos_dtfecha) ? "-" : mdrd.GetString(pos_dtfecha));
                                 enUsuario.vhora = (mdrd.IsDBNull(pos_vhora) ? "-" : mdrd.GetString(pos_vhora));

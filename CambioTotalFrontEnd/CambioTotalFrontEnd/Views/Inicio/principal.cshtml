@@ -4,7 +4,7 @@
 
 <style>
     .content-page {
-        background-image: url(../../Content/img/cimg_fondo.png);
+        /*background-image: url(../../Content/img/cimg_fondo.png);*/
         background-size: cover;
     }
 
@@ -31,7 +31,7 @@
     }
 
         .hero-form .courrency-select .form-group .form-control {
-            background: transparent;
+            /*background: transparent;*/
             border: none;
             font-family: "Poppins", sans-serif;
             font-size: 18px;
@@ -142,8 +142,8 @@
                     <div class="courrency-select">
                         <form action="#!" id="faq_form">
                             <div class="form-group">
-                                <input type="text" name="number" id="txInput1" placeholder="00.00" maxlength="10"
-                                       class="form-control tcambiar">
+                                <input type="text" name="number" id="txInput1" value="100.00" placeholder="00.00" maxlength="10"
+                                       class="form-control tcambiar numeros">
                             </div>
                         </form>
                     </div>
@@ -165,7 +165,7 @@
                         <form action="#!" id="faq_form2">
                             <div class="form-group">
                                 <input type="text" name="number" id="txInput2" placeholder="00.00" maxlength="10"
-                                       class="form-control tcambiar">
+                                       class="form-control tcambiar numeros">
                             </div>
                         </form>
                     </div>
@@ -253,12 +253,56 @@
 <input type="hidden" id="hddtipousuario" value="@ViewBag.GrolUsuario" />
 
 @section scripts{
-
+    <script src="~/assets/js/moment.js"></script>
     <script>
+        $.fn.digits = function () {
+            return this.each(function () {
+                $(this).val($(this).val().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "1,"));
+            })
+        }
+        //setInterval(function () {
+        //    $("input.numeros").digits();
+        //}, 100);
+
+
         $('#ctasoles').css("display", "none");
         $('#ctadolares').css("display", "none");
-
         $('#divcarga').removeClass("is-active");
+
+        var fechainicialNOW = moment().format("YYYY-MM-DD");
+        var shora = moment().format("hh:mm:ss");
+        var vCompra = 0;
+        var vVenta = 0;
+
+        $.ajax({
+            type: 'POST',
+            url: '/Inicio/ListarDivisas',
+            data: {
+                "widdivisa": 0,
+                "wdtfecha": fechainicialNOW
+            },
+            success: function (data) {
+                if (data.aaData == "" || data.aaData == null) {
+                    console.log("no hay divisa...creando");
+                    fn_DivisaAuto();
+                } else {
+                    console.log("si hay...leyendo");
+                    vCompra = data.aaData[0].dsolescompra;
+                    vVenta = data.aaData[0].dsolesventa;
+                    $('#txcompra').text(parseFloat(data.aaData[0].dsolescompra).toFixed(3));
+                    $('#txventa').text(parseFloat(data.aaData[0].dsolesventa).toFixed(3));
+
+                    setTimeout(function () {
+                        $('#txInput2').val(parseFloat((100.00 * vCompra)).toFixed(2));
+                        //$('#lblahorro').text("Ahorro estimado: " + (parseFloat((100 * 4)).toFixed(2) - (parseFloat((100 * vCompra)).toFixed(2)) ) );
+                    }, 1500);
+                }
+            },
+            error: function (data) {
+                console.log("error: " + data);
+            }
+        });
+
 
         function fn_listarCuentasBancarias() {
             $('#slccuentabancaria').find('option').remove();
@@ -365,51 +409,93 @@
             });
         }
         fn_ValidarFinal(4);
+        
+        function fn_DivisaAuto() {
+            var iestadofinal = 0;
+            $.ajax({
+                url: 'https://operations.roblex.pe/valuation/active-valuation',
+                type: 'GET',
+                dataType: 'json',
+                cors: false,
+                contentType: 'application/json',
+                secure: false,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                },
+                success: function (data) {
+                    iestadofinal = 1;
+                    vCompra = data.amountBuy;
+                    vVenta = data.amountSale;
+                    $('#txcompra').text(parseFloat(data.amountBuy).toFixed(3));
+                    $('#txventa').text(parseFloat(data.amountSale).toFixed(3));
 
-        var vCompra = "";
-        var vVenta = "";
-        var vValorAjuste = 0.0;
-        $.ajax({
-            url: 'https://operations.roblex.pe/valuation/active-valuation',
-            type: 'GET',
-            dataType: 'json',
-            cors: false,
-            contentType: 'application/json',
-            secure: false,
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-            },
-            success: function (data) {
-                vCompra = data.amountBuy;
-                vVenta = data.amountSale;
-                $('#txcompra').text(parseFloat(data.amountBuy).toFixed(3));
-                $('#txventa').text(parseFloat(data.amountSale).toFixed(3));
+                    if (localStorage.getItem("SESSION_TIPO") != null && localStorage.getItem("SESSION_MONTO1") != null
+                        && localStorage.getItem("SESSION_MONTO2") != null) {
+                        var itipo = localStorage.getItem("SESSION_TIPO");
+                        var monto1 = localStorage.getItem("SESSION_MONTO1");
+                        var monto2 = localStorage.getItem("SESSION_MONTO2");
+                        //0: dolares a soles  | 1: soles a dolares
+                        if (itipo == 0) {
+                            $('#lbl1').text("Dólares");
+                            $('#lbl2').text("Soles");
+                        } else {
+                            $('#lbl1').text("Soles");
+                            $('#lbl2').text("Dólares");
+                        }
+                        $('#txInput1').val(monto1);
+                        $('#txInput2').val(monto2);
 
-                if (localStorage.getItem("SESSION_TIPO") != null || localStorage.getItem("SESSION_MONTO1") != null
-                    || localStorage.getItem("SESSION_MONTO2") != null) {
-                    var itipo = localStorage.getItem("SESSION_TIPO");
-                    var monto1 = localStorage.getItem("SESSION_MONTO1");
-                    var monto2 = localStorage.getItem("SESSION_MONTO2");
-                    //0: dolares a soles  | 1: soles a dolares
-                    if (itipo == 0) {
-                        $('#lbl1').text("Dólares");
-                        $('#lbl2').text("Soles");
                     } else {
-                        $('#lbl1').text("Soles");
-                        $('#lbl2').text("Dólares");
+                        setTimeout(function () {
+                            $('#txInput1').val("100.00");
+                            $('#txInput2').val(parseFloat((100.00 * vCompra)).toFixed(2));
+                        }, 500);
                     }
-                    $('#txInput1').val(monto1);
-                    $('#txInput2').val(monto2);
 
-                } else {
-                    setTimeout(function () {
-                        $('#txInput1').val(100);
-                        $('#txInput2').val(parseFloat((100 * vCompra) - vValorAjuste).toFixed(2));
-                    }, 500);
                 }
+            });
 
-            }
-        });
+            setTimeout(function () {
+                if (iestadofinal == 1) {
+                    fn_addDivisaAuto();
+                }
+            }, 2000);
+
+        }
+
+        function fn_addDivisaAuto() {
+            //debugger;
+            var ivalorcompra = parseFloat($('#txcompra').text());
+            var ivalorventa = parseFloat($('#txventa').text());
+            $.ajax({
+                type: 'POST',
+                url: '/Inicio/OperacionDivisa',
+                data: {
+                    "wtOperacion": 1,
+                    "widdivisa": 0,
+                    "iusuario": 8,
+                    "witipobusqueda": 1, //1 es automatico (API) y 2 es manual
+                    "wmonto": 0,
+                    "wsolesventa": ivalorventa,
+                    "wsolescompra": ivalorcompra,
+                    "wdolaresventa": ivalorventa,
+                    "wdolarescompra": ivalorcompra,
+                    "itipopromocion": 0,
+                    "wdfecha": fechainicialNOW,
+                    "wvhora": shora,
+                    "wfechreg": fechainicialNOW
+                },
+                async: false,
+                success: function (data) {
+                    console.log("DIVISA CREADA.");
+                },
+                error: function (data) {
+                    console.log("error: " + data);
+                }
+            });
+
+        }
+        
 
         //paramtipo 0: dolares a soles COMPRA | 1: soles a dolares VENTA
         //tipoinput 0: input 1 a input 2 | 1: input 2 a input 1
@@ -594,6 +680,14 @@
                 } else {
                     $('#ctasoles').css("display", "block");
                 }
+
+                if (localStorage.getItem("SESSION_TIPO") != null && localStorage.getItem("SESSION_MONTO1") != null
+                    && localStorage.getItem("SESSION_MONTO2") != null) {
+                    localStorage.removeItem("SESSION_TIPO");
+                    localStorage.removeItem("SESSION_MONTO1");
+                    localStorage.removeItem("SESSION_MONTO2");
+                }
+               
                 $('#fill-info-modal').modal({ backdrop: 'static', keyboard: false, show: true });
                 fn_ValidarTransacciones();
             });
