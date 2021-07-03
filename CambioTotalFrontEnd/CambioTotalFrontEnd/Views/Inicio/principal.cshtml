@@ -74,12 +74,19 @@
             margin-top: 40px;
             transition: 0.1s;
         }
+
+    .content-page {
+        margin-left: 260px;
+        overflow: hidden;
+        padding: 30px 12px 65px;
+        min-height: 100vh;
+    }
 </style>
 <br />
 <br />
 <div class="row justify-content-center text-center">
     <div class="col-12">
-        <h1 class="upper-text">Hola @ViewBag.GNombreUsuario 😃</h1>
+        <h1 class="upper-text">Hola @ViewBag.GNombreUsuario</h1>
         <div class="divcambio mb-4" style="display: inline-flex;align-content: center;">
             Compra:&nbsp;<strong id="txcompra"></strong>&nbsp;
             Venta:&nbsp;<strong id="txventa"></strong>
@@ -255,6 +262,26 @@
 @section scripts{
     <script src="~/assets/js/moment.js"></script>
     <script>
+        $(document).ready(function () {
+
+            function mostrarHora() {
+                var fechainicio = moment().format("YYYY-MM-DD 09:00");
+                var fechafin = moment().format("YYYY-MM-DD 18:00");
+                var fechaahora = moment(moment(), "YYYY-MM-DD HH:mm");
+                if (!fechaahora.isBetween(fechainicio, fechafin)) {
+                    //false es porque no esta dentro del horario
+                    $('#divhorario').css("display", "block");
+                } else {
+                    //$('#divhorario').css("display", "block");
+                    //$('#divhorario').css("display", "none");
+                }
+
+            }
+            mostrarHora();
+
+        });
+
+
         $.fn.digits = function () {
             return this.each(function () {
                 $(this).val($(this).val().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "1,"));
@@ -271,6 +298,10 @@
 
         var fechainicialNOW = moment().format("YYYY-MM-DD");
         var shora = moment().format("hh:mm:ss");
+        var shoraValidar = moment().format("HH:mm");
+
+
+
         var vCompra = 0;
         var vVenta = 0;
 
@@ -409,7 +440,7 @@
             });
         }
         fn_ValidarFinal(4);
-        
+
         function fn_DivisaAuto() {
             var iestadofinal = 0;
             $.ajax({
@@ -495,7 +526,7 @@
             });
 
         }
-        
+
 
         //paramtipo 0: dolares a soles COMPRA | 1: soles a dolares VENTA
         //tipoinput 0: input 1 a input 2 | 1: input 2 a input 1
@@ -599,9 +630,9 @@
         });
 
         $('#btnCrearOperacion').click(function () {
-
+            //slcBanco
             var slccuentabancaria = $('#slccuentabancaria option:selected').attr('value');
-            var txcuentabancaria = $('#slccuentabancaria option:selected').text();
+            var txcuentabancaria = $('#slcBanco option:selected').val();
             var slcorigen = $('#slcorigen option:selected').attr('value');
             var paramidusuario = $('#hddidusuario').val();
             var txenvio = $('#txInput1').val();
@@ -668,7 +699,8 @@
                     "vbancoreceptor": txcuentabancaria,
                     "dtfecharegistro": sfecharegistro, //solo para upd
                     "dtfechamodificacion": "",//solo para upd
-                    "idusuarioModificacion": 0 //solo para upd (admin)
+                    "idusuarioModificacion": 0, //solo para upd (admin)
+                    "voperacionadmin": ""
                 },
             }).done(function (result) {
                 $('#divcarga').removeClass("is-active");
@@ -687,7 +719,7 @@
                     localStorage.removeItem("SESSION_MONTO1");
                     localStorage.removeItem("SESSION_MONTO2");
                 }
-               
+
                 $('#fill-info-modal').modal({ backdrop: 'static', keyboard: false, show: true });
                 fn_ValidarTransacciones();
             });
@@ -734,7 +766,8 @@
                     "vbancoreceptor": "",
                     "dtfecharegistro": sfecharegistro, //solo para upd
                     "dtfechamodificacion": sfecharegistro,//solo para upd
-                    "idusuarioModificacion": 0 //solo para upd (admin)
+                    "idusuarioModificacion": 0, //solo para upd (admin)
+                    "voperacionadmin": ""
                 },
             }).done(function (result) {
                 $('#divcarga').removeClass("is-active");

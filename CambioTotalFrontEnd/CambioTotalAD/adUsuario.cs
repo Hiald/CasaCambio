@@ -2,6 +2,7 @@
 using CambioTotalED;
 using System;
 using System.Data;
+using System.Collections.Generic;
 
 namespace CambioTotalAD
 {
@@ -74,7 +75,7 @@ namespace CambioTotalAD
 
         public int adInsertarUsuario(string adnombres, string adapellidos, int adtipodocumento, string addocumento,
             string adfecharegistro, string adhoraregistro, int adtipousuario, string adcorreo, string adclave, string adtoken,
-            string adruc, string adrazonsocial)
+            string adruc, string adrazonsocial, string adpep1, string adpep2, string adpep3, string adpep4)
         {
             try
             {
@@ -93,6 +94,11 @@ namespace CambioTotalAD
                 cmd.Parameters.Add("_v_token", MySqlDbType.VarChar, 500).Value = adtoken;
                 cmd.Parameters.Add("_v_ruc", MySqlDbType.VarChar, 25).Value = adruc;
                 cmd.Parameters.Add("_v_razonsocial", MySqlDbType.VarChar, 150).Value = adrazonsocial;
+                cmd.Parameters.Add("_pep1", MySqlDbType.VarChar, 2).Value = adpep1;
+                cmd.Parameters.Add("_pep2", MySqlDbType.VarChar, 2).Value = adpep2;
+                cmd.Parameters.Add("_pep3", MySqlDbType.VarChar, 2).Value = adpep3;
+                cmd.Parameters.Add("_pep4", MySqlDbType.VarChar, 2).Value = adpep4;
+
                 result = Convert.ToInt32(cmd.ExecuteScalar());
                 return result;
             }
@@ -225,6 +231,10 @@ namespace CambioTotalAD
                             int pos_vhoraregistro = mdrd.GetOrdinal("v_horaregistro");
                             int pos_vcorreo = mdrd.GetOrdinal("v_correo");
                             int pos_tipousuario = mdrd.GetOrdinal("i_tipo_usuario");
+                            int pos_vpep1 = mdrd.GetOrdinal("v_pep1");
+                            int pos_vpep2 = mdrd.GetOrdinal("v_pep2");
+                            int pos_vpep3 = mdrd.GetOrdinal("v_pep3");
+                            int pos_vpep4 = mdrd.GetOrdinal("v_pep4");
 
                             while (mdrd.Read())
                             {
@@ -253,10 +263,102 @@ namespace CambioTotalAD
                                 senUsuario.shoraregistro = (mdrd.IsDBNull(pos_vhoraregistro) ? "-" : mdrd.GetString(pos_vhoraregistro));
                                 senUsuario.scorreo = (mdrd.IsDBNull(pos_vcorreo) ? "-" : mdrd.GetString(pos_vcorreo));
                                 senUsuario.itipousuario = (mdrd.IsDBNull(pos_tipousuario) ? 0 : mdrd.GetInt32(pos_tipousuario));
+                                senUsuario.vpep1 = (mdrd.IsDBNull(pos_vpep1) ? "-" : mdrd.GetString(pos_vpep1));
+                                senUsuario.vpep2 = (mdrd.IsDBNull(pos_vpep2) ? "-" : mdrd.GetString(pos_vpep2));
+                                senUsuario.vpep3 = (mdrd.IsDBNull(pos_vpep3) ? "-" : mdrd.GetString(pos_vpep3));
+                                senUsuario.vpep4 = (mdrd.IsDBNull(pos_vpep4) ? "-" : mdrd.GetString(pos_vpep4));
                             }
                         }
                     }
                     return senUsuario;
+                }
+            }
+            catch (Exception ex)
+            {
+                //UtlLog.toWrite(UtlConstantes.TProcessAD, UtlConstantes.LogNamespace_TProcessAD, this.GetType().Name.ToString(), MethodBase.GetCurrentMethod().Name, UtlConstantes.LogTipoError, "", ex.StackTrace.ToString(), ex.Message.ToString());
+                throw ex;
+            }
+        }
+
+        public List<edUsuario> adListarUsuario(int adusuario)
+        {
+            try
+            {
+                List<edUsuario> lstusuario = new List<edUsuario>();
+                edUsuario senUsuario = null;
+                using (MySqlCommand cmd = new MySqlCommand("sp_filtrar_usuario", cnMysql))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("_idusuario", MySqlDbType.Int32).Value = adusuario;
+                    using (MySqlDataReader mdrd = cmd.ExecuteReader())
+                    {
+                        if (mdrd != null)
+                        {
+                            int pos_idusuario = mdrd.GetOrdinal("idusuario");
+                            int pos_idprovincia = mdrd.GetOrdinal("idprovincia");
+                            int pos_idciudad = mdrd.GetOrdinal("idciudad");
+                            int pos_iddistrito = mdrd.GetOrdinal("iddistrito");
+                            int pos_vdireccion = mdrd.GetOrdinal("v_direccion");
+                            int pos_vnombres = mdrd.GetOrdinal("v_nombres");
+                            int pos_vapellidos = mdrd.GetOrdinal("v_apellidos");
+                            int pos_igenero = mdrd.GetOrdinal("i_genero");
+                            int pos_vimagenruta = mdrd.GetOrdinal("v_imagen_ruta");
+                            int pos_vimagendniruta1 = mdrd.GetOrdinal("v_imagen_dni_ruta_1");
+                            int pos_vimagendniruta2 = mdrd.GetOrdinal("v_imagen_dni_ruta_2");
+                            int pos_vcelular1 = mdrd.GetOrdinal("v_celular1");
+                            int pos_vcelular2 = mdrd.GetOrdinal("v_celular2");
+                            int pos_vtelefono = mdrd.GetOrdinal("v_telefono");
+                            int pos_itipodocumento = mdrd.GetOrdinal("i_tipodocumento");
+                            int pos_vdocumento = mdrd.GetOrdinal("v_documento");
+                            int pos_vruc = mdrd.GetOrdinal("v_ruc");
+                            int pos_vrazonsocial = mdrd.GetOrdinal("v_razonsocial");
+                            int pos_dfechanac = mdrd.GetOrdinal("d_fechanac");
+                            int pos_bestado = mdrd.GetOrdinal("b_estado");
+                            int pos_dtfecharegistro = mdrd.GetOrdinal("dt_fecharegistro");
+                            int pos_vhoraregistro = mdrd.GetOrdinal("v_horaregistro");
+                            int pos_vcorreo = mdrd.GetOrdinal("v_correo");
+                            int pos_tipousuario = mdrd.GetOrdinal("i_tipo_usuario");
+                            int pos_vpep1 = mdrd.GetOrdinal("v_pep1");
+                            int pos_vpep2 = mdrd.GetOrdinal("v_pep2");
+                            int pos_vpep3 = mdrd.GetOrdinal("v_pep3");
+                            int pos_vpep4 = mdrd.GetOrdinal("v_pep4");
+
+                            while (mdrd.Read())
+                            {
+                                senUsuario = new edUsuario();
+                                senUsuario.idusuario = (mdrd.IsDBNull(pos_idusuario) ? 0 : mdrd.GetInt32(pos_idusuario));
+                                senUsuario.idprovincia = (mdrd.IsDBNull(pos_idprovincia) ? 0 : mdrd.GetInt32(pos_idprovincia));
+                                senUsuario.idciudad = (mdrd.IsDBNull(pos_idciudad) ? 0 : mdrd.GetInt32(pos_idciudad));
+                                senUsuario.iddistrito = (mdrd.IsDBNull(pos_iddistrito) ? 0 : mdrd.GetInt32(pos_iddistrito));
+                                senUsuario.sdireccion = (mdrd.IsDBNull(pos_vdireccion) ? "-" : mdrd.GetString(pos_vdireccion));
+                                senUsuario.snombres = (mdrd.IsDBNull(pos_vnombres) ? "-" : mdrd.GetString(pos_vnombres));
+                                senUsuario.sapellidos = (mdrd.IsDBNull(pos_vapellidos) ? "-" : mdrd.GetString(pos_vapellidos));
+                                senUsuario.igenero = (mdrd.IsDBNull(pos_igenero) ? 0 : mdrd.GetInt32(pos_igenero));
+                                senUsuario.simagenRuta = (mdrd.IsDBNull(pos_vimagenruta) ? "/img/vacio.png" : mdrd.GetString(pos_vimagenruta));
+                                senUsuario.simagendni1 = (mdrd.IsDBNull(pos_vimagendniruta1) ? "/img/vacio.png" : mdrd.GetString(pos_vimagendniruta1));
+                                senUsuario.simagendni2 = (mdrd.IsDBNull(pos_vimagendniruta2) ? "/img/vacio.png" : mdrd.GetString(pos_vimagendniruta2));
+                                senUsuario.scelular = (mdrd.IsDBNull(pos_vcelular1) ? "-" : mdrd.GetString(pos_vcelular1));
+                                senUsuario.scelular2 = (mdrd.IsDBNull(pos_vcelular2) ? "-" : mdrd.GetString(pos_vcelular2));
+                                senUsuario.stelefono = (mdrd.IsDBNull(pos_vtelefono) ? "-" : mdrd.GetString(pos_vtelefono));
+                                senUsuario.itipodocumento = (mdrd.IsDBNull(pos_itipodocumento) ? 0 : mdrd.GetInt32(pos_itipodocumento));
+                                senUsuario.sdocumento = (mdrd.IsDBNull(pos_vdocumento) ? "-" : mdrd.GetString(pos_vdocumento));
+                                senUsuario.sruc = (mdrd.IsDBNull(pos_vruc) ? "-" : mdrd.GetString(pos_vruc));
+                                senUsuario.srazonsocial = (mdrd.IsDBNull(pos_vrazonsocial) ? "-" : mdrd.GetString(pos_vrazonsocial));
+                                senUsuario.sfechanacimiento = (mdrd.IsDBNull(pos_dfechanac) ? "-" : mdrd.GetString(pos_dfechanac));
+                                senUsuario.iestado = (mdrd.IsDBNull(pos_bestado) ? 0 : mdrd.GetInt32(pos_bestado));
+                                senUsuario.sfecharegistro = (mdrd.IsDBNull(pos_dtfecharegistro) ? "-" : mdrd.GetString(pos_dtfecharegistro));
+                                senUsuario.shoraregistro = (mdrd.IsDBNull(pos_vhoraregistro) ? "-" : mdrd.GetString(pos_vhoraregistro));
+                                senUsuario.scorreo = (mdrd.IsDBNull(pos_vcorreo) ? "-" : mdrd.GetString(pos_vcorreo));
+                                senUsuario.itipousuario = (mdrd.IsDBNull(pos_tipousuario) ? 0 : mdrd.GetInt32(pos_tipousuario));
+                                senUsuario.vpep1 = (mdrd.IsDBNull(pos_vpep1) ? "-" : mdrd.GetString(pos_vpep1));
+                                senUsuario.vpep2 = (mdrd.IsDBNull(pos_vpep2) ? "-" : mdrd.GetString(pos_vpep2));
+                                senUsuario.vpep3 = (mdrd.IsDBNull(pos_vpep3) ? "-" : mdrd.GetString(pos_vpep3));
+                                senUsuario.vpep4 = (mdrd.IsDBNull(pos_vpep4) ? "-" : mdrd.GetString(pos_vpep4));
+                                lstusuario.Add(senUsuario);
+                            }
+                        }
+                    }
+                    return lstusuario;
                 }
             }
             catch (Exception ex)

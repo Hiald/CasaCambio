@@ -25,7 +25,7 @@
             <div class="card">
                 <div class="card-body">
                     <p class="text-muted font-14">
-                        <button type="button" class="btn btn-success btn-rounded mb-3" data-toggle="modal" data-target="#modalUsuario"><i class="mdi mdi-plus"></i>AGREGAR USUARIO</button>
+                        @*<button type="button" class="btn btn-success btn-rounded mb-3" data-toggle="modal" data-target="#modalUsuario"><i class="mdi mdi-plus"></i>AGREGAR USUARIO</button>*@
                     </p>
                     <!-- end nav-->
                     <div class="tab-content">
@@ -35,7 +35,7 @@
                                     <tr>
                                         <th>Usuario</th>
                                         <th>Estado</th>
-                                        <th>Fecha Registro</th>
+                                        <th>Fecha</th>
                                         <th>Tipo de cambio</th>
                                         <th>Envió / Recibirá</th>
                                         <th></th>
@@ -229,6 +229,22 @@
         function fnlistarTabla() {
             var paraidusuario = $('#hddidusuario').val();
             $('#basic-datatable').dataTable({
+                responsive: "true",
+                dom: 'Bfrtilp',
+                buttons: [
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel"></i> ',
+                        titleAttr: 'Exportar a Excel',
+                        className: 'btn btn-success'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        text: '<i class="fas fa-file-pdf"></i> ',
+                        titleAttr: 'Exportar a PDF',
+                        className: 'btn btn-danger'
+                    }
+                ],
                 "ajax": {
                     "url": "/Inicio/ListarOperacionAdmin",
                     "type": "POST",
@@ -237,11 +253,13 @@
                         "widusuario": 0,
                         "wdtfecha": "vacio",
                         "westado": 0
-                    }
+                    },
+                    "dataSrc": 'aaData'
                 },
                 //"bServerSide": true,
                 "bProcessing": true,
                 "bDestroy": true,
+                "bLengthChange": false,
                 "language": {
                     "info": "",
                     "infoEmpty": "",
@@ -325,6 +343,7 @@
                     [
                         {
                             "mRender": function (data, type, row) {
+                                console.log(row);
                                 var strHtml = "<button class='btn btn-warning' onclick='fn_Editar("
                                     + row.idtransaccion + ", " +
                                     + row.idusuario + ", " +
@@ -376,7 +395,7 @@
         function fn_Editar(pidtransaccion, idusuario, paramvnombres, paramvapellidos, paramdtfecha, itipodivisa,
             paramddolaresventa, paramddolarescompra, paramvhora, paramiestado, paramvoperacion, paramdenvio, paramdrecibo, paramitipocambio,
             paramitipotrasaccion, paramvbancoreceptor) {
-
+            //console.log(paramvbancoreceptor);
             $('#hddtransaccionid').val(pidtransaccion);
             $('#txnombresE').val(decodeURIComponent(paramvnombres) + " " + decodeURIComponent(paramvapellidos));
             $('#txfecha').val(decodeURIComponent(paramdtfecha) + " " + decodeURIComponent(paramvhora));

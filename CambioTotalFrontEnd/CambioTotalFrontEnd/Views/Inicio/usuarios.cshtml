@@ -1,0 +1,375 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutCuenta.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Principal</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Usuario</a></li>
+                        <li class="breadcrumb-item active">Listado</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">USUARIO</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <p class="text-muted font-14">
+                        @*<button type="button" class="btn btn-success btn-rounded mb-3" data-toggle="modal" data-target="#modalUsuario"><i class="mdi mdi-plus"></i>AGREGAR USUARIO</button>*@
+                    </p>
+                    <!-- end nav-->
+                    <div class="tab-content">
+                        <div class="tab-pane show active" id="basic-datatable-preview">
+                            <table id="tblusuario" class="table dt-responsive nowrap w-100">
+                                <thead>
+                                    <tr>
+                                        @*<th></th>*@
+                                        <th data-priority="1">Usuario</th>
+                                        <th data-priority="2">Tipo documento / Número</th>
+                                        <th data-priority="3">Correo</th>
+                                        <th data-priority="4">Tipo usuario</th>
+                                        <th>RUC</th>
+                                        <th>Razón social</th>
+                                        <th>Fecha registro</th>
+                                        <th>Pregunta PEP 1</th>
+                                        <th>Pregunta PEP 2</th>
+                                        <th>Pregunta PEP 3</th>
+                                        <th>Pregunta PEP 4</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="modalEditarUsuario" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dark-header-modalLabel" aria-hidden="true">
+        <input type="hidden" value="" data-idusuario="" id="hddidusuario" />
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header modal-colored-header bg-success">
+                    <h4 class="modal-title" id="dark-header-modalLabel">VER DETALLE USUARIO</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="txusuarioE">Usuario</label>
+                                <input type="text" id="txusuarioE" placeholder="Nombres" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="txtdocE">Tipo documento</label>
+                                <input type="text" id="txtdocE" placeholder="Fecha y hora" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="txnumdocE">Número documento</label>
+                                <input type="text" id="txnumdocE" placeholder="Fecha y hora" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="txtcuentaE">Tipo cuenta</label>
+                                <input type="text" id="txtcuentaE" placeholder="Fecha y hora" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="txrucE">Ruc</label>
+                                <input type="text" id="txrucE" placeholder="Fecha y hora" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="txrazonsocialE">Razón Social</label>
+                                <input type="text" id="txrazonsocialE" placeholder="Fecha y hora" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="txfechahoraE">Fecha y Hora</label>
+                                <input type="text" id="txfechahoraE" placeholder="Fecha y hora" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="txcorreoE">Correo electrónico</label>
+                                <input type="text" id="txcorreoE" placeholder="Fecha y hora" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label>¿Es una persona expuesta Políticamente&nbsp;<strong>PEP</strong>?</label>
+                                <input type="text" id="txpep1E" placeholder="Tipo compra" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label>¿Vínculo familiar consanguíneo con una persona&nbsp;<strong>PEP</strong>?</label>
+                                <input type="text" id="txpep2E" placeholder="Tipo compra" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label>¿Tiene vínculo de afinidad con una persona&nbsp;<strong>PEP</strong>?</label>
+                                <input type="text" id="txpep3E" placeholder="Tipo compra" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label>¿Cónyuge o conviviente de una persona&nbsp;<strong>PEP</strong>?</label>
+                                <input type="text" id="txpep4E" placeholder="Tipo compra" class="form-control" disabled>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light btn-rounded mb-3" data-dismiss="modal">Cerrar</button>
+                    @*<button type="button" class="btn btn-success btn-rounded mb-3" id="btnfinalizar" onclick="fn_Actualizar(5)"><i class="mdi mdi-plus"></i>ABONO LLEGADO</button>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<input type="hidden" id="hddidusuario" value="@ViewBag.GIdusuario" />
+
+@section scripts{
+    <script src="~/assets/js/moment.js"></script>
+    <script>
+        function fnlistarTabla() {
+            var paraidusuario = $('#hddidusuario').val();
+            $('#tblusuario').dataTable({
+                responsive: "true",
+                dom: 'Bfrtilp',
+                buttons: [
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel"></i> ',
+                        titleAttr: 'Exportar a Excel',
+                        className: 'btn btn-success',
+                        exportOptions: {
+                            columns: [0,1,2,3,4,5,6,7,8,9,10]
+                        }
+                    }
+                ],
+                "ajax": {
+                    "url": "/Inicio/ListarUsuario",
+                    "type": "POST",
+                    "datatype": "json",
+                    "data": {
+                        "wparamidusuario": 0
+                    },
+                    "dataSrc": 'aaData'
+                },
+                //"bServerSide": true,
+                "bProcessing": true,
+                "bDestroy": true,
+                "bLengthChange": false,
+                "language": {
+                    "info": "",
+                    "infoEmpty": "",
+                    "infoFiltered": "",
+                    "emptyTable": "No se encontraron registros",
+                    "sZeroRecords": "No se encontraron registros.",
+                    "processing": "Cargando. Por favor espere...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "sLengthMenu": "Mostrando _MENU_ filas",
+                    "sSearch": "Buscar:"
+                },
+                "columns": [
+                    //{},
+                    {
+                        "mData": "snombres",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            var sretornar;
+                            sretornar = value.snombres + " " + value.sapellidos
+                            return sretornar;
+                        }
+                    },
+                    {
+                        "mData": "itipodocumento",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            if (value.itipodocumento == 1) {
+                                return "DNI | " + value.sdocumento;
+                            } else {
+                                return "Carnet de extranjería | " + + value.sdocumento;
+                            }
+                        }
+                    },
+                    { "sName": "scorreo", "mDataProp": "scorreo" },
+                    {
+                        "mData": "itipousuario",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            if (value.itipousuario == 1) {
+                                return "Cuenta personal";
+                            } else {
+                                return "Cuenta empresa";
+                            }
+                        }
+                    },
+                    
+                    { "sName": "sruc", "mDataProp": "sruc" },
+                    { "sName": "srazonsocial", "mDataProp": "srazonsocial" },
+                    {
+                        "mData": "sfecharegistro",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            if (value.sfecharegistro == "00-00-0000") {
+                                return "";
+                            } else {
+                                return value.sfecharegistro + " " + value.shoraregistro;
+                            }
+                        }
+                    },
+                    {
+                        "mData": "vpep1",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            if (value.vpep1 == "1") {
+                                return "Es una persona expuesta Políticamente PEP.";
+                            } else {
+                                return "NO Es una persona expuesta Políticamente PEP.";
+                            }
+                        }
+                    },
+                    {
+                        "mData": "vpep2",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            if (value.vpep2 == "1") {
+                                return "Tiene vínculo familiar consanguíneo con una persona PEP.";
+                            } else {
+                                return "NO Tiene vínculo familiar consanguíneo con una persona PEP.";
+                            }
+                        }
+                    },
+                    {
+                        "mData": "vpep3",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            if (value.vpep3 == "1") {
+                                return "Tiene vínculo de afinidad con una persona PEP.";
+                            } else {
+                                return "NO Tiene vínculo de afinidad con una persona PEP.";
+                            }
+                        }
+                    },
+                    {
+                        "mData": "vpep4",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            if (value.vpep4 == "1") {
+                                return "Es cónyuge o conviviente de una persona PEP.";
+                            } else {
+                                return "NO es cónyuge o conviviente de una persona PEP.";
+                            }
+                        }
+                    }
+
+                ],
+                "aoColumnDefs":
+                    [
+                        //{
+                        //    "mRender": function (data, type, row) {
+                        //        //var strHtml = "<button class='btn btn-warning' onclick='fn_Editar(" +
+                        //        //    row.idusuario + ", " +
+                        //        //    "\"" + encodeURIComponent(row.snombres) + "\"" + ", " +
+                        //        //    "\"" + encodeURIComponent(row.sapellidos) + "\"" + ", " +
+                        //        //    row.itipodocumento + ", " +
+                        //        //    "\"" + encodeURIComponent(row.sdocumento) + "\"" + ", " +
+                        //        //    "\"" + encodeURIComponent(row.sruc) + "\"" + ", " +
+                        //        //    "\"" + encodeURIComponent(row.srazonsocial) + "\"" + ", " +
+                        //        //    "\"" + encodeURIComponent(row.sfecharegistro) + "\"" + ", " +
+                        //        //    "\"" + encodeURIComponent(row.shoraregistro) + "\"" + ", " +
+                        //        //    "\"" + encodeURIComponent(row.scorreo) + "\"" + ", " +
+                        //        //    row.itipousuario + ", " +
+                        //        //    "\"" + encodeURIComponent(row.vpep1) + "\"" + ", " +
+                        //        //    "\"" + encodeURIComponent(row.vpep2) + "\"" + ", " +
+                        //        //    "\"" + encodeURIComponent(row.vpep3) + "\"" + ", " +
+                        //        //    "\"" + encodeURIComponent(row.vpep4) + "\"" +
+                        //        //    ")' >Ver Detalle</button>";
+                        //        //return strHtml;
+                        //    },
+                        //    "sWidth": "5px",
+                        //    "sClass": "css-center",
+                        //    "bSort": false,
+                        //    "aTargets": [0]
+                        //},
+
+                        //{
+                        //    "mRender": function (data, type, row) {
+                        //        var strHtml = "<button class='btn btn-danger' onclick='fnEliminar(" + row.idusuarioadministrador + ");' >Eliminar</button>";
+                        //        return strHtml;
+                        //    },
+                        //    "sWidth": "5px",
+                        //    "sClass": "css-center",
+                        //    "bSort": false,
+                        //    "aTargets": [5]
+                        //}
+                    ],
+                "columnDefs": [
+                    { responsivePriority: 1, targets: 0 },
+                    { responsivePriority: 2, targets: 1 },
+                    { responsivePriority: 3, targets: 2 },
+                    { responsivePriority: 4, targets: 3 }
+                ]
+            });
+
+        }
+        fnlistarTabla();
+
+        function fn_Editar(paridusuario, parsnombres, parsapellidos, paritipodocumento,
+            parsdocumento, parsruc, parsrazonsocial, parsfechareg, parshoraregistro,
+            parscorreo, paritipousuario, parvpep1, parvpep2, parvpep3, parvpep4) {
+
+            /*
+            txusuarioE
+            txtdocE
+            txnumdocE
+            txtcuentaE
+            txrucE
+            txrazonsocialE
+            txfechahoraE
+            txcorreoE
+            txpep1E
+            txpep2E
+            txpep3E
+            txpep4E
+             */
+
+            $('#modalEditarUsuario').modal("show");
+
+
+        }
+
+    </script>
+}

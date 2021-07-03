@@ -143,7 +143,7 @@
                                 </div>
 
                                 <div class="form-group mb-0 text-center">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#RegModal">
+                                    <button type="button" id="btnsiguiente" class="btn btn-primary">
                                         Siguiente
                                     </button>
                                 </div>
@@ -243,11 +243,11 @@
                                 </label>
                             </div>
                         </div>
-                        
+
                         <div class="col-md-12">
                             <hr />
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox122" value="option1">
                                 <label class="form-check-label" for="inlineCheckbox1">Declaro bajo juramento que la información brindada es verdadera y exacta.</label>
                             </div>
                         </div>
@@ -265,6 +265,58 @@
     <script src="~/assets/js/moment.js"></script>
 
     <script>
+        $('#btnsiguiente').click(function () {
+            $('#divcarga').addClass("is-active");
+            var itipocuenta = $('input[name="rbt"]:checked').val();
+            var snombre = $('#txnombre').val();
+            var sapellido = $('#txapellido').val();
+            var itipodocumento = $('#slctipodocumento option:selected').val();
+            var sdocumento = $('#txdocumento').val();
+            var sruc = $('#txruc').val();
+            var srazonsocial = $('#txrazonsocial').val();
+            var scorreo = $('#txcorreo').val();
+            var sclave = $('#password').val();
+            var repsclave = $('#passwordrep').val();
+            var sfecharegistro = moment().format("YYYY-MM-DD");
+            var shora = moment().format("hh:mm:ss");
+            //1 personal, 2 empresa
+
+            if (itipocuenta == 1) {
+                if (snombre == "" || sapellido == "" || sdocumento == "" || scorreo == "") {
+                    alert("Falta completar campos");
+                    $('#divcarga').removeClass("is-active");
+                    return;
+                }
+            } else {
+                if (snombre == "" || sapellido == "" || sdocumento == "" || scorreo == "" || sruc == "" || srazonsocial == "") {
+                    alert("Falta completar campos");
+                    $('#divcarga').removeClass("is-active");
+                    return;
+                }
+            }
+
+            if (sclave.length <= 6) {
+                alert("La contraseña debe ser mayor a 6 dígitos");
+                $('#divcarga').removeClass("is-active");
+                return;
+            }
+
+            if (sclave != repsclave) {
+                alert("¡Ups! Las contraseñas no coinciden.");
+                $('#divcarga').removeClass("is-active");
+                return;
+            }
+
+            if ($("#checkbox-signup").prop('checked') == false) {
+                alert("Por favor, acepta los términos y condiciones");
+                $('#divcarga').removeClass("is-active");
+                return;
+            }
+
+            $("#RegModal").modal("show");
+            $('#divcarga').removeClass("is-active");
+        });
+
         $('#frm1').submit(false);
         function NotificacionInfoDerecha(mensaje) {
             $.NotificationApp.send("Aviso!", mensaje, "top-right", "rgba(0,0,0,0.2)", "info")
@@ -300,7 +352,7 @@
         });
 
         $('#btncrearcuenta').click(function () {
-            $('#divcarga').addClass("is-active");
+
             var itipocuenta = $('input[name="rbt"]:checked').val();
             var snombre = $('#txnombre').val();
             var sapellido = $('#txapellido').val();
@@ -314,38 +366,38 @@
             var sfecharegistro = moment().format("YYYY-MM-DD");
             var shora = moment().format("hh:mm:ss");
             //1 personal, 2 empresa
-            if (itipocuenta == 1) {
-                if (snombre == "" || sapellido == "" || sdocumento == "" || scorreo == "") {
-                    alert("Falta completar campos");
-                    $('#divcarga').removeClass("is-active");
-                    return;
-                }
-            } else {
-                if (snombre == "" || sapellido == "" || sdocumento == "" || scorreo == "" || sruc == "" || srazonsocial == "") {
-                    alert("Falta completar campos");
-                    $('#divcarga').removeClass("is-active");
-                    return;
-                }
-            }
 
-            if (sclave.length <= 6) {
-                alert("La contraseña debe ser mayor a 6 dígitos");
-                $('#divcarga').removeClass("is-active");
+            var Parampep1 = $('input[name="tp1"]:checked').val();
+            var Parampep2 = $('input[name="tp2"]:checked').val();
+            var Parampep3 = $('input[name="tp3"]:checked').val();
+            var Parampep4 = $('input[name="tp4"]:checked').val();
+
+            if ($('input[name=tp1]:checked').val() == undefined) {
+                alert("Por favor, selecciona algunas opciones PEP faltantes");
                 return;
             }
 
-            if (sclave != repsclave) {
-                alert("¡Ups! Las contraseñas no coinciden.");
-                $('#divcarga').removeClass("is-active");
+            if ($('input[name=tp2]:checked').val() == undefined) {
+                alert("Por favor, selecciona algunas opciones PEP faltantes");
                 return;
             }
 
-            if ($("#checkbox-signup").prop('checked') == false) {
-                alert("Por favor, acepta los términos y condiciones");
+            if ($('input[name=tp3]:checked').val() == undefined) {
+                alert("Por favor, selecciona algunas opciones PEP faltantes");
                 return;
             }
 
+            if ($('input[name=tp4]:checked').val() == undefined) {
+                alert("Por favor, selecciona algunas opciones PEP faltantes");
+                return;
+            }
 
+            if ($("#inlineCheckbox122").prop('checked') == false) {
+                alert("Por favor, selecciona la opción de juramento de información");
+                return;
+            }
+
+            $('#divcarga').addClass("is-active");
             $.ajax({
                 type: "POST",
                 url: RutaPrincipal + 'Inicio/CrearUsuario',
@@ -354,14 +406,18 @@
                     "wapellidos": sapellido,
                     "wtipodocumento": itipodocumento,
                     "wdocumento": sdocumento,
-                    "wfecharegistro": "",
-                    "whoraregistro": "",
+                    "wfecharegistro": sfecharegistro,
+                    "whoraregistro": shora,
                     "wtipousuario": itipocuenta,
                     "wcorreo": scorreo,
                     "wclave": sclave,
                     "wtoken": "",
                     "wruc": sruc,
-                    "wrazonsocial": srazonsocial
+                    "wrazonsocial": srazonsocial,
+                    "wpep1": Parampep1,
+                    "wpep2": Parampep2,
+                    "wpep3": Parampep3,
+                    "wpep4": Parampep4
                 },
                 async: false,
                 success: function (msg) {
@@ -374,7 +430,7 @@
                     }
                 },
                 error: function (msg) {
-
+                    $('#divcarga').removeClass("is-active");
                     //location.reload();
                 },
                 complete: function (data) {

@@ -126,7 +126,7 @@ namespace CambioTotalTD
             decimal tdddolaresventa, decimal tdddolarescompra, string tdvhora, string tdvimagenruta, int tditipoenvio,
             int tdiestado, string tdvoperacion, int tdiorigenfondo, decimal tddenvio, decimal tddrecibo, int tditipocambio,
             int tditipotrasaccion, decimal tddigv, string tdvbancoreceptor, string tddtfecharegistro, string tddtfechamodificacion,
-            int tdidusuarioModificacion)
+            int tdidusuarioModificacion, string voperacionadmin)
         {
             int iRespuesta = -1;
             try
@@ -141,7 +141,7 @@ namespace CambioTotalTD
                                     tdidpromocion, tdidcuentabancaria, tdidusuarioadministrador, tddtfecha, tditipodivisa,
                                     tdddolaresventa, tdddolarescompra, tdvhora, tdvimagenruta, tditipoenvio, tdiestado, tdvoperacion,
                                     tdiorigenfondo, tddenvio, tddrecibo, tditipocambio, tditipotrasaccion, tddigv, tdvbancoreceptor,
-                                    tddtfecharegistro, tddtfechamodificacion, tdidusuarioModificacion);
+                                    tddtfecharegistro, tddtfechamodificacion, tdidusuarioModificacion, voperacionadmin);
                         scope.Commit();
                     }
                 }
@@ -167,6 +167,31 @@ namespace CambioTotalTD
                     {
                         iadOperacion = new adOperacion(con);
                         renUsuario = iadOperacion.adListartransaccion(tdidusuario, tddtfecha, tdestado);
+                        scope.Commit();
+                    }
+                }
+                return renUsuario;
+            }
+            catch (MySqlException ex)
+            {
+                //UtlLog.toWrite(UtlConstantes.TProcessRN, UtlConstantes.LogNamespace_TProcessRN, this.GetType().Name.ToString(), MethodBase.GetCurrentMethod().Name, UtlConstantes.LogTipoError, "", ex.StackTrace.ToString(), ex.Message.ToString());
+                throw ex;
+            }
+
+        }
+
+        public edCuentaBancaria tdFiltrarCuentaBancaria(int tdidcuentabancaria)
+        {
+            edCuentaBancaria renUsuario = new edCuentaBancaria();
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(mysqlConexion))
+                {
+                    con.Open();
+                    using (MySqlTransaction scope = con.BeginTransaction())
+                    {
+                        iadOperacion = new adOperacion(con);
+                        renUsuario = iadOperacion.adFiltrarCuentaBancaria(tdidcuentabancaria);
                         scope.Commit();
                     }
                 }

@@ -206,7 +206,7 @@ namespace CambioTotalAD
             decimal adddolaresventa, decimal adddolarescompra, string advhora, string advimagenruta, int aditipoenvio,
             int adiestado, string advoperacion, int adiorigenfondo, decimal addenvio, decimal addrecibo, int aditipocambio,
             int aditipotrasaccion, decimal addigv, string advbancoreceptor, string addtfecharegistro, string addtfechamodificacion,
-            int adidusuarioModificacion)
+            int adidusuarioModificacion, string v_operacion_admin)
         {
             try
             {
@@ -239,6 +239,7 @@ namespace CambioTotalAD
                 cmd.Parameters.Add("_dt_fecharegistro", MySqlDbType.VarChar, 25).Value = addtfecharegistro;
                 cmd.Parameters.Add("_dt_fechamodificacion", MySqlDbType.VarChar, 25).Value = addtfechamodificacion;
                 cmd.Parameters.Add("_idusuario_Modificacion", MySqlDbType.Int32).Value = adidusuarioModificacion;
+                cmd.Parameters.Add("_v_operacion_admin", MySqlDbType.VarChar, 25).Value = v_operacion_admin;
                 result = Convert.ToInt32(cmd.ExecuteScalar());
                 return result;
             }
@@ -334,6 +335,66 @@ namespace CambioTotalAD
             }
         }
 
+        public edCuentaBancaria adFiltrarCuentaBancaria(int adidcuentabancaria)
+        {
+            try
+            {
+                using (MySqlCommand cmd = new MySqlCommand("sp_filtrar_cuentabancaria", cnMysql))
+                {
+                    edCuentaBancaria enUsuario = null;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("_idcuentabancaria", MySqlDbType.Int32).Value = adidcuentabancaria;
+                    using (MySqlDataReader mdrd = cmd.ExecuteReader())
+                    {
+                        if (mdrd != null)
+                        {
+                            int pos_idcuentabancaria = mdrd.GetOrdinal("idcuentabancaria");
+                            int pos_idusuario = mdrd.GetOrdinal("idusuario");
+                            int pos_vnombres = mdrd.GetOrdinal("v_nombres");
+                            int pos_vapellidos = mdrd.GetOrdinal("v_apellidos");
+                            int pos_itipocuenta = mdrd.GetOrdinal("i_tipo_cuenta");
+                            int pos_imoneda = mdrd.GetOrdinal("i_moneda");
+                            int pos_ibanco = mdrd.GetOrdinal("i_banco");
+                            int pos_vbanco = mdrd.GetOrdinal("v_banco");
+                            int pos_vnumerocuenta = mdrd.GetOrdinal("v_numero_cuenta");
+                            int pos_vnombrecuenta = mdrd.GetOrdinal("v_nombre_cuenta");
+                            int pos_itipodeclaracion = mdrd.GetOrdinal("i_tipo_declaracion");
+                            int pos_vtitular = mdrd.GetOrdinal("v_titular");
+                            int pos_bestado = mdrd.GetOrdinal("b_estado");
+                            int pos_dtfecharegistro = mdrd.GetOrdinal("dt_fecharegistro");
+                            int pos_vhoraregistro = mdrd.GetOrdinal("v_horaregistro");
+                            int pos_idusuarioModificacion = mdrd.GetOrdinal("idusuario_Modificacion");
+                            while (mdrd.Read())
+                            {
+                                enUsuario = new edCuentaBancaria();
+                                enUsuario.idcuentabancaria = (mdrd.IsDBNull(pos_idcuentabancaria) ? 0 : mdrd.GetInt32(pos_idcuentabancaria));
+                                enUsuario.idusuario = (mdrd.IsDBNull(pos_idusuario) ? 0 : mdrd.GetInt32(pos_idusuario));
+                                enUsuario.vnombres = (mdrd.IsDBNull(pos_vnombres) ? "-" : mdrd.GetString(pos_vnombres));
+                                enUsuario.vpellidos = (mdrd.IsDBNull(pos_vapellidos) ? "-" : mdrd.GetString(pos_vapellidos));
+                                enUsuario.itipocuenta = (mdrd.IsDBNull(pos_itipocuenta) ? 0 : mdrd.GetInt32(pos_itipocuenta));
+                                enUsuario.imoneda = (mdrd.IsDBNull(pos_imoneda) ? 0 : mdrd.GetInt32(pos_imoneda));
+                                enUsuario.ibanco = (mdrd.IsDBNull(pos_ibanco) ? 0 : mdrd.GetInt32(pos_ibanco));
+                                enUsuario.vbanco = (mdrd.IsDBNull(pos_vbanco) ? "-" : mdrd.GetString(pos_vbanco));
+                                enUsuario.vnumerocuenta = (mdrd.IsDBNull(pos_vnumerocuenta) ? "-" : mdrd.GetString(pos_vnumerocuenta));
+                                enUsuario.vnombrecuenta = (mdrd.IsDBNull(pos_vnombrecuenta) ? "-" : mdrd.GetString(pos_vnombrecuenta));
+                                enUsuario.itipodeclaracion = (mdrd.IsDBNull(pos_itipodeclaracion) ? 0 : mdrd.GetInt32(pos_itipodeclaracion));
+                                enUsuario.vtitular = (mdrd.IsDBNull(pos_vtitular) ? "-" : mdrd.GetString(pos_vtitular));
+                                enUsuario.bestado = (mdrd.IsDBNull(pos_bestado) ? 0 : mdrd.GetInt32(pos_bestado));
+                                enUsuario.dtfecharegistro = (mdrd.IsDBNull(pos_dtfecharegistro) ? "-" : mdrd.GetString(pos_dtfecharegistro));
+                                enUsuario.vhoraregistro = (mdrd.IsDBNull(pos_vhoraregistro) ? "-" : mdrd.GetString(pos_vhoraregistro));
+                                enUsuario.idusuariomodificacion = (mdrd.IsDBNull(pos_idusuarioModificacion) ? 0 : mdrd.GetInt32(pos_idusuarioModificacion));
+                            }
+                        }
+                    }
+                    return enUsuario;
+                }
+            }
+            catch (Exception ex)
+            {
+                //UtlLog.toWrite(UtlConstantes.TProcessAD, UtlConstantes.LogNamespace_TProcessAD, this.GetType().Name.ToString(), MethodBase.GetCurrentMethod().Name, UtlConstantes.LogTipoError, "", ex.StackTrace.ToString(), ex.Message.ToString());
+                throw ex;
+            }
+        }
 
     }
 }

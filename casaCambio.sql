@@ -280,7 +280,11 @@ CREATE PROCEDURE `sp_insertar_usuario`
   ,IN _v_clave VARCHAR(500)
   ,IN _v_token VARCHAR(500)
   ,IN _v_ruc VARCHAR(25)
-  ,IN _v_razonsocial VARCHAR(150))
+  ,IN _v_razonsocial VARCHAR(150)
+  ,IN _pep1 VARCHAR(2)
+  ,IN _pep2 VARCHAR(2)
+  ,IN _pep3 VARCHAR(2)
+  ,IN _pep4 VARCHAR(2))
 BEGIN
 
 IF EXISTS(SELECT idusuario FROM t_acceso WHERE v_correo = _v_correo) THEN
@@ -298,7 +302,11 @@ BEGIN
       ,v_razonsocial
       ,b_estado
       ,dt_fecharegistro
-      ,v_horaregistro)
+      ,v_horaregistro
+      ,v_pep1
+      ,v_pep2
+      ,v_pep3
+      ,v_pep4)
     VALUES (
        _v_nombres
       ,_v_apellidos
@@ -308,7 +316,11 @@ BEGIN
       ,_v_razonsocial
       ,1
       ,STR_TO_DATE(_dt_fecharegistro, '%Y-%m-%d')
-      ,_v_horaregistro);
+      ,_v_horaregistro
+      ,_pep1
+      ,_pep2
+      ,_pep3
+      ,_pep4);
 
     INSERT INTO t_acceso(
        idusuario
@@ -473,8 +485,12 @@ BEGIN
   ,u.v_horaregistro
   ,a.v_correo
   ,a.i_tipo_usuario
+  ,u.v_pep1
+  ,u.v_pep2
+  ,u.v_pep3
+  ,u.v_pep4
   FROM t_usuario u INNER JOIN t_acceso a ON u.idusuario = a.idusuario
-    WHERE u.idusuario = _idusuario AND u.b_estado = 1;
+    WHERE ((u.idusuario = _idusuario) OR (_idusuario = 0)) AND (u.b_estado = 1);
 
 END$$
 DELIMITER ;
@@ -569,7 +585,7 @@ BEGIN
       dt_fechamodificacion = STR_TO_DATE(_dt_fecharegistro, '%Y-%m-%d'),
       v_horamodificacion = _v_horaregistro,
       idusuario_Modificacion = _idusuario
-      WHERE idusuario = idcuentabancaria;
+      WHERE idcuentabancaria = _idcuentabancaria;
 
   END;
   END IF;
@@ -708,7 +724,7 @@ BEGIN
   FROM t_divisa d
     WHERE ((DATE_FORMAT(d.dt_fecha, '%Y-%m-%d') = STR_TO_DATE(_dt_fecha, '%Y-%m-%d')) OR (_dt_fecha = 'vacio'))
      AND d.b_estado = 1
-     AND ((d.iddivisa = _iddivisa) OR (_iddivisa = 0));
+     AND ((d.iddivisa = _iddivisa) OR (_iddivisa = 0)) ORDER BY d.iddivisa DESC;
 
 END$$
 DELIMITER ;
@@ -743,7 +759,8 @@ CREATE PROCEDURE `sp_operacion_transaccion`
   ,IN _v_banco_receptor VARCHAR(150)
   ,IN _dt_fecharegistro VARCHAR(25)
   ,IN _dt_fechamodificacion VARCHAR(25)
-  ,IN _idusuario_Modificacion INT)
+  ,IN _idusuario_Modificacion INT
+  ,IN _v_operacion_admin VARCHAR(25))
 BEGIN
 
   IF (_itipo_operacion = 1) THEN
@@ -812,7 +829,8 @@ BEGIN
       d_igv = _d_igv,
       dt_fechamodificacion = STR_TO_DATE(_dt_fecharegistro, '%Y-%m-%d'),
       idusuario_Modificacion = _idusuario_Modificacion,
-      v_horamodificacion = _v_hora
+      v_horamodificacion = _v_hora,
+      v_operacion_admin = _v_operacion_admin
     WHERE idtransaccion = _idtransaccion;
   
   END;
@@ -890,6 +908,47 @@ DELIMITER ;
 
 -- --------------------------------------------------------------------------
 
+ALTER TABLE t_usuario
+ADD COLUMN `v_pep1` VARCHAR(2) NULL, -- AFTER `v_enlace`,
+ADD COLUMN `v_pep2` VARCHAR(2) NULL,
+ADD COLUMN `v_pep3` VARCHAR(2) NULL,
+ADD COLUMN `v_pep4` VARCHAR(2);
+
+ALTER TABLE t_transaccion
+ADD COLUMN `v_operacion_admin` VARCHAR(25);
+
+-- ---------------------------------------------------------------------------
+
+/*DROP procedure IF EXISTS `sp_filtrar_cuentabancaria`;*/
+DELIMITER $$
+CREATE PROCEDURE `sp_filtrar_cuentabancaria`(IN _idcuentabancaria INT)
+BEGIN
+
+  SELECT
+     c.idcuentabancaria
+    ,c.idusuario
+    ,u.v_nombres
+    ,u.v_apellidos
+    ,c.i_tipo_cuenta
+    ,c.i_moneda
+    ,c.i_banco
+    ,c.v_banco
+    ,c.v_numero_cuenta
+    ,c.v_nombre_cuenta
+    ,c.i_tipo_declaracion
+    ,c.v_titular
+    ,c.b_estado
+    ,DATE_FORMAT(c.dt_fecharegistro, '%d-%m-%Y') as 'dt_fecharegistro'
+    ,c.v_horaregistro
+    ,c.idusuario_Modificacion
+  FROM t_cuenta_bancaria c
+    LEFT JOIN t_usuario u ON u.idusuario = c.idusuario
+    WHERE u.b_estado = 1 AND c.idcuentabancaria = _idcuentabancaria;
+
+END$$
+DELIMITER ;
+
+-- ---------------------------------------------------------------------------
 
 /* 
 #0f803b verde
@@ -975,6 +1034,7 @@ LISTA 2:
 11- Uso de CSS en la practica
 12- ¿Javascript, qué es eso?
 13- presentacion final
+
 
 
 */

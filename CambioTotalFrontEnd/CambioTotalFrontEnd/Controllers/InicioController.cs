@@ -122,7 +122,7 @@ namespace CambioTotalFrontEnd.Controllers
 
                 objResultado = new
                 {
-                    iResultado = 1,
+                    iResultado = oedusuario.itipousuario,
                     iResultadoIns = "Inicio/Principal"
                 };
                 return Json(objResultado);
@@ -138,7 +138,7 @@ namespace CambioTotalFrontEnd.Controllers
         [HttpPost]
         public JsonResult CrearUsuario(string wnombres, string wapellidos, int wtipodocumento, string wdocumento,
             string wfecharegistro, string whoraregistro, int wtipousuario, string wcorreo, string wclave, string wtoken,
-            string wruc, string wrazonsocial)
+            string wruc, string wrazonsocial, string wpep1, string wpep2, string wpep3, string wpep4)
         {
             try
             {
@@ -147,7 +147,8 @@ namespace CambioTotalFrontEnd.Controllers
                 itdusuario = new tdUsuario();
                 edUsuario oedusuario = new edUsuario();
                 iresultado = itdusuario.tdInsertarUsuario(wnombres, wapellidos, wtipodocumento, wdocumento, wfecharegistro,
-                                                        whoraregistro, wtipousuario, wcorreo, wclave, wtoken, wruc, wrazonsocial);
+                                                        whoraregistro, wtipousuario, wcorreo, wclave, wtoken, wruc, wrazonsocial
+                                                        , wpep1, wpep2, wpep3, wpep4);
                 if (iresultado == 0 || iresultado == -1 || iresultado == -2)
                 {
                     objResultado = new
@@ -391,7 +392,7 @@ namespace CambioTotalFrontEnd.Controllers
             decimal dolaresventa, decimal dolarescompra, string hora, string imagenruta, int itipoenvio,
             int iestado, string voperacion, int iorigenfondo, decimal denvio, decimal drecibo, int itipocambio,
             int itipotrasaccion, decimal digv, string vbancoreceptor, string dtfecharegistro, string dtfechamodificacion,
-            int idusuarioModificacion)
+            int idusuarioModificacion, string voperacionadmin)
         {
             try
             {
@@ -403,7 +404,7 @@ namespace CambioTotalFrontEnd.Controllers
                                         dolaresventa, dolarescompra, hora, imagenruta, itipoenvio,
                                         iestado, voperacion, iorigenfondo, denvio, drecibo, itipocambio,
                                         itipotrasaccion, digv, vbancoreceptor, dtfecharegistro, dtfechamodificacion,
-                                        idusuarioModificacion);
+                                        idusuarioModificacion, voperacionadmin);
                 if (iresultado == 0 || iresultado == -1 || iresultado == -2)
                 {
                     objResultado = new
@@ -598,6 +599,97 @@ namespace CambioTotalFrontEnd.Controllers
             }
 
         }
+
+        public ActionResult nosotros()
+        {
+            return View();
+        }
+
+        [ValidadorSesion]
+        public ActionResult usuarios()
+        {
+            ViewBag.MenuPrincipal = "active";
+            int irolusuario = UtlAuditoria.ObtenerTipoUsuario();
+            string susuario = UtlAuditoria.ObtenerNombre() + " " + UtlAuditoria.ObtenerApellido();
+            int gidusuario = UtlAuditoria.ObtenerIdUsuario();
+            ViewBag.GrolUsuario = irolusuario;
+            ViewBag.GNombreUsuario = susuario;
+            ViewBag.GgradoUsuario = 0;
+            ViewBag.GIdusuario = gidusuario;
+            ViewBag.GImagenUsuario = UtlAuditoria.ObtenerImagenUsuario();
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult ListarUsuario(int wparamidusuario)
+        {
+            try
+            {
+                var objResultado = new object();
+                itdusuario = new tdUsuario();
+                List<edUsuario> edusuario = new List<edUsuario>();
+                edusuario = itdusuario.tdListarUsuario(wparamidusuario);
+
+                if (edusuario.Count == 0)
+                {
+                    objResultado = new
+                    {
+                        PageStart = 1,
+                        pageSize = 100,
+                        SearchText = string.Empty,
+                        ShowChildren = UtlConstantes.bValorTrue,
+                        iTotalRecords = 0,
+                        iTotalDisplayRecords = 1,
+                        aaData = ""
+                    };
+                    return Json(objResultado);
+                }
+
+                objResultado = new
+                {
+                    PageStart = 1,
+                    pageSize = 100,
+                    SearchText = string.Empty,
+                    ShowChildren = UtlConstantes.bValorTrue,
+                    iTotalRecords = edusuario.Count,
+                    iTotalDisplayRecords = 1,
+                    aaData = edusuario
+                };
+                return Json(objResultado);
+            }
+            catch (Exception ex)
+            {
+                //UtlLog.toWrite(UtlConstantes.PizarraWEB, UtlConstantes.LogNamespace_PizarraWEB, this.GetType().Name.ToString(), MethodBase.GetCurrentMethod().Name, UtlConstantes.LogTipoError, "", ex.StackTrace.ToString(), ex.Message.ToString());
+                return Json(ex);
+            }
+
+        }
+
+        //lista solo una tarjeta de la persona POR EL ID
+        [HttpPost]
+        public JsonResult FiltrarCuentaBancaria(int widcuentabancaria)
+        {
+            try
+            {
+                var objResultado = new object();
+                itOperacion = new tdOperacion();
+                edCuentaBancaria edtransaccion = new edCuentaBancaria();
+                edtransaccion = itOperacion.tdFiltrarCuentaBancaria(widcuentabancaria);
+                objResultado = new
+                {
+                   aaData = edtransaccion
+                };
+                return Json(objResultado);
+
+            }
+            catch (Exception ex)
+            {
+                //UtlLog.toWrite(UtlConstantes.PizarraWEB, UtlConstantes.LogNamespace_PizarraWEB, this.GetType().Name.ToString(), MethodBase.GetCurrentMethod().Name, UtlConstantes.LogTipoError, "", ex.StackTrace.ToString(), ex.Message.ToString());
+                return Json(ex);
+            }
+
+        }
+
 
     }
 }

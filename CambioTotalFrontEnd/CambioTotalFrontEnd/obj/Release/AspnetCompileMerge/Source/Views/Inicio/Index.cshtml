@@ -68,6 +68,13 @@
         color: white;
         font-weight: 600;
     }
+
+    ::-webkit-input-placeholder {
+        color: #fff !important;
+    }
+    *::placeholder {
+        color: #fff !important;
+    }
 </style>
 <!-- preloader area end -->
 <!-- Banners Start -->
@@ -170,13 +177,13 @@
                         <div class="courrency-select">
                             <form action="#!" id="faq_form2">
                                 <div class="form-group">
-                                    <input type="text" name="number" id="txInput2" placeholder="00.0" maxlength="10"
+                                    <input type="text" name="number" id="txInput2" placeholder="385.00" maxlength="10"
                                            class="form-control tcambiar">
                                 </div>
                             </form>
                         </div>
                         @*<label id="lblahorro"></label>*@
-                        <a href="https://web.whatsapp.com/send?phone=51941645017&text=Deseo%20enviar%20montos%20mayores%20a%2010%20000" target="_blank" style="color:black;font-size: 21px;">¿Monto mayor a $10.000 o S/ 30.000?</a>
+                        <a href="https://web.whatsapp.com/send?phone=51941645017&text=Deseo%20enviar%20montos%20mayores%20a%2010%20000" target="_blank" style="color:black;font-size: 21px;">¿Monto mayor a $1.000 o S/ 3.000?</a>
                         <a href="#" id="btnInicio" class="button button-1">Cambiar ahora</a>
                     </div>
                 </div>
@@ -455,36 +462,143 @@
 </div>
 
 <div>
-    <div id="WhatsappBtn" style="z-index: 999;"></div>
+    @*<div id="WhatsappBtn" style="z-index: 999;"></div>*@
+    <style>
+        div.ccw_plugin, .inline {
+            display: inline;
+        }
+        .chatbot {
+            position: fixed;
+            z-index: 99999999;
+        }
+        .ccw_plugin .animated {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+    </style>
+
+    <div class="ccw_plugin chatbot" style="bottom:20px; right:30px;">
+        <div class="style4 animated no-animation ccw-no-hover-an">
+            <a target="_blank" href="https://web.whatsapp.com/send?phone=51941645017&text=" class="nofocus">
+                <div class="chip style-4 ccw-analytics" id="style-4" data-ccw="style-4" style="background-color: #5de246; color: #000000">
+                    <img id="s4-icon" data-ccw="style-4" alt="" 
+                         data-src="https://mendozacercoselectricos.com/wp-content/plugins/click-to-chat-for-whatsapp/./new/inc/assets/img/whatsapp-logo-32x32.png"
+                         class="ccw-analytics lazyloaded" 
+                         src="https://mendozacercoselectricos.com/wp-content/plugins/click-to-chat-for-whatsapp/./new/inc/assets/img/whatsapp-logo-32x32.png">
+                    Esperamos tu mensaje!
+                </div>
+            </a>
+        </div>
+    </div>
+
 </div>
 
 @section Scripts{
+    <script src="~/assets/js/moment.js"></script>
     <script>
-        var vCompra = "";
-        var vVenta = "";
-        var vValorAjuste = 0.0;
+        var fechainicialNOW = moment().format("YYYY-MM-DD");
+        var shora = moment().format("hh:mm:ss");
+        var vCompra = 0;
+        var vVenta = 0;
+
         $.ajax({
-            url: 'https://operations.roblex.pe/valuation/active-valuation',
-            type: 'GET',
-            dataType: 'json',
-            cors: false,
-            contentType: 'application/json',
-            secure: false,
-            headers: {
-                'Access-Control-Allow-Origin': '*',
+            type: 'POST',
+            url: '/Inicio/ListarDivisas',
+            data: {
+                "widdivisa": 0,
+                "wdtfecha": fechainicialNOW
             },
             success: function (data) {
-                vCompra = data.amountBuy;
-                vVenta = data.amountSale;
-                $('#txcompra').text(parseFloat(data.amountBuy).toFixed(3));
-                $('#txventa').text(parseFloat(data.amountSale).toFixed(3));
-                setTimeout(function () {
-                    //$('#txInput1').val(100.00);
-                    $('#txInput2').val(parseFloat((100.00 * vCompra) - vValorAjuste).toFixed(2));
-                    //$('#lblahorro').text("Ahorro estimado: " + (parseFloat((100 * 4) - vValorAjuste).toFixed(2) - (parseFloat((100 * vCompra) - vValorAjuste).toFixed(2)) ) );
-                }, 500);
+                if (data.aaData == "" || data.aaData == null) {
+                    console.log("no hay divisa...creando");
+                    fn_DivisaAuto();
+                } else {
+                    console.log("si hay...leyendo");
+                    vCompra = data.aaData[0].dsolescompra;
+                    vVenta = data.aaData[0].dsolesventa;
+                    $('#txcompra').text(parseFloat(data.aaData[0].dsolescompra).toFixed(3));
+                    $('#txventa').text(parseFloat(data.aaData[0].dsolesventa).toFixed(3));
+
+                    setTimeout(function () {
+                        $('#txInput2').val(parseFloat((100.00 * vCompra)).toFixed(2));
+                        //$('#lblahorro').text("Ahorro estimado: " + (parseFloat((100 * 4)).toFixed(2) - (parseFloat((100 * vCompra)).toFixed(2)) ) );
+                    }, 1500);
+                }
+
+            },
+            error: function (data) {
+                console.log("error: " + data);
             }
         });
+
+
+        function fn_DivisaAuto() {
+            var iestadofinal = 0;
+            $.ajax({
+                url: 'https://operations.roblex.pe/valuation/active-valuation',
+                type: 'GET',
+                dataType: 'json',
+                cors: false,
+                contentType: 'application/json',
+                secure: false,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                },
+                async: false,
+                success: function (data) {
+                    iestadofinal = 1;
+                    vCompra = data.amountBuy;
+                    vVenta = data.amountSale;
+                    $('#txcompra').text(parseFloat(data.amountBuy).toFixed(3));
+                    $('#txventa').text(parseFloat(data.amountSale).toFixed(3));
+
+                    setTimeout(function () {
+                        $('#txInput2').val(parseFloat((100.00 * vCompra)).toFixed(2));
+                        //$('#lblahorro').text("Ahorro estimado: " + (parseFloat((100 * 4)).toFixed(2) - (parseFloat((100 * vCompra)).toFixed(2)) ) );
+                    }, 1500);
+                }
+            });
+
+            setTimeout(function () {
+                if (iestadofinal == 1) {
+                    fn_addDivisaAuto();
+                }
+            }, 2000);
+
+        }
+
+        function fn_addDivisaAuto() {
+            //debugger;
+            var ivalorcompra = parseFloat($('#txcompra').text());
+            var ivalorventa = parseFloat($('#txventa').text());
+            $.ajax({
+                type: 'POST',
+                url: '/Inicio/OperacionDivisa',
+                data: {
+                    "wtOperacion": 1,
+                    "widdivisa": 0,
+                    "iusuario": 8,
+                    "witipobusqueda": 1, //1 es automatico (API) y 2 es manual
+                    "wmonto": 0,
+                    "wsolesventa": ivalorventa,
+                    "wsolescompra": ivalorcompra,
+                    "wdolaresventa": ivalorventa,
+                    "wdolarescompra": ivalorcompra,
+                    "itipopromocion": 0,
+                    "wdfecha": fechainicialNOW,
+                    "wvhora": shora,
+                    "wfechreg": fechainicialNOW
+                },
+                async: false,
+                success: function (data) {
+                    console.log("DIVISA CREADA");
+                },
+                error: function (data) {
+                    console.log("error: " + data);
+                }
+            });
+
+        }
 
         //paramtipo 0: dolares a soles | 1: soles a dolares
         //tipoinput 0: input 1 a input 2 | 1: input 2 a input 1
@@ -590,7 +704,7 @@
             var vmonto1 = $('#txInput1').val();
             var vmonto2 = $('#txInput2').val();
             var tipoCambio = valorInicial;
-            //0: dolares a soles  | 1: soles a dolares
+            //0: dolares a soles | 1: soles a dolares
             if (vmonto1.length == 0 || vmonto2.length == 0) {
                 alert("Ingrese montos válidos");
                 return;

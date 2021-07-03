@@ -561,6 +561,8 @@
     <Content Include="Views\Inicio\terminosycondiciones.cshtml" />
     <Content Include="Views\Inicio\mihistorial.cshtml" />
     <Content Include="Views\Inicio\divisa.cshtml" />
+    <Content Include="Views\Inicio\nosotros.cshtml" />
+    <Content Include="Views\Inicio\usuarios.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CambioTotalED\CambioTotalED.csproj">

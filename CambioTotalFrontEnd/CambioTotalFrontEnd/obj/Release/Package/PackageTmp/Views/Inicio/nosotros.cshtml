@@ -1,0 +1,110 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .banner .mein-menu .navbar #navbarNavDropdown ul.navbar-nav li.nav-item a.nav-link {
+        font-family: "Poppins", sans-serif;
+        color: #fff;
+        font-size: 15px;
+        line-height: 1.556;
+        font-weight: 600;
+        padding-right: 0;
+        padding-left: 0;
+    }
+</style>
+<section class="banner" style="background: linear-gradient(rgb(8 8 8 / 50%), rgb(14 14 14 / 50%)), url(../../assets/img2.jpeg);
+    background-size: cover;background-position: center; background-repeat: no-repeat;padding-bottom: 40px;position: relative;">
+    <div class="laptop">
+        @*<img src="~/assets/img/laptop-man.png" class="man-lap" alt="">*@
+    </div>
+    <!-- Main-menu Strat -->
+    <div class="mein-menu">
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <div class="container">
+                <a class="navbar-brand" style="display: inline-flex;" href="@Url.Action("Index","Inicio")">
+                    <img src="~/assets/tucambio.png" height="45" class="logo" alt="logo">
+                    <h4 style="color:white;margin-top: 4%;">TuCambioTotal</h4>
+                    <!-- <img src="assets/img/logo.png" class="logo" alt="logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="@Url.Action("Index","Inicio")">Inicio</a>
+                        </li>
+                        @*<li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index","Inicio")">Nosotros</a>
+                            </li>*@
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","Inicio")">¿Cómo funciona?</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","Inicio")">Preguntas frecuentes</a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="button button-1" style="background-color:#f5ae08;border: 0;color:#fff;" onclick="window.location.href = '/Inicio/registro';">Regístrate</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="button button-1" onclick="window.location.href = '/Inicio/inicio';">Iniciar sesión</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+</section>
+
+<br />
+<div class="row text-center justify-content-center mt-5">
+    <div class="col-md-8">
+        <h3 class="subtitle" style="color:green;">NOSOTROS</h3>
+        <br />
+        <h4>
+            Somos una casa de cambio digital, nuestro objetivo es ofrecerte una forma rápida y segura de cambiar divisas donde quiera que estés.
+            <br />
+            <br />
+            Contamos con un equipo especializado en tecnología que trabaja para darte el mejor servicio, priorizando tu seguridad y confianza.
+        </h4>
+        <br />
+
+    </div>
+</div>
+
+<div>
+    @*<div id="WhatsappBtn" style="z-index: 999;"></div>*@
+    <style>
+        div.ccw_plugin, .inline {
+            display: inline;
+        }
+
+        .chatbot {
+            position: fixed;
+            z-index: 99999999;
+        }
+
+        .ccw_plugin .animated {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+    </style>
+
+    <div class="ccw_plugin chatbot" style="bottom:20px; right:30px;">
+        <div class="style4 animated no-animation ccw-no-hover-an">
+            <a target="_blank" href="https://web.whatsapp.com/send?phone=51941645017&text=" class="nofocus">
+                <div class="chip style-4 ccw-analytics" id="style-4" data-ccw="style-4" style="background-color: #5de246; color: #000000">
+                    <img id="s4-icon" data-ccw="style-4" alt=""
+                         data-src="https://mendozacercoselectricos.com/wp-content/plugins/click-to-chat-for-whatsapp/./new/inc/assets/img/whatsapp-logo-32x32.png"
+                         class="ccw-analytics lazyloaded"
+                         src="https://mendozacercoselectricos.com/wp-content/plugins/click-to-chat-for-whatsapp/./new/inc/assets/img/whatsapp-logo-32x32.png">
+                    Esperamos tu mensaje!
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>

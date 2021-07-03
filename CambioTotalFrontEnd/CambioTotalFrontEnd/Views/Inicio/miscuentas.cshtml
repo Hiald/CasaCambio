@@ -109,7 +109,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="txnumerocuenta">*Número de cuenta</label>
-                                <input type="text" id="txnumerocuenta" maxlength="30" class="form-control">
+                                <input type="text" id="txnumerocuenta" maxlength="25" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -197,8 +197,8 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="checkbox-signup">
-                                    <label class="custom-control-label" for="checkbox-signup">Declaro que esta cuenta es mía</label>
+                                    <input type="checkbox" class="custom-control-input" checked id="checkbox-signup22">
+                                    <label class="custom-control-label" for="checkbox-signup22">Declaro que esta cuenta es mía</label>
                                 </div>
                             </div>
                         </div>
@@ -206,7 +206,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light btn-rounded mb-3" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-success btn-rounded mb-3" id="btnActualizar"><i class="mdi mdi-plus"></i>Actualizar</button>
+                    <button type="button" class="btn btn-success btn-rounded mb-3" id="btnActualizar" onclick="fn_Actualizar();"><i class="mdi mdi-plus"></i>Actualizar</button>
                 </div>
             </div>
         </div>
@@ -251,9 +251,19 @@
 
 @section scripts{
     <script>
+        function validarnumero(valor) {
+            return /^\d*$/.test(valor);
+        }
+
         $("#frmUsuario").submit(false);
         $('#frm2').submit(false);
         $('#frm2Editar').submit(false);
+
+        $('#txnumerocuenta').keyup(function (e) {
+            if (/\D/g.test(this.value)) {
+                this.value = this.value.replace(/\D/g, '');
+            }
+        });
 
         //tipo operacion 1 reg, 0 upd
         $("#btnAgregar").click(function () {
@@ -267,7 +277,7 @@
             var shora = moment().format("hh:mm:ss");
             var paramidusuario = parseInt($('#hddidusuario').val());
 
-            if (txcuenta == "" || slctipocuenta == 0 || slcbanco == 0 || slcmoneda == 0 || txnumerocuenta == "") {
+            if (txcuenta == "" || slctipocuenta == 0 || slcbanco == 0 || slcmoneda == 0 || txnumerocuenta.length == 0) {
                 alert("Falta completar campos");
                 return;
             }
@@ -276,6 +286,12 @@
                 alert("Debes declarar que la cuenta es tuya");
                 return;
             }
+
+            if (!validarnumero($('#txnumerocuenta').val()) || txnumerocuenta.length <= 12) {
+                alert("Ingrese un número de cuenta válido");
+                return;
+            }
+
             $('#divcarga').addClass("is-active");
             $.ajax({
                 type: 'post',
@@ -331,6 +347,7 @@
                     //"bServerSide": true,
                     "bProcessing": true,
                     "bDestroy": true,
+                    "bLengthChange": false,
                     "language": {
                         "info": "",
                         "infoEmpty": "",
@@ -448,16 +465,6 @@
         });
 
         function fn_Editar(pidcuentabancaria, pimoneda, pibanco, pitipocuenta, pvnumerocuenta, pvnombrecuenta, pitipodeclaracion, pvtitular) {
-            /*
-+ row.idcuentabancaria
-+ ", " + row.imoneda
-+ ", " + row.ibanco
-+ ", " + "\"" + encodeURIComponent(row.vbanco) + "\""
-+ ", " + "\"" + encodeURIComponent(row.vnumerocuenta) + "\""
-+ ", " + "\"" + encodeURIComponent(row.vnombrecuenta) + "\""
-+ ", " + row.itipodeclaracion
-+ ", " + "\"" + encodeURIComponent(row.vtitular) + "\""
-*/
             $('#hddidcuentabancaria').val(pidcuentabancaria);
             $('#txcuentaE').val(decodeURIComponent(pvnombrecuenta));
             $('#slctipocuentaE option[value="' + pitipocuenta + '"]').attr('selected', 'selected');
@@ -465,123 +472,90 @@
             $('#slcmonedaE option[value="' + pimoneda + '"]').attr('selected', 'selected');
             $('#txnumerocuentaE').val(decodeURIComponent(pvnumerocuenta));
 
-            //$('#idTipoUsuarioEditar option').removeAttr('selected');
-            //$('#idGradoEditar option').removeAttr('selected');
-            //if (Simagen == "-") {
-            //    $('#simageneditar').attr("alt", "No hay imagen en este usuario");
-            //} else {
-            //    $('#simageneditar').attr("src", Simagen);
-            //}
-            //$('#hddusuario').attr("data-idusuario", idusuario);
-
-            //$('#idTipoUsuarioEditar option[value="' + tipousuario + '"]').attr('selected', 'selected');
-
-
             $('#modalEditarCuenta').modal("show");
         }
 
-                            //function fn_Actualizar() {
-                            //    var iIdUsuario = $('#hddusuario').attr("data-idusuario");
+        function fn_Actualizar() {
+            var iIdUsuario = parseInt($('#hddidusuario').val());
+            var sfecharegistroE = moment().format("YYYY-MM-DD");
+            var shoraE = moment().format("hh:mm:ss");
+            var sidcuentaBanc = $('#hddidcuentabancaria').val();
+            var itipocuenta = $('#slctipocuentaE option:selected').attr('value');
+            var imonedaE = $('#slcmonedaE option:selected').attr('value');
+            var slcbancoE = $('#slcbancoE option:selected').attr('value');
+            var snumerocuenta = $('#txnumerocuentaE').val();
+            var txcuentaE = $('#txcuentaE').val();
 
-                            //    var iIdTipoUsuarioEdit = $('#idTipoUsuarioEditar option:selected').attr('value');
-                            //    var iIdGradoEdit = $('#idGradoEditar option:selected').attr('value');
-                            //    var ipUsuarioEdit = $('#idUsuarioEditar').val();
-                            //    var ipContraseniEdit = $('#idContraseniaEditar').val();
-                            //    var sNombreEdit = $('#idNombresEditar').val();
-                            //    var sApellidoPaternoEdit = $("#idApPaternoEditar").val();
-                            //    var sApellidoMaternoEdit = $("#idApMaternoEditar").val();
 
-                            //    if (iIdTipoUsuarioEdit.trim() == 0) {
-                            //        NotificacionAvisoDerecha("SELECCIONA EL TIPO DE USUARIO");
-                            //        return;
-                            //    }
-                            //    if (iIdGradoEdit.trim() == 0) {
-                            //        NotificacionAvisoDerecha("SELECCIONA EL GRADO");
-                            //        return;
-                            //    }
-                            //    if (ipUsuarioEdit.trim() == "") {
-                            //        NotificacionAvisoDerecha("INGRESE UN NOMBRE DE USUARIO");
-                            //        return;
-                            //    }
+            if (txcuentaE == "" || itipocuenta == 0 || slcbancoE == 0 || imonedaE == 0 || snumerocuenta == "") {
+                alert("Falta completar campos");
+                return;
+            }
 
-                            //    if (ipContraseniEdit.trim() == "") {
-                            //        NotificacionAvisoDerecha("INGRESE UNA CONTRASEÑA");
-                            //        return;
-                            //    }
-                            //    if (sNombreEdit.trim() == "") {
-                            //        NotificacionAvisoDerecha("INGRESE EL NOMBRE");
-                            //        return;
-                            //    }
-                            //    if (sApellidoPaternoEdit.trim() == "") {
-                            //        NotificacionAvisoDerecha("INGRESE EL APELLIDO PATERNO");
-                            //        return;
-                            //    }
-                            //    if (sApellidoMaternoEdit.trim() == "") {
-                            //        NotificacionAvisoDerecha("INGRESE EL APELLIDO MATERNO");
-                            //        return;
-                            //    }
+            if ($("#checkbox-signup22").prop('checked') == false) {
+                alert("Debes declarar que la cuenta es tuya");
+                return;
+            }
 
-                            //    if (ipContraseniEdit.length < 5) {
-                            //        NotificacionAvisoDerecha("INGRESE UNA CONTRASEÑA MAYOR A 5 CARACTERES");
-                            //        return;
-                            //    }
+            $('#divcarga').addClass("is-active");
+            $.ajax({
+                type: 'post',
+                url: RutaPrincipal + 'Inicio/OperacionCuentaBancaria',
+                data: {
+                    "wtipoOperacion": 2,
+                    "widCuentBanc": sidcuentaBanc,
+                    "widusuario": iIdUsuario,
+                    "witipocuenta": itipocuenta,
+                    "wimoneda": imonedaE,
+                    "wibanco": slcbancoE,
+                    "wbanco": "",
+                    "wnumerocuenta": snumerocuenta,
+                    "wnombrecuenta": txcuentaE,
+                    "witipodeclaracion": 0,
+                    "wtitular": "",
+                    "wfecReg": sfecharegistroE,
+                    "whoraReg": shoraE
+                },
+            }).done(function (result) {
+                $('#divcarga').removeClass("is-active");
+                NotificacionSuccessDerecha("Cuenta creada correctamente");
+                $('#txcuentaE').val("");
+                $('#txnumerocuentaE').val("");
+                $('#modalEditarCuenta').modal("hide");
+                fnlistarTabla();
+                
+            });
 
-                            //    $('#divcarga').addClass("is-active");
-                            //    $.ajax({
-                            //        type: "POST",
-                            //        url: RutaPrincipal + "Login/ActualizarUsuario",
-                            //        data: {
-                            //            "widusuario": iIdUsuario,
-                            //            "widnivel": 1,
-                            //            "widgrado": iIdGradoEdit,
-                            //            "wsusuario": ipUsuarioEdit,
-                            //            "wsclave": ipContraseniEdit,
-                            //            "wstipousuario": iIdTipoUsuarioEdit,
-                            //            "widsede": 1,
-                            //            "wnombres": sNombreEdit,
-                            //            "wamaterno": sApellidoMaternoEdit,
-                            //            "wapaterno": sApellidoPaternoEdit
-                            //        },
-                            //        success: function (data) {
-                            //            $('#divcarga').removeClass("is-active");
-                            //            $('#modalEditarUsuario').modal("hide");
-                            //            fnlistarTabla();
-                            //            NotificacionSuccessDerecha("Datos actualizados correctamente.");
-                            //        },
-                            //        error: function (data) {
-                            //            console.log(data);
-                            //        }
-                            //    });
-                            //}
+        }
 
-                            //function fnEliminar(widalumno) {
-                            //    $('#hddAlumnoEliminar').attr("data-idalumnoEliminar", widalumno);
-                            //    $('#modalEliminarAlumno').modal("show");
-                            //}
+        //function fnEliminar(widalumno) {
+        //    $('#hddAlumnoEliminar').attr("data-idalumnoEliminar", widalumno);
+        //    $('#modalEliminarAlumno').modal("show");
+        //}
 
-                            //function fn_ConfirmarEliminar() {
-                            //    var pidalumno = $('#hddAlumnoEliminar').attr("data-idalumnoEliminar");
-                            //    $('#divcarga').addClass("is-active");
-                            //    $.ajax({
-                            //        type: "POST",
-                            //        url: "/Login/DesactivarUsuario",
-                            //        data: {
-                            //            "widusuario": pidalumno
-                            //        },
-                            //        async: false,
-                            //        success: function (data) {
-                            //            $('#modalEliminarAlumno').modal("hide");
-                            //            $('#hddAlumnoEliminar').attr("data-idalumnoEliminar", "");
-                            //            $('#divcarga').removeClass("is-active");
-                            //            NotificacionSuccessDerecha("Cuenta eliminada.");
-                            //            fnlistarTabla();
-                            //        },
-                            //        error: function (data) {
-                            //            console.log(data);
-                            //        }
-                            //    });
+        //function fn_ConfirmarEliminar() {
+        //    var pidalumno = $('#hddAlumnoEliminar').attr("data-idalumnoEliminar");
+        //    $('#divcarga').addClass("is-active");
+        //    $.ajax({
+        //        type: "POST",
+        //        url: "/Login/DesactivarUsuario",
+        //        data: {
+        //            "widusuario": pidalumno
+        //        },
+        //        async: false,
+        //        success: function (data) {
+        //            $('#modalEliminarAlumno').modal("hide");
+        //            $('#hddAlumnoEliminar').attr("data-idalumnoEliminar", "");
+        //            $('#divcarga').removeClass("is-active");
+        //            NotificacionSuccessDerecha("Cuenta eliminada.");
+        //            fnlistarTabla();
+        //        },
+        //        error: function (data) {
+        //            console.log(data);
+        //        }
+        //    });
 
-                            //}
+        //}
 
     </script>
 }

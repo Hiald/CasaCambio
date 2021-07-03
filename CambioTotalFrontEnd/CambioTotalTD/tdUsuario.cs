@@ -36,8 +36,8 @@ namespace CambioTotalTD
         }
 
         public int tdInsertarUsuario(string tdnombres, string tdapellidos, int tdtipodocumento, string tddocumento,
-            string tdfecharegistro, string tdhoraregistro, int tdtipousuario, string tdcorreo, string tdclave, string tdtoken, 
-            string tdruc, string tdrazonsocial)
+            string tdfecharegistro, string tdhoraregistro, int tdtipousuario, string tdcorreo, string tdclave, string tdtoken,
+            string tdruc, string tdrazonsocial, string tdpep1, string tdpep2, string tdpep3, string tdpep4)
         {
             int iRespuesta = -1;
             try
@@ -50,7 +50,7 @@ namespace CambioTotalTD
                         iadUsuario = new adUsuario(con);
                         iRespuesta = iadUsuario.adInsertarUsuario(tdnombres, tdapellidos, tdtipodocumento, tddocumento,
                                                     tdfecharegistro, tdhoraregistro, tdtipousuario, tdcorreo, tdclave, tdtoken
-                                                    , tdruc, tdrazonsocial);
+                                                    , tdruc, tdrazonsocial, tdpep1, tdpep2, tdpep3, tdpep4);
                         scope.Commit();
                     }
                 }
@@ -170,6 +170,32 @@ namespace CambioTotalTD
             }
 
         }
+
+        public List<edUsuario> tdListarUsuario(int tdpusuario)
+        {
+            List<edUsuario> renUsuario = new List<edUsuario>();
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(mysqlConexion))
+                {
+                    con.Open();
+                    using (MySqlTransaction scope = con.BeginTransaction())
+                    {
+                        iadUsuario = new adUsuario(con);
+                        renUsuario = iadUsuario.adListarUsuario(tdpusuario);
+                        scope.Commit();
+                    }
+                }
+                return renUsuario;
+            }
+            catch (MySqlException ex)
+            {
+                //UtlLog.toWrite(UtlConstantes.TProcessRN, UtlConstantes.LogNamespace_TProcessRN, this.GetType().Name.ToString(), MethodBase.GetCurrentMethod().Name, UtlConstantes.LogTipoError, "", ex.StackTrace.ToString(), ex.Message.ToString());
+                throw ex;
+            }
+
+        }
+
 
     }
 }

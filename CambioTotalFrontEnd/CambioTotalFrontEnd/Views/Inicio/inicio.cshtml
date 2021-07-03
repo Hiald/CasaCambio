@@ -168,7 +168,12 @@
                         NotificacionErrorIzquierda("USUARIO O CLAVE INCORRECTO");
                         return;
                     } else {
-                        window.location.href = RutaPrincipal + "Inicio/principal";
+                        if (msg.iResultado == 3) {
+                            window.location.href = RutaPrincipal + "Inicio/GestionTransacciones";
+                        } else {
+                            window.location.href = RutaPrincipal + "Inicio/principal";
+                        }
+
                     }
                 },
                 error: function (msg) {
@@ -210,7 +215,12 @@
                     NotificacionErrorIzquierda("USUARIO O CLAVE INCORRECTO");
                     return;
                 } else {
-                    window.location.href = RutaPrincipal + "Inicio/principal";
+                    if (msg.iResultado == 3) {
+                        window.location.href = RutaPrincipal + "Inicio/GestionTransacciones";
+                    } else {
+                        window.location.href = RutaPrincipal + "Inicio/principal";
+                    }
+                    
                 }
             },
             error: function (msg) {

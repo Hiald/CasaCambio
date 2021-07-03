@@ -30,5 +30,9 @@ namespace CambioTotalED
         public string shoraregistro { get; set; }
         public string sruc { get; set; }
         public string srazonsocial { get; set; }
+        public string vpep1 { get; set; }
+        public string vpep2 { get; set; }
+        public string vpep3 { get; set; }
+        public string vpep4 { get; set; }
     }
 }
