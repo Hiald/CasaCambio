@@ -33,13 +33,18 @@
                             <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                                 <thead>
                                     <tr>
+                                        <th></th>
                                         <th>Usuario</th>
                                         <th>Estado</th>
                                         <th>Fecha</th>
-                                        <th>Tipo de cambio</th>
                                         <th>Envió / Recibirá</th>
-                                        <th></th>
-                                        <th></th>
+                                        <th>Cod</th>
+                                        <th>Tipo de cambio</th>
+                                        <th>Precio Compra</th>
+                                        <th>Precio Venta</th>
+                                        <th>Origen de los fondos</th>
+                                        <th>Banco emisor</th>
+                                        <th>Número de operación</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -173,24 +178,52 @@
                                 <input type="text" id="txRecibeE" placeholder="" class="form-control" disabled>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group mb-3">
                                 <label for="txTipoCambioE">Tipo de cambio</label>
                                 <input type="text" id="txTipoCambioE" placeholder="" class="form-control" disabled>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group mb-3">
                                 <label for="txTipoTransaccionE">Tipo de transacción</label>
                                 <input type="text" id="txTipoTransaccionE" placeholder="" class="form-control" disabled>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="txBancoemisorE">Banco Emisor</label>
+                                <input type="text" id="txBancoemisorE" placeholder="" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group mb-3">
                                 <label for="txBancoReceptorE">Banco Receptor</label>
                                 <input type="text" id="txBancoReceptorE" placeholder="" class="form-control" disabled>
                             </div>
                         </div>
+
+
+
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="txnumCuentaE">Número de Cuenta</label>
+                                <input type="text" id="txnumCuentaE" placeholder="" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="txMonedaCuentaE">Moneda de la Cuenta</label>
+                                <input type="text" id="txMonedaCuentaE" placeholder="" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="txTipoCuentaE">Tipo de Cuenta</label>
+                                <input type="text" id="txTipoCuentaE" placeholder="" class="form-control" disabled>
+                            </div>
+                        </div>
+
 
                     </div>
                 </div>
@@ -236,14 +269,17 @@
                         extend: 'excelHtml5',
                         text: '<i class="fas fa-file-excel"></i> ',
                         titleAttr: 'Exportar a Excel',
-                        className: 'btn btn-success'
-                    },
-                    {
-                        extend: 'pdfHtml5',
-                        text: '<i class="fas fa-file-pdf"></i> ',
-                        titleAttr: 'Exportar a PDF',
-                        className: 'btn btn-danger'
+                        className: 'btn btn-success',
+                        exportOptions: {
+                            columns: [1, 2, 3, 4, 6, 7, 8, 9, 10, 11]
+                        }
                     }
+                    //{
+                    //    extend: 'pdfHtml5',
+                    //    text: '<i class="fas fa-file-pdf"></i> ',
+                    //    titleAttr: 'Exportar a PDF',
+                    //    className: 'btn btn-danger'
+                    //}
                 ],
                 "ajax": {
                     "url": "/Inicio/ListarOperacionAdmin",
@@ -257,6 +293,7 @@
                     "dataSrc": 'aaData'
                 },
                 //"bServerSide": true,
+                "order": [[5, "desc"]],
                 "bProcessing": true,
                 "bDestroy": true,
                 "bLengthChange": false,
@@ -278,6 +315,7 @@
                 },
                 "columns": [
                     //idcuentabancaria
+                    {},
                     {
                         "mData": "vnombres",
                         "sClass": "center",
@@ -310,18 +348,7 @@
                             return value.dtfecha + " | " + value.vhora;
                         }
                     },
-                    {
-                        "mData": "itipocambio",
-                        "sClass": "center",
-                        "mRender": function (data, type, value) {
-                            if (value.itipocambio == 0) {
-                                return "Dólares a Soles";
-                            } else {
-                                return "Soles a Dólares";
-                            }
-
-                        }
-                    },
+                    
                     {
                         "mData": "denvio",
                         "sClass": "center",
@@ -334,22 +361,90 @@
 
                         }
                     },
+                    { "sName": "idtransaccion", "mDataProp": "idtransaccion" },
 
-                    //{ "sName": "vnumerocuenta", "mDataProp": "vnumerocuenta" },
-                    {}
-                    //,{}
+
+
+                    {
+                        "mData": "itipocambio",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            if (value.itipocambio == 0) {
+                                return "Dólares a Soles";
+                            } else {
+                                return "Soles a Dólares";
+                            }
+
+                        }
+                    },
+                    { "sName": "ddolarescompra", "mDataProp": "ddolarescompra" },
+                    { "sName": "ddolaresventa", "mDataProp": "ddolaresventa" },
+                    {
+                        "mData": "iorigenfondo",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            switch (value.iorigenfondo) {
+                                case 1: return "Ahorros"; break;
+                                case 2: return "Alquiler de bienes muebles"; break;
+                                case 3: return "Alquiler de bienes Inmuebles"; break;
+                                case 4: return "Donación/Sorteo"; break;
+                                case 5: return "Ingresos por trabajo independiente"; break;
+                                case 6: return "Ingresos por trabajo dependiente"; break;
+                                case 7: return "Ingresos por regalía"; break;
+                                case 8: return "Préstamos"; break;
+                                case 9: return "Venta de bien mueble"; break;
+                                case 10: return "Venta de bien inmueble"; break;
+                                case 11: return "Transferencias del Exterior"; break;
+                                case 12: return "Herencia"; break;
+                                case 13: return "Actividades relacionadas a la venta de Oro"; break;
+                                case 14: return "No Especificado"; break;
+                            }
+
+                        }
+                    },
+                    {
+                        "mData": "vbancoreceptor",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            var sresbanco = value.vbancoreceptor;
+                            if (sresbanco.length == 1 || sresbanco.length == 2) {
+                                switch (value.vbancoreceptor) {
+                                    case "1": return "(BCP) - Banco de Crédito del Perú"; break;
+                                    case "2": return "(Interbank) - Banco Internacional del Perú"; break;
+                                    case "3": return "(BBVA) - BBVA Continental"; break;
+                                    case "4": return "(BanBif) - BanBif"; break;
+                                    case "5": return "(Scotiabank) - Scotiabank"; break;
+                                    case "6": return "(Falabella) - Banco Falabella"; break;
+                                    case "7": return "(Pichincha) - Banco Pichincha"; break;
+                                    case "8": return "(Bancomercio) - Banco de Comercio"; break;
+                                    case "9": return "(Citibank) - Citibank Perú"; break;
+                                    case "10": return "(Mibanco) - Mi Banco"; break;
+                                    case "11": return "(GNB) - Banco GNB"; break;
+                                    case "12": return "(Ripley) - Banco Ripley"; break;
+                                    case "13": return "(Nacion) - Banco de la Nación"; break;
+                                    case "14": return "(Otro) - Otro"; break;
+                                }
+                            } else {
+                                return "-";
+                            }
+                            
+
+                        }
+                    },
+                    { "sName": "voperacion", "mDataProp": "voperacion" }
+                    
                 ],
                 "aoColumnDefs":
                     [
                         {
                             "mRender": function (data, type, row) {
-                                console.log(row);
-                                var strHtml = "<button class='btn btn-warning' onclick='fn_Editar("
+                                //console.log(row);
+                                var strHtml = "<button class='btn text-white btn-warning' onclick='fn_Editar("
                                     + row.idtransaccion + ", " +
                                     + row.idusuario + ", " +
                                     "\"" + encodeURIComponent(row.vnombres) + "\"" + ", " +
                                     "\"" + encodeURIComponent(row.vapellidos) + "\"" + ", " +
-                                    //row.idcuentabancaria int
+
                                     "\"" + encodeURIComponent(row.dtfecha) + "\"" + ", " +
                                     + row.itipodivisa + ", " +
                                     "\"" + encodeURIComponent(row.ddolaresventa) + "\"" + ", " +
@@ -363,14 +458,15 @@
                                     "\"" + encodeURIComponent(row.drecibo) + "\"" + ", " +
                                     + row.itipocambio + ", " +
                                     + row.itipotrasaccion + ", " +
-                                    "\"" + encodeURIComponent(row.vbancoreceptor) + "\"" +
+                                    "\"" + encodeURIComponent(row.vbancoreceptor) + "\"" + ", " +
+                                    row.idcuentabancaria +
                                     ")' >Ver Detalle</button>";
                                 return strHtml;
                             },
                             "sWidth": "5px",
                             "sClass": "css-center",
                             "bSort": false,
-                            "aTargets": [5]
+                            "aTargets": [0]
                         },
                         //{
                         //    "mRender": function (data, type, row) {
@@ -388,13 +484,79 @@
         }
         fnlistarTabla();
 
-
         //var paramidusuarioadmin = $('#hddidusuario').val();
         //var decfecharegistro = moment().format("YYYY-MM-DD");
         //var dechora = moment().format("hh:mm:ss");
         function fn_Editar(pidtransaccion, idusuario, paramvnombres, paramvapellidos, paramdtfecha, itipodivisa,
             paramddolaresventa, paramddolarescompra, paramvhora, paramiestado, paramvoperacion, paramdenvio, paramdrecibo, paramitipocambio,
-            paramitipotrasaccion, paramvbancoreceptor) {
+            paramitipotrasaccion, paramvbancoreceptor, paridcuentabancaria) {
+
+            var sbancores = "";
+            $.ajax({
+                type: "POST",
+                url: "/Inicio/FiltrarCuentaBancaria",
+                data: {
+                    "widcuentabancaria": paridcuentabancaria
+                },
+                success: function (data) {
+                    switch (data.aaData.ibanco) {
+                        case 1: sbancores = "(BCP) - Banco de Crédito del Perú"; break;
+                        case 2: sbancores = "(Interbank) - Banco Internacional del Perú"; break;
+                        case 3: sbancores = "(BBVA) - BBVA Continental"; break;
+                        case 4: sbancores = "(BanBif) - BanBif"; break;
+                        case 5: sbancores = "(Scotiabank) - Scotiabank"; break;
+                        case 6: sbancores = "(Falabella) - Banco Falabella"; break;
+                        case 7: sbancores = "(Pichincha) - Banco Pichincha"; break;
+                        case 8: sbancores = "(Bancomercio) - Banco de Comercio"; break;
+                        case 9: sbancores = "(Citibank) - Citibank Perú"; break;
+                        case 10: sbancores = "(Mibanco) - Mi Banco"; break;
+                        case 11: sbancores = "(GNB) - Banco GNB"; break;
+                        case 12: sbancores = "(Ripley) - Banco Ripley"; break;
+                        case 13: sbancores = "(Nacion) - Banco de la Nación"; break;
+                        case 14: sbancores = "(Otro) - Otro"; break;
+                    }
+
+                    $('#txBancoReceptorE').val(sbancores);
+                    $('#txnumCuentaE').val(data.aaData.vnumerocuenta);
+
+                    if (data.aaData.imoneda == 1) {
+                        $('#txMonedaCuentaE').val("Soles (S/.)");
+                    } else {
+                        $('#txMonedaCuentaE').val("Dólares ($)");
+                    }
+
+                    if (data.aaData.itipocuenta == 1) {
+                        $('#txTipoCuentaE').val("Ahorro");
+                    } else {
+                        $('#txTipoCuentaE').val("Corriente");
+                    }
+
+                },
+                error: function (data) {
+                    console.log("err:" + data);
+                }
+            });
+
+
+            var sbancores2 = "";
+            switch (decodeURIComponent(paramvbancoreceptor)) {
+                case "1": sbancores2 = "(BCP) - Banco de Crédito del Perú"; break;
+                case "2": sbancores2 = "(Interbank) - Banco Internacional del Perú"; break;
+                case "3": sbancores2 = "(BBVA) - BBVA Continental"; break;
+                case "4": sbancores2 = "(BanBif) - BanBif"; break;
+                case "5": sbancores2 = "(Scotiabank) - Scotiabank"; break;
+                case "6": sbancores2 = "(Falabella) - Banco Falabella"; break;
+                case "7": sbancores2 = "(Pichincha) - Banco Pichincha"; break;
+                case "8": sbancores2 = "(Bancomercio) - Banco de Comercio"; break;
+                case "9": sbancores2 = "(Citibank) - Citibank Perú"; break;
+                case "10": sbancores2 = "(Mibanco) - Mi Banco"; break;
+                case "11": sbancores2 = "(GNB) - Banco GNB"; break;
+                case "12": sbancores2 = "(Ripley) - Banco Ripley"; break;
+                case "13": sbancores2 = "(Nacion) - Banco de la Nación"; break;
+                case "14": sbancores2 = "(Otro) - Otro"; break;
+            }
+            $('#txBancoemisorE').val(sbancores2);
+
             //console.log(paramvbancoreceptor);
             $('#hddtransaccionid').val(pidtransaccion);
             $('#txnombresE').val(decodeURIComponent(paramvnombres) + " " + decodeURIComponent(paramvapellidos));
@@ -417,7 +579,7 @@
                 $('#txTipoTransaccionE').val("Venta");
             }
 
-            $('#txBancoReceptorE').val(decodeURIComponent(paramvbancoreceptor));
+
             /*
             estado:
             1: cotizado
@@ -497,7 +659,8 @@
                     "vbancoreceptor": "",
                     "dtfecharegistro": "",
                     "dtfechamodificacion": "",
-                    "idusuarioModificacion": 0
+                    "idusuarioModificacion": 0,
+                    "voperacionadmin": ""
                 },
             }).done(function (result) {
                 $('#divcarga').removeClass("is-active");
