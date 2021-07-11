@@ -18,6 +18,7 @@ namespace CambioTotalFrontEnd.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.DirIP = UtlAuditoria.ObtenerDireccionIP();
             return View();
         }
 
@@ -342,14 +343,14 @@ namespace CambioTotalFrontEnd.Controllers
 
         //lista las tarjetas de la persona
         [HttpPost]
-        public JsonResult ListarCuentaBancaria(int widusuario, string wnombres)
+        public JsonResult ListarCuentaBancaria(int widusuario, string wnombres, int wimoneda)
         {
             try
             {
                 var objResultado = new object();
                 itOperacion = new tdOperacion();
                 List<edCuentaBancaria> edtransaccion = new List<edCuentaBancaria>();
-                edtransaccion = itOperacion.tdListarCuentaBancaria(widusuario, wnombres);
+                edtransaccion = itOperacion.tdListarCuentaBancaria(widusuario, wnombres, wimoneda);
 
                 if (edtransaccion.Count == 0)
                 {
@@ -677,7 +678,7 @@ namespace CambioTotalFrontEnd.Controllers
                 edtransaccion = itOperacion.tdFiltrarCuentaBancaria(widcuentabancaria);
                 objResultado = new
                 {
-                   aaData = edtransaccion
+                    aaData = edtransaccion
                 };
                 return Json(objResultado);
 

@@ -42,7 +42,7 @@ namespace CambioTotalTD
 
         }
 
-        public List<edCuentaBancaria> tdListarCuentaBancaria(int tdidusuario, string tdnombres)
+        public List<edCuentaBancaria> tdListarCuentaBancaria(int tdidusuario, string tdnombres, int tdimoneda)
         {
             List<edCuentaBancaria> renUsuario = new List<edCuentaBancaria>();
             try
@@ -53,7 +53,7 @@ namespace CambioTotalTD
                     using (MySqlTransaction scope = con.BeginTransaction())
                     {
                         iadOperacion = new adOperacion(con);
-                        renUsuario = iadOperacion.adListarCuentaBancaria(tdidusuario, tdnombres);
+                        renUsuario = iadOperacion.adListarCuentaBancaria(tdidusuario, tdnombres, tdimoneda);
                         scope.Commit();
                     }
                 }

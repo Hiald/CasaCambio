@@ -331,7 +331,7 @@
                         "mRender": function (data, type, value) {
                             switch (value.iestado) {
                                 case 1: return "TRANSACCIÓN CREADA"; break;
-                                case 2: return "ABONADO"; break;
+                                case 2: return "EN CURSO"; break;
                                 case 3: return "VALIDANDO"; break; //administrador
                                 case 4: return "EN CURSO DE ABONO"; break;
                                 case 5: return "FINALIZADO"; break;
@@ -398,6 +398,7 @@
                                 case 12: return "Herencia"; break;
                                 case 13: return "Actividades relacionadas a la venta de Oro"; break;
                                 case 14: return "No Especificado"; break;
+                                case 15: return "Ingresos de la empresa"; break;
                             }
 
                         }
@@ -438,7 +439,6 @@
                     [
                         {
                             "mRender": function (data, type, row) {
-                                //console.log(row);
                                 var strHtml = "<button class='btn text-white btn-warning' onclick='fn_Editar("
                                     + row.idtransaccion + ", " +
                                     + row.idusuario + ", " +
@@ -537,7 +537,7 @@
                 }
             });
 
-
+            
             var sbancores2 = "";
             switch (decodeURIComponent(paramvbancoreceptor)) {
                 case "1": sbancores2 = "(BCP) - Banco de Crédito del Perú"; break;
@@ -592,7 +592,7 @@
             */
             switch (paramiestado) {
                 case 1: $('#txestadoE').val("Cotizado"); break;
-                case 2: $('#txestadoE').val("Abonado"); break;
+                case 2: $('#txestadoE').val("En curso"); break;
                 case 3: $('#txestadoE').val("Validando"); break;
                 case 4: $('#txestadoE').val("Depósito a usuario en curso"); break;
                 case 5: $('#txestadoE').val("Finalizado"); break;

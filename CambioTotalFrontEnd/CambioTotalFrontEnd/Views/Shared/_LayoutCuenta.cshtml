@@ -29,6 +29,46 @@
         var RutaPrincipal = "@Url.Content("~")";
         var valorfecha = "";
     </script>
+    <style>
+        .loader-default:after {
+            content: "";
+            position: fixed;
+            width: 48px;
+            height: 48px;
+            border: 0px solid #fff !important; 
+            border-left-color: transparent;
+            border-radius: 50%;
+            top: calc(50% - 24px);
+            left: calc(50% - 24px);
+            animation: rotation 1s linear infinite;
+        }
+
+        .custom-control-label::before {
+            position: absolute;
+            top: .175rem;
+            left: -1.5rem;
+            display: block;
+            width: 1rem;
+            height: 1rem;
+            pointer-events: none;
+            content: "";
+            background-color: #ffffff;
+            border: #000000 solid 2px !important;
+        }
+        .side-nav .side-nav-link {
+            color: #cedce4;
+            display: block;
+            padding: 9px 9px;
+            font-size: .9375rem;
+            position: relative;
+            -webkit-transition: all .4s;
+            transition: all .4s;
+        }
+        body[data-leftbar-theme=light] .help-box {
+            background-color: #00a24f;
+        }
+    </style>
+
 </head>
 
 <body class="loading" data-layout-config='{"leftSideBarTheme":"light","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
@@ -43,6 +83,7 @@
                 <img src="~/assets/tucambio.png" height="45" class="logo-sm" alt="logo">
                 <h4 style="color:black;margin-top: 5%;">TuCambioTotal</h4>
             </a>
+          
             @*<a href="/Inicio/principal" class="">
                     <span class="logo-lg">
                         <img src="~/assets/img.png" alt="" height="110">
@@ -60,11 +101,14 @@
                     @*<li class="side-nav-title side-nav-item">Navegación</li>*@
 
                     <li class="side-nav-item">
-                        <a href="javascript: void(0);" class="side-nav-link"
-                           style="color:black !important;font-weight: bold; border: 4px solid black; border-radius: 15px; margin: 15px;">
-                            <i class="uil-home-alt"></i>
+                        <a href="javascript: void(0);" class="side-nav-link mt-3">
+                            @*<i class="uil-home-alt"></i>*@
                             @*<span class="badge badge-success float-right">0</span>*@
-                            <span>NAVEGACIÓN</span>
+                            @*<span>NAVEGACIÓN</span>*@
+                            @if (ViewBag.GrolUsuario == 1 || ViewBag.GrolUsuario == 2)
+                            {
+                                <button class="btn btn-info" onclick="window.location.href = '/Inicio/principal';">INICIA TU OPERACIÓN AHORA</button>
+                            }
                         </a>
 
                         <ul class="side-nav-second-level mm-show" aria-expanded="true">

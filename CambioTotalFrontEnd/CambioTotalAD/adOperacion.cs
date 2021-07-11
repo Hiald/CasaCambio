@@ -45,7 +45,7 @@ namespace CambioTotalAD
             }
         }
 
-        public List<edCuentaBancaria> adListarCuentaBancaria(int adidusuario, string adnombres)
+        public List<edCuentaBancaria> adListarCuentaBancaria(int adidusuario, string adnombres, int imoneda)
         {
             try
             {
@@ -55,6 +55,7 @@ namespace CambioTotalAD
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("_idusuario", MySqlDbType.Int32).Value = adidusuario;
                     cmd.Parameters.Add("_nombres", MySqlDbType.VarChar, 50).Value = adnombres;
+                    cmd.Parameters.Add("_imoneda", MySqlDbType.Int32).Value = imoneda;
                     using (MySqlDataReader mdrd = cmd.ExecuteReader())
                     {
                         if (mdrd != null)
@@ -314,8 +315,8 @@ namespace CambioTotalAD
                                 enUsuario.iestado = (mdrd.IsDBNull(pos_iestado) ? 0 : mdrd.GetInt32(pos_iestado));
                                 enUsuario.voperacion = (mdrd.IsDBNull(pos_voperacion) ? "-" : mdrd.GetString(pos_voperacion));
                                 enUsuario.iorigenfondo = (mdrd.IsDBNull(pos_iorigenfondo) ? 0 : mdrd.GetInt32(pos_iorigenfondo));
-                                enUsuario.denvio = (mdrd.IsDBNull(pos_denvio) ? 0 : mdrd.GetInt32(pos_denvio));
-                                enUsuario.drecibo = (mdrd.IsDBNull(pos_drecibo) ? 0 : mdrd.GetInt32(pos_drecibo));
+                                enUsuario.denvio = (mdrd.IsDBNull(pos_denvio) ? 0 : mdrd.GetDecimal(pos_denvio));
+                                enUsuario.drecibo = (mdrd.IsDBNull(pos_drecibo) ? 0 : mdrd.GetDecimal(pos_drecibo));
                                 enUsuario.itipocambio = (mdrd.IsDBNull(pos_itipocambio) ? 0 : mdrd.GetInt32(pos_itipocambio));
                                 enUsuario.itipotrasaccion = (mdrd.IsDBNull(pos_itipotrasaccion) ? 0 : mdrd.GetInt32(pos_itipotrasaccion));
                                 enUsuario.digv = (mdrd.IsDBNull(pos_digv) ? 0 : mdrd.GetInt32(pos_digv));

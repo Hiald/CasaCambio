@@ -111,7 +111,8 @@
                             "widusuario": idusuario,
                             "wdtfecha": "vacio",
                             "westado":0
-                        }
+                        },
+                        "dataSrc": 'aaData'
                     },
                     "bFilter": false,
                     //"bServerSide": true,
@@ -162,7 +163,7 @@
                             "mRender": function (data, type, value) {
                                 switch (value.iestado) {
                                     case 1: return "TRANSACCIÓN CREADA"; break;
-                                    case 2: return "ABONADO"; break;
+                                    case 2: return "EN CURSO"; break;
                                     case 3: return "VALIDANDO"; break; //administrador
                                     case 4: return "EN CURSO DE ABONO"; break;
                                     case 5: return "FINALIZADO"; break;

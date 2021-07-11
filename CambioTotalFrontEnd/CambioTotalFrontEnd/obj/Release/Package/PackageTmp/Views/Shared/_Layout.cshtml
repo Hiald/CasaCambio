@@ -268,6 +268,35 @@
             margin-top: 20px;
             padding: 20px 20px 20px;
         }
+
+        .loader-default:after {
+            content: "";
+            position: fixed;
+            width: 48px;
+            height: 48px;
+            border: 0px solid #fff !important;
+            border-left-color: transparent;
+            border-radius: 50%;
+            top: calc(50% - 24px);
+            left: calc(50% - 24px);
+            animation: rotation 1s linear infinite;
+        }
+
+        .custom-control-label::before {
+            position: absolute;
+            top: .175rem;
+            left: -1.5rem;
+            display: block;
+            width: 1rem;
+            height: 1rem;
+            pointer-events: none;
+            content: "";
+            background-color: #ffffff;
+            border: #000000 solid 2px !important;
+        }
+        .footer .footer-bottom .social-style {
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -283,77 +312,7 @@
 
     @RenderBody()
 
-    <!-- Footer Start -->
-    <div class="footer">
-        <div class="container">
-            <!-- <div class="row">
-                <div class="col-12">
-                    <div class="subcribe-box" style="background: url('assets/img/subscribe-bg.png');">
-                        <h3 class="subcribe">To get exclusive updates and benefits </h3>
-                        <div class="form-group">
-                            <form action="#">
-                                <input type="email" class="form-control " placeholder="Enter Your Email" name="email">
-                                <button class="button-1">Subscribe</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-            <div class="row align-items-center">
-                <div class="col-lg-3">
-                    <div class="footer-box">
-                        <a class="navbar-brand mt-1" style="display: inline-flex;" href="@Url.Action("Index","Inicio")">
-                            <img src="~/assets/tucambio.png" height="45" class="logo" alt="logo">
-                            <h4 class="ml-1" style="color:#3dad52;margin-top: 4%;">TuCambioTotal</h4>
-                        </a>
-                        <!-- <a href="#"><img class="logo" src="assets/img/logo.png" alt=""> </a> -->
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="footer-box">
-                        <ul class="footer-link">
-                            <li><a href="@Url.Action("nosotros","Inicio")">Acerca de nosotros</a></li>
-                            <li>|</li>
-                            <li><a href="#divcomousar">¿Cómo funciona?</a></li>
-                            <li>|</li>
-                            <li><a href="#divfaq">FAQ</a></li>
-                            <li>|</li>
-                            <li><a href="@Url.Action("inicio","Inicio")">Iniciar sesión</a></li>
-                        </ul>
-                        <ul class="footer-link" style="text-align:left;">
-                            <li><a href="@Url.Action("politicadeprivacidad","Inicio")">Política de privacidad</a></li>
-                            <li>|</li>
-                            <li><a href="@Url.Action("terminosycondiciones","Inicio")">Términos y condiciones</a></li>
-                            <li>|</li>
-                            <li><a href="@Url.Action("registro","Inicio")">Regístrate</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-12">
-                    <div class="raka"></div>
-                </div>
-                <div class="col-md-6">
-                    <div class="footer-bottom">
-                        <p class="text">
-                            &copy; Todos los derechos reservados <a href="#">TuCambiototal</a> | <a href="#">2021 &nbsp;<a style="font-size:14px;" href="https://www.crivant.com" target="_blank">Hecho por Crivant</a></a>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="footer-bottom">
-                        <div class="social-style">
-                            <a href="https://www.facebook.com/Tu-Cambio-Total-103825761901896" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                            <a href="https://www.instagram.com/tucambiototalpe/" target="_blank"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+   
     <!--====== Scroll To Top Start ======-->
     @*<div id="scrollUp" title="Scroll To Top">
             <i class="fas fa-arrow-up"></i>

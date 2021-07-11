@@ -44,7 +44,7 @@
         border-radius: 20px;
         background: rgba(255, 255, 255, 0.055);
         box-shadow: 0px 5px 20px 0px rgb(23 29 113 / 26%);
-        padding: 45px 20px 50px;
+        padding: 10px 20px 50px;
     }
 
         .hero-form p.text {
@@ -138,9 +138,10 @@
                     <option value="12">Herencia</option>
                     <option value="13">Actividades relacionadas a la venta de Oro</option>
                     <option value="14">No Especificado</option>
+                    <option value="15">Ingresos de la empresa</option>
                 </select>
             </div>
-            <div class="col-lg-4 mt-3">
+            <div class="col-lg-4 mt-2">
                 <div class="hero-form">
                     <div class="courrency-select-Ip1">
                         <label class="text tcambiar" style="font-weight:800;">Enviaré&nbsp;</label>
@@ -154,14 +155,18 @@
                             </div>
                         </form>
                     </div>
-                    <button class="btn btn-info" id="btncambiar" style="margin-left: 0%;margin-bottom: 5%;margin-top: 0%;width: 70px !important;border-radius: 60px;">
+                    <a class="btn btn-info" id="btncambiar" style="margin-left: 0%;margin-bottom: 5%;
+                            margin-top: 0%;width: 61px !important;border-radius: 60px;background-color: #f5ae08;color: black;border:0;">
+                        <img src="~/assets/exchange-white.svg" style="transform: rotate(90deg);" />
+                    </a>
+                    @*<button class="btn btn-info" id="btncambiar" style="margin-left: 0%;margin-bottom: 5%;margin-top: 0%;width: 70px !important;border-radius: 60px;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                              class="bi bi-arrow-repeat" viewBox="0 0 16 16">
                             <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
                             <path fill-rule="evenodd"
                                   d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
                         </svg>
-                    </button>
+                    </button>*@
 
 
                     <div class="courrency-select-Ip1">
@@ -206,12 +211,13 @@
                 </strong>
                 <p class="mt-3">Una vez abonado, por favor ingresa el número de operación debajo</p>
                 <div class="form-group">
-                    <input type="text" id="txOperacion" class="form-control" placeholder="Mi número de operación">
+                    <input type="text" id="txOperacion" maxlength="25" class="form-control" placeholder="Mi número de operación">
                 </div>
             </div>
             <div class="modal-footer">
                 @*<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>*@
-                <button class="btn btn-secondary" onclick="fnDesconectar();">Cerrar sesión</button>
+                @*<button class="btn btn-secondary" onclick="fnDesconectar();">Cerrar sesión</button>*@
+                <button class="btn btn-success" onclick="fnWhatsapp();">Consulta por Whatsapp</button>
                 <button type="button" class="btn btn-info" id="btnenviarInfo">Enviar</button>
             </div>
         </div><!-- /.modal-content -->
@@ -341,12 +347,20 @@
                 return;
             }
             var paramidusuario = $('#hddidusuario').val();
+            var imonedaparam = 0;
+            //0: dolares a soles  | 1: soles a dolares
+            if (valorInicial == 0) {
+                imonedaparam = 2;
+            } else {
+                imonedaparam = 1;
+            }
             $.ajax({
                 type: "POST",
                 url: "/Inicio/ListarCuentaBancaria",
                 data: {
                     "widusuario": paramidusuario,
-                    "wnombres": "vacio"
+                    "wnombres": "vacio",
+                    "wimoneda": imonedaparam
                 },
                 success: function (data) {
                     if (data.aaData === "") {
@@ -387,9 +401,18 @@
                         return;
                     } else {
                         $.each(data.sData, function (index, value) {
+                            console.log(index);
                             if (value.iestado == 1) {
-                                $('#fill-info-modal').modal({ backdrop: 'static', keyboard: false, show: true });
+                                $('#fill-info-modal').modal({keyboard: false, show: true });
                                 $('#hddtransaccionid').val(value.idtransaccion);
+
+                                if (value.itipocambio == 0) {
+                                    $('#ctadolares').css("display", "block");
+                                    $('#ctasoles').css("display", "none");
+                                } else {
+                                    $('#ctasoles').css("display", "block");
+                                    $('#ctadolares').css("display", "none");
+                                }
                             } else {
 
                             }
@@ -592,6 +615,7 @@
         var valorInicial = 0; //0: dolares a soles  | 1: soles a dolares
         $('#btncambiar').on("click", function () {
             setTimeout(function () {
+                fn_listarCuentasBancarias();
                 if (valorInicial == 1) {
                     CambioDivisa(0);
                     valorInicial = 0;
@@ -639,8 +663,12 @@
             var txrecibo = $('#txInput2').val();
             var sfecharegistro = moment().format("YYYY-MM-DD");
             var shora = moment().format("hh:mm:ss");
-            if (slccuentabancaria == 0) {
+            if (slccuentabancaria == "0" || slccuentabancaria.length == 0) {
                 alert("Seleccione una cuenta bancaria");
+                return;
+            }
+            if (txcuentabancaria == "" || txcuentabancaria == "0") {
+                alert("Seleccione el banco emisor");
                 return;
             }
             if (slcorigen == 0) {
@@ -720,7 +748,7 @@
                     localStorage.removeItem("SESSION_MONTO2");
                 }
 
-                $('#fill-info-modal').modal({ backdrop: 'static', keyboard: false, show: true });
+                $('#fill-info-modal').modal({ keyboard: false, show: true });
                 fn_ValidarTransacciones();
             });
 
@@ -777,6 +805,10 @@
                 $('#fill-info-modal').modal("hide");
             });
         });
+
+        function fnWhatsapp() {
+            window.open("https://web.whatsapp.com/send?phone=51941645017&text=" ,'_blank');
+        }
 
     </script>
 }

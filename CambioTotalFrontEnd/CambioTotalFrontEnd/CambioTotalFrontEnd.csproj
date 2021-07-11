@@ -243,6 +243,7 @@
     <Content Include="assets\datatables\pdfmake-0.1.36\pdfmake.js" />
     <Content Include="assets\datatables\pdfmake-0.1.36\pdfmake.min.js" />
     <Content Include="assets\datatables\pdfmake-0.1.36\vfs_fonts.js" />
+    <Content Include="assets\exchange-white.svg" />
     <Content Include="assets\fonts\dripicons-v2.svg" />
     <Content Include="assets\fonts\Nunito-Bold.svg" />
     <Content Include="assets\fonts\Nunito-Light.html" />
@@ -473,7 +474,9 @@
     <Content Include="assets\img2.jpeg" />
     <Content Include="assets\img3.jpeg" />
     <Content Include="assets\img4.jpeg" />
+    <Content Include="assets\logo-sbs-blanco.png" />
     <Content Include="assets\logo.PNG" />
+    <Content Include="assets\sbs_logotipo.svg" />
     <Content Include="assets\tucambio.png" />
     <Content Include="assets\tucambio2.png" />
     <Content Include="favicon.ico" />

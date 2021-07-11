@@ -597,7 +597,8 @@ DELIMITER ;
 
 /*DROP procedure IF EXISTS `sp_listar_cuentabancaria`;*/
 DELIMITER $$
-CREATE PROCEDURE `sp_listar_cuentabancaria`(IN _idusuario INT, IN _nombres VARCHAR(50))
+CREATE PROCEDURE `sp_listar_cuentabancaria`(IN _idusuario INT, IN _nombres VARCHAR(50)
+    ,IN _imoneda INT)
 BEGIN
 
   SELECT
@@ -621,7 +622,8 @@ BEGIN
     LEFT JOIN t_usuario u ON u.idusuario = c.idusuario
     WHERE ((c.idusuario = _idusuario) OR (_idusuario = 0))
      AND (CONCAT_WS(" ", u.v_nombres,  u.v_apellidos) LIKE CONCAT('%', _nombres, '%') OR _nombres = "vacio")
-     AND u.b_estado = 1;
+     AND u.b_estado = 1
+     AND ((c.i_moneda = _imoneda) OR (_imoneda = 0));
 
 END$$
 DELIMITER ;
@@ -986,18 +988,15 @@ para enviar correos:
 - 25 
 - no segura
 
-
-test@tucambiototal.com
-
 contacto@tucambiototal.com
 informes@tucambiototal.com
 iramos@tucambiototal.com
-
-
 lramos@tucambiototal.com
 mmagallanes@tucambiototal.com
 gerencia@tucambiototal.com
 administracion@tucambiototal.com
+
+cuenta@tucambiototal.pe
 
 
 admin@tucambiototal.com  | tucambiototal
