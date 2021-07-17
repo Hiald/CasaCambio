@@ -417,7 +417,7 @@ namespace CambioTotalFrontEnd.Controllers
                 }
                 objResultado = new
                 {
-                    iResultado = 1,
+                    iResultado = iresultado,
                     iResultadoIns = "Inicio/Principal"
                 };
                 return Json(objResultado);

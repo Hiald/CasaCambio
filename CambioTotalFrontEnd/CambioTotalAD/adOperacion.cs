@@ -242,6 +242,7 @@ namespace CambioTotalAD
                 cmd.Parameters.Add("_idusuario_Modificacion", MySqlDbType.Int32).Value = adidusuarioModificacion;
                 cmd.Parameters.Add("_v_operacion_admin", MySqlDbType.VarChar, 25).Value = v_operacion_admin;
                 result = Convert.ToInt32(cmd.ExecuteScalar());
+
                 return result;
             }
             catch (Exception ex)

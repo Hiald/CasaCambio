@@ -160,13 +160,13 @@
                         <img src="~/assets/exchange-white.svg" style="transform: rotate(90deg);" />
                     </a>
                     @*<button class="btn btn-info" id="btncambiar" style="margin-left: 0%;margin-bottom: 5%;margin-top: 0%;width: 70px !important;border-radius: 60px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                             class="bi bi-arrow-repeat" viewBox="0 0 16 16">
-                            <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
-                            <path fill-rule="evenodd"
-                                  d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
-                        </svg>
-                    </button>*@
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                                <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
+                                <path fill-rule="evenodd"
+                                      d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
+                            </svg>
+                        </button>*@
 
 
                     <div class="courrency-select-Ip1">
@@ -199,6 +199,7 @@
                 @*<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>*@
             </div>
             <div class="modal-body">
+
                 <p>¡Muchas gracias por confiar en nosotros! Por favor abona el monto a la siguiente cuenta del Banco de Crédito del Perú:</p>
                 <br />
                 <strong>NOMBRE DE INVERSIONES MMT PERU S.A.C.</strong>
@@ -210,6 +211,9 @@
                     CTA CTE BCP USD 1918758418176 <br />
                 </strong>
                 <p class="mt-3">Una vez abonado, por favor ingresa el número de operación debajo</p>
+                <div id="divmostrarContador" class="alert alert-warning" role="alert">
+
+                </div>
                 <div class="form-group">
                     <input type="text" id="txOperacion" maxlength="25" class="form-control" placeholder="Mi número de operación">
                 </div>
@@ -217,7 +221,7 @@
             <div class="modal-footer">
                 @*<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>*@
                 @*<button class="btn btn-secondary" onclick="fnDesconectar();">Cerrar sesión</button>*@
-                <button class="btn btn-success" onclick="fnWhatsapp();">Consulta por Whatsapp</button>
+                @*<button class="btn btn-success" onclick="fnWhatsapp();">Consulta por Whatsapp</button>*@
                 <button type="button" class="btn btn-info" id="btnenviarInfo">Enviar</button>
             </div>
         </div><!-- /.modal-content -->
@@ -258,6 +262,39 @@
             </div>
         </div>
     </div>
+</div>
+
+<div>
+    <style>
+        div.ccw_plugin, .inline {
+            display: inline;
+        }
+
+        .chatbot {
+            position: fixed;
+            z-index: 99999999;
+        }
+
+        .ccw_plugin .animated {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+    </style>
+
+    <div class="ccw_plugin chatbot" style="bottom:20px; right:30px;">
+        <div class="style4 animated no-animation ccw-no-hover-an">
+            <a target="_blank" href="https://web.whatsapp.com/send?phone=51941645017&text=" class="nofocus">
+                <div class="chip style-4 ccw-analytics p-1" id="style-4" data-ccw="style-4" style="border-radius:10px;background-color: #00a24f; color: #fff">
+                    <img id="s4-icon" data-ccw="style-4" alt=""
+                         data-src="https://mendozacercoselectricos.com/wp-content/plugins/click-to-chat-for-whatsapp/./new/inc/assets/img/whatsapp-logo-32x32.png"
+                         class="ccw-analytics lazyloaded"
+                         src="https://mendozacercoselectricos.com/wp-content/plugins/click-to-chat-for-whatsapp/./new/inc/assets/img/whatsapp-logo-32x32.png">
+                    Esperamos tu mensaje!
+                </div>
+            </a>
+        </div>
+    </div>
+
 </div>
 
 
@@ -305,7 +342,6 @@
         var fechainicialNOW = moment().format("YYYY-MM-DD");
         var shora = moment().format("hh:mm:ss");
         var shoraValidar = moment().format("HH:mm");
-
 
 
         var vCompra = 0;
@@ -384,50 +420,196 @@
         fn_listarCuentasBancarias();
 
         function fn_ValidarTransacciones() {
-            $('#divcarga').addClass("is-active");
-            var paramidusuario = $('#hddidusuario').val();
-            $.ajax({
-                type: "POST",
-                url: "/Inicio/ListarOperacion",
-                data: {
-                    "widusuario": paramidusuario,
-                    "wdtfecha": "vacio",
-                    "westado": 1
-                },
-                success: function (data) {
-                    if (data.sData === "") {
-                        //si no hay alguna transaccion activa, no hace nada
-                        $('#divcarga').removeClass("is-active");
-                        return;
-                    } else {
-                        $.each(data.sData, function (index, value) {
-                            console.log(index);
-                            if (value.iestado == 1) {
-                                $('#fill-info-modal').modal({keyboard: false, show: true });
-                                $('#hddtransaccionid').val(value.idtransaccion);
-
-                                if (value.itipocambio == 0) {
-                                    $('#ctadolares').css("display", "block");
-                                } else {
-                                    $('#ctasoles').css("display", "block");
-                                }
-                            } else {
-
-                            }
-
-                        });
-                    }
-                    $('#divcarga').removeClass("is-active");
-                },
-                error: function (data) {
-                    console.log("ERR2: " + data);
-                }
-            });
 
 
 
         }
-        fn_ValidarTransacciones();
+        //fn_ValidarTransacciones();
+
+        function fn_SessionValidarTransacciones() {
+
+            if (localStorage.getItem("SESSION_ARROBJTRANSACCION") != null) {
+
+                if (localStorage.getItem("SESSION_ARROBJTRANSACCION") != "[]") {
+                    var TraerObjLista = JSON.parse(localStorage.getItem('SESSION_ARROBJTRANSACCION'));
+                    $('#divcarga').removeClass("is-active");
+                    $('#hddtransaccionid').val(TraerObjLista[TraerObjLista.length - 1].idTransaccion);
+
+                    var fechaob = moment(TraerObjLista[TraerObjLista.length - 1].fechaFin, 'D/M/YYYY hh:mm:ss a');
+                    var fechahoy = moment(moment(), 'D/M/YYYY hh:mm:ss a');
+                    var durationres = moment.duration(moment(fechaob).diff(fechahoy));
+
+                    if (parseInt(durationres.minutes()) >= 0 && parseInt(durationres.seconds()) >= 0) {
+                        $('#fill-info-modal').modal({ keyboard: false, show: true });
+                        if (TraerObjLista[TraerObjLista.length - 1].itipocambio == 0) {
+                            $('#ctadolares').css("display", "block");
+                            $('#ctasoles').css("display", "none");
+                        } else {
+                            $('#ctasoles').css("display", "block");
+                            $('#ctadolares').css("display", "none");
+                        }
+                        fnMostrarCronometro();
+                    } else {
+                        console.log("tiempo finalizado, borrar ultimo id");
+                        if ($('#hddtransaccionid').val() == "" || $('#hddtransaccionid').length == 0) {
+                            $('#fill-info-modal').modal("hide");
+                            TraerObjLista.splice(TraerObjLista.length - 1, 1);
+                            var arrobjFinal = TraerObjLista;
+
+                            localStorage.setItem('SESSION_ARROBJTRANSACCION', JSON.stringify(arrobjFinal));
+                        } else {
+
+                            $('#divcarga').addClass("is-active");
+                            var idusuarioborrar = $('#hddidusuario').val();
+                            var idtransacccionborrar = $('#hddtransaccionid').val();
+                            $.ajax({
+                                type: 'post',
+                                url: RutaPrincipal + 'Inicio/OperacionTranscaccion',
+                                data: {
+                                    "itipooperacion": 4,
+                                    "idtransaccion": idtransacccionborrar,
+                                    "idusuario": 0,
+                                    "iddivisa": 0,
+                                    "idpromocion": 0,
+                                    "idcuentabancaria": 0,
+                                    "idusuarioadministrador": idusuarioborrar, //usuario que hizo la transaccion (admin) igual en upd
+                                    "dtfecha": "",
+                                    "itipodivisa": 0,
+                                    "dolaresventa": 0,
+                                    "dolarescompra": 0,
+                                    "hora": "",
+                                    "imagenruta": "",
+                                    "itipoenvio": 0,
+                                    "iestado": 0,
+                                    "voperacion": "",
+                                    "iorigenfondo": 0,
+                                    "denvio": 0,
+                                    "drecibo": 0,
+                                    "itipocambio": 0,
+                                    "itipotrasaccion": 0,
+                                    "digv": 0,
+                                    "vbancoreceptor": "",
+                                    "dtfecharegistro": "",
+                                    "dtfechamodificacion": "",
+                                    "idusuarioModificacion": 0,
+                                    "voperacionadmin": ""
+                                },
+                            }).done(function (result) {
+                                $('#fill-info-modal').modal("hide");
+                                TraerObjLista.splice(TraerObjLista.length - 1, 1);
+                                var arrobjFinal = TraerObjLista;
+                                localStorage.setItem('SESSION_ARROBJTRANSACCION', JSON.stringify(arrobjFinal));
+                                setTimeout(function () {
+                                    fn_SessionValidarTransacciones();
+                                }, 2000);
+                            });
+
+                        }
+
+
+                    }
+
+                } else {
+                    $('#divcarga').removeClass("is-active");
+                    //busca en la bd
+                    $('#fill-info-modal').modal("hide");
+                }
+
+            }
+
+            
+
+        }
+        fn_SessionValidarTransacciones();
+
+        var valorintervalo;
+        function fnMostrarCronometro() {
+
+            var TraerObjLista = JSON.parse(localStorage.getItem('SESSION_ARROBJTRANSACCION'));
+            var fechaob = moment(TraerObjLista[TraerObjLista.length - 1].fechaFin, 'D/M/YYYY hh:mm:ss a');
+            console.log("intervalo iniciado");
+            valorintervalo = setInterval(function () {
+                var fechahoy = moment(moment(), 'D/M/YYYY hh:mm:ss a');
+                var durationres = moment.duration(moment(fechaob).diff(fechahoy));
+                //console.log("cronometro iniciado " + durationres.minutes());
+                if (parseInt(durationres.minutes()) >= 0 && parseInt(durationres.seconds()) >= 0) {
+                    document.getElementById("btnCrearOperacion").disabled = true;
+                    $('#divmostrarContador').css("display", "block");
+                    $('#divmostrarContador').html("Ingresa tu número de operación en los próximos: <br>"
+                        + "<b>" + durationres.minutes() + " minutos y " + durationres.seconds() + "</b>"
+                        + " segundos restantes, recuerda que si no se ingresa el número de operación, la transacción se cancelará.");
+                } else {
+                    $('#divmostrarContador').css("display", "none");
+                    if ($('#hddtransaccionid').val() == "" || $('#hddtransaccionid').length == 0) {
+                        //no hay id y acabo el tiempo
+                        $('#divmostrarContador').css("display", "none");
+                        $('#fill-info-modal').modal("hide");
+                        clearInterval(valorintervalo);
+                        document.getElementById("btnCrearOperacion").disabled = false;
+                    } else {
+                        //hay id pero se acabo el tiempo, actualizar y cerrar
+                        clearInterval(valorintervalo);
+                        $('#divmostrarContador').css("display", "none");
+                        $('#fill-info-modal').modal("hide");
+                        console.log("Hay ID, finalizado");
+
+                        $('#divcarga').addClass("is-active");
+                        $('#fill-info-modal').modal("hide");
+                        TraerObjLista.splice(TraerObjLista.length - 1, 1);
+                        var arrobjFinal = TraerObjLista;
+                        localStorage.setItem('SESSION_ARROBJTRANSACCION', JSON.stringify(arrobjFinal));
+                        setTimeout(function () {
+                            var idusuarioborrar = $('#hddidusuario').val();
+                            var idtransacccionborrar = $('#hddtransaccionid').val();
+                            $.ajax({
+                                type: 'post',
+                                url: RutaPrincipal + 'Inicio/OperacionTranscaccion',
+                                data: {
+                                    "itipooperacion": 4,
+                                    "idtransaccion": idtransacccionborrar,
+                                    "idusuario": 0,
+                                    "iddivisa": 0,
+                                    "idpromocion": 0,
+                                    "idcuentabancaria": 0,
+                                    "idusuarioadministrador": idusuarioborrar, //usuario que hizo la transaccion (admin) igual en upd
+                                    "dtfecha": "",
+                                    "itipodivisa": 0,
+                                    "dolaresventa": 0,
+                                    "dolarescompra": 0,
+                                    "hora": "",
+                                    "imagenruta": "",
+                                    "itipoenvio": 0,
+                                    "iestado": 0,
+                                    "voperacion": "",
+                                    "iorigenfondo": 0,
+                                    "denvio": 0,
+                                    "drecibo": 0,
+                                    "itipocambio": 0,
+                                    "itipotrasaccion": 0,
+                                    "digv": 0,
+                                    "vbancoreceptor": "",
+                                    "dtfecharegistro": "",
+                                    "dtfechamodificacion": "",
+                                    "idusuarioModificacion": 0,
+                                    "voperacionadmin": ""
+                                },
+                            }).done(function (result) {
+                                $('#divcarga').removeClass("is-active");
+                                document.getElementById("btnCrearOperacion").disabled = false;
+                                fn_SessionValidarTransacciones();
+                            });
+
+                        }, 2000);
+
+                    }
+
+                }
+
+
+            }, 1000);
+
+
+        }
 
         function fn_ValidarFinal(paramestado) {
             $('#divcarga').addClass("is-active");
@@ -651,6 +833,7 @@
 
         });
 
+        //crear transaccion
         $('#btnCrearOperacion').click(function () {
             //slcBanco
             var slccuentabancaria = $('#slccuentabancaria option:selected').attr('value');
@@ -696,6 +879,8 @@
             }
 
             $('#divcarga').addClass("is-active");
+
+
             $.ajax({
                 type: 'post',
                 url: RutaPrincipal + 'Inicio/OperacionTranscaccion',
@@ -729,13 +914,56 @@
                     "voperacionadmin": ""
                 },
             }).done(function (result) {
+                var idgenerado = result.iResultado;
+                var FechaAgregada = moment().add(15, 'minutes').format('DD/MM/YYYY hh:mm:ss a');
+                console.log(idgenerado);
+                var arrResultado = JSON.parse(localStorage.getItem("SESSION_ARROBJTRANSACCION"));
+                $('#hddtransaccionid').val(idgenerado);
+                document.getElementById("btnCrearOperacion").disabled = true;
+                if (arrResultado == null || arrResultado.length == 0) {
+                    console.log("registrado nuevo");
+                    //nueva fila
+                    var EnviarObjLista = [];
+                    var objDatosCronometroNew = {
+                        idTransaccion: idgenerado,
+                        fechaFin: FechaAgregada,
+                        montoEnvio: txenvio,
+                        montoRecibo: txrecibo,
+                        tipoCambio: valorInicial //0: dolares a soles COMPRA | 1: soles a dolares VENTA
+                    }
+                    EnviarObjLista.push(objDatosCronometroNew);
+                    localStorage.setItem('SESSION_ARROBJTRANSACCION', JSON.stringify(EnviarObjLista));
+                } else {
+                    //existe datos osea "[]"
+                    if (arrResultado.length > 0) {
+                        //ya existe fila
+                        console.log("registrado existe");
+                        var TraerObjLista = JSON.parse(localStorage.getItem('SESSION_ARROBJTRANSACCION'));
+
+                        var objDatosCronometroEdit = {
+                            idTransaccion: idgenerado,
+                            fechaFin: FechaAgregada,
+                            montoEnvio: txenvio,
+                            montoRecibo: txrecibo,
+                            tipoCambio: valorInicial //0: dolares a soles COMPRA | 1: soles a dolares VENTA
+                        }
+
+                        TraerObjLista.push(JSON.stringify(objDatosCronometroEdit));
+                        localStorage.setItem('SESSION_ARROBJTRANSACCION', JSON.stringify(TraerObjLista));
+                    }
+                }
+
+                setTimeout(fn_SessionValidarTransacciones(), 1500);
+
                 $('#divcarga').removeClass("is-active");
                 NotificacionSuccessDerecha("Transaccion creada");
                 $('#txcuenta').val("");
                 $('#txnumerocuenta').val("");
                 if (valorInicial == 0) {
                     $('#ctadolares').css("display", "block");
+                    $('#ctasoles').css("display", "none");
                 } else {
+                    $('#ctadolares').css("display", "none");
                     $('#ctasoles').css("display", "block");
                 }
 
@@ -747,6 +975,9 @@
                 }
 
                 $('#fill-info-modal').modal({ keyboard: false, show: true });
+
+
+
                 fn_ValidarTransacciones();
             });
 
@@ -798,6 +1029,14 @@
             }).done(function (result) {
                 $('#divcarga').removeClass("is-active");
                 NotificacionSuccessDerecha("Transaccion creada, por favor espera la confirmación");
+                document.getElementById("btnCrearOperacion").disabled = false;
+                clearInterval(valorintervalo);
+                var TraerObjLista = JSON.parse(localStorage.getItem('SESSION_ARROBJTRANSACCION'));
+                TraerObjLista.splice(TraerObjLista.length - 1, 1);
+                var arrobjFinal = TraerObjLista;
+                localStorage.setItem('SESSION_ARROBJTRANSACCION', JSON.stringify(arrobjFinal));
+                $('#hddtransaccionid').val("");
+
                 $('#txcuenta').val("");
                 $('#txnumerocuenta').val("");
                 $('#fill-info-modal').modal("hide");
@@ -805,8 +1044,11 @@
         });
 
         function fnWhatsapp() {
-            window.open("https://web.whatsapp.com/send?phone=51941645017&text=" ,'_blank');
+            window.open("https://web.whatsapp.com/send?phone=51941645017&text=", '_blank');
         }
+
+
+
 
     </script>
 }

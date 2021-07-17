@@ -281,14 +281,44 @@
                 alert("Falta completar campos");
                 return;
             }
-
-            if ($("#checkbox-signup").prop('checked') == false) {
-                alert("Debes declarar que la cuenta es tuya");
+            
+            if (!validarnumero($('#txnumerocuenta').val())) {
+                alert("Ingrese un número de cuenta válido");
                 return;
             }
 
-            if (!validarnumero($('#txnumerocuenta').val()) || txnumerocuenta.length <= 12) {
-                alert("Ingrese un número de cuenta válido");
+            if (parseInt(slcbanco) == 13 && txnumerocuenta.length < 11) {
+                alert("Debes ingresar el CCI de Banco de la nación.");
+                return;
+            }
+
+            if (parseInt(slcbanco) == 5 && txnumerocuenta.length < 10) {
+                alert("Debes ingresar el CCI de Scotiabank.");
+                return;
+            }
+
+            if (parseInt(slcbanco) == 3 && txnumerocuenta.length < 18) {
+                alert("Debes ingresar el CCI de BBVA.");
+                return;
+            }
+
+            if (parseInt(slcbanco) == 2 && txnumerocuenta.length < 13) {
+                alert("Debes ingresar el CCI de Interbank.");
+                return;
+            }
+
+            if (parseInt(slcbanco) == 1 && txnumerocuenta.length < 14) {
+                alert("Debes ingresar el número de cuenta BCP.");
+                return;
+            }
+
+            if (parseInt(slcbanco) == 4 && txnumerocuenta.length < 12) {
+                alert("Debes ingresar el CCI de BanBif.");
+                return;
+            }
+
+            if ($("#checkbox-signup").prop('checked') == false) {
+                alert("Debes declarar que la cuenta es tuya");
                 return;
             }
 
@@ -365,7 +395,6 @@
                         "sSearch": "Buscar:"
                     },
                     "columns": [
-                        //idcuentabancaria
                         {
                             "mData": "itipocuenta",
                             "sClass": "center",
@@ -497,7 +526,7 @@
                 alert("Debes declarar que la cuenta es tuya");
                 return;
             }
-
+            
             $('#divcarga').addClass("is-active");
             $.ajax({
                 type: 'post',

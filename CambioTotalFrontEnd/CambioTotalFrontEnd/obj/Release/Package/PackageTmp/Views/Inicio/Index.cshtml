@@ -12,6 +12,11 @@
         padding-left: 0;
     }
 
+    .faq .content h2.title {
+        color: #00a24f;
+        margin: 19px 0 26px;
+    }
+
     @@media (max-width: 414px) {
         .imgimg {
             max-width: 100% !important;
@@ -22,15 +27,21 @@
         color: #000;
     }
 
-    .about .content .compare-box .text-box p.text {
-        color: #000;
-    }
 
     @@media (max-width: 1899px) {
         .faq .question .question-man {
             right: 7%;
             width: 22%;
         }
+
+        .banner .hero-area {
+            padding: 100px 0 0px;
+        }
+    }
+
+    .about .upper-content h2.title {
+        color: #00a24f;
+        margin: 17px 0 10px;
     }
 
     .banner .hero-area .hero-form .courrency-select {
@@ -95,9 +106,11 @@
         transition: 0.1s;
     }
 
- 
-
-   
+    .about .content .compare-box .text-box p.text {
+        color: #000;
+        padding: 22px 21px 0 0;
+        font-size: 20px;
+    }
 </style>
 <!-- preloader area end -->
 <!-- Banners Start -->
@@ -150,22 +163,17 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7 ">
-                    <div class="banner-content" style="margin-left: 3%;">
+                    <div class="banner-content" style="margin-left: 3%;margin-bottom: 20%;">
                         <h1 class="head">CAMBIA TU DINERO DESDE DONDE ESTÉS.</h1>
                         <p class="text" style="font-size: 25px;">
                             FÁCIL, RÁPIDO Y SEGURO.
                             COTIZA CON NOSOTROS.
                         </p>
                         <div>
-                            <img src="~/assets/logo-sbs-blanco.png" />
-                            <p class="text-white" style="font-weight:500;font-size:20px;">Registro SBS: 01989-2021</p>
+                            <img src="~/assets/logo-sbs-blanco.png" height="102" />
+                            <p class="text-white" style="font-weight:500;font-size:25px;">Registro SBS: 01989-2021</p>
                         </div>
-                        <p class="text" style="font-size: 16px;">
-                            ✅ TRANSFERENCIAS INMEDIATAS EN
-                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCA3MiAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjcyIiBoZWlnaHQ9IjIwIiBmaWxsPSIjMDAyQThEIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTcuOTE2NCAxNS40NzU0QzE3LjkxNjQgMTUuNDc1NCAxNy43Nzk2IDE2LjE1OCAxOC4zNzg0IDE2LjIxNDVDMTguNjgxMiAxNi4yMjQ3IDE5LjAwMzEgMTYuMjI0NyAxOS4zNDE0IDE2LjIyNDdDMjEuNTAwNCAxNi4yMjQ3IDIzLjQ3NTYgMTUuMzg5NiAyMy41MTk4IDEzLjMzODJDMjMuNTYwNSAxMS41MjAxIDIyLjAyMzQgMTAuOTcyMiAyMC4xNzEyIDEwLjk3MjJIMTguODY0M0wxNy45MTY0IDE1LjQ3NTRaTTI3LjcxMTggMTMuNDM4NUMyNy43MTE4IDE2LjE1OTMgMjUuNTQxNiAxOS43NDg4IDE4LjAzNTcgMTkuMzA3QzE3LjE1NiAxOS4yNTQ3IDE2LjYxNTUgMTkuMTc4MyAxNS44MjIgMTguOTczMUMxMi45OTQ4IDE4LjI0MDggMTMuOTg5MyAxNC43Mjk5IDEzLjk4OTMgMTQuNzI5OUwxNi44NjYgMS4xNDM3N0MxOC40NDkgMC44NzIzMjkgMjAuMjI0MiAwLjcwNzUxIDIyLjA0NzggMC43MDc1MUMyNi4wNjIyIDAuNzA3NTEgMjguNzIyMyAyLjIxNTA5IDI4LjcyMjMgNS4wMzY1NkMyOC43MjIzIDcuNjc4MzMgMjYuMjk5NiA5LjExNDEyIDI0LjQ2NTcgOS40Mzk1MUMyNS45MTkgOS41NTM3OCAyNy43MTE4IDEwLjczNDMgMjcuNzExOCAxMy40Mzg1Wk0yMC4zNzIzIDMuODYyNDJMMTkuNjQ2NiA3LjM2MjdDMTkuNjQ2NiA3LjM2MjcgMTkuNDY2MyA4LjExMjAzIDIwLjA4MSA4LjExMjAzSDIwLjkyNzZDMjMuMTA1NCA4LjExMjAzIDI0LjYxMzcgNy4yMTQwMyAyNC42NTE2IDUuNjMyMUMyNC42ODIzIDQuMzI3MTUgMjMuNjE0OCAzLjc2MTc1IDIyLjA5ODggMy43NjE3NUMyMS40MDU5IDMuNzYxNzUgMjAuNjc4MiAzLjgxMTQ1IDIwLjM3MjMgMy44NjI0MlpNNDYuMDY1MyAxOS4zNTZINDMuNjgyNUw0Ny40NjA4IDEuMjQ0NjJDNDkuMDIzNCAwLjg2MDE4MSA1MC42NjgyIDAuNzg0MTQ0IDUyLjU3MzEgMC44MDExMzVDNTcuMjIyNyAwLjgyMDY3NiA1OS4zNTQyIDIuNjkyNzMgNTkuMzU0MiA1Ljk1NTk4QzU5LjM1NDIgOC45NDYwOCA1Ny4xMTc4IDEzLjM0NTYgNTAuNjg3IDEzLjM0NTZDNTAuMDI4MyAxMy4zNDU2IDQ5LjQ2MTggMTMuMjY2MiA0OS4wNTI5IDEzLjIzNzNDNDkuMDUyOSAxMy4yMzczIDQ4LjUyOTEgMTUuNzU1NSA0OC4yMTc2IDE3LjIzOTNDNDcuODI1IDE5LjEwMiA0Ni42NzQ5IDE5LjM1NiA0Ni4wNjUzIDE5LjM1NlpNNTEuMjM0MyAzLjk5NDI5TDUwLjE4MzkgOS4wNDQyQzUwLjE4MzkgOS4wNDQyIDQ5Ljg0NTIgMTAuMTE3NyA1MS4wNTQ0IDEwLjExNzdDNTEuMjAzNiAxMC4xMjQ0IDUxLjM2NTYgMTAuMTI5MSA1MS41NDM5IDEwLjEyOTFDNTQuMjQ3MSAxMC4xMDcgNTUuNjM1NCA4LjIyOTg4IDU1LjYzNTQgNi4yODY0NkM1NS42MzU0IDQuMzc0NDggNTQuMzk0NyAzLjkwNDIzIDUyLjkwMTEgMy45MDQyM0M1Mi4xMzgzIDMuOTA0MjMgNTEuNTY1OCAzLjk0MjQ2IDUxLjIzNDMgMy45OTQyOVpNMzQuMjUwMSAxMS4zNTQzQzM0LjI1MDEgMTQuMjEzMiAzNS44MDk1IDE2LjA0MTEgMzguNDg0OCAxNi4wNDExQzM5LjU4NjIgMTYuMDQxMSA0MC43ODk4IDE1Ljg0NDQgNDIuNDEzMSAxNC41NzY4TDQxLjc3NjggMTcuNjIxN0M0MS43NzY4IDE3LjYyMTcgNDEuNiAxOC42MzE5IDQwLjU0NTcgMTkuMDI0NEMzOS42ODkyIDE5LjM2NjMgMzguNzg1NiAxOS41MjE4IDM3LjQxNiAxOS41MjE4QzMzLjYwMSAxOS41MjE4IDI5Ljg3ODIgMTcuNTIxOSAyOS44NzgyIDExLjU5NkMyOS44NzgyIDYuMDUyOTUgMzMuMjE0MSAwLjQxODk0NSAzOS42NTM2IDAuNDE4OTQ1QzQwLjkxNzEgMC40MTg5NDUgNDEuODEwMyAwLjYwODQwMiA0Mi45NTQgMS4wMDEzM0M0NC43MTc3IDEuNjA3MDkgNDQuOTMxOSAyLjYyNDA0IDQ0LjgxNTEgMy4yMzM2MUM0NC42OTU4IDMuODU3NjMgNDQuMjc5NyA1LjM1NzE0IDQ0LjI3OTcgNS4zNTcxNEM0My4xNzAyIDQuMzAxOTYgNDEuMjM3OCA0LjAwNTAzIDQwLjE2MzUgNC4wMDUwM0MzNi4wNDczIDQuMDA1MDMgMzQuMjUwMSA4LjQwNjI5IDM0LjI1MDEgMTEuMzU0M1pNNy4wNTIwNSA4Ljk4Nzk2QzUuNjEyNyA3LjMyNjE4IDQuMDk0MzUgNi4zMjE1NSAyLjk3MzM1IDUuNzQ4OTNDMi45NzMzNSA1Ljc0ODkzIDIuNDI3MjEgNS40NjA1IDIuMTQxOTcgNS4yOTQ4M0MyLjU1NzY2IDQuMjk5OTcgMy4xMDQ2IDMuNTg5MjkgMy4xMDQ2IDMuNTg5MjlDMy4xODE5OSAzLjQ4MTgyIDQuODM4NzYgMS40MDg4NCA2LjI5NjA3IDIuMTM2OTNDNy44ODc4MiAyLjg5OTQzIDguMDQ5NzkgNi4zOTkyOCA3LjA1MjA1IDguOTg3OTZaTTY2LjE4NDkgOC45ODc5NkM2NC43NDU2IDcuMzI2MTggNjMuMjI3MiA2LjMyMTU1IDYyLjEwNjIgNS43NDg5M0M2Mi4xMDYyIDUuNzQ4OTMgNjEuNTYwMSA1LjQ2MDUgNjEuMjc0OCA1LjI5NDgzQzYxLjY5MDUgNC4yOTk5NyA2Mi4yMzc1IDMuNTg5MjkgNjIuMjM3NSAzLjU4OTI5QzYyLjMxNDkgMy40ODE4MiA2My45NzE2IDEuNDA4ODQgNjUuNDI5IDIuMTM2OTNDNjcuMDIwNyAyLjg5OTQzIDY3LjE4MjcgNi4zOTkyOCA2Ni4xODQ5IDguOTg3OTZaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTExLjk5MDYgMTEuNjM0NEMxMC40Mzg3IDE0LjI3MzcgNi4yMDUyNiAxNy4yODIgNS4wMDU2NiAxNy43MzMyQzIuNjcyNjkgMTguNzcyNiAxLjA5MzMxIDE2Ljg0NDkgMC45NTg0NzQgMTYuNjQyN0MwLjUyMzIzNyAxNi4wNDU5IDAuNDE3NTIgMTUuOTE5NyAwLjIwNjg4MiAxNS40ODQzQzAuMTY1NzkyIDE1LjU1NjUgNC42ODUzMiAxMy4zMTc5IDYuMzA0NTkgMTAuNDIxN0M4LjA1ODMgNy45MzQwOSA4LjIxMTEgMy4wNTQ1MSA2LjI5NTgxIDIuMTM2OTZDNi44NzUwNyAyLjQ0NzQ5IDguMjM5ODIgMy4yODE3NyA5LjQ3MTMzIDQuNDUwMzdDMTAuNyA1LjU1OTUgMTEuNzYyIDcuMDEzOTkgMTEuNzM5MyA2Ljk5NTNDMTEuODY4OSA3LjE4MjYzIDEzLjQwOCA5LjIyMjQ4IDExLjk5MDYgMTEuNjM0NFpNNzAuODcyMSA2Ljk5NTNDNzEuMDAxOCA3LjE4MjYzIDcyLjU0MDkgOS4yMjI0OCA3MS4xMjM1IDExLjYzNDRDNjkuNTcyIDE0LjI3MzcgNjUuMzM4MSAxNy4yODIgNjQuMTM4NSAxNy43MzMyQzYxLjgwNTYgMTguNzcyNiA2MC4yMjYyIDE2Ljg0NDkgNjAuMDkxMyAxNi42NDI3QzU5LjY1NjEgMTYuMDQ1OSA1OS41NTA0IDE1LjkxOTcgNTkuMzM5NyAxNS40ODQzQzU5LjI5ODYgMTUuNTU2NSA2My44MTg2IDEzLjMxNzkgNjUuNDM3NCAxMC40MjE3QzY3LjE5MTIgNy45MzQwOSA2Ny4zNDM5IDMuMDU0NTEgNjUuNDI4NyAyLjEzNjk2QzY2LjAwNzkgMi40NDc0OSA2Ny4zNzI3IDMuMjgxNzcgNjguNjA0MiA0LjQ1MDM3QzY5LjgzMjkgNS41NTk1IDcwLjg5NTMgNy4wMTM5OSA3MC44NzIxIDYuOTk1M1oiIGZpbGw9IiNGRjc4MDAiLz4KPC9zdmc+Cg==">
-                            <br>
-                            ✅ TRANSFERENCIAS INTERBANCARIAS HASTA EN 24 HORAS TODOS LOS BANCOS
-                        </p>
+
                     </div>
                 </div>
                 <div class="col-lg-5">
@@ -218,6 +226,103 @@
     <!-- Banner End -->
 </section>
 
+<style>
+    @@media (min-width: 1000px) {
+        #pays {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            text-align: center;
+            background-color: white;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        #pays-box {
+            display: flex;
+            width: 100%;
+        }
+
+        #pays-fast {
+            width: 50%;
+            padding-top: 10px;
+        }
+
+        #pays-between {
+            width: 50%;
+            padding-top: 10px;
+        }
+
+        .pay-bank {
+            max-height: 50px;
+            display: inline-block;
+        }
+
+            .pay-bank img {
+                max-height: 50px;
+            }
+
+        #pays h2 {
+            padding-bottom: 10px;
+        }
+    }
+
+    @@media (max-width: 1000px) {
+        #pays {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            text-align: center;
+            background-color: white;
+            overflow: hidden;
+        }
+
+        #pays-box {
+            width: 100%;
+        }
+
+        #pays-fast {
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        #pays h2 {
+            padding-bottom: 10px;
+        }
+
+        .pay-bank {
+            max-height: 50px;
+            display: inline-block;
+        }
+
+            .pay-bank img {
+                max-height: 50px;
+            }
+
+        #pays-between {
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+    }
+</style>
+<div id="pays">
+    <div id="pays-box">
+        <div id="pays-fast">
+            <h5>TRANSFERENCIAS INMEDIATAS <p style="font-size:12px">(15 min)</p></h5>
+            <div class="pay-bank"><img src="https://cambiosol.pe/storage/1602585928.png"></div>
+        </div>
+        <div id="pays-between">
+            <h5>TRANSFERENCIAS INTERBANCARIAS <p style="font-size:12px">(Hasta 1 día útil)</p></h5>
+            <div class="pay-bank"><img src="https://cambiosol.pe/storage/1602586514.jpg"></div>
+            <div class="pay-bank"><img src="https://cambiosol.pe/storage/1602586768.jpg"></div>
+            <div class="pay-bank"><img src="https://cambiosol.pe/storage/1602586972.png"></div>
+            <div class="pay-bank"><img src="https://cambiosol.pe/storage/1602587208.png"></div>
+            <div class="pay-bank"><img style="height: fit-content;" src="https://www.pichincha.pe/themes/custom/financiero/images/logo-bp.svg"></div>
+
+        </div>
+    </div>
+</div>
+
 <!-- How-use Start -->
 <div class="how-use" id="divcomousar">
     <div class="usesape">
@@ -226,13 +331,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-left">
-                <h3 class="subtitle" style="color:#3dad52;">Realiza tu cambio ahora</h3>
-                <h2 class="title" style="color: #3dad52;">Es muy fácil!</h2>
-                <p class="text" style="color: #3dad52;">Pasos simples para que cambies tu dinero de forma rápida y segura</p>
+                <h3 class="subtitle" style="color:#00a24f;">Realiza tu cambio ahora</h3>
+                <h2 class="title" style="color: #00a24f;">¡Es muy fácil!</h2>
+                <p class="text" style="color: #00a24f;">Pasos simples para que cambies tu dinero de forma rápida y segura</p>
             </div>
             <style>
                 .help-box {
-                    background-color: #3dad52 !important;
+                    background-color: #00a24f !important;
                 }
 
                 .help-box {
@@ -257,8 +362,10 @@
                             <img class="imgimg" src="~/assets/2.png" />
                         </div>
                         <div class="text-box">
-                            <span style="color:green;">Paso 1</span>
-                            <h5>Ingresa el monto en soles o dólares que deseas cambiar</h5>
+                            <b style="color:#00a24f;">Paso 1</b>
+                            <br />
+                            <b style="color:#00a24f;">Regístrate</b>
+                            <h6>Crea tu usuario en nuestra página.</h6>
                         </div>
                     </div>
                     <div class="install">
@@ -266,8 +373,10 @@
                             <img class="imgimg" style="max-width: 80%;" src="~/assets/3.png" />
                         </div>
                         <div class="text-box">
-                            <span style="color:green;">Paso 2</span>
-                            <h5>Indícanos desde qué banco y cuenta de ahorros deseas que te depositemos</h5>
+                            <b style="color:#00a24f;">Paso 2</b>
+                            <br />
+                            <b style="color:#00a24f;">Cotiza</b>
+                            <h6>Cotiza el monto a cambiar y selecciona en qué cuenta deseas recibirlo.</h6>
                         </div>
                     </div>
                     <div class="install">
@@ -275,8 +384,10 @@
                             <img class="imgimg" style="max-width: 65%;" src="~/assets/4.png" />
                         </div>
                         <div class="text-box">
-                            <span style="color:green;">Paso 3</span>
-                            <h5>Transfiere el monto a cambiar a nuestra cuenta e indícanos el número de operación que te da el banco tras hacer la transferencia</h5>
+                            <b style="color:#00a24f;">Paso 3</b>
+                            <br />
+                            <b style="color:#00a24f;font-size: 16px;">Transfiere a TU CAMBIO TOTAL</b>
+                            <h6>Realiza la transferencia desde tu banco a la cuenta indicada e ingresa el número de operación.</h6>
                         </div>
                     </div>
                     <div class="install">
@@ -284,8 +395,10 @@
                             <img class="imgimg" style="max-width: 75%;" src="~/assets/5.png" />
                         </div>
                         <div class="text-box">
-                            <span style="color:green;">Paso 4</span>
-                            <h5>Te confirmamos que ya depositamos los soles o dólares que necesitabas. ¡Listo!</h5>
+                            <b style="color:#00a24f;">Paso 4</b>
+                            <br />
+                            <b style="color:#00a24f;">Recibe tu cambio</b>
+                            <h6>Verifica el abono en tu cuenta en tiempo récord y sigue ahorrando con nosotros.</h6>
                         </div>
                     </div>
                 </div>
@@ -303,8 +416,8 @@
         <div class="row">
             <div class="col-lg-10 m-auto">
                 <div class="upper-content text-center">
-                    <h3 class="subtitle" style="color:green;">Tenemos el mejor tipo de cambio para ti</h3>
-                    <h2 class="title">¿Porqué usar TuCambioTotal?</h2>
+                    <h3 class="subtitle" style="color:#00a24f;">Tenemos el mejor tipo de cambio para ti</h3>
+                    <h2 class="title">¿Por qué usar TuCambioTotal?</h2>
                     <p class="text">
                         Buscamos en tiempo real muchos datos para comparar los tipos de cambios existentes cada día.
                         Trabajamos constantemente para ti.
@@ -326,9 +439,9 @@
                         </div>
                         <div class="text-box">
                             <h3 class="subtitle">Ahorra</h3>
-                            <p class="text">
+                            <h6 class="text">
                                 Puedes ahorrar dinero cada vez que hagas una transacción con nosotros.
-                            </p>
+                            </h6>
                         </div>
                     </div>
                     <div class="compare-box">
@@ -337,10 +450,10 @@
                         </div>
                         <div class="text-box">
                             <h3 class="subtitle">Somos confiables</h3>
-                            <p class="text">
+                            <h6 class="text">
                                 Te brindamos el apoyo constante para que tus cambios de soles a dólares
                                 sean seguros.
-                            </p>
+                            </h6>
                         </div>
                     </div>
                     <div class="compare-box">
@@ -349,10 +462,10 @@
                         </div>
                         <div class="text-box">
                             <h3 class="subtitle">Obtén tu dinero rápidamente</h3>
-                            <p class="text">
+                            <h6 class="text">
                                 Hacemos lo posible para que tu cambio llegue a tu cuenta bancaria lo más rápido
                                 posible.
-                            </p>
+                            </h6>
                         </div>
                     </div>
                 </div>
@@ -370,7 +483,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="content">
-                    <h3 class="subtitle" style="color:green;">¿Cómo te podemos ayudar?</h3>
+                    <h3 class="subtitle" style="color:#00a24f;">¿Cómo te podemos ayudar?</h3>
                     <h2 class="title">Preguntas Frecuentes</h2>
                     <p class="text">Respondemos a las dudas que tengas</p>
                 </div>
@@ -388,9 +501,12 @@
                         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Regístrate y/o Ingresa a tu perfil de usuario desde la web o tu app, luego:
+                                Regístrate y/o Ingresa a tu perfil de usuario desde la web, luego:
+                                <br />
                                 1) Calcula el monto a cambiar e indica tu banco de origen y cuenta destino.
+                                <br />
                                 2) Transfiere desde tu banca móvil o app de banco a nuestro número de cuenta indicado.
+                                <br />
                                 3) Coloca tu número de operación de la transferencia bancaria en el campo indicado y listo.
                             </div>
                         </div>
@@ -422,7 +538,7 @@
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Al nivel nacional operamos con el BCP, Interbank y BBVA.
+                                A nivel nacional con BCP de manera inmediata. Para otros bancos realizamos transferencias interbancarias.
                             </div>
                         </div>
                     </div>
@@ -437,7 +553,7 @@
                         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Solo aceptamos transferencias online (desde banco por internet o la app del banco).
+                                Solo aceptamos transferencias online (desde banca por internet o la app del banco).
                             </div>
                         </div>
                     </div>
@@ -452,9 +568,9 @@
                         <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Una vez efectuado la operación en nuestra plataforma, debes ingresar a banca por internet o banca móvil de tu banco del cual transferirás el monto acordado.
-                                Luego, estando en tu banca móvil o banca por internet de tu Banco, diríjase a la sección transferencia a otras cuentas, escriba el monto a transferir y haga uso de su clave token, tarjeta de coordenadas o algún dispositivo que su banco le entregue para hacer este tipo de operaciones.
-                                Seguidamente registra el número de operación en nuestra plataforma y listo. Nosotros hacemos lo demás.
+                                Una vez efectuada la operación en nuestra plataforma, debes ingresar a tu banca por internet o banca móvil de la cual transferirás el monto acordado.
+                                Luego, estando en tu banca por internet o móvil, dirígete a la sección transferencia a otras cuentas, escriba el monto a transferir y haga uso de su clave token, tarjeta de coordenadas o algún dispositivo que su banco le entregue para hacer este tipo de operaciones.
+                                Seguidamente, registra el número de operación en nuestra plataforma y listo. Nosotros hacemos lo demás.
                             </div>
                         </div>
                     </div>
@@ -463,7 +579,7 @@
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                                 <img src="~/assets/img/faq-icon.png" alt="" class="icon">
-                                ¿A dónde me depositan a cambiar dólares o soles?
+                                ¿A dónde me depositan al cambiar dólares o soles?
                             </button>
                         </h2>
                         <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
@@ -484,7 +600,8 @@
                         <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSix"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Lo puedes realizar cuando te inscribe como usuario o en tu primera operación; para ello, necesitas la siguiente información:
+                                Una vez registrado en TuCambioTotal, puedes ingresar tu número de cuenta verificando la moneda (soles o dólares)
+                                y el CCI correcto. Para ello necesitas la siguiente información:
                                 <ul>
                                     <li>Tipo de Cuenta (Cuenta de Ahorro o Cuenta Corriente)</li>
                                     <li>Moneda (soles y dólares)</li>
@@ -537,7 +654,7 @@
     <div class="ccw_plugin chatbot" style="bottom:20px; right:30px;">
         <div class="style4 animated no-animation ccw-no-hover-an">
             <a target="_blank" href="https://web.whatsapp.com/send?phone=51941645017&text=" class="nofocus">
-                <div class="chip style-4 ccw-analytics p-1" id="style-4" data-ccw="style-4" style="border-radius:10px;background-color: #3dad52; color: #fff">
+                <div class="chip style-4 ccw-analytics p-1" id="style-4" data-ccw="style-4" style="border-radius:10px;background-color: #00a24f; color: #fff">
                     <img id="s4-icon" data-ccw="style-4" alt=""
                          data-src="https://mendozacercoselectricos.com/wp-content/plugins/click-to-chat-for-whatsapp/./new/inc/assets/img/whatsapp-logo-32x32.png"
                          class="ccw-analytics lazyloaded"
@@ -558,7 +675,7 @@
                 <div class="footer-box">
                     <a class="navbar-brand mt-1" style="display: inline-flex;" href="@Url.Action("Index","Inicio")">
                         <img src="~/assets/tucambio.png" height="45" class="logo" alt="logo">
-                        <h4 class="ml-1" style="color:#3dad52;margin-top: 4%;">TuCambioTotal</h4>
+                        <h4 class="ml-1" style="color:#00a24f;margin-top: 4%;">TuCambioTotal</h4>
                     </a>
                     <!-- <a href="#"><img class="logo" src="assets/img/logo.png" alt=""> </a> -->
                 </div>
@@ -621,7 +738,7 @@
         </div>
     </div>
 </div>
-
+<input type="hidden" id="hdddirIp" value="@ViewBag.DirIP" />
 @section Scripts{
     <script src="~/assets/js/moment.js"></script>
     <script>

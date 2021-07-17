@@ -41,11 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="api.cs" />
+    <Compile Include="currency.cs" />
     <Compile Include="edCuentaBancaria.cs" />
     <Compile Include="edDivisa.cs" />
     <Compile Include="edMaestro.cs" />
     <Compile Include="edTransaccion.cs" />
     <Compile Include="edUsuario.cs" />
+    <Compile Include="exchangeCurrency.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

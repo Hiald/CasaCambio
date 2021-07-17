@@ -817,6 +817,8 @@ BEGIN
     ,1
     ,STR_TO_DATE(_dt_fecharegistro, '%Y-%m-%d'));
 
+    SELECT LAST_INSERT_ID() as '_resultado';
+
   END;
   END IF;
 
@@ -835,6 +837,8 @@ BEGIN
       v_operacion_admin = _v_operacion_admin
     WHERE idtransaccion = _idtransaccion;
   
+    SELECT LAST_INSERT_ID() as '_resultado';
+
   END;
   END IF;
 
@@ -845,7 +849,24 @@ BEGIN
       idusuario_administrador = _idusuario_administrador,
       i_estado = _i_estado
     WHERE idtransaccion = _idtransaccion;
+    
+    SELECT LAST_INSERT_ID() as '_resultado';
+
+  END;
+  END IF;
+
+  -- desactivar
+  IF (_itipo_operacion = 4) THEN
+  BEGIN
   
+    UPDATE t_transaccion SET
+      idusuario_administrador = _idusuario_administrador,
+      i_estado = _i_estado,
+      b_estado = 0
+    WHERE idtransaccion = _idtransaccion;
+    
+    SELECT LAST_INSERT_ID() as '_resultado';
+
   END;
   END IF;
 
@@ -901,8 +922,8 @@ BEGIN
   FROM t_transaccion t
     LEFT JOIN t_usuario u ON u.idusuario = t.idusuario
     WHERE ((DATE_FORMAT(t.dt_fecha, '%d-%m-%Y') = STR_TO_DATE(_dt_fecha, '%Y-%m-%d')) OR (_dt_fecha = 'vacio'))
-     AND ((t.idusuario = _idusuario) OR (_idusuario = 0))
-     AND t.b_estado = 1 AND ((t.i_estado = _itipo) OR (_itipo = 0)) ORDER BY t.idtransaccion DESC;
+    AND ((t.idusuario = _idusuario) OR (_idusuario = 0))
+    AND t.b_estado = 1 AND ((t.i_estado = _itipo) OR (_itipo = 0)) ORDER BY t.idtransaccion DESC;
 
 END$$
 DELIMITER ;

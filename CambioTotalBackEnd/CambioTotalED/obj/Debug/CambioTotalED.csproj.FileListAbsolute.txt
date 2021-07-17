@@ -1,0 +1,5 @@
+C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalBackEnd\CambioTotalED\bin\Debug\CambioTotalED.dll
+C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalBackEnd\CambioTotalED\bin\Debug\CambioTotalED.pdb
+C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalBackEnd\CambioTotalED\obj\Debug\CambioTotalED.csproj.CoreCompileInputs.cache
+C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalBackEnd\CambioTotalED\obj\Debug\CambioTotalED.dll
+C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalBackEnd\CambioTotalED\obj\Debug\CambioTotalED.pdb
