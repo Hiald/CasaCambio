@@ -37,7 +37,7 @@ namespace CambioTotalTD
 
         public int tdInsertarUsuario(string tdnombres, string tdapellidos, int tdtipodocumento, string tddocumento,
             string tdfecharegistro, string tdhoraregistro, int tdtipousuario, string tdcorreo, string tdclave, string tdtoken,
-            string tdruc, string tdrazonsocial, string tdpep1, string tdpep2, string tdpep3, string tdpep4)
+            string tdruc, string tdrazonsocial, string tdpep1, string tdpep2, string tdpep3, string tdpep4, string tdcelular)
         {
             int iRespuesta = -1;
             try
@@ -50,7 +50,7 @@ namespace CambioTotalTD
                         iadUsuario = new adUsuario(con);
                         iRespuesta = iadUsuario.adInsertarUsuario(tdnombres, tdapellidos, tdtipodocumento, tddocumento,
                                                     tdfecharegistro, tdhoraregistro, tdtipousuario, tdcorreo, tdclave, tdtoken
-                                                    , tdruc, tdrazonsocial, tdpep1, tdpep2, tdpep3, tdpep4);
+                                                    , tdruc, tdrazonsocial, tdpep1, tdpep2, tdpep3, tdpep4, tdcelular);
                         scope.Commit();
                     }
                 }

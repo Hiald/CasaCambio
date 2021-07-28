@@ -284,7 +284,8 @@ CREATE PROCEDURE `sp_insertar_usuario`
   ,IN _pep1 VARCHAR(2)
   ,IN _pep2 VARCHAR(2)
   ,IN _pep3 VARCHAR(2)
-  ,IN _pep4 VARCHAR(2))
+  ,IN _pep4 VARCHAR(2)
+  ,IN _v_celular1 VARCHAR(20))
 BEGIN
 
 IF EXISTS(SELECT idusuario FROM t_acceso WHERE v_correo = _v_correo) THEN
@@ -306,7 +307,8 @@ BEGIN
       ,v_pep1
       ,v_pep2
       ,v_pep3
-      ,v_pep4)
+      ,v_pep4
+      ,v_celular1)
     VALUES (
        _v_nombres
       ,_v_apellidos
@@ -320,7 +322,8 @@ BEGIN
       ,_pep1
       ,_pep2
       ,_pep3
-      ,_pep4);
+      ,_pep4
+      ,_v_celular1);
 
     INSERT INTO t_acceso(
        idusuario
@@ -972,6 +975,10 @@ END$$
 DELIMITER ;
 
 -- ---------------------------------------------------------------------------
+
+-- ALTER TABLE t_cuenta_bancaria
+-- ADD COLUMN `_v_numero_cuenta_interbancaria` VARCHAR(25);
+
 
 /* 
 #0f803b verde

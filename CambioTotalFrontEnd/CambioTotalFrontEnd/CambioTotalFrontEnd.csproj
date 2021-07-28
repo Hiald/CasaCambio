@@ -244,6 +244,7 @@
     <Content Include="assets\datatables\pdfmake-0.1.36\pdfmake.js" />
     <Content Include="assets\datatables\pdfmake-0.1.36\pdfmake.min.js" />
     <Content Include="assets\datatables\pdfmake-0.1.36\vfs_fonts.js" />
+    <Content Include="assets\ESCARAPELA.png" />
     <Content Include="assets\exchange-white.svg" />
     <Content Include="assets\fonts\dripicons-v2.svg" />
     <Content Include="assets\fonts\Nunito-Bold.svg" />
