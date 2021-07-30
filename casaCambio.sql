@@ -977,7 +977,7 @@ DELIMITER ;
 -- ---------------------------------------------------------------------------
 
 -- ALTER TABLE t_cuenta_bancaria
--- ADD COLUMN `_v_numero_cuenta_interbancaria` VARCHAR(25);
+-- ADD COLUMN `v_numero_cuenta_interbancaria` VARCHAR(25);
 
 
 /* 
