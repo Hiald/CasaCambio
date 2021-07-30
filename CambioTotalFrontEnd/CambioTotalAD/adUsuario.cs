@@ -75,7 +75,7 @@ namespace CambioTotalAD
 
         public int adInsertarUsuario(string adnombres, string adapellidos, int adtipodocumento, string addocumento,
             string adfecharegistro, string adhoraregistro, int adtipousuario, string adcorreo, string adclave, string adtoken,
-            string adruc, string adrazonsocial, string adpep1, string adpep2, string adpep3, string adpep4)
+            string adruc, string adrazonsocial, string adpep1, string adpep2, string adpep3, string adpep4, string adcelular)
         {
             try
             {
@@ -98,6 +98,7 @@ namespace CambioTotalAD
                 cmd.Parameters.Add("_pep2", MySqlDbType.VarChar, 2).Value = adpep2;
                 cmd.Parameters.Add("_pep3", MySqlDbType.VarChar, 2).Value = adpep3;
                 cmd.Parameters.Add("_pep4", MySqlDbType.VarChar, 2).Value = adpep4;
+                cmd.Parameters.Add("_v_celular1", MySqlDbType.VarChar, 20).Value = adcelular;
 
                 result = Convert.ToInt32(cmd.ExecuteScalar());
                 return result;

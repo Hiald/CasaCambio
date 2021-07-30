@@ -139,7 +139,7 @@ namespace CambioTotalFrontEnd.Controllers
         [HttpPost]
         public JsonResult CrearUsuario(string wnombres, string wapellidos, int wtipodocumento, string wdocumento,
             string wfecharegistro, string whoraregistro, int wtipousuario, string wcorreo, string wclave, string wtoken,
-            string wruc, string wrazonsocial, string wpep1, string wpep2, string wpep3, string wpep4)
+            string wruc, string wrazonsocial, string wpep1, string wpep2, string wpep3, string wpep4, string wcelular)
         {
             try
             {
@@ -149,7 +149,7 @@ namespace CambioTotalFrontEnd.Controllers
                 edUsuario oedusuario = new edUsuario();
                 iresultado = itdusuario.tdInsertarUsuario(wnombres, wapellidos, wtipodocumento, wdocumento, wfecharegistro,
                                                         whoraregistro, wtipousuario, wcorreo, wclave, wtoken, wruc, wrazonsocial
-                                                        , wpep1, wpep2, wpep3, wpep4);
+                                                        , wpep1, wpep2, wpep3, wpep4, wcelular);
                 if (iresultado == 0 || iresultado == -1 || iresultado == -2)
                 {
                     objResultado = new

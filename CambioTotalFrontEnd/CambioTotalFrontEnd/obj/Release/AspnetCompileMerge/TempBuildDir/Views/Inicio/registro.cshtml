@@ -117,10 +117,20 @@
                                         <input class="form-control" maxlength="75" type="text" id="txrazonsocial" placeholder="Ingresa la razón social">
                                     </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="txcorreo">Correo*</label>
-                                    <input class="form-control" maxlength="100" type="email" id="txcorreo" placeholder="Ingresa tu correo electrónico">
+                                 
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="txcorreo">Correo*</label>
+                                            <input class="form-control" maxlength="100" type="email" id="txcorreo" placeholder="Ingresa tu correo electrónico">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="txcelular">Celular</label>
+                                            <input class="form-control" maxlength="9" type="text" id="txcelular" placeholder="Ingresa el número de celular">
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -196,7 +206,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="card">
-                        <strong>PEP:&nbsp;</strong><p>Son personas naturales, nacionales o extranjeras, que cumples o que en los últimos cinco (5) años hayan cumplido funciones públicas destacas</p>
+                        <strong>PEP:&nbsp;</strong><p>Son personas naturales, nacionales o extranjeras, que cumplen o que en los últimos cinco (5) años hayan cumplido funciones públicas destacas</p>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
@@ -281,6 +291,11 @@
     <script src="~/assets/js/moment.js"></script>
 
     <script>
+        function validarNumero(numero) {
+            var regex = /^-?\d*$/;
+            return regex.test(numero);
+        }
+
         $('#btnsiguiente').click(function () {
             $('#divcarga').addClass("is-active");
             var itipocuenta = $('input[name="rbt"]:checked').val();
@@ -295,6 +310,7 @@
             var repsclave = $('#passwordrep').val();
             var sfecharegistro = moment().format("YYYY-MM-DD");
             var shora = moment().format("hh:mm:ss");
+            var scelular = $('#txcelular').val();
             //1 personal, 2 empresa
 
             if (itipocuenta == 1) {
@@ -310,6 +326,15 @@
                     return;
                 }
             }
+
+            if (scelular.length != 0) {
+                if (!validarNumero(scelular) || scelular.length < 9) {
+                    alert("Ingrese un celular válido");
+                    $('#divcarga').removeClass("is-active");
+                    return;
+                }
+            }
+
 
             if (sdocumento.length < 8) {
                 alert("El número de documento debe contener 8 dígitos");
@@ -422,6 +447,7 @@
             var repsclave = $('#passwordrep').val();
             var sfecharegistro = moment().format("YYYY-MM-DD");
             var shora = moment().format("hh:mm:ss");
+            var scelularReg = $('#txcelular').val();
             //1 personal, 2 empresa
 
             var Parampep1 = $('input[name="tp1"]:checked').val();
@@ -474,7 +500,8 @@
                     "wpep1": Parampep1,
                     "wpep2": Parampep2,
                     "wpep3": Parampep3,
-                    "wpep4": Parampep4
+                    "wpep4": Parampep4,
+                    "wcelular": scelularReg
                 },
                 async: false,
                 success: function (msg) {
