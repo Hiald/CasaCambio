@@ -240,6 +240,12 @@
                             </div>
                         </div>
 
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="txnumCuentacciE">Número de Cuenta CCI</label>
+                                <input type="text" id="txnumCuentacciE" placeholder="" class="form-control" disabled>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
@@ -537,6 +543,8 @@
 
                     $('#txBancoReceptorE').val(sbancores);
                     $('#txnumCuentaE').val(data.aaData.vnumerocuenta);
+                    $('#txnumCuentacciE').val(data.aaData.vnumerocuentacci);                    
+
 
                     if (data.aaData.imoneda == 1) {
                         $('#txMonedaCuentaE').val("Soles (S/.)");

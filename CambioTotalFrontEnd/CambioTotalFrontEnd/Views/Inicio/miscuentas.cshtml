@@ -308,33 +308,13 @@
             }
             //29-07-2021
 
-            if (parseInt(slcbanco) == 13 && txnumerocuenta.length < 11) {
-                alert("Debes ingresar el CCI de Banco de la nación.");
+            if (txnumerocuenta.length < 10) {
+                alert("Ingrese un número de cuenta válido");
                 return;
             }
 
-            if (parseInt(slcbanco) == 5 && txnumerocuenta.length < 10) {
-                alert("Debes ingresar el CCI de Scotiabank.");
-                return;
-            }
-
-            if (parseInt(slcbanco) == 3 && txnumerocuenta.length < 18) {
-                alert("Debes ingresar el CCI de BBVA.");
-                return;
-            }
-
-            if (parseInt(slcbanco) == 2 && txnumerocuenta.length < 13) {
-                alert("Debes ingresar el CCI de Interbank.");
-                return;
-            }
-
-            if (parseInt(slcbanco) == 1 && txnumerocuenta.length < 14) {
-                alert("Debes ingresar el número de cuenta BCP.");
-                return;
-            }
-
-            if (parseInt(slcbanco) == 4 && txnumerocuenta.length < 12) {
-                alert("Debes ingresar el CCI de BanBif.");
+            if (txnumerocuentacci.length < 20) {
+                alert("Debes ingresar un número de CCI válido.");
                 return;
             }
 
@@ -356,6 +336,7 @@
                     "wibanco": slcbanco,
                     "wbanco": "",
                     "wnumerocuenta": txnumerocuenta,
+                    "wnumerocuentainterbancaria": txnumerocuentacci,
                     "wnombrecuenta": txcuenta,
                     "witipodeclaracion": 0,
                     "wtitular": "",
@@ -367,6 +348,7 @@
                 NotificacionSuccessDerecha("Cuenta creada correctamente");
                 $('#txcuenta').val("");
                 $('#txnumerocuenta').val("");
+                $('#txnumerocuentacci').val("");
                 $('#modalUsuario').modal("hide");
                 fnlistarTabla();
 
@@ -461,10 +443,11 @@
                                 } else {
                                     return "Dólares ($)";
                                 }
-
+                                
                             }
                         },
                         { "sName": "vnumerocuenta", "mDataProp": "vnumerocuenta" },
+                        { "sName": "vnumerocuentacci", "mDataProp":"vnumerocuentacci"},
                         {}
                         //{}
                     ],
@@ -478,6 +461,7 @@
                                         + ", " + row.ibanco
                                         + "," + row.itipocuenta
                                         + ", " + "\"" + encodeURIComponent(row.vnumerocuenta) + "\""
+                                        + ", " + "\"" + encodeURIComponent(row.vnumerocuentacci) + "\""
                                         + ", " + "\"" + encodeURIComponent(row.vnombrecuenta) + "\""
                                         + ", " + row.itipodeclaracion
                                         + ", " + "\"" + encodeURIComponent(row.vtitular) + "\""
@@ -487,7 +471,7 @@
                                 "sWidth": "5px",
                                 "sClass": "css-center",
                                 "bSort": false,
-                                "aTargets": [4]
+                                "aTargets": [5]
                             }
                             //,{
                             //    "mRender": function (data, type, row) {
@@ -515,14 +499,14 @@
             window.location.href = "/Inicio/principal";
         });
 
-        function fn_Editar(pidcuentabancaria, pimoneda, pibanco, pitipocuenta, pvnumerocuenta, pvnombrecuenta, pitipodeclaracion, pvtitular) {
+        function fn_Editar(pidcuentabancaria, pimoneda, pibanco, pitipocuenta, pvnumerocuenta,pvnumerocuentacci, pvnombrecuenta, pitipodeclaracion, pvtitular) {
             $('#hddidcuentabancaria').val(pidcuentabancaria);
             $('#txcuentaE').val(decodeURIComponent(pvnombrecuenta));
             $('#slctipocuentaE option[value="' + pitipocuenta + '"]').attr('selected', 'selected');
             $('#slcbancoE option[value="' + pibanco + '"]').attr('selected', 'selected');
             $('#slcmonedaE option[value="' + pimoneda + '"]').attr('selected', 'selected');
             $('#txnumerocuentaE').val(decodeURIComponent(pvnumerocuenta));
-
+            $('#txnumerocuentacciE').val(decodeURIComponent(pvnumerocuentacci));
             $('#modalEditarCuenta').modal("show");
         }
 
@@ -535,11 +519,22 @@
             var imonedaE = $('#slcmonedaE option:selected').attr('value');
             var slcbancoE = $('#slcbancoE option:selected').attr('value');
             var snumerocuenta = $('#txnumerocuentaE').val();
+            var snumerocuentacci = $('#txnumerocuentacciE').val();
             var txcuentaE = $('#txcuentaE').val();
 
 
-            if (txcuentaE == "" || itipocuenta == 0 || slcbancoE == 0 || imonedaE == 0 || snumerocuenta == "") {
+            if (txcuentaE == "" || itipocuenta == 0 || slcbancoE == 0 || imonedaE == 0 || snumerocuenta == "" || snumerocuentacci == "") {
                 alert("Falta completar campos");
+                return;
+            }
+
+            if (snumerocuenta.length < 10) {
+                alert("Ingrese un número de cuenta válido");
+                return;
+            }
+
+            if (snumerocuentacci.length < 20) {
+                alert("Debes ingresar un número de CCI válido.");
                 return;
             }
 
@@ -561,6 +556,7 @@
                     "wibanco": slcbancoE,
                     "wbanco": "",
                     "wnumerocuenta": snumerocuenta,
+                    "wnumerocuentainterbancaria": snumerocuentacci,
                     "wnombrecuenta": txcuentaE,
                     "witipodeclaracion": 0,
                     "wtitular": "",
