@@ -222,7 +222,7 @@ namespace CambioTotalFrontEnd.Controllers
         //registra las tarjetas de la persona
         [HttpPost]
         public JsonResult OperacionCuentaBancaria(int wtipoOperacion, int widCuentBanc, int widusuario, int witipocuenta, int wimoneda
-                                        , int wibanco, string wbanco, string wnumerocuenta, string wnombrecuenta, int witipodeclaracion
+                                        , int wibanco, string wbanco, string wnumerocuenta, string wnumerocuentainterbancaria, string wnombrecuenta, int witipodeclaracion
                                         , string wtitular, string wfecReg, string whoraReg)
         {
             try
@@ -232,7 +232,7 @@ namespace CambioTotalFrontEnd.Controllers
                 itOperacion = new tdOperacion();
 
                 iresultado = itOperacion.tdOperacionCuentaBancaria(wtipoOperacion, widCuentBanc, widusuario, witipocuenta, wimoneda
-                                        , wibanco, wbanco, wnumerocuenta, wnombrecuenta, witipodeclaracion, wtitular, wfecReg, whoraReg);
+                                        , wibanco, wbanco, wnumerocuenta, wnumerocuentainterbancaria, wnombrecuenta, witipodeclaracion, wtitular, wfecReg, whoraReg);
 
                 if (iresultado == 0 || iresultado == -1 || iresultado == -2)
                 {

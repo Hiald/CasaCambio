@@ -19,6 +19,7 @@ namespace CambioTotalED
         public int ibanco { get; set; }
         public string vbanco { get; set; }
         public string vnumerocuenta { get; set; }
+        public string vnumerocuentacci { get; set; }
         public string vnombrecuenta { get; set; }
         public int itipodeclaracion { get; set; }
         public string vtitular { get; set; }

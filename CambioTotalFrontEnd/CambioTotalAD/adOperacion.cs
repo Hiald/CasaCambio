@@ -14,7 +14,7 @@ namespace CambioTotalAD
         }
 
         public int adOperacionCuentaBancaria(int adtipoOperacion, int adidCuentBanc, int adidusuario, int aditipocuenta, int adimoneda
-                                        , int adibanco, string adbanco, string adnumerocuenta, string adnombrecuenta, int itipodeclaracion
+                                        , int adibanco, string adbanco, string adnumerocuenta, string adnumerocuentainterbancaria, string adnombrecuenta, int itipodeclaracion
                                         , string adtitular, string adfecReg, string adhoraReg)
         {
             try
@@ -30,6 +30,7 @@ namespace CambioTotalAD
                 cmd.Parameters.Add("_i_banco", MySqlDbType.Int32).Value = adibanco;
                 cmd.Parameters.Add("_v_banco", MySqlDbType.VarChar, 150).Value = adbanco;
                 cmd.Parameters.Add("_v_numero_cuenta", MySqlDbType.VarChar, 150).Value = adnumerocuenta;
+                cmd.Parameters.Add("_v_numero_cuenta_interbancaria", MySqlDbType.VarChar, 25).Value = adnumerocuentainterbancaria;
                 cmd.Parameters.Add("_v_nombre_cuenta", MySqlDbType.VarChar, 150).Value = adnombrecuenta;
                 cmd.Parameters.Add("_i_tipo_declaracion", MySqlDbType.Int32).Value = itipodeclaracion;
                 cmd.Parameters.Add("_v_titular", MySqlDbType.VarChar, 150).Value = adtitular;
@@ -70,6 +71,7 @@ namespace CambioTotalAD
                             int pos_ibanco = mdrd.GetOrdinal("i_banco");
                             int pos_vbanco = mdrd.GetOrdinal("v_banco");
                             int pos_vnumerocuenta = mdrd.GetOrdinal("v_numero_cuenta");
+                            int pos_vnumerocuentainterbancaria = mdrd.GetOrdinal("v_numero_cuenta_interbancaria"); 
                             int pos_vnombrecuenta = mdrd.GetOrdinal("v_nombre_cuenta");
                             int pos_itipodeclaracion = mdrd.GetOrdinal("i_tipo_declaracion");
                             int pos_vtitular = mdrd.GetOrdinal("v_titular");
@@ -88,7 +90,8 @@ namespace CambioTotalAD
                                 enUsuario.imoneda = (mdrd.IsDBNull(pos_imoneda) ? 0 : mdrd.GetInt32(pos_imoneda));
                                 enUsuario.ibanco = (mdrd.IsDBNull(pos_ibanco) ? 0 : mdrd.GetInt32(pos_ibanco));
                                 enUsuario.vbanco = (mdrd.IsDBNull(pos_vbanco) ? "-" : mdrd.GetString(pos_vbanco));
-                                enUsuario.vnumerocuenta = (mdrd.IsDBNull(pos_vnumerocuenta) ? "-" : mdrd.GetString(pos_vnumerocuenta));
+                                enUsuario.vnumerocuenta = (mdrd.IsDBNull(pos_vnumerocuenta) ? "" : mdrd.GetString(pos_vnumerocuenta));
+                                enUsuario.vnumerocuentacci = (mdrd.IsDBNull(pos_vnumerocuentainterbancaria) ? "" : mdrd.GetString(pos_vnumerocuentainterbancaria));  
                                 enUsuario.vnombrecuenta = (mdrd.IsDBNull(pos_vnombrecuenta) ? "-" : mdrd.GetString(pos_vnombrecuenta));
                                 enUsuario.itipodeclaracion = (mdrd.IsDBNull(pos_itipodeclaracion) ? 0 : mdrd.GetInt32(pos_itipodeclaracion));
                                 enUsuario.vtitular = (mdrd.IsDBNull(pos_vtitular) ? "-" : mdrd.GetString(pos_vtitular));
