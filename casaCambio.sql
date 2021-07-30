@@ -539,7 +539,8 @@ CREATE PROCEDURE `sp_operacion_cuentabancaria`
   ,IN _i_tipo_declaracion INT
   ,IN _v_titular VARCHAR(150)
   ,IN _dt_fecharegistro VARCHAR(25)
-  ,IN _v_horaregistro VARCHAR(25))
+  ,IN _v_horaregistro VARCHAR(25)
+  ,IN _v_numero_cuenta_interbancaria VARCHAR(25))
 BEGIN
 
   IF (_itipo_operacion = 1) THEN
@@ -557,7 +558,8 @@ BEGIN
       ,v_titular
       ,b_estado
       ,dt_fecharegistro
-      ,v_horaregistro)
+      ,v_horaregistro
+      ,v_numero_cuenta_interbancaria)
     VALUES (
        _idusuario
       ,_i_tipo_cuenta
@@ -570,7 +572,8 @@ BEGIN
       ,_v_titular
       ,1
       ,STR_TO_DATE(_dt_fecharegistro, '%Y-%m-%d')
-      ,_v_horaregistro);
+      ,_v_horaregistro
+      ,_v_numero_cuenta_interbancaria);
 
   END;
   ELSE 
@@ -621,6 +624,7 @@ BEGIN
     ,DATE_FORMAT(c.dt_fecharegistro, '%d-%m-%Y') as 'dt_fecharegistro'
     ,c.v_horaregistro
     ,c.idusuario_Modificacion
+    ,c.v_numero_cuenta_interbancaria
   FROM t_cuenta_bancaria c
     LEFT JOIN t_usuario u ON u.idusuario = c.idusuario
     WHERE ((c.idusuario = _idusuario) OR (_idusuario = 0))
@@ -967,6 +971,7 @@ BEGIN
     ,DATE_FORMAT(c.dt_fecharegistro, '%d-%m-%Y') as 'dt_fecharegistro'
     ,c.v_horaregistro
     ,c.idusuario_Modificacion
+    ,c.v_numero_cuenta_interbancaria
   FROM t_cuenta_bancaria c
     LEFT JOIN t_usuario u ON u.idusuario = c.idusuario
     WHERE u.b_estado = 1 AND c.idcuentabancaria = _idcuentabancaria;
