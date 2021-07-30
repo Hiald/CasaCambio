@@ -257,7 +257,7 @@ namespace CambioTotalAD
             try
             {
                 List<edTransaccion> slenUsuario = new List<edTransaccion>();
-                using (MySqlCommand cmd = new MySqlCommand("sp_listar_transaccion", cnMysql))
+                using (MySqlCommand cmd = new MySqlCommand("sp_listar_transaccion_v1", cnMysql))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("_idusuario", MySqlDbType.Int32).Value = adidusuario;
@@ -274,6 +274,10 @@ namespace CambioTotalAD
                             int pos_vapellidos = mdrd.GetOrdinal("v_apellidos");
                             int pos_iddivisa = mdrd.GetOrdinal("iddivisa");
                             int pos_idpromocion = mdrd.GetOrdinal("idpromocion");
+                            //29-07-2021
+                            int pos_documento = mdrd.GetOrdinal("v_documento");
+                            int pos_celular1 = mdrd.GetOrdinal("v_celular1");
+                            //29-07-2021
                             int pos_idcuentabancaria = mdrd.GetOrdinal("idcuentabancaria");
                             int pos_idusuarioadministrador = mdrd.GetOrdinal("idusuario_administrador");
                             int pos_dtfecha = mdrd.GetOrdinal("dt_fecha");
@@ -307,6 +311,10 @@ namespace CambioTotalAD
                                 enUsuario.idusuarioadministrador = (mdrd.IsDBNull(pos_idusuarioadministrador) ? 0 : mdrd.GetInt32(pos_idusuarioadministrador));
                                 enUsuario.dtfecha = (mdrd.IsDBNull(pos_dtfecha) ? "-" : mdrd.GetString(pos_dtfecha));
                                 enUsuario.itipodivisa = (mdrd.IsDBNull(pos_itipodivisa) ? 0 : mdrd.GetInt32(pos_itipodivisa));
+                                //29-07-2021
+                                enUsuario.vdocumento = (mdrd.IsDBNull(pos_documento) ? "-" : mdrd.GetString(pos_documento));
+                                enUsuario.vcelular = (mdrd.IsDBNull(pos_celular1) ? "-" : mdrd.GetString(pos_celular1));
+                                //29-07-2021
                                 enUsuario.ddolaresventa = (mdrd.IsDBNull(pos_ddolaresventa) ? 0 : mdrd.GetDecimal(pos_ddolaresventa));
                                 enUsuario.ddolarescompra = (mdrd.IsDBNull(pos_ddolarescompra) ? 0 : mdrd.GetDecimal(pos_ddolarescompra));
                                 enUsuario.vhora = (mdrd.IsDBNull(pos_vhora) ? "-" : mdrd.GetString(pos_vhora));

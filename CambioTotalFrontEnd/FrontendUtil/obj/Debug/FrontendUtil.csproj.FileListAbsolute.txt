@@ -15,3 +15,8 @@ C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalFrontEnd\
 C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalFrontEnd\FrontendUtil\obj\Debug\FrontendUtil.csproj.CoreCompileInputs.cache
 C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalFrontEnd\FrontendUtil\obj\Debug\FrontendUtil.dll
 C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalFrontEnd\FrontendUtil\obj\Debug\FrontendUtil.pdb
+F:\Proyectos en GitHub\casaCambio\CasaCambio\CambioTotalFrontEnd\FrontendUtil\bin\Debug\FrontendUtil.dll
+F:\Proyectos en GitHub\casaCambio\CasaCambio\CambioTotalFrontEnd\FrontendUtil\bin\Debug\FrontendUtil.pdb
+F:\Proyectos en GitHub\casaCambio\CasaCambio\CambioTotalFrontEnd\FrontendUtil\obj\Debug\FrontendUtil.csproj.CoreCompileInputs.cache
+F:\Proyectos en GitHub\casaCambio\CasaCambio\CambioTotalFrontEnd\FrontendUtil\obj\Debug\FrontendUtil.dll
+F:\Proyectos en GitHub\casaCambio\CasaCambio\CambioTotalFrontEnd\FrontendUtil\obj\Debug\FrontendUtil.pdb

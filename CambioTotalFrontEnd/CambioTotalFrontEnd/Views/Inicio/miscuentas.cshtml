@@ -37,6 +37,7 @@
                                         <th>Banco</th>
                                         <th>Moneda</th>
                                         <th>Numero de cuenta</th>
+                                        <th>Numero de cuenta CCI</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -110,6 +111,12 @@
                             <div class="form-group">
                                 <label for="txnumerocuenta">*Número de cuenta</label>
                                 <input type="text" id="txnumerocuenta" maxlength="25" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="txnumerocuentacci">*Número de cuenta CCI</label>
+                                <input type="text" id="txnumerocuentacci" maxlength="25" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -194,6 +201,12 @@
                                 <input type="text" id="txnumerocuentaE" maxlength="30" class="form-control">
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="txnumerocuentacciE">*Número de cuenta CCI</label>
+                                <input type="text" id="txnumerocuentacciE" maxlength="30" class="form-control">
+                            </div>
+                        </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox">
@@ -273,11 +286,12 @@
             var slcbanco = $('#slcbanco option:selected').attr('value');
             var slcmoneda = $('#slcmoneda option:selected').attr('value');
             var txnumerocuenta = $('#txnumerocuenta').val();
+            var txnumerocuentacci = $('#txnumerocuentacci').val();
             var sfecharegistro = moment().format("YYYY-MM-DD");
             var shora = moment().format("hh:mm:ss");
             var paramidusuario = parseInt($('#hddidusuario').val());
 
-            if (txcuenta == "" || slctipocuenta == 0 || slcbanco == 0 || slcmoneda == 0 || txnumerocuenta.length == 0) {
+            if (txcuenta == "" || slctipocuenta == 0 || slcbanco == 0 || slcmoneda == 0 || txnumerocuenta.length == 0 || txnumerocuentacci.length == 0) {
                 alert("Falta completar campos");
                 return;
             }
@@ -286,6 +300,13 @@
                 alert("Ingrese un número de cuenta válido");
                 return;
             }
+
+            //29-07-2021
+            if (!validarnumero($('#txnumerocuentacci').val())) {
+                alert("Ingrese un número de cuenta CCI válido");
+                return;
+            }
+            //29-07-2021
 
             if (parseInt(slcbanco) == 13 && txnumerocuenta.length < 11) {
                 alert("Debes ingresar el CCI de Banco de la nación.");

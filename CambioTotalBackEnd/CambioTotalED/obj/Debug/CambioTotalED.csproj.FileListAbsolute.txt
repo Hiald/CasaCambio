@@ -3,3 +3,9 @@ C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalBackEnd\C
 C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalBackEnd\CambioTotalED\obj\Debug\CambioTotalED.csproj.CoreCompileInputs.cache
 C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalBackEnd\CambioTotalED\obj\Debug\CambioTotalED.dll
 C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalBackEnd\CambioTotalED\obj\Debug\CambioTotalED.pdb
+F:\Proyectos en GitHub\casaCambio\CasaCambio\CambioTotalBackEnd\CambioTotalED\bin\Debug\CambioTotalED.dll
+F:\Proyectos en GitHub\casaCambio\CasaCambio\CambioTotalBackEnd\CambioTotalED\bin\Debug\CambioTotalED.pdb
+F:\Proyectos en GitHub\casaCambio\CasaCambio\CambioTotalBackEnd\CambioTotalED\obj\Debug\CambioTotalED.csprojAssemblyReference.cache
+F:\Proyectos en GitHub\casaCambio\CasaCambio\CambioTotalBackEnd\CambioTotalED\obj\Debug\CambioTotalED.csproj.CoreCompileInputs.cache
+F:\Proyectos en GitHub\casaCambio\CasaCambio\CambioTotalBackEnd\CambioTotalED\obj\Debug\CambioTotalED.dll
+F:\Proyectos en GitHub\casaCambio\CasaCambio\CambioTotalBackEnd\CambioTotalED\obj\Debug\CambioTotalED.pdb

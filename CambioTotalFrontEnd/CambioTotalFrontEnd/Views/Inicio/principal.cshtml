@@ -207,6 +207,12 @@
                 <strong id="ctasoles">
                     CTA CTE BCP SOLES 1918970153004 <br />
                 </strong>
+                <strong id="ctasolescci">
+                    CTA CTE CCI BCP SOLES 00219100897015300453 <br />
+                </strong>
+                <strong id="ctadolarescci">
+                    CTA CTE CCI BCP DOLARES 00219100875841817659 <br />
+                </strong>
                 <strong id="ctadolares">
                     CTA CTE BCP USD 1918758418176 <br />
                 </strong>
@@ -334,7 +340,8 @@
         //    $("input.numeros").digits();
         //}, 100);
 
-
+        $('#ctasolescci').css("display", "none");
+        $('#ctadolarescci').css("display", "none");
         $('#ctasoles').css("display", "none");
         $('#ctadolares').css("display", "none");
         $('#divcarga').removeClass("is-active");
@@ -443,10 +450,15 @@
                         $('#fill-info-modal').modal({ keyboard: false, show: true });
                         if (TraerObjLista[TraerObjLista.length - 1].itipocambio == 0) {
                             $('#ctadolares').css("display", "block");
+                            $('#ctadolarescci').css("display", "block");
                             $('#ctasoles').css("display", "none");
+                            $('#ctasolescci').css("display", "none");
                         } else {
                             $('#ctasoles').css("display", "block");
+                            $('#ctasolescci').css("display", "block");
                             $('#ctadolares').css("display", "none");
+                            $('#ctadolarescci').css("display", "none");
+
                         }
                         fnMostrarCronometro();
                     } else {
@@ -961,10 +973,15 @@
                 $('#txnumerocuenta').val("");
                 if (valorInicial == 0) {
                     $('#ctadolares').css("display", "block");
+                    $('#ctadolarescci').css("display", "block");
                     $('#ctasoles').css("display", "none");
+                    $('#ctasolescci').css("display", "none");
                 } else {
                     $('#ctadolares').css("display", "none");
+                    $('#ctadolarescci').css("display", "none");
+                    $('#ctasolescci').css("display", "block");
                     $('#ctasoles').css("display", "block");
+                    
                 }
 
                 if (localStorage.getItem("SESSION_TIPO") != null && localStorage.getItem("SESSION_MONTO1") != null

@@ -12,6 +12,10 @@ namespace CambioTotalED
         // v, dt = string
         // d = decimal
         public int idtransaccion { get; set; }
+
+        public string vdocumento { get; set; }
+
+        public string vcelular { get; set; }
         public int idusuario { get; set; }
         public string vnombres { get; set; }
         public string vapellidos { get; set; }
