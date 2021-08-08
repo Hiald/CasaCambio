@@ -479,6 +479,7 @@
     <Content Include="assets\logo-sbs-blanco.png" />
     <Content Include="assets\logo.PNG" />
     <Content Include="assets\sbs_logotipo.svg" />
+    <Content Include="assets\SUPERINTENDENCIA.png" />
     <Content Include="assets\tucambio.png" />
     <Content Include="assets\tucambio2.png" />
     <Content Include="favicon.ico" />
