@@ -29,6 +29,7 @@
                             <table id="tbldivisa" class="table dt-responsive nowrap w-100">
                                 <thead>
                                     <tr>
+                                        <th style="display:none;">Cod</th>
                                         <th>Fecha</th>
                                         <th>Tipo de divisa</th>
                                         <th>Compra</th>
@@ -224,11 +225,12 @@
                         "sLengthMenu": "Mostrando _MENU_ filas"
                     },
                     "columns": [
+                        { "sName": "iddivisa", "mDataProp": "iddivisa" },
                         {
                             "mData": "dtfecha",
                             "sClass": "center",
                             "mRender": function (data, type, value) {
-                                return value.dtfecha + "  " + value.vhora;
+                                return value.dtfecha;
                             }
                         },
                         {
@@ -272,8 +274,12 @@
                                 "sWidth": "5px",
                                 "sClass": "css-center",
                                 "bSort": false,
-                                "aTargets": [4]
+                                "aTargets": [5]
                             },
+                            {
+                                "targets": [0],
+                                "visible": false
+                            }
                         ]
                 });
         }
