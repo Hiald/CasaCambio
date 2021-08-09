@@ -9,15 +9,15 @@ C:\Users\jonat\OneDrive\Escritorio\repos\CasaCambio\CambioTotalFrontEnd\CambioTo
 C:\Users\jonat\OneDrive\Escritorio\repos\CasaCambio\CambioTotalFrontEnd\CambioTotalED\obj\Debug\CambioTotalED.csproj.CoreCompileInputs.cache
 C:\Users\jonat\OneDrive\Escritorio\repos\CasaCambio\CambioTotalFrontEnd\CambioTotalED\obj\Debug\CambioTotalED.dll
 C:\Users\jonat\OneDrive\Escritorio\repos\CasaCambio\CambioTotalFrontEnd\CambioTotalED\obj\Debug\CambioTotalED.pdb
-C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalFrontEnd\CambioTotalED\bin\Debug\CambioTotalED.dll
-C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalFrontEnd\CambioTotalED\bin\Debug\CambioTotalED.pdb
-C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalFrontEnd\CambioTotalED\obj\Debug\CambioTotalED.csprojAssemblyReference.cache
-C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalFrontEnd\CambioTotalED\obj\Debug\CambioTotalED.csproj.CoreCompileInputs.cache
-C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalFrontEnd\CambioTotalED\obj\Debug\CambioTotalED.dll
-C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalFrontEnd\CambioTotalED\obj\Debug\CambioTotalED.pdb
 F:\Proyectos en GitHub\casaCambio\CasaCambio\CambioTotalFrontEnd\CambioTotalED\bin\Debug\CambioTotalED.dll
 F:\Proyectos en GitHub\casaCambio\CasaCambio\CambioTotalFrontEnd\CambioTotalED\bin\Debug\CambioTotalED.pdb
 F:\Proyectos en GitHub\casaCambio\CasaCambio\CambioTotalFrontEnd\CambioTotalED\obj\Debug\CambioTotalED.csproj.CoreCompileInputs.cache
 F:\Proyectos en GitHub\casaCambio\CasaCambio\CambioTotalFrontEnd\CambioTotalED\obj\Debug\CambioTotalED.dll
 F:\Proyectos en GitHub\casaCambio\CasaCambio\CambioTotalFrontEnd\CambioTotalED\obj\Debug\CambioTotalED.pdb
 F:\Proyectos en GitHub\casaCambio\CasaCambio\CambioTotalFrontEnd\CambioTotalED\obj\Debug\CambioTotalED.csprojAssemblyReference.cache
+C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalFrontEnd\CambioTotalED\bin\Debug\CambioTotalED.dll
+C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalFrontEnd\CambioTotalED\bin\Debug\CambioTotalED.pdb
+C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalFrontEnd\CambioTotalED\obj\Debug\CambioTotalED.csprojAssemblyReference.cache
+C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalFrontEnd\CambioTotalED\obj\Debug\CambioTotalED.csproj.CoreCompileInputs.cache
+C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalFrontEnd\CambioTotalED\obj\Debug\CambioTotalED.dll
+C:\Users\jonat\Desktop\Proyectos VS\CasadeCambio\CasaCambio\CambioTotalFrontEnd\CambioTotalED\obj\Debug\CambioTotalED.pdb

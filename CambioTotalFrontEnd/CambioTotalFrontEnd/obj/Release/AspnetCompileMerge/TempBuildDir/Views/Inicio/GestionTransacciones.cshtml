@@ -142,6 +142,22 @@
                                 <input type="text" id="txnombresE" placeholder="Nombres" class="form-control" disabled>
                             </div>
                         </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="txdocumentoE">DNI</label>
+                                <input type="text" id="txdocumentoE" placeholder="DNI" class="form-control" disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="txcelularE">Celular</label>
+                                <input type="text" id="txcelularE" placeholder="Celular" class="form-control" disabled>
+                            </div>
+                        </div>
+
+
                         <div class="col-md-6">
                             <div class="form-group mb-3">
                                 <label for="txfecha">Fecha y Hora</label>
@@ -224,6 +240,12 @@
                             </div>
                         </div>
 
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="txnumCuentacciE">Número de Cuenta CCI</label>
+                                <input type="text" id="txnumCuentacciE" placeholder="" class="form-control" disabled>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
@@ -442,9 +464,12 @@
                                 var strHtml = "<button class='btn text-white btn-warning' onclick='fn_Editar("
                                     + row.idtransaccion + ", " +
                                     + row.idusuario + ", " +
-                                    "\"" + encodeURIComponent(row.vnombres) + "\"" + ", " +
+                                    "\"" + encodeURIComponent(row.vnombres) + "\"" + ", " +                                    
                                     "\"" + encodeURIComponent(row.vapellidos) + "\"" + ", " +
-
+                                    //29-07-2021
+                                    "\"" + encodeURIComponent(row.vdocumento) + "\"" + ", " +
+                                    "\"" + encodeURIComponent(row.vcelular) + "\"" + ", " +
+                                    //29-07-2021
                                     "\"" + encodeURIComponent(row.dtfecha) + "\"" + ", " +
                                     + row.itipodivisa + ", " +
                                     "\"" + encodeURIComponent(row.ddolaresventa) + "\"" + ", " +
@@ -487,7 +512,7 @@
         //var paramidusuarioadmin = $('#hddidusuario').val();
         //var decfecharegistro = moment().format("YYYY-MM-DD");
         //var dechora = moment().format("hh:mm:ss");
-        function fn_Editar(pidtransaccion, idusuario, paramvnombres, paramvapellidos, paramdtfecha, itipodivisa,
+        function fn_Editar(pidtransaccion, idusuario, paramvnombres, paramvapellidos,paramvdocumento,paramvcelular, paramdtfecha, itipodivisa,
             paramddolaresventa, paramddolarescompra, paramvhora, paramiestado, paramvoperacion, paramdenvio, paramdrecibo, paramitipocambio,
             paramitipotrasaccion, paramvbancoreceptor, paridcuentabancaria) {
 
@@ -518,6 +543,8 @@
 
                     $('#txBancoReceptorE').val(sbancores);
                     $('#txnumCuentaE').val(data.aaData.vnumerocuenta);
+                    $('#txnumCuentacciE').val(data.aaData.vnumerocuentacci);                    
+
 
                     if (data.aaData.imoneda == 1) {
                         $('#txMonedaCuentaE').val("Soles (S/.)");
@@ -560,6 +587,8 @@
             //console.log(paramvbancoreceptor);
             $('#hddtransaccionid').val(pidtransaccion);
             $('#txnombresE').val(decodeURIComponent(paramvnombres) + " " + decodeURIComponent(paramvapellidos));
+            $('#txdocumentoE').val(paramvdocumento);
+            $('#txcelularE').val(paramvcelular);
             $('#txfecha').val(decodeURIComponent(paramdtfecha) + " " + decodeURIComponent(paramvhora));
             $('#txdivisa').val("Venta: " + decodeURIComponent(paramddolaresventa) + " | Compra: " + decodeURIComponent(paramddolarescompra));
             $('#txOperacionNro').val(decodeURIComponent(paramvoperacion));
