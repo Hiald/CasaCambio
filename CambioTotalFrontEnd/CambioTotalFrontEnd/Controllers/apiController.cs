@@ -1,78 +1,56 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
-using System.Web.Mvc;
+using System.Web.Http;
 using CambioTotalED;
+using CambioTotalFrontEnd.Controllers;
+using CambioTotalFrontEnd.Models;
 using CambioTotalTD;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 
 namespace CambioTotalFrontEnd.App_Start
 {
-    public class apiController : Controller
+    [RoutePrefix("api/Dolar")]
+    public class apiController : ApiController
     {
-        tdOperacion itddoperacion;
-
-        [Route("api.json")]
-        public async Task<JsonResult> api()
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("Auth")]
+        public IHttpActionResult Auth(HttpRequestMessage request)
         {
-            try
-            {
-                string fechaconvertida = DateTime.Now.ToString("yyyy-MM-dd");
-                string horaconvertida = DateTime.Now.ToString("hh:mm");
-                string rescompra = "";
-                string resventa = "";
+            var email = HttpContext.Current.Request.Form["email"];
+            var password = HttpContext.Current.Request.Form["password"];
 
-                itddoperacion = new tdOperacion();
-                List<edDivisa> eddivisa = new List<edDivisa>();
-                eddivisa = itddoperacion.tdListardivisa(0, fechaconvertida);
-                if (eddivisa.Count == 0)
-                {
-                    //no hay, se debe buscar en roblex
-                    HttpClient client = new HttpClient();
-                    client.DefaultRequestHeaders.Clear();
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    HttpResponseMessage respuesta = await client.GetAsync("https://operations.roblex.pe/valuation/active-valuation");
-                    api result = new api();
-                    if (respuesta.IsSuccessStatusCode)
-                    {
-                        var categories = respuesta.Content.ReadAsStringAsync().Result;
-                        result = JsonConvert.DeserializeObject<api>(categories);
-                    }
-
-                    int iresultado = itddoperacion.tdOperaciondivisa(1, 0, 8, 1,
-                                                        0, decimal.Parse(result.amountSale),
-                                                        decimal.Parse(result.amountBuy),
-                                                        decimal.Parse(result.amountSale),
-                                                        decimal.Parse(result.amountBuy),
-                                                        0, fechaconvertida, horaconvertida, fechaconvertida);
-                    rescompra = result.amountBuy;
-                    resventa = result.amountSale;
-                }
-                else
-                {
-                    
-                    rescompra = eddivisa[0].dsolescompra.ToString();
-                    resventa = eddivisa[0].dsolesventa.ToString();
-                }
-
-                string fechamostrar = DateTime.Now.ToString("yyyy/MM/dd");
-                return Json(new
-                {
-                    compra = rescompra,
-                    venta = resventa,
-                    fecha = fechamostrar
-                }, JsonRequestBehavior.AllowGet);
+            bool isCredentialValid = false;
+            if(email == "api@tucambiototal.com" && password == "@CambioAPI21.") {
+                isCredentialValid = true;
             }
-            catch (Exception ex)
+            if (isCredentialValid)
             {
-                throw;
+                var tokenGenerado = TokenGenerator.GenerateTokenJwt(email);
+                return Json(new apiresponse { status = 200, token = tokenGenerado, message = "token generado con éxito" });
             }
+            else
+            {
+                return Json(new { status = 400, message = "email y/o password no coinciden"});
+            }
+        }
 
+        [Authorize]
+        [HttpGet]
+        [Route("Actualizar")]
+        public IHttpActionResult ObtenerDolar()
+        {
+            var customersFake = new string[] { "TOKEN VALIDADO, ENCRIPTACION A EXTREMOS GENERADA PARA ESTA SESION: 9798f25f-351e-40ef-85b2-31d00f30a51c " };
+            return Ok(customersFake);
         }
 
     }

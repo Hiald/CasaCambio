@@ -11,11 +11,13 @@ namespace CambioTotalFrontEnd
     public class MvcApplication : System.Web.HttpApplication
     {
         public static string wsRouteBackend = System.Web.Configuration.WebConfigurationManager.AppSettings["routews"].ToString();
-
+        
         protected void Application_Start()
         {
+            //ver
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
+            //WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
