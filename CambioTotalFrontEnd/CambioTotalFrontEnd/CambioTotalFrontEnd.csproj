@@ -520,8 +520,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\" />
     <Folder Include="Scripts\" />
-    <Folder Include="Views\apiv1\" />
-    <Folder Include="Views\api\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\icons\fa-brands-400.eot" />

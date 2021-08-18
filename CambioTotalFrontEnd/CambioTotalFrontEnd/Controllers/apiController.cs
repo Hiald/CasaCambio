@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace CambioTotalFrontEnd.Controllers
 {
-    [RoutePrefix("apiv1")]
+    //[RoutePrefix("api")]
     public class apiController : Controller
     {
         tdOperacion itddoperacion;
