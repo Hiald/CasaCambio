@@ -14,11 +14,6 @@ namespace CambioTotalFrontEnd
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapMvcAttributeRoutes();
-            //routes.MapRoute(
-            //    name: "apiv1/api.json/",
-            //    url: "apiv1/api.json/",
-            //    defaults: new { controller = "apiv1", action = "apires" }
-            //);
 
             // routes.MapRoute(
             //    name: "api/Dolar/Auth",
