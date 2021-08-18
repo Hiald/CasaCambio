@@ -260,7 +260,7 @@ namespace CambioTotalAD
             try
             {
                 List<edTransaccion> slenUsuario = new List<edTransaccion>();
-                using (MySqlCommand cmd = new MySqlCommand("sp_listar_transaccion_v1", cnMysql))
+                using (MySqlCommand cmd = new MySqlCommand("sp_listar_transaccion_v2", cnMysql))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("_idusuario", MySqlDbType.Int32).Value = adidusuario;
@@ -301,6 +301,8 @@ namespace CambioTotalAD
                             int pos_digv = mdrd.GetOrdinal("d_igv");
                             int pos_vbancoreceptor = mdrd.GetOrdinal("v_banco_receptor");
                             int pos_dtfecharegistro = mdrd.GetOrdinal("dt_fecharegistro");
+                            int pos_dtcorreo = mdrd.GetOrdinal("v_correo");
+                            
                             while (mdrd.Read())
                             {
                                 enUsuario = new edTransaccion();
@@ -334,6 +336,7 @@ namespace CambioTotalAD
                                 enUsuario.digv = (mdrd.IsDBNull(pos_digv) ? 0 : mdrd.GetInt32(pos_digv));
                                 enUsuario.vbancoreceptor = (mdrd.IsDBNull(pos_vbancoreceptor) ? "-" : mdrd.GetString(pos_vbancoreceptor));
                                 enUsuario.dtfecharegistro = (mdrd.IsDBNull(pos_dtfecharegistro) ? "-" : mdrd.GetString(pos_dtfecharegistro));
+                                enUsuario.vcorreo = (mdrd.IsDBNull(pos_dtcorreo) ? "-" : mdrd.GetString(pos_dtcorreo));
                                 slenUsuario.Add(enUsuario);
                             }
                         }

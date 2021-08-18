@@ -42,6 +42,7 @@ namespace CambioTotalED
         public string vbancoreceptor { get; set; }
         public string dtfecharegistro { get; set; }
 
+        public string vcorreo { get; set; }
 
 
     }

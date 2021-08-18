@@ -108,6 +108,17 @@
                                 </div>
 
                                 <div class="row">
+                                    <div class="col-md-6 form-group" id="divfechanacimiento">
+                                            <label for="dtfecha">Fecha Nacimiento*</label>
+                                            <div class="input-group input-group-merge">
+                                                <input type="date" id="dtfecha" maxlength="20" class="form-control">
+                                                <div class="input-group-append">
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
                                     <div class="col-md-6 form-group" id="divempresa">
                                         <label for="txruc">RUC</label>
                                         <input class="form-control" maxlength="14" type="text" id="txruc" placeholder="Ingresa el número de RUC">
@@ -117,7 +128,7 @@
                                         <input class="form-control" maxlength="75" type="text" id="txrazonsocial" placeholder="Ingresa la razón social">
                                     </div>
                                 </div>
-                                 
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -161,6 +172,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="checkbox-signup">
@@ -405,11 +417,13 @@
             if (this.value == 1) {
                 $('#divempresa').hide();
                 $('#divempresa2').hide();
+                $('#divfechanacimiento').show();
                 ivalorempresa = 0;
             }
             else if (this.value == 2) {
                 $('#divempresa').show();
                 $('#divempresa2').show();
+                $('#divfechanacimiento').hide();
                 ivalorempresa = 1;
             }
         });

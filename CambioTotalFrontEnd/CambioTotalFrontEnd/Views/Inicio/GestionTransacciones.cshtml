@@ -247,6 +247,13 @@
                             </div>
                         </div>
 
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="txtcorreo">Correo Electrónico</label>
+                                <input type="text" id="txtcorreo" placeholder="" class="form-control" disabled>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -469,6 +476,8 @@
                                     //29-07-2021
                                     "\"" + encodeURIComponent(row.vdocumento) + "\"" + ", " +
                                     "\"" + encodeURIComponent(row.vcelular) + "\"" + ", " +
+                                    "\"" + encodeURIComponent(row.vcorreo) + "\"" + ", " +
+                                    
                                     //29-07-2021
                                     "\"" + encodeURIComponent(row.dtfecha) + "\"" + ", " +
                                     + row.itipodivisa + ", " +
@@ -512,7 +521,7 @@
         //var paramidusuarioadmin = $('#hddidusuario').val();
         //var decfecharegistro = moment().format("YYYY-MM-DD");
         //var dechora = moment().format("hh:mm:ss");
-        function fn_Editar(pidtransaccion, idusuario, paramvnombres, paramvapellidos,paramvdocumento,paramvcelular, paramdtfecha, itipodivisa,
+        function fn_Editar(pidtransaccion, idusuario, paramvnombres, paramvapellidos, paramvdocumento, paramvcelular, paramvcorreo, paramdtfecha, itipodivisa,
             paramddolaresventa, paramddolarescompra, paramvhora, paramiestado, paramvoperacion, paramdenvio, paramdrecibo, paramitipocambio,
             paramitipotrasaccion, paramvbancoreceptor, paridcuentabancaria) {
 
@@ -589,6 +598,7 @@
             $('#txnombresE').val(decodeURIComponent(paramvnombres) + " " + decodeURIComponent(paramvapellidos));
             $('#txdocumentoE').val(paramvdocumento);
             $('#txcelularE').val(paramvcelular);
+            $('#txtcorreo').val(decodeURIComponent(paramvcorreo));
             $('#txfecha').val(decodeURIComponent(paramdtfecha) + " " + decodeURIComponent(paramvhora));
             $('#txdivisa').val("Venta: " + decodeURIComponent(paramddolaresventa) + " | Compra: " + decodeURIComponent(paramddolarescompra));
             $('#txOperacionNro').val(decodeURIComponent(paramvoperacion));
