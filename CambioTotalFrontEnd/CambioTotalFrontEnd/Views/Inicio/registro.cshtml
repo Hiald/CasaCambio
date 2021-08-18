@@ -109,9 +109,9 @@
 
                                 <div class="row">
                                     <div class="col-md-6 form-group" id="divfechanacimiento">
-                                            <label for="dtfecha">Fecha Nacimiento*</label>
+                                            <label for="dtfechanac">Fecha Nacimiento*</label>
                                             <div class="input-group input-group-merge">
-                                                <input type="date" id="dtfecha" maxlength="20" class="form-control">
+                                                <input type="date" id="dtfechanac" maxlength="10" class="form-control">
                                                 <div class="input-group-append">
                                                 </div>
                                             </div>
@@ -308,6 +308,10 @@
             return regex.test(numero);
         }
 
+        var dt_fechanac = moment().format("YYYY-MM-DD");
+
+        $('#dtfechanac').val(dt_fechanac);
+
         $('#btnsiguiente').click(function () {
             $('#divcarga').addClass("is-active");
             var itipocuenta = $('input[name="rbt"]:checked').val();
@@ -315,6 +319,7 @@
             var sapellido = $('#txapellido').val();
             var itipodocumento = $('#slctipodocumento option:selected').val();
             var sdocumento = $('#txdocumento').val();
+            var dfechanacimiento = $('#dtfechanac').val();
             var sruc = $('#txruc').val();
             var srazonsocial = $('#txrazonsocial').val();
             var scorreo = $('#txcorreo').val();
@@ -452,6 +457,7 @@
             var itipocuenta = $('input[name="rbt"]:checked').val();
             var snombre = $('#txnombre').val();
             var sapellido = $('#txapellido').val();
+            var dfechanacimiento = $('#dtfechanac').val();
             var itipodocumento = $('#slctipodocumento option:selected').val();
             var sdocumento = $('#txdocumento').val();
             var sruc = $('#txruc').val();
@@ -468,6 +474,12 @@
             var Parampep2 = $('input[name="tp2"]:checked').val();
             var Parampep3 = $('input[name="tp3"]:checked').val();
             var Parampep4 = $('input[name="tp4"]:checked').val();
+
+            if (itipocuenta == 2) {
+                dfechanacimiento = "";
+            } else {
+                dfechanacimiento = $('#dtfechanac').val();
+            }
 
             if ($('input[name=tp1]:checked').val() == undefined) {
                 alert("Por favor, selecciona algunas opciones PEP faltantes");
@@ -503,6 +515,7 @@
                     "wapellidos": sapellido,
                     "wtipodocumento": itipodocumento,
                     "wdocumento": sdocumento,
+                    "wfechanacimiento": dfechanacimiento,
                     "wfecharegistro": sfecharegistro,
                     "whoraregistro": shora,
                     "wtipousuario": itipocuenta,

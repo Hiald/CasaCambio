@@ -35,7 +35,7 @@ namespace CambioTotalTD
 
         }
 
-        public int tdInsertarUsuario(string tdnombres, string tdapellidos, int tdtipodocumento, string tddocumento,
+        public int tdInsertarUsuario(string tdnombres, string tdapellidos, int tdtipodocumento, string tddocumento, string tdfechanacimiento,
             string tdfecharegistro, string tdhoraregistro, int tdtipousuario, string tdcorreo, string tdclave, string tdtoken,
             string tdruc, string tdrazonsocial, string tdpep1, string tdpep2, string tdpep3, string tdpep4, string tdcelular)
         {
@@ -48,7 +48,7 @@ namespace CambioTotalTD
                     using (MySqlTransaction scope = con.BeginTransaction())
                     {
                         iadUsuario = new adUsuario(con);
-                        iRespuesta = iadUsuario.adInsertarUsuario(tdnombres, tdapellidos, tdtipodocumento, tddocumento,
+                        iRespuesta = iadUsuario.adInsertarUsuario(tdnombres, tdapellidos, tdtipodocumento, tddocumento, tdfechanacimiento,
                                                     tdfecharegistro, tdhoraregistro, tdtipousuario, tdcorreo, tdclave, tdtoken
                                                     , tdruc, tdrazonsocial, tdpep1, tdpep2, tdpep3, tdpep4, tdcelular);
                         scope.Commit();

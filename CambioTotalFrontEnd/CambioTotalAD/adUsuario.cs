@@ -74,18 +74,20 @@ namespace CambioTotalAD
         }
 
         public int adInsertarUsuario(string adnombres, string adapellidos, int adtipodocumento, string addocumento,
-            string adfecharegistro, string adhoraregistro, int adtipousuario, string adcorreo, string adclave, string adtoken,
+            string adfechanacimiento,string adfecharegistro, string adhoraregistro, int adtipousuario, string adcorreo, string adclave, string adtoken,
             string adruc, string adrazonsocial, string adpep1, string adpep2, string adpep3, string adpep4, string adcelular)
         {
             try
             {
                 int result = -2;
-                MySqlCommand cmd = new MySqlCommand("sp_insertar_usuario", cnMysql);
+                MySqlCommand cmd = new MySqlCommand("sp_insertar_usuario_v2", cnMysql);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("_v_nombres", MySqlDbType.VarChar, 50).Value = adnombres;
                 cmd.Parameters.Add("_v_apellidos", MySqlDbType.VarChar, 45).Value = adapellidos;
                 cmd.Parameters.Add("_i_tipodocumento", MySqlDbType.Int32).Value = adtipodocumento;
                 cmd.Parameters.Add("_v_documento", MySqlDbType.VarChar, 20).Value = addocumento;
+                cmd.Parameters.Add("_v_fechanac", MySqlDbType.VarChar, 10).Value = adfechanacimiento;
+                
                 cmd.Parameters.Add("_dt_fecharegistro", MySqlDbType.VarChar, 25).Value = adfecharegistro;
                 cmd.Parameters.Add("_v_horaregistro", MySqlDbType.VarChar, 25).Value = adhoraregistro;
                 cmd.Parameters.Add("_i_tipo_usuario", MySqlDbType.Int32).Value = adtipousuario;
