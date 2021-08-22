@@ -132,15 +132,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\apiController.cs" />
+    <Compile Include="Controllers\apiv2Controller.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\InitialPage.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\apiv1Controller.cs" />
+    <Compile Include="Controllers\apiController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\TokenGenerator.cs" />
     <Compile Include="Controllers\TokenValidationHandler.cs" />
     <Compile Include="Filters\ValidadorSesion.cs" />
@@ -521,8 +520,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\" />
     <Folder Include="Scripts\" />
-    <Folder Include="Views\apiv1\" />
-    <Folder Include="Views\api\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\icons\fa-brands-400.eot" />
