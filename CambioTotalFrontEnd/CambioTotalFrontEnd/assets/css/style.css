@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*========	Table of Css Content ==========*/
 /* Typography */
 /* variables  */
@@ -34,6 +34,12 @@
  */
 /* Typography */
 /* Normalize  */
+@font-face {
+    font-family: 'aileron.regular';
+    src: url('../../Scripts/aileron.regular.otf') format('opentype');
+}
+
+
 html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -44,45 +50,45 @@ html {
 }
 
 body {
-  font: inherit;
-  overflow: hidden;
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
-  line-height: 1.556;
-  font-weight: 400;
+    font: inherit;
+    overflow: hidden;
+    font-family: 'aileron.regular';
+    font-size: 18px;
+    line-height: 1.556;
+    font-weight: 400;
 }
 
 h1 {
-  font-family: "Poppins", sans-serif;
-  font-size: 70px;
-  line-height: 1.143;
-  font-weight: 700;
+    font-family: 'aileron.regular';
+    font-size: 70px;
+    line-height: 1.143;
+    font-weight: 700;
 }
 
 h2 {
-  font-family: "Poppins", sans-serif;
-  font-size: 60px;
-  line-height: 1.167;
-  font-weight: 600;
+    font-family: 'aileron.regular';
+    font-size: 60px;
+    line-height: 1.167;
+    font-weight: 600;
 }
 
 h3 {
-  font-family: "Poppins", sans-serif;
-  font-size: 28px;
-  line-height: 1.357;
-  font-weight: 600;
+    font-family: 'aileron.regular';
+    font-size: 28px;
+    line-height: 1.357;
+    font-weight: 600;
 }
 
 p {
-  font-family: "Roboto", sans-serif;
-  padding: 0;
-  margin: 0;
+    font-family: 'aileron.regular';
+    padding: 0;
+    margin: 0;
 }
 
 a {
-  display: inline-block;
-  font-family: "Roboto", sans-serif;
-  cursor: pointer;
+    display: inline-block;
+    font-family: 'aileron.regular';
+    cursor: pointer;
 }
 
 h1,
@@ -91,9 +97,9 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Poppins", sans-serif;
-  margin: 0;
-  padding: 0;
+    font-family: 'aileron.regular';
+    margin: 0;
+    padding: 0;
 }
 
 p {
@@ -151,19 +157,19 @@ button:focus {
 
 /* Global style */
 .button-1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
-  color: #292669;
-  font-weight: 700;
-  line-height: 1.556;
-  text-align: center;
-  border: 1px solid #a4a4c6;
-  width: 184px;
-  height: 54px;
-  border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'aileron.regular';
+    font-size: 18px;
+    color: #292669;
+    font-weight: 700;
+    line-height: 1.556;
+    text-align: center;
+    border: 1px solid #a4a4c6;
+    width: 184px;
+    height: 54px;
+    border-radius: 30px;
 }
 
 .navbar-light .navbar-toggler-icon {
@@ -181,31 +187,31 @@ button:focus {
 }
 
 h1.head {
-  font-family: "Poppins", sans-serif;
-  font-size: 70px;
-  line-height: 1.143;
-  font-weight: 700;
+    font-family: 'aileron.regular';
+    font-size: 70px;
+    line-height: 1.143;
+    font-weight: 500;
 }
 
 h2.title {
-  font-family: "Poppins", sans-serif;
-  font-size: 60px;
-  line-height: 1.167;
-  font-weight: 600;
+    font-family: 'aileron.regular';
+    font-size: 60px;
+    line-height: 1.167;
+    font-weight: 600;
 }
 
 h3.subtitle {
-  font-family: "Poppins", sans-serif;
-  font-size: 28px;
-  line-height: 1.357;
-  font-weight: 600;
+    font-family: 'aileron.regular';
+    font-size: 28px;
+    line-height: 1.357;
+    font-weight: 600;
 }
 
 p.text {
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
-  line-height: 1.556;
-  font-weight: 400;
+    font-family: 'aileron.regular';
+    font-size: 18px;
+    line-height: 1.556;
+    font-weight: 400;
 }
 
 /* Preloader Css */
@@ -370,37 +376,37 @@ p.text {
 .banner .mein-menu .navbar #navbarNavDropdown ul.navbar-nav li.nav-item:first-child {
   margin-left: 0;
 }
-.banner .mein-menu .navbar #navbarNavDropdown ul.navbar-nav li.nav-item a.nav-link {
-  font-family: "Poppins", sans-serif;
-  color: #fff;
-  font-size: 18px;
-  line-height: 1.556;
-  font-weight: 600;
-  padding-right: 0;
-  padding-left: 0;
-}
+    .banner .mein-menu .navbar #navbarNavDropdown ul.navbar-nav li.nav-item a.nav-link {
+        font-family: 'aileron.regular';
+        color: #fff;
+        font-size: 18px;
+        line-height: 1.556;
+        font-weight: 600;
+        padding-right: 0;
+        padding-left: 0;
+    }
 .banner .mein-menu .navbar #navbarNavDropdown ul.navbar-nav li.nav-item a.nav-link:hover, .banner .mein-menu .navbar #navbarNavDropdown ul.navbar-nav li.nav-item a.nav-link.active {
   color: #ff8e00;
 }
 .banner .mein-menu .navbar #navbarNavDropdown ul.navbar-nav li.nav-item .language-select {
   margin-left: 15px;
 }
-.banner .mein-menu .navbar #navbarNavDropdown ul.navbar-nav li.nav-item .language-select .nice-select {
-  font-size: 18px;
-  background: transparent;
-  color: #fff;
-  font-family: "Poppins", sans-serif;
-  background-color: transparent;
-  border-radius: 20px;
-  border: solid 1px white;
-  font-weight: 600;
-  height: 54px;
-  line-height: 1.556;
-  width: 124px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    .banner .mein-menu .navbar #navbarNavDropdown ul.navbar-nav li.nav-item .language-select .nice-select {
+        font-size: 18px;
+        background: transparent;
+        color: #fff;
+        font-family: 'aileron.regular';
+        background-color: transparent;
+        border-radius: 20px;
+        border: solid 1px white;
+        font-weight: 600;
+        height: 54px;
+        line-height: 1.556;
+        width: 124px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 .banner .mein-menu .navbar #navbarNavDropdown ul.navbar-nav li.nav-item .language-select .nice-select:after {
   border-bottom: 2px solid #fff;
   border-right: 2px solid #fff;
@@ -412,26 +418,26 @@ p.text {
 .banner .mein-menu .navbar #navbarNavDropdown ul.navbar-nav li.nav-item .language-select .nice-select .list {
   width: 100%;
 }
-.banner .mein-menu .navbar #navbarNavDropdown ul.navbar-nav li.nav-item .language-select .nice-select .list li {
-  text-align: center;
-  font-size: 18px;
-  line-height: 1.556;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  color: #524f98;
-}
+    .banner .mein-menu .navbar #navbarNavDropdown ul.navbar-nav li.nav-item .language-select .nice-select .list li {
+        text-align: center;
+        font-size: 18px;
+        line-height: 1.556;
+        font-family: 'aileron.regular';
+        font-weight: 600;
+        color: #524f98;
+    }
 .banner .mein-menu .navbar #navbarNavDropdown ul.navbar-nav li.nav-item.dropdown .dropdown-menu {
   box-shadow: 0px 5px 89.61px 13.39px rgba(23, 29, 113, 0.26);
   border: 1px solid #e4daff;
   background: white;
 }
-.banner .mein-menu .navbar #navbarNavDropdown ul.navbar-nav li.nav-item.dropdown .dropdown-menu li a.dropdown-item {
-  font-family: "Poppins", sans-serif;
-  font-size: 18px;
-  line-height: 28px;
-  font-weight: 500;
-  color: #524f98;
-}
+    .banner .mein-menu .navbar #navbarNavDropdown ul.navbar-nav li.nav-item.dropdown .dropdown-menu li a.dropdown-item {
+        font-family: 'aileron.regular';
+        font-size: 18px;
+        line-height: 28px;
+        font-weight: 500;
+        color: #524f98;
+    }
 .banner .mein-menu.nav-fixed {
   position: fixed;
   top: 0;
@@ -451,29 +457,29 @@ p.text {
 .banner .hero-area .banner-content h1.head {
   color: #fff;
 }
-.banner .hero-area .banner-content p.text {
-  font-family: "Roboto", sans-serif;
-  font-size: 22px;
-  line-height: 1.545;
-  font-weight: 500;
-  color: #fff;
-  padding-top: 17px;
-}
+    .banner .hero-area .banner-content p.text {
+        font-family: 'aileron.regular';
+        font-size: 22px;
+        line-height: 1.545;
+        font-weight: 500;
+        color: #fff;
+        padding-top: 17px;
+    }
 .banner .hero-area .hero-form {
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.055);
   box-shadow: 0px 5px 89.61px 13.39px rgba(23, 29, 113, 0.26);
   padding: 45px 20px 50px;
 }
-.banner .hero-area .hero-form p.text {
-  font-family: "Poppins", sans-serif;
-  font-size: 18px;
-  line-height: 1.556;
-  font-weight: 500;
-  color: #fff;
-  margin-bottom: 12px;
-  display: block;
-}
+    .banner .hero-area .hero-form p.text {
+        font-family: 'aileron.regular';
+        font-size: 18px;
+        line-height: 1.556;
+        font-weight: 500;
+        color: #fff;
+        margin-bottom: 12px;
+        display: block;
+    }
 .banner .hero-area .hero-form .courrency-select {
   display: flex;
   flex-direction: row;
@@ -487,22 +493,22 @@ p.text {
   padding: 0 8px;
   background: rgba(255, 255, 255, 0.17);
 }
-.banner .hero-area .hero-form .courrency-select .form-group .form-control {
-  background: transparent;
-  border: none;
-  font-family: "Poppins", sans-serif;
-  font-size: 18px;
-  line-height: 1.556;
-  font-weight: 500;
-  color: #fff;
-}
-.banner .hero-area .hero-form .courrency-select .form-group .form-control::placeholder {
-  font-family: "Poppins", sans-serif;
-  font-size: 18px;
-  line-height: 1.556;
-  font-weight: 500;
-  color: #fff;
-}
+    .banner .hero-area .hero-form .courrency-select .form-group .form-control {
+        background: transparent;
+        border: none;
+        font-family: 'aileron.regular';
+        font-size: 18px;
+        line-height: 1.556;
+        font-weight: 500;
+        color: #fff;
+    }
+        .banner .hero-area .hero-form .courrency-select .form-group .form-control::placeholder {
+            font-family: 'aileron.regular';
+            font-size: 18px;
+            line-height: 1.556;
+            font-weight: 500;
+            color: #fff;
+        }
 .banner .hero-area .hero-form .courrency-select .language-select {
   margin-left: 15px;
   position: relative;
@@ -517,20 +523,20 @@ p.text {
   width: 1px;
   height: 100%;
 }
-.banner .hero-area .hero-form .courrency-select .language-select .nice-select {
-  font-size: 18px;
-  background: transparent;
-  color: #fff;
-  font-family: "Poppins", sans-serif;
-  background-color: transparent;
-  border: none;
-  font-weight: 500;
-  line-height: 1.556;
-  width: 124px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    .banner .hero-area .hero-form .courrency-select .language-select .nice-select {
+        font-size: 18px;
+        background: transparent;
+        color: #fff;
+        font-family: 'aileron.regular';
+        background-color: transparent;
+        border: none;
+        font-weight: 500;
+        line-height: 1.556;
+        width: 124px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 .banner .hero-area .hero-form .courrency-select .language-select .nice-select:after {
   border-top: 5px solid rgba(255, 255, 255, 0);
   border-left: 5px solid #fff0;
@@ -544,14 +550,14 @@ p.text {
 .banner .hero-area .hero-form .courrency-select .language-select .nice-select .list {
   width: 100%;
 }
-.banner .hero-area .hero-form .courrency-select .language-select .nice-select .list li {
-  text-align: center;
-  font-size: 18px;
-  line-height: 1.556;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  color: #524f98;
-}
+    .banner .hero-area .hero-form .courrency-select .language-select .nice-select .list li {
+        text-align: center;
+        font-size: 18px;
+        line-height: 1.556;
+        font-family: 'aileron.regular';
+        font-weight: 600;
+        color: #524f98;
+    }
 .banner .hero-area .hero-form .country {
   display: flex;
   flex-direction: row;
@@ -569,20 +575,20 @@ p.text {
 .banner .hero-area .hero-form .country .language-select {
   width: 100%;
 }
-.banner .hero-area .hero-form .country .language-select .nice-select {
-  background: transparent;
-  color: #fff;
-  font-family: "Poppins", sans-serif;
-  background-color: transparent;
-  border: none;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.556;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-}
+    .banner .hero-area .hero-form .country .language-select .nice-select {
+        background: transparent;
+        color: #fff;
+        font-family: 'aileron.regular';
+        background-color: transparent;
+        border: none;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.556;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+    }
 .banner .hero-area .hero-form .country .language-select .nice-select:after {
   border-top: 5px solid rgba(255, 255, 255, 0);
   border-left: 5px solid #fff0;
@@ -596,31 +602,31 @@ p.text {
 .banner .hero-area .hero-form .country .language-select .nice-select .list {
   width: 40%;
 }
-.banner .hero-area .hero-form .country .language-select .nice-select .list li {
-  text-align: center;
-  font-size: 18px;
-  line-height: 1.556;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  color: #524f98;
-}
-.banner .hero-area .hero-form a.button.button-1 {
-  border-radius: 20px;
-  background-color: #ffb400;
-  box-shadow: 0px 5px 13.28px 2.72px rgba(0, 0, 0, 0.1);
-  height: 70px;
-  width: 100%;
-  border: none;
-  font-size: 18px;
-  font-family: "Roboto", sans-serif;
-  color: white;
-  font-weight: 700;
-  text-transform: uppercase;
-  line-height: 1.556;
-  text-align: center;
-  margin-top: 40px;
-  transition: 0.1s;
-}
+    .banner .hero-area .hero-form .country .language-select .nice-select .list li {
+        text-align: center;
+        font-size: 18px;
+        line-height: 1.556;
+        font-family: 'aileron.regular';
+        font-weight: 600;
+        color: #524f98;
+    }
+    .banner .hero-area .hero-form a.button.button-1 {
+        border-radius: 20px;
+        background-color: #ffb400;
+        box-shadow: 0px 5px 13.28px 2.72px rgba(0, 0, 0, 0.1);
+        height: 70px;
+        width: 100%;
+        border: none;
+        font-size: 18px;
+        font-family: 'aileron.regular';
+        color: white;
+        font-weight: 700;
+        text-transform: uppercase;
+        line-height: 1.556;
+        text-align: center;
+        margin-top: 40px;
+        transition: 0.1s;
+    }
 .banner .hero-area .hero-form a.button.button-1:hover {
   background-color: #f5ae08;
 }
@@ -781,19 +787,19 @@ p.text {
 .how-use .video-box .video-text {
   margin-left: 30px;
 }
-.how-use .video-box .video-text p.text {
-  font-size: 18px;
-  font-family: "Poppins", sans-serif;
-  color: #6a35ff;
-  font-weight: 700;
-  line-height: 1.556;
-}
-.how-use .video-box .video-text span {
-  font-family: "Roboto", sans-serif;
-  color: #6a35ff;
-  font-size: 14px;
-  line-height: 2;
-}
+    .how-use .video-box .video-text p.text {
+        font-size: 18px;
+        font-family: 'aileron.regular';
+        color: #6a35ff;
+        font-weight: 700;
+        line-height: 1.556;
+    }
+    .how-use .video-box .video-text span {
+        font-family: 'aileron.regular';
+        color: #6a35ff;
+        font-size: 14px;
+        line-height: 2;
+    }
 .how-use .content {
   margin-bottom: 56px;
 }
@@ -821,22 +827,22 @@ p.text {
 .how-use .use-box .install .text-box {
   margin-left: 30px;
 }
-.how-use .use-box .install .text-box span {
-  display: block;
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #6a35ff;
-  margin-bottom: 8px;
-}
-.how-use .use-box .install .text-box h4 {
-  font-family: "Poppins", sans-serif;
-  font-size: 20px;
-  line-height: 1.5;
-  font-weight: 500;
-  color: #292669;
-}
+    .how-use .use-box .install .text-box span {
+        display: block;
+        font-family: 'aileron.regular';
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #6a35ff;
+        margin-bottom: 8px;
+    }
+    .how-use .use-box .install .text-box h4 {
+        font-family: 'aileron.regular';
+        font-size: 20px;
+        line-height: 1.5;
+        font-weight: 500;
+        color: #292669;
+    }
 
 /* Partners Start */
 .partners {
@@ -948,12 +954,12 @@ p.text {
   color: #292669;
   margin-left: 30px;
 }
-.counter .page-counter .counter-item p.text {
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 28px;
-}
+    .counter .page-counter .counter-item p.text {
+        font-family: 'aileron.regular';
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 28px;
+    }
 
 /* Update Start */
 .update {
@@ -1059,18 +1065,18 @@ p.text {
   background-color: white;
   box-shadow: 9.272px 3.746px 38px 0px rgba(176, 163, 231, 0.26);
 }
-.faq .accordion .accordion-item .accordion-header button.accordion-button {
-  position: relative;
-  font-family: "Poppins", sans-serif;
-  font-size: 20px;
-  line-height: 30px;
-  font-weight: 500;
-  color: #3b368c;
-  border-radius: 0;
-  border: none;
-  outline: none !important;
-  padding: 20px 50px 20px 20px;
-}
+    .faq .accordion .accordion-item .accordion-header button.accordion-button {
+        position: relative;
+        font-family: 'aileron.regular';
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: 500;
+        color: #3b368c;
+        border-radius: 0;
+        border: none;
+        outline: none !important;
+        padding: 20px 50px 20px 20px;
+    }
 .faq .accordion .accordion-item .accordion-header button.accordion-button[aria-expanded=true] {
   background: transparent;
   outline: none !important;
@@ -1105,14 +1111,14 @@ p.text {
   background-color: white;
   box-shadow: 9.272px 3.746px 38px 0px rgba(176, 163, 231, 0.26);
 }
-.faq .accordion .accordion-item .accordion-collapse .accordion-body {
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
-  line-height: 28px;
-  color: #524f98;
-  font-weight: 400;
-  padding: 24px 30px 26px 30px;
-}
+    .faq .accordion .accordion-item .accordion-collapse .accordion-body {
+        font-family: 'aileron.regular';
+        font-size: 18px;
+        line-height: 28px;
+        color: #524f98;
+        font-weight: 400;
+        padding: 24px 30px 26px 30px;
+    }
 .faq .question .question-man {
   position: absolute;
   z-index: -1;
@@ -1140,52 +1146,52 @@ p.text {
   margin-bottom: 140px;
   margin-top: -100px;
 }
-.footer .subcribe-box h3.subcribe {
-  width: 50%;
-  font-family: "Poppins", sans-serif;
-  font-size: 36px;
-  font-weight: 600;
-  line-height: 46px;
-  color: #fff;
-}
+    .footer .subcribe-box h3.subcribe {
+        width: 50%;
+        font-family: 'aileron.regular';
+        font-size: 36px;
+        font-weight: 600;
+        line-height: 46px;
+        color: #fff;
+    }
 .footer .subcribe-box .form-group {
   position: relative;
   width: 50%;
 }
-.footer .subcribe-box .form-group .form-control {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  color: #d3d0f7;
-  line-height: 1.556;
-  min-height: 64px;
-  background: transparent;
-  outline: none;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 30px;
-  padding: 0px 195px 0px 24px;
-}
-.footer .subcribe-box .form-group .form-control::placeholder {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  color: #d3d0f7;
-  line-height: 1.556;
-}
-.footer .subcribe-box .form-group button.button-1 {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  background-color: #ffb400;
-  box-shadow: 0px 5px 13.28px 2.72px rgba(0, 0, 0, 0.1);
-  height: 64px;
-  font-size: 20px;
-  font-family: "Roboto", sans-serif;
-  color: white;
-  line-height: 1.5;
-  transition: 0.1s;
-}
+    .footer .subcribe-box .form-group .form-control {
+        font-family: 'aileron.regular';
+        font-weight: 400;
+        font-size: 18px;
+        color: #d3d0f7;
+        line-height: 1.556;
+        min-height: 64px;
+        background: transparent;
+        outline: none;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 30px;
+        padding: 0px 195px 0px 24px;
+    }
+        .footer .subcribe-box .form-group .form-control::placeholder {
+            font-family: 'aileron.regular';
+            font-weight: 400;
+            font-size: 18px;
+            color: #d3d0f7;
+            line-height: 1.556;
+        }
+    .footer .subcribe-box .form-group button.button-1 {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        background-color: #ffb400;
+        box-shadow: 0px 5px 13.28px 2.72px rgba(0, 0, 0, 0.1);
+        height: 64px;
+        font-size: 20px;
+        font-family: 'aileron.regular';
+        color: white;
+        line-height: 1.5;
+        transition: 0.1s;
+    }
 .footer .subcribe-box .form-group button.button-1:hover {
   background-color: #f5ae08;
 }
@@ -1200,31 +1206,31 @@ p.text {
 .footer .footer-box .footer-link li:first-child {
   margin-left: 0;
 }
-.footer .footer-box .footer-link li a {
-  font-family: "Poppins", sans-serif;
-  font-size: 18px;
-  line-height: 28px;
-  font-weight: 400;
-  color: #142645;
-}
+    .footer .footer-box .footer-link li a {
+        font-family: 'aileron.regular';
+        font-size: 18px;
+        line-height: 28px;
+        font-weight: 400;
+        color: #142645;
+    }
 .footer .raka {
   border-top: 1px solid #e3d8ef;
   margin: 50px 0 30px;
 }
-.footer .footer-bottom p {
-  font-family: "Poppins", sans-serif;
-  font-size: 18px;
-  line-height: 28px;
-  font-weight: 400;
-  color: #142645;
-}
-.footer .footer-bottom a {
-  font-family: "Poppins", sans-serif;
-  font-size: 18px;
-  line-height: 28px;
-  font-weight: 400;
-  color: #142645;
-}
+    .footer .footer-bottom p {
+        font-family: 'aileron.regular';
+        font-size: 18px;
+        line-height: 28px;
+        font-weight: 400;
+        color: #142645;
+    }
+    .footer .footer-bottom a {
+        font-family: 'aileron.regular';
+        font-size: 18px;
+        line-height: 28px;
+        font-weight: 400;
+        color: #142645;
+    }
 .footer .footer-bottom .social-style {
   text-align: right;
 }
@@ -1299,14 +1305,14 @@ p.text {
   color: #292669;
   font-weight: 500;
 }
-.provaider .secure p.text a {
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  line-height: 24px;
-  font-weight: 400;
-  color: #292669;
-  text-decoration: underline;
-}
+    .provaider .secure p.text a {
+        font-family: 'aileron.regular';
+        font-size: 14px;
+        line-height: 24px;
+        font-weight: 400;
+        color: #292669;
+        text-decoration: underline;
+    }
 .provaider .secure p.text a:hover {
   text-decoration: none;
 }
@@ -1457,37 +1463,37 @@ p.text {
   text-align: center;
   padding: 0px 60px 3px;
 }
-.provaider .provaider-box .total p.text {
-  color: #292669;
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  font-weight: 400;
-}
-.provaider .provaider-box .total h4.amount {
-  color: #292669;
-  font-family: "Poppins", sans-serif;
-  font-size: 24px;
-  line-height: 1.167;
-  font-weight: 700;
-  margin: 4px 0 4px;
-}
-.provaider .provaider-box .total a.button {
-  border-radius: 10px;
-  background-color: #ffb400;
-  box-shadow: 0px 5px 13.28px 2.72px rgba(0, 0, 0, 0.1);
-  width: 120px;
-  height: 40px;
-  font-size: 14px;
-  color: white;
-  font-weight: 700;
-  text-transform: uppercase;
-  line-height: 1.714;
-  font-family: "Roboto", sans-serif;
-  border: none;
-  margin: 23px auto 0 auto;
-  transition: 0.1s;
-}
+    .provaider .provaider-box .total p.text {
+        color: #292669;
+        font-family: 'aileron.regular';
+        font-size: 16px;
+        line-height: 1.5;
+        font-weight: 400;
+    }
+    .provaider .provaider-box .total h4.amount {
+        color: #292669;
+        font-family: 'aileron.regular';
+        font-size: 24px;
+        line-height: 1.167;
+        font-weight: 700;
+        margin: 4px 0 4px;
+    }
+    .provaider .provaider-box .total a.button {
+        border-radius: 10px;
+        background-color: #ffb400;
+        box-shadow: 0px 5px 13.28px 2.72px rgba(0, 0, 0, 0.1);
+        width: 120px;
+        height: 40px;
+        font-size: 14px;
+        color: white;
+        font-weight: 700;
+        text-transform: uppercase;
+        line-height: 1.714;
+        font-family: 'aileron.regular';
+        border: none;
+        margin: 23px auto 0 auto;
+        transition: 0.1s;
+    }
 .provaider .provaider-box .total a.button:hover {
   background-color: #f5ae08;
 }
@@ -1616,13 +1622,13 @@ p.text {
   color: #ffcc00;
   padding: 26px 0 17px;
 }
-.testomonial .testo-box p.text {
-  font-family: "Poppins", sans-serif;
-  font-size: 24px;
-  line-height: 34px;
-  font-weight: 500;
-  color: #292669;
-}
+    .testomonial .testo-box p.text {
+        font-family: 'aileron.regular';
+        font-size: 24px;
+        line-height: 34px;
+        font-weight: 500;
+        color: #292669;
+    }
 .testomonial .testo-box a.button {
   background-color: rgba(0, 0, 0, 0.102);
   width: 200px;
@@ -1750,13 +1756,13 @@ p.text {
   color: #ffcc00;
   padding: 26px 0 17px;
 }
-.testomonial .testo-box p.text {
-  font-family: "Poppins", sans-serif;
-  font-size: 24px;
-  line-height: 34px;
-  font-weight: 500;
-  color: #292669;
-}
+    .testomonial .testo-box p.text {
+        font-family: 'aileron.regular';
+        font-size: 24px;
+        line-height: 34px;
+        font-weight: 500;
+        color: #292669;
+    }
 .testomonial .testo-box a.button {
   background-color: rgba(0, 0, 0, 0.102);
   width: 200px;
@@ -1868,14 +1874,14 @@ p.text {
   font-weight: 500;
   color: #8489ae;
 }
-.guides-detail .content .profile .name p.text a {
-  display: block;
-  font-family: "Poppins", sans-serif;
-  font-size: 20px;
-  line-height: 30px;
-  font-weight: 600;
-  color: #292669;
-}
+    .guides-detail .content .profile .name p.text a {
+        display: block;
+        font-family: 'aileron.regular';
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: 600;
+        color: #292669;
+    }
 .guides-detail .content p.text.main {
   font-size: 20px;
   line-height: 30px;
@@ -1947,21 +1953,21 @@ p.text {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.banner.contact .hero-area .contact-info .info-box p.text {
-  color: #667ca2;
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;
-  line-height: 26px;
-  font-weight: 500;
-  padding: 24px 0 9px;
-}
-.banner.contact .hero-area .contact-info .info-box span {
-  font-family: "Poppins", sans-serif;
-  display: block;
-  color: #142645;
-  font-size: 18px;
-  font-weight: 28px;
-}
+    .banner.contact .hero-area .contact-info .info-box p.text {
+        color: #667ca2;
+        font-family: 'aileron.regular';
+        font-size: 16px;
+        line-height: 26px;
+        font-weight: 500;
+        padding: 24px 0 9px;
+    }
+    .banner.contact .hero-area .contact-info .info-box span {
+        font-family: 'aileron.regular';
+        display: block;
+        color: #142645;
+        font-size: 18px;
+        font-weight: 28px;
+    }
 .banner.contact .hero-area .contact-info .info-box.one {
   margin-right: 120px;
 }
@@ -1979,30 +1985,30 @@ p.text {
   padding: 13px 50px 16px;
   margin: 0;
 }
-.banner.contact .hero-area .hero-form.contact input,
-.banner.contact .hero-area .hero-form.contact textarea, .banner.contact .hero-area .hero-form.contact button {
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
-  line-height: 1.556;
-  font-weight: 400;
-  color: #aeb3c5;
-  border: 1px solid #bebebe;
-  background-color: white;
-  box-shadow: 0px 10px 20px 0px rgba(50, 35, 215, 0.1);
-  width: 100%;
-  height: 48px;
-  margin-top: 20px;
-  border-radius: 30px;
-  padding: 0 20px 0;
-}
-.banner.contact .hero-area .hero-form.contact input::placeholder,
-.banner.contact .hero-area .hero-form.contact textarea::placeholder, .banner.contact .hero-area .hero-form.contact button::placeholder {
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
-  line-height: 1.556;
-  font-weight: 400;
-  color: #aeb3c5;
-}
+    .banner.contact .hero-area .hero-form.contact input,
+    .banner.contact .hero-area .hero-form.contact textarea, .banner.contact .hero-area .hero-form.contact button {
+        font-family: 'aileron.regular';
+        font-size: 18px;
+        line-height: 1.556;
+        font-weight: 400;
+        color: #aeb3c5;
+        border: 1px solid #bebebe;
+        background-color: white;
+        box-shadow: 0px 10px 20px 0px rgba(50, 35, 215, 0.1);
+        width: 100%;
+        height: 48px;
+        margin-top: 20px;
+        border-radius: 30px;
+        padding: 0 20px 0;
+    }
+        .banner.contact .hero-area .hero-form.contact input::placeholder,
+        .banner.contact .hero-area .hero-form.contact textarea::placeholder, .banner.contact .hero-area .hero-form.contact button::placeholder {
+            font-family: 'aileron.regular';
+            font-size: 18px;
+            line-height: 1.556;
+            font-weight: 400;
+            color: #aeb3c5;
+        }
 .banner.contact .hero-area .hero-form.contact textarea {
   min-height: 120px;
   padding: 10px 20px 0px;
@@ -2064,20 +2070,20 @@ p.text {
   border-radius: 30px;
   box-shadow: 0px 25px 122px 0px rgba(50, 35, 215, 0.1);
 }
-.rate-tracker .rate-details .rate-box {
-  font-family: "Poppins", sans-serif;
-  font-size: 18px;
-  line-height: 1.556;
-  font-weight: 500;
-  color: #292669;
-  margin-top: 40px;
-  padding-top: 40px;
-  border-top: 1px solid #d3d1ee;
-}
-.rate-tracker .rate-details .rate-box p.text {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-}
+    .rate-tracker .rate-details .rate-box {
+        font-family: 'aileron.regular';
+        font-size: 18px;
+        line-height: 1.556;
+        font-weight: 500;
+        color: #292669;
+        margin-top: 40px;
+        padding-top: 40px;
+        border-top: 1px solid #d3d1ee;
+    }
+        .rate-tracker .rate-details .rate-box p.text {
+            font-family: 'aileron.regular';
+            font-weight: 500;
+        }
 .rate-tracker .rate-details .rate-box label {
   padding-left: 8px;
 }
@@ -2106,19 +2112,19 @@ p.text {
 .rate-tracker .rate-details .rate-box.one .country .language-select {
   width: 100%;
 }
-.rate-tracker .rate-details .rate-box.one .country .language-select .nice-select {
-  background: transparent;
-  font-family: "Poppins", sans-serif;
-  background-color: transparent;
-  border: none;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.556;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-}
+    .rate-tracker .rate-details .rate-box.one .country .language-select .nice-select {
+        background: transparent;
+        font-family: 'aileron.regular';
+        background-color: transparent;
+        border: none;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.556;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+    }
 .rate-tracker .rate-details .rate-box.one .country .language-select .nice-select:after {
   border-top: 5px solid #d8d7e500;
   border-left: 5px solid #d8d7e500;
@@ -2132,14 +2138,14 @@ p.text {
 .rate-tracker .rate-details .rate-box.one .country .language-select .nice-select .list {
   width: 100%;
 }
-.rate-tracker .rate-details .rate-box.one .country .language-select .nice-select .list li {
-  text-align: center;
-  font-size: 18px;
-  line-height: 1.556;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  color: #636199;
-}
+    .rate-tracker .rate-details .rate-box.one .country .language-select .nice-select .list li {
+        text-align: center;
+        font-size: 18px;
+        line-height: 1.556;
+        font-family: 'aileron.regular';
+        font-weight: 600;
+        color: #636199;
+    }
 .rate-tracker .rate-details .rate-box.three .form-box {
   display: flex;
   justify-content: flex-start;
@@ -2148,55 +2154,55 @@ p.text {
 .rate-tracker .rate-details .rate-box.three .form-box .form-group {
   margin-right: 20px;
 }
-.rate-tracker .rate-details .rate-box.three .form-box .form-group .textnum {
-  width: 254px;
-  font-family: "Poppins", sans-serif;
-  font-size: 18px;
-  line-height: 28px;
-  font-weight: 700;
-  color: #3266c5;
-  border: 1px solid #b9b1da;
-  border-radius: 10px;
-  height: 44px;
-  padding: 0px 10px;
-}
-.rate-tracker .rate-details .rate-box.three .form-box .form-group .textnum::placeholder {
-  font-family: "Poppins", sans-serif;
-  font-size: 18px;
-  line-height: 28px;
-  font-weight: 700;
-  color: #3266c5;
-}
+    .rate-tracker .rate-details .rate-box.three .form-box .form-group .textnum {
+        width: 254px;
+        font-family: 'aileron.regular';
+        font-size: 18px;
+        line-height: 28px;
+        font-weight: 700;
+        color: #3266c5;
+        border: 1px solid #b9b1da;
+        border-radius: 10px;
+        height: 44px;
+        padding: 0px 10px;
+    }
+        .rate-tracker .rate-details .rate-box.three .form-box .form-group .textnum::placeholder {
+            font-family: 'aileron.regular';
+            font-size: 18px;
+            line-height: 28px;
+            font-weight: 700;
+            color: #3266c5;
+        }
 .rate-tracker .rate-details .rate-box.four {
   display: flex;
   flex-direction: column;
 }
-.rate-tracker .rate-details .rate-box.four h4.alert-expairy {
-  font-family: "Poppins", sans-serif;
-  font-size: 24px;
-  line-height: 34px;
-  font-weight: 700;
-  margin-bottom: 30px;
-}
+    .rate-tracker .rate-details .rate-box.four h4.alert-expairy {
+        font-family: 'aileron.regular';
+        font-size: 24px;
+        line-height: 34px;
+        font-weight: 700;
+        margin-bottom: 30px;
+    }
 .rate-tracker .rate-details .rate-box.four .box .form-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.rate-tracker .rate-details .rate-box.four .box .form-box .textnum.date {
-  margin-left: 140px;
-  width: 254px;
-  font-weight: 500;
-  color: #292669;
-  width: 254px;
-  font-family: "Poppins", sans-serif;
-  font-size: 18px;
-  line-height: 28px;
-  border: 1px solid #b9b1da;
-  border-radius: 10px;
-  height: 44px;
-  padding: 0px 10px;
-}
+    .rate-tracker .rate-details .rate-box.four .box .form-box .textnum.date {
+        margin-left: 140px;
+        width: 254px;
+        font-weight: 500;
+        color: #292669;
+        width: 254px;
+        font-family: 'aileron.regular';
+        font-size: 18px;
+        line-height: 28px;
+        border: 1px solid #b9b1da;
+        border-radius: 10px;
+        height: 44px;
+        padding: 0px 10px;
+    }
 .rate-tracker .rate-details .rate-box.four .box .form-box .textnum.date::placeholder {
   font-weight: 500;
   color: #292669;
@@ -2218,45 +2224,45 @@ p.text {
   justify-content: space-between;
   align-items: center;
 }
-.rate-tracker .rate-details .subscribe-box h4.yourmail {
-  font-family: "Poppins", sans-serif;
-  font-size: 24px;
-  line-height: 34px;
-  font-weight: 700;
-}
-.rate-tracker .rate-details .subscribe-box .form-control {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 28px;
-  color: #292669;
-  height: 54px;
-  background: transparent;
-  outline: none;
-  border: 1px solid #b9b1da;
-  border-radius: 25px;
-  padding: 0px 24px 0px 24px;
-  width: 140%;
-}
-.rate-tracker .rate-details .subscribe-box .form-control::placeholder {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  color: #b5b4c2;
-  line-height: 1.556;
-}
-.rate-tracker .rate-details .subscribe-box button.button-1 {
-  background-color: #ffb400;
-  box-shadow: 0px 5px 13.28px 2.72px rgba(0, 0, 0, 0.1);
-  height: 54px;
-  font-size: 20px;
-  font-family: "Roboto", sans-serif;
-  color: white;
-  line-height: 1.5;
-  border-radius: 25px;
-  border: none;
-  transition: 0.1s;
-}
+    .rate-tracker .rate-details .subscribe-box h4.yourmail {
+        font-family: 'aileron.regular';
+        font-size: 24px;
+        line-height: 34px;
+        font-weight: 700;
+    }
+    .rate-tracker .rate-details .subscribe-box .form-control {
+        font-family: 'aileron.regular';
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 28px;
+        color: #292669;
+        height: 54px;
+        background: transparent;
+        outline: none;
+        border: 1px solid #b9b1da;
+        border-radius: 25px;
+        padding: 0px 24px 0px 24px;
+        width: 140%;
+    }
+        .rate-tracker .rate-details .subscribe-box .form-control::placeholder {
+            font-family: 'aileron.regular';
+            font-weight: 400;
+            font-size: 18px;
+            color: #b5b4c2;
+            line-height: 1.556;
+        }
+    .rate-tracker .rate-details .subscribe-box button.button-1 {
+        background-color: #ffb400;
+        box-shadow: 0px 5px 13.28px 2.72px rgba(0, 0, 0, 0.1);
+        height: 54px;
+        font-size: 20px;
+        font-family: 'aileron.regular';
+        color: white;
+        line-height: 1.5;
+        border-radius: 25px;
+        border: none;
+        transition: 0.1s;
+    }
 .rate-tracker .rate-details .subscribe-box button.button-1:hover {
   background-color: #f5ae08;
 }
@@ -2300,24 +2306,24 @@ p.text {
 .overview .powermoney {
   margin-top: 89px;
 }
-.overview .powermoney h4.what {
-  font-family: "Poppins", sans-serif;
-  font-size: 36px;
-  line-height: 46px;
-  font-weight: 600;
-  color: #292669;
-}
+    .overview .powermoney h4.what {
+        font-family: 'aileron.regular';
+        font-size: 36px;
+        line-height: 46px;
+        font-weight: 600;
+        color: #292669;
+    }
 .overview .powermoney p.text {
   color: #524f98;
   padding: 22px 0px 10px;
 }
-.overview .powermoney .list {
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
-  line-height: 1.556;
-  font-weight: 400;
-  color: #524f98;
-}
+    .overview .powermoney .list {
+        font-family: 'aileron.regular';
+        font-size: 18px;
+        line-height: 1.556;
+        font-weight: 400;
+        color: #524f98;
+    }
 .overview .powermoney .list .list-item {
   display: flex;
   justify-content: flex-start;
@@ -2394,22 +2400,22 @@ p.text {
 .overview .go-site h3.subtitle {
   color: #48467c;
 }
-.overview .go-site a.button {
-  width: 220px;
-  height: 60px;
-  border-radius: 10px;
-  background-color: #ffb400;
-  box-shadow: 0px 5px 13.28px 2.72px rgba(0, 0, 0, 0.1);
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
-  line-height: 1.556;
-  color: white;
-  font-weight: 700;
-  border: none;
-  margin: 11px auto 11px auto;
-  text-transform: uppercase;
-  transition: 0.1s;
-}
+    .overview .go-site a.button {
+        width: 220px;
+        height: 60px;
+        border-radius: 10px;
+        background-color: #ffb400;
+        box-shadow: 0px 5px 13.28px 2.72px rgba(0, 0, 0, 0.1);
+        font-family: 'aileron.regular';
+        font-size: 18px;
+        line-height: 1.556;
+        color: white;
+        font-weight: 700;
+        border: none;
+        margin: 11px auto 11px auto;
+        text-transform: uppercase;
+        transition: 0.1s;
+    }
 .overview .go-site a.button:hover {
   background-color: #f5ae08;
 }
@@ -2511,20 +2517,20 @@ p.text {
 .really-easy .use-box .img {
   position: relative;
 }
-.really-easy .use-box .img span {
-  font-size: 28px;
-  font-family: "Roboto", sans-serif;
-  color: #fefefe;
-  font-weight: 700;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background-color: #5eb33f;
-  line-height: 70px;
-  position: absolute;
-  top: 15px;
-  left: 30px;
-}
+    .really-easy .use-box .img span {
+        font-size: 28px;
+        font-family: 'aileron.regular';
+        color: #fefefe;
+        font-weight: 700;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: #5eb33f;
+        line-height: 70px;
+        position: absolute;
+        top: 15px;
+        left: 30px;
+    }
 .really-easy .use-box .details h3.subtitle {
   text-transform: uppercase;
   color: #524f98;
@@ -2700,19 +2706,19 @@ p.text {
   background-color: white;
   box-shadow: 4.881px -10.963px 22.5px 2.5px rgba(83, 87, 110, 0.1);
 }
-.blog .blog-box .text-box .blog-title {
-  font-family: "Poppins", sans-serif;
-  font-size: 22px;
-  line-height: 32px;
-  font-weight: 600;
-  color: #292669;
-}
-.blog .blog-box .text-box span {
-  padding-top: 11px;
-  display: block;
-  font-family: "Roboto", sans-serif;
-  color: #9493af;
-  font-size: 14px;
-  line-height: 24px;
-  font-weight: 400;
-}
+    .blog .blog-box .text-box .blog-title {
+        font-family: 'aileron.regular';
+        font-size: 22px;
+        line-height: 32px;
+        font-weight: 600;
+        color: #292669;
+    }
+    .blog .blog-box .text-box span {
+        padding-top: 11px;
+        display: block;
+        font-family: 'aileron.regular';
+        color: #9493af;
+        font-size: 14px;
+        line-height: 24px;
+        font-weight: 400;
+    }
