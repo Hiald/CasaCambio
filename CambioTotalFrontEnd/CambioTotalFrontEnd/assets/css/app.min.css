@@ -36,13 +36,18 @@
     --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace
 }
 
+@font-face {
+    font-family: 'aileron.regular';
+    src: url('../../Scripts/aileron.regular.otf') format('opentype');
+}
+
 *, ::after, ::before {
     -webkit-box-sizing: border-box;
     box-sizing: border-box
 }
 
 html {
-    font-family: sans-serif;
+    font-family: 'aileron.regular';
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent
@@ -54,7 +59,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
     margin: 0;
-    font-family: Nunito,sans-serif;
+    font-family: 'aileron.regular';
     font-size: .9rem;
     font-weight: 400;
     line-height: 1.5;
@@ -224,7 +229,7 @@ button {
 
 button, input, optgroup, select, textarea {
     margin: 0;
-    font-family: inherit;
+    font-family: 'aileron.regular';
     font-size: inherit;
     line-height: inherit
 }
@@ -6565,7 +6570,7 @@ a.close.disabled {
     z-index: 1070;
     display: block;
     margin: 0;
-    font-family: Nunito,sans-serif;
+    font-family: 'aileron.regular';
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -6678,7 +6683,7 @@ a.close.disabled {
     z-index: 1060;
     display: block;
     max-width: 276px;
-    font-family: Nunito,sans-serif;
+    font-family: 'aileron.regular';
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -11099,7 +11104,7 @@ body {
     position: absolute;
     right: 30px;
     display: inline-block;
-    font-family: 'Material Design Icons';
+    font-family: 'aileron.regular';
     text-rendering: auto;
     line-height: 1.5rem;
     font-size: 1.1rem;
@@ -12500,7 +12505,7 @@ body[data-layout=topnav] .container-fluid, body[data-layout=topnav] .container-l
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
-    font-family: "Material Design Icons"
+    font-family: 'aileron.regular';
 }
 
 .btn .mdi:before {
@@ -13082,9 +13087,9 @@ select.form-control:not([size]):not([multiple]) {
 select.form-control-sm:not([size]):not([multiple]) {
     height: calc(1.8725rem + 2px)
 }
-
+w
 .password-eye:before {
-    font-family: "Material Design Icons";
+    font-family: 'aileron.regular';
     content: "\F6CF";
     font-style: normal;
     font-weight: 400;
@@ -13571,7 +13576,7 @@ input[data-switch] {
             color: #313a46;
             content: attr(data-off-label);
             display: block;
-            font-family: inherit;
+            font-family: 'aileron.regular';
             font-weight: 600;
             font-size: .75rem;
             line-height: 24px;
@@ -15007,7 +15012,7 @@ body.authentication-bg {
     left: 20px;
     z-index: 3001;
     display: none;
-    font-family: arial;
+    font-family: 'aileron.regular';
     font-size: 15px;
     line-height: 1em
 }
@@ -15745,7 +15750,7 @@ body.authentication-bg {
     margin: 0 0 5px;
     border-radius: 4px;
     font-size: 12px;
-    font-family: arial,sans-serif;
+    font-family: 'aileron.regular';
     line-height: 17px;
     position: relative;
     pointer-events: all !important;
@@ -15754,7 +15759,7 @@ body.authentication-bg {
 }
 
     .jq-toast-single h2 {
-        font-family: arial,sans-serif;
+        font-family: 'aileron.regular';
         font-size: 14px;
         margin: 0 0 7px;
         background: 0 0;
@@ -16520,7 +16525,7 @@ body.authentication-bg {
     margin: 0 0 5px;
     border-radius: 4px;
     font-size: 12px;
-    font-family: arial,sans-serif;
+    font-family: 'aileron.regular';
     line-height: 17px;
     position: relative;
     pointer-events: all !important;
@@ -16529,7 +16534,7 @@ body.authentication-bg {
 }
 
     .jq-toast-single h2 {
-        font-family: arial,sans-serif;
+        font-family: 'aileron.regular';
         font-size: 14px;
         margin: 0 0 7px;
         background: 0 0;
@@ -16825,7 +16830,7 @@ body.authentication-bg {
 }
 
     .apex-charts text {
-        font-family: Nunito,sans-serif !important;
+        font-family: 'aileron.regular' !important;
         fill: #adb5bd
     }
 
@@ -16834,7 +16839,7 @@ body.authentication-bg {
     }
 
 .apexcharts-tooltip-text, .apexcharts-tooltip-title {
-    font-family: Nunito,sans-serif !important
+    font-family: 'aileron.regular' !important;
 }
 
 .apexcharts-legend-series {
@@ -16848,11 +16853,11 @@ body.authentication-bg {
 
 .apexcharts-legend-text {
     color: #98a6ad !important;
-    font-family: Nunito,sans-serif !important
+    font-family: 'aileron.regular' !important;
 }
 
 .apexcharts-xaxis text, .apexcharts-yaxis text {
-    font-family: Nunito,sans-serif !important;
+    font-family: 'aileron.regular' !important;
     fill: #adb5bd
 }
 
@@ -16902,7 +16907,7 @@ body.authentication-bg {
 }
 
 .britechart, .tick text {
-    font-family: Nunito,sans-serif;
+    font-family: 'aileron.regular';
     font-size: .75rem
 }
 
@@ -16971,7 +16976,7 @@ body.authentication-bg {
 }
 
 .fc-text-arrow {
-    font-family: inherit;
+    font-family: 'aileron.regular';
     font-size: 1rem
 }
 
@@ -17081,7 +17086,7 @@ table.dataTable {
     table.dataTable thead .sorting:before, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_desc_disabled:before {
         right: .5rem;
         content: "\F360";
-        font-family: "Material Design Icons";
+        font-family: 'aileron.regular';
         font-size: 1rem;
         top: 12px
     }
@@ -17089,7 +17094,7 @@ table.dataTable {
     table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_desc_disabled:after {
         right: .5em;
         content: "\F35D";
-        font-family: "Material Design Icons";
+        font-family: 'aileron.regular';
         top: 18px;
         font-size: 1rem
     }
@@ -17172,7 +17177,7 @@ div.dt-button-info {
 }
 
 .daterangepicker {
-    font-family: Nunito,sans-serif;
+    font-family: 'aileron.regular';
     border: 1px solid #e4eaf2;
     -webkit-box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
     box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
@@ -17331,7 +17336,7 @@ div.dt-button-info {
 
     .dragula-handle:before {
         content: "\F1DB";
-        font-family: "Material Design Icons";
+        font-family: 'aileron.regular';
         position: absolute
     }
 
@@ -17369,7 +17374,7 @@ div.dt-button-info {
     border: none;
     background: #343a40;
     color: #f1f3fa;
-    font-family: Nunito,sans-serif;
+    font-family: 'aileron.regular';
     font-size: .9rem;
     padding: 5px 8px
 }
@@ -17817,14 +17822,14 @@ body[data-leftbar-theme=dark] .side-nav .side-nav-forth-level li.active > a, bod
 
 .jq-toast-single {
     padding: 15px;
-    font-family: Nunito,sans-serif;
+    font-family: 'aileron.regular';
     background-color: #727cf5;
     font-size: 13px;
     line-height: 22px
 }
 
     .jq-toast-single h2 {
-        font-family: Nunito,sans-serif
+        font-family: 'aileron.regular';
     }
 
     .jq-toast-single a {
@@ -18135,7 +18140,7 @@ body[data-leftbar-theme=dark] .side-nav .side-nav-forth-level li.active > a, bod
     }
 
 .tt-highlight {
-    font-family: Nunito,sans-serif
+    font-family: 'aileron.regular';
 }
 
 .typeahead-empty-message {
@@ -18164,7 +18169,7 @@ body[data-leftbar-theme=dark] .side-nav .side-nav-forth-level li.active > a, bod
     color: #000 !important;
     font-size: 12px !important;
     line-height: 18px !important;
-    font-family: Nunito,sans-serif !important;
+    font-family: 'aileron.regular' !important;
     font-weight: 700 !important
 }
 
@@ -18266,7 +18271,7 @@ body[data-leftbar-theme=dark] .side-nav .side-nav-forth-level li.active > a, bod
             }
 
 .rateit-mdi {
-    font-family: 'Material Design Icons'
+    font-family: 'aileron.regular';
 }
 
 .rateit-font {

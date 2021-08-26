@@ -519,7 +519,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\" />
-    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\icons\fa-brands-400.eot" />
@@ -585,6 +584,7 @@
     <Content Include="Views\Inicio\divisa.cshtml" />
     <Content Include="Views\Inicio\nosotros.cshtml" />
     <Content Include="Views\Inicio\usuarios.cshtml" />
+    <Content Include="Scripts\aileron.regular.otf" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CambioTotalED\CambioTotalED.csproj">
