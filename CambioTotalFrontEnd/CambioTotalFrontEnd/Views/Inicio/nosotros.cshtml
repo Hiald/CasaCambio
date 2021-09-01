@@ -110,35 +110,69 @@
 </div>
 
 
+<style>
+    @@media (max-width: 767px) {
+        .footer .footer-bottom .social-style {
+            text-align: center !important;
+        }
+    }
+</style>
 <div class="footer">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-3">
+            <div class="col-md-3 mt-4 text-center">
+                <h3 style="color: #00a24f;font-size: 30px;" class="subtitle">EMPRESA</h3>
+                <a href="@Url.Action("nosotros","Inicio")" style="color:#000;font-weight:700;">Acerca de nosotros</a>
+                <br />
+                <p style="font-weight:700;">
+                    Inversiones MMT PERÚ SAC
+                    <br />
+                    RUC: 20607581275
+                </p>
+            </div>
+            <div class="col-md-3 text-center mb-2">
+                <h3 class="subtitle" style="color: #00a24f;font-size: 30px;">LEGAL</h3>
+                <a href="@Url.Action("terminosycondiciones","Inicio")" style="color:#000;font-weight:700;">Términos y condiciones</a>
+                <a href="@Url.Action("politicadeprivacidad","Inicio")" style="color:#000;font-weight:700;">Política de privacidad</a>
+            </div>
+            <div class="col-md-3 text-center mb-2">
+                <h3 class="subtitle" style="color: #00a24f;font-size: 30px;">AYUDA</h3>
+                <a href="#divfaq" style="color:#000;font-weight:700;">Preguntas Frecuentes</a>
+                <a target="_blank" href="https://web.whatsapp.com/send?phone=51941645017&text=Hola%20Deseo%20una%20tasa%20preferencial" style="color:#000;font-weight:700;">Tasa Preferencial</a>
+            </div>
+            <div class="col-md-3 text-center mb-2">
+                <h3 class="subtitle" style="color: #00a24f;font-size: 30px;">EMPIEZA</h3>
+                <a href="@Url.Action("registro","Inicio")" style="font-size:19px;color:#000;font-weight:600;font-family: 'aileron.regular';">Regístrate</a>
+                |
+                <a href="@Url.Action("inicio","Inicio")" style="font-size:19px;color:#000;font-weight:600;font-family: 'aileron.regular';">Iniciar sesión</a>
+                <a href="#divcomousar" style="font-size:19px;color:#000;font-weight:600;">¿Cómo funciona?</a>
+            </div>
+
+            <div class="col-md-6 text-center mb-2">
+                <h3 class="subtitle" style="color: #00a24f;font-size: 30px;">CONTACTO</h3>
+                <p style="font-weight:700;">
+                    941645017
+                    <br />
+                    <a style="font-size:19px;color:#000;font-weight:400;font-family: 'aileron.regular';" href="mailto:contacto@tucambiototal.com">contacto@tucambiototal.com</a>
+                </p>
+            </div>
+            <div class="col-md-6 mt-4 mb-5 text-center mb-2">
+                <h3 class="subtitle" style="color: #00a24f;font-size: 30px;">REDES</h3>
+                <div class="footer-bottom">
+                    <div class="social-style" style="text-align: center;">
+                        <a href="https://www.facebook.com/Tu-Cambio-Total-103825761901896" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/tucambiototalpe/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 text-center mb-2">
                 <div class="footer-box">
                     <a class="navbar-brand mt-1" style="display: inline-flex;" href="@Url.Action("Index","Inicio")">
                         <img src="~/assets/tucambio.png" height="45" class="logo" alt="logo">
                         <h4 class="ml-1" style="color:#00a24f;margin-top: 4%;">TuCambioTotal</h4>
                     </a>
-                </div>
-            </div>
-            <div class="col-lg-9">
-                <div class="footer-box">
-                    <ul class="footer-link">
-                        <li><a href="@Url.Action("nosotros","Inicio")">Acerca de nosotros</a></li>
-                        <li>|</li>
-                        <li><a href="@Url.Action("Index","Inicio")">¿Cómo funciona?</a></li>
-                        <li>|</li>
-                        <li><a href="@Url.Action("Index","Inicio")">FAQ</a></li>
-                        <li>|</li>
-                        <li><a href="@Url.Action("inicio","Inicio")">Iniciar sesión</a></li>
-                    </ul>
-                    <ul class="footer-link" style="text-align:left;">
-                        <li><a href="@Url.Action("politicadeprivacidad","Inicio")">Política de privacidad</a></li>
-                        <li>|</li>
-                        <li><a href="@Url.Action("terminosycondiciones","Inicio")">Términos y condiciones</a></li>
-                        <li>|</li>
-                        <li><a href="@Url.Action("registro","Inicio")">Regístrate</a></li>
-                    </ul>
+
                 </div>
             </div>
         </div>
@@ -146,35 +180,15 @@
             <div class="col-12">
                 <div class="raka"></div>
             </div>
-            <div class="col-12">
-                <b>Contáctanos en:</b>
-                <br />
-                <div class="inline">
-                    <i class="fas fa-phone"></i>
-                    <b style="font-size:17px;">941645017</b>
-                </div>
-                <br />
-                <div class="inline">
-                    <i class="far fa-envelope"></i>
-                    <a style="font-size:19px;font-weight:400;" href="mailto:contacto@tucambiototal.com">contacto@tucambiototal.com</a>
-                </div>
-                <br />
-                <br />
-            </div>
             <div class="col-md-6">
                 <div class="footer-bottom">
-                    <p class="text">
-                        &copy; Todos los derechos reservados <a href="#">TuCambiototal</a> | <a href="#">2021 &nbsp;<a style="font-size:14px;" href="https://www.crivant.com" target="_blank">Hecho por Crivant</a></a>
+                    <p class="text" style="font-weight: 600;">
+                        &copy; Todos los derechos reservados <a href="#">TuCambiototal</a> | <a href="#" style="font-weight: 600;">2021 &nbsp;<a style="font-size:14px;" href="https://www.crivant.com" target="_blank">Hecho por Crivant</a></a>
                     </p>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="footer-bottom">
-                    <div class="social-style">
-                        <a href="https://www.facebook.com/Tu-Cambio-Total-103825761901896" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/tucambiototalpe/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
