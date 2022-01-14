@@ -200,22 +200,39 @@
             </div>
             <div class="modal-body">
 
-                <p>¡Muchas gracias por confiar en nosotros! Por favor abona el monto a la siguiente cuenta del Banco de Crédito del Perú:</p>
+                <p>¡Muchas gracias por confiar en nosotros! Por favor abona el monto a una de las siguientes cuentas:</p>
                 <br />
-                <strong>NOMBRE DE INVERSIONES MMT PERU S.A.C.</strong>
-                <br />
+                <strong style="font-size: 16px;">NOMBRE DE INVERSIONES MMT PERU S.A.C.</strong>
                 <strong id="ctasoles">
                     CTA CTE BCP SOLES 1918970153004 <br />
                 </strong>
+                <strong id="ctasoles2">
+                    CTA CTE INTERBANK SOLES 2003003612714 <br />
+                </strong>
+                <br />
                 <strong id="ctasolescci">
                     CTA CTE CCI BCP SOLES 00219100897015300453 <br />
                 </strong>
-                <strong id="ctadolarescci">
-                    CTA CTE CCI BCP DOLARES 00219100875841817659 <br />
+                <strong id="ctasolescci2">
+                    CTA CTE CCI INTERBANK SOLES 00320000300361271437 <br />
                 </strong>
+                <br />
                 <strong id="ctadolares">
                     CTA CTE BCP USD 1918758418176 <br />
                 </strong>
+
+                <strong id="ctadolarescci2">
+                    CTA CTE INTERBANK DOLARES 2003003612721 <br />
+                </strong>
+                <br />
+
+                <strong id="ctadolarescci">
+                    CTA CTE CCI BCP DOLARES 00219100875841817659 <br />
+                </strong>
+                <strong id="ctadolares2">
+                    CTA CTE CCI INTERBANK USD 00320000300361272132 <br />
+                </strong>
+
                 <p class="mt-3">Una vez abonado, por favor ingresa el número de operación debajo</p>
                 <div id="divmostrarContador" class="alert alert-warning" role="alert">
 
@@ -341,9 +358,13 @@
         //}, 100);
 
         $('#ctasolescci').css("display", "none");
+        $('#ctasolescci2').css("display", "none");
         $('#ctadolarescci').css("display", "none");
+        $('#ctadolarescci2').css("display", "none");
         $('#ctasoles').css("display", "none");
+        $('#ctasoles2').css("display", "none");
         $('#ctadolares').css("display", "none");
+        $('#ctadolares2').css("display", "none");
         $('#divcarga').removeClass("is-active");
 
         var fechainicialNOW = moment().format("YYYY-MM-DD");
@@ -450,15 +471,22 @@
                         $('#fill-info-modal').modal({ keyboard: false, show: true });
                         if (TraerObjLista[TraerObjLista.length - 1].itipocambio == 0) {
                             $('#ctadolares').css("display", "block");
+                            $('#ctadolares2').css("display", "block");
                             $('#ctadolarescci').css("display", "block");
+                            $('#ctadolarescci2').css("display", "block");
                             $('#ctasoles').css("display", "none");
+                            $('#ctasoles2').css("display", "none");
                             $('#ctasolescci').css("display", "none");
+                            $('#ctasolescci2').css("display", "none");
                         } else {
                             $('#ctasoles').css("display", "block");
+                            $('#ctasoles2').css("display", "block");
                             $('#ctasolescci').css("display", "block");
+                            $('#ctasolescci2').css("display", "block");
                             $('#ctadolares').css("display", "none");
+                            $('#ctadolares2').css("display", "none");
                             $('#ctadolarescci').css("display", "none");
-
+                            $('#ctadolarescci2').css("display", "none");
                         }
                         fnMostrarCronometro();
                     } else {
@@ -928,7 +956,7 @@
             }).done(function (result) {
                 var idgenerado = result.iResultado;
                 var FechaAgregada = moment().add(15, 'minutes').format('DD/MM/YYYY hh:mm:ss a');
-                console.log(idgenerado);
+                //console.log(idgenerado);
                 var arrResultado = JSON.parse(localStorage.getItem("SESSION_ARROBJTRANSACCION"));
                 $('#hddtransaccionid').val(idgenerado);
                 document.getElementById("btnCrearOperacion").disabled = true;
@@ -973,15 +1001,22 @@
                 $('#txnumerocuenta').val("");
                 if (valorInicial == 0) {
                     $('#ctadolares').css("display", "block");
+                    $('#ctadolares2').css("display", "block");
                     $('#ctadolarescci').css("display", "block");
+                    $('#ctadolarescci2').css("display", "block");
                     $('#ctasoles').css("display", "none");
+                    $('#ctasoles2').css("display", "none");
                     $('#ctasolescci').css("display", "none");
+                    $('#ctasolescci2').css("display", "none");
                 } else {
                     $('#ctadolares').css("display", "none");
+                    $('#ctadolares2').css("display", "none");
                     $('#ctadolarescci').css("display", "none");
+                    $('#ctadolarescci2').css("display", "none");
                     $('#ctasolescci').css("display", "block");
+                    $('#ctasolescci2').css("display", "block");
                     $('#ctasoles').css("display", "block");
-                    
+                    $('#ctasoles2').css("display", "block");
                 }
 
                 if (localStorage.getItem("SESSION_TIPO") != null && localStorage.getItem("SESSION_MONTO1") != null
