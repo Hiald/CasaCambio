@@ -691,6 +691,51 @@ namespace CambioTotalFrontEnd.Controllers
 
         }
 
+        [HttpPost]
+        public JsonResult ListarUsuarioReporte(int wparausuario)
+        {
+            try
+            {
+                var objResultado = new object();
+                itdusuario = new tdUsuario();
+                List<edUsuarioReporte> edusuario = new List<edUsuarioReporte>();
+                edusuario = itdusuario.tdListarUsuarioReporte(wparausuario);
+
+                if (edusuario.Count == 0)
+                {
+                    objResultado = new
+                    {
+                        PageStart = 1,
+                        pageSize = 100,
+                        SearchText = string.Empty,
+                        ShowChildren = UtlConstantes.bValorTrue,
+                        iTotalRecords = 0,
+                        iTotalDisplayRecords = 1,
+                        aaData = ""
+                    };
+                    return Json(objResultado);
+                }
+
+                objResultado = new
+                {
+                    PageStart = 1,
+                    pageSize = 100,
+                    SearchText = string.Empty,
+                    ShowChildren = UtlConstantes.bValorTrue,
+                    iTotalRecords = edusuario.Count,
+                    iTotalDisplayRecords = 1,
+                    aaData = edusuario
+                };
+                return Json(objResultado);
+            }
+            catch (Exception ex)
+            {
+                //UtlLog.toWrite(UtlConstantes.PizarraWEB, UtlConstantes.LogNamespace_PizarraWEB, this.GetType().Name.ToString(), MethodBase.GetCurrentMethod().Name, UtlConstantes.LogTipoError, "", ex.StackTrace.ToString(), ex.Message.ToString());
+                return Json(ex);
+            }
+
+        }
+
 
     }
 }

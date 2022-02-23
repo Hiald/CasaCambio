@@ -371,6 +371,84 @@ namespace CambioTotalAD
             }
         }
 
+        public List<edUsuarioReporte> adListarUsuarioReporte(int adusuario)
+        {
+            try
+            {
+                List<edUsuarioReporte> lstusuario = new List<edUsuarioReporte>();
+                edUsuarioReporte senUsuario = null;
+                using (MySqlCommand cmd = new MySqlCommand("sp_rpt_filtrar_usuario", cnMysql))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("_idusuario", MySqlDbType.Int32).Value = adusuario;
+                    using (MySqlDataReader mdrd = cmd.ExecuteReader())
+                    {
+                        if (mdrd != null)
+                        {
+                            int pos_i_tipo_cuenta = mdrd.GetOrdinal("i_tipo_cuenta");
+                            int pos_i_moneda = mdrd.GetOrdinal("i_moneda");
+                            int pos_i_banco = mdrd.GetOrdinal("i_banco");
+                            int pos_v_banco = mdrd.GetOrdinal("v_banco");
+
+                            int pos_v_numero_cuenta = mdrd.GetOrdinal("v_numero_cuenta");
+                            int pos_v_numero_cuenta_interbancaria = mdrd.GetOrdinal("v_numero_cuenta_interbancaria");
+                            int pos_v_nombre_cuenta = mdrd.GetOrdinal("v_nombre_cuenta");
+                            int pos_idusuario = mdrd.GetOrdinal("idusuario");
+                            int pos_vnombres = mdrd.GetOrdinal("v_nombres");
+                            int pos_vapellidos = mdrd.GetOrdinal("v_apellidos");
+                            int pos_vcelular1 = mdrd.GetOrdinal("v_celular1");
+                            int pos_itipodocumento = mdrd.GetOrdinal("i_tipodocumento");
+                            int pos_vdocumento = mdrd.GetOrdinal("v_documento");
+                            int pos_vruc = mdrd.GetOrdinal("v_ruc");
+                            int pos_vrazonsocial = mdrd.GetOrdinal("v_razonsocial");
+                            int pos_dfechanac = mdrd.GetOrdinal("d_fechanac");
+                            int pos_dtfecharegistro = mdrd.GetOrdinal("dt_fecharegistro");
+                            int pos_vhoraregistro = mdrd.GetOrdinal("v_horaregistro");
+                            int pos_vcorreo = mdrd.GetOrdinal("v_correo");
+                            int pos_vpep1 = mdrd.GetOrdinal("v_pep1");
+                            int pos_vpep2 = mdrd.GetOrdinal("v_pep2");
+                            int pos_vpep3 = mdrd.GetOrdinal("v_pep3");
+                            int pos_vpep4 = mdrd.GetOrdinal("v_pep4");
+                        
+                            while (mdrd.Read())
+                            {
+                                senUsuario = new edUsuarioReporte();
+                                senUsuario.itipocuenta = (mdrd.IsDBNull(pos_i_tipo_cuenta) ? 0 : mdrd.GetInt32(pos_i_tipo_cuenta));
+                                senUsuario.imoneda = (mdrd.IsDBNull(pos_i_moneda) ? 0 : mdrd.GetInt32(pos_i_moneda));
+                                senUsuario.ibanco = (mdrd.IsDBNull(pos_i_banco) ? 0 : mdrd.GetInt32(pos_i_banco));
+                                senUsuario.vnumerocuenta = (mdrd.IsDBNull(pos_v_numero_cuenta) ? "" : mdrd.GetString(pos_v_numero_cuenta));
+                                senUsuario.vnumerocuenta_interbancaria = (mdrd.IsDBNull(pos_v_numero_cuenta_interbancaria) ? "" : mdrd.GetString(pos_v_numero_cuenta_interbancaria));
+                                senUsuario.vnombrecuenta = (mdrd.IsDBNull(pos_v_nombre_cuenta) ? "" : mdrd.GetString(pos_v_nombre_cuenta));
+                                senUsuario.idusuario = (mdrd.IsDBNull(pos_idusuario) ? 0 : mdrd.GetInt32(pos_idusuario));
+                                senUsuario.snombres = (mdrd.IsDBNull(pos_vnombres) ? "-" : mdrd.GetString(pos_vnombres));
+                                senUsuario.sapellidos = (mdrd.IsDBNull(pos_vapellidos) ? "-" : mdrd.GetString(pos_vapellidos));
+                                senUsuario.scelular = (mdrd.IsDBNull(pos_vcelular1) ? "-" : mdrd.GetString(pos_vcelular1));
+                                senUsuario.itipodocumento = (mdrd.IsDBNull(pos_itipodocumento) ? 0 : mdrd.GetInt32(pos_itipodocumento));
+                                senUsuario.sdocumento = (mdrd.IsDBNull(pos_vdocumento) ? "-" : mdrd.GetString(pos_vdocumento));
+                                senUsuario.sruc = (mdrd.IsDBNull(pos_vruc) ? "-" : mdrd.GetString(pos_vruc));
+                                senUsuario.srazonsocial = (mdrd.IsDBNull(pos_vrazonsocial) ? "-" : mdrd.GetString(pos_vrazonsocial));
+                                senUsuario.sfechanacimiento = (mdrd.IsDBNull(pos_dfechanac) ? "-" : mdrd.GetString(pos_dfechanac));
+                                senUsuario.sfecharegistro = (mdrd.IsDBNull(pos_dtfecharegistro) ? "-" : mdrd.GetString(pos_dtfecharegistro));
+                                senUsuario.shoraregistro = (mdrd.IsDBNull(pos_vhoraregistro) ? "-" : mdrd.GetString(pos_vhoraregistro));
+                                senUsuario.scorreo = (mdrd.IsDBNull(pos_vcorreo) ? "-" : mdrd.GetString(pos_vcorreo));
+                                senUsuario.vpep1 = (mdrd.IsDBNull(pos_vpep1) ? "-" : mdrd.GetString(pos_vpep1));
+                                senUsuario.vpep2 = (mdrd.IsDBNull(pos_vpep2) ? "-" : mdrd.GetString(pos_vpep2));
+                                senUsuario.vpep3 = (mdrd.IsDBNull(pos_vpep3) ? "-" : mdrd.GetString(pos_vpep3));
+                                senUsuario.vpep4 = (mdrd.IsDBNull(pos_vpep4) ? "-" : mdrd.GetString(pos_vpep4));
+                                lstusuario.Add(senUsuario);
+                            }
+                        }
+                    }
+                    return lstusuario;
+                }
+            }
+            catch (Exception ex)
+            {
+                //UtlLog.toWrite(UtlConstantes.TProcessAD, UtlConstantes.LogNamespace_TProcessAD, this.GetType().Name.ToString(), MethodBase.GetCurrentMethod().Name, UtlConstantes.LogTipoError, "", ex.StackTrace.ToString(), ex.Message.ToString());
+                throw ex;
+            }
+        }
+
         #region POR AGREGAR
 
         public int test(int adidalumno, string addireccionip, string addireccionmac, int adtipoconexion)

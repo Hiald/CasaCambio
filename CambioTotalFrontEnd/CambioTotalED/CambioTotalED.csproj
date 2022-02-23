@@ -48,6 +48,7 @@
     <Compile Include="edMaestro.cs" />
     <Compile Include="edTransaccion.cs" />
     <Compile Include="edUsuario.cs" />
+    <Compile Include="edUsuarioReporte.cs" />
     <Compile Include="exchangeCurrency.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -30,10 +30,32 @@
                     <!-- end nav-->
                     <div class="tab-content">
                         <div class="tab-pane show active" id="basic-datatable-preview">
+                            <table style="display:none;" id="tblreporte" class="table dt-responsive nowrap w-100">
+                                <thead>
+                                    <tr>
+                                        <th data-priority="1">Tipo cuenta</th>
+                                        <th data-priority="2">Moneda</th>
+                                        <th data-priority="3">Banco</th>
+                                        <th data-priority="4">Número de cuenta</th>
+                                        <th>Número de cuenta interbancaria</th>
+                                        <th>Nombre de la cuenta</th>
+                                        <th>Nombres y apellidos</th>
+                                        <th>Tipo documento / Número</th>
+                                        <th>RUC</th>
+                                        <th>Razón social</th>
+                                        <th>Correo</th>
+                                        <th>Fecha registro</th>
+                                        <th>Pregunta PEP 1</th>
+                                        <th>Pregunta PEP 2</th>
+                                        <th>Pregunta PEP 3</th>
+                                        <th>Pregunta PEP 4</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="display:none;"></tbody>
+                            </table>
                             <table id="tblusuario" class="table dt-responsive nowrap w-100">
                                 <thead>
                                     <tr>
-                                        @*<th></th>*@
                                         <th data-priority="1">Usuario</th>
                                         <th data-priority="2">Tipo documento / Número</th>
                                         <th data-priority="3">Correo</th>
@@ -166,10 +188,10 @@
                     {
                         extend: 'excelHtml5',
                         text: '<i class="fas fa-file-excel"></i> ',
-                        titleAttr: 'Exportar a Excel',
-                        className: 'btn btn-success',
+                        titleAttr: 'Exportar a Excel Reporte Cuentas',
+                        className: 'btn btn-info',
                         exportOptions: {
-                            columns: [0,1,2,3,4,5,6,7,8,9,10]
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                         }
                     }
                 ],
@@ -236,7 +258,7 @@
                             }
                         }
                     },
-                    
+
                     { "sName": "sruc", "mDataProp": "sruc" },
                     { "sName": "srazonsocial", "mDataProp": "srazonsocial" },
                     {
@@ -346,6 +368,230 @@
 
         }
         fnlistarTabla();
+
+        function fnlistarTablaReporte() {
+            $('#tblreporte').dataTable({
+                responsive: "true",
+                dom: 'Bfrtilp',
+                buttons: [
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel"></i> ',
+                        titleAttr: 'Exportar a Excel Reporte Cuentas',
+                        className: 'btn btn-success',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+                        }
+                    }
+                ],
+                "ajax": {
+                    "url": "/Inicio/ListarUsuarioReporte",
+                    "type": "POST",
+                    "datatype": "json",
+                    "data": {
+                        "wparausuario": 0
+                    },
+                    "dataSrc": 'aaData'
+                },
+                //"bServerSide": true,
+                "bProcessing": true,
+                "bDestroy": true,
+                "bLengthChange": false,
+                "language": {
+                    "info": "",
+                    "infoEmpty": "",
+                    "infoFiltered": "",
+                    "emptyTable": "No se encontraron registros",
+                    "sZeroRecords": "No se encontraron registros.",
+                    "processing": "Cargando. Por favor espere...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "sLengthMenu": "Mostrando _MENU_ filas",
+                    "sSearch": "Buscar:"
+                },
+                "columns": [
+                    {
+                        "mData": "itipocuenta",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            var sretornar;
+                            if (value.itipocuenta == 1) {
+                                sretornar = "Ahorro";
+                            } else {
+                                sretornar = "Corriente";
+                            }
+                            return sretornar;
+                        }
+
+                    },
+                    {
+                        "mData": "imoneda",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            if (value.imoneda == 1) {
+                                return "Soles (S/.)";
+                            } else {
+                                return "Dólares ($)";
+                            }
+
+                        }
+                    },
+                    {
+                        "mData": "ibanco",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            switch (value.ibanco) {
+                                case 1: return "(BCP) - Banco de Crédito del Perú"; break;
+                                case 2: return "(Interbank) - Banco Internacional del Perú"; break;
+                                case 3: return "(BBVA) - BBVA Continental"; break;
+                                case 4: return "(BanBif) - BanBif"; break;
+                                case 5: return "(Scotiabank) - Scotiabank"; break;
+                                case 6: return "(Falabella) - Banco Falabella"; break;
+                                case 7: return "(Pichincha) - Banco Pichincha"; break;
+                                case 8: return "(Bancomercio) - Banco de Comercio"; break;
+                                case 9: return "(Citibank) - Citibank Perú"; break;
+                                case 10: return "(Mibanco) - Mi Banco"; break;
+                                case 11: return "(GNB) - Banco GNB"; break;
+                                case 12: return "(Ripley) - Banco Ripley"; break;
+                                case 13: return "(Nacion) - Banco de la Nación"; break;
+                                case 14: return "(Otro) - Otro"; break;
+                                default: return "(Otro) - Otro"; break;
+                            }
+
+                        }
+                    },
+                    {
+                        "mData": "vnumerocuenta",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            return value.vnumerocuenta;
+                        }
+                    },
+                    {
+                        "mData": "vnumerocuenta",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            return value.vnumerocuenta_interbancaria;
+                        }
+                    },
+                    {
+                        "mData": "vnombrecuenta",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            return value.vnombrecuenta;
+                        }
+                    },
+                    {
+                        "mData": "snombres",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            var sretornar;
+                            sretornar = value.snombres + " " + value.sapellidos
+                            return sretornar;
+                        }
+                    },
+                    {
+                        "mData": "itipodocumento",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            if (value.itipodocumento == 1) {
+                                return "DNI | " + value.sdocumento;
+                            } else {
+                                return "Carnet de extranjería | " + + value.sdocumento;
+                            }
+                        }
+                    },
+                    { "sName": "sruc", "mDataProp": "sruc" },
+                    { "sName": "srazonsocial", "mDataProp": "srazonsocial" },
+                    { "sName": "scorreo", "mDataProp": "scorreo" },
+                    {
+                        "mData": "sfecharegistro",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            if (value.sfecharegistro == "00-00-0000") {
+                                return "";
+                            } else {
+                                return value.sfecharegistro + " " + value.shoraregistro;
+                            }
+                        }
+                    },
+                    {
+                        "mData": "vpep1",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            if (value.vpep1 == "1") {
+                                return "Es una persona expuesta Políticamente PEP.";
+                            } else {
+                                return "NO Es una persona expuesta Políticamente PEP.";
+                            }
+                        }
+                    },
+                    {
+                        "mData": "vpep2",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            if (value.vpep2 == "1") {
+                                return "Tiene vínculo familiar consanguíneo con una persona PEP.";
+                            } else {
+                                return "NO Tiene vínculo familiar consanguíneo con una persona PEP.";
+                            }
+                        }
+                    },
+                    {
+                        "mData": "vpep3",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            if (value.vpep3 == "1") {
+                                return "Tiene vínculo de afinidad con una persona PEP.";
+                            } else {
+                                return "NO Tiene vínculo de afinidad con una persona PEP.";
+                            }
+                        }
+                    },
+                    {
+                        "mData": "vpep4",
+                        "sClass": "center",
+                        "mRender": function (data, type, value) {
+                            if (value.vpep4 == "1") {
+                                return "Es cónyuge o conviviente de una persona PEP.";
+                            } else {
+                                return "NO es cónyuge o conviviente de una persona PEP.";
+                            }
+                        }
+                    }
+
+                    //{
+                    //    "mData": "itipousuario",
+                    //    "sClass": "center",
+                    //    "mRender": function (data, type, value) {
+                    //        if (value.itipousuario == 1) {
+                    //            return "Cuenta personal";
+                    //        } else {
+                    //            return "Cuenta empresa";
+                    //        }
+                    //    }
+                    //},
+                ],
+                "aoColumnDefs":
+                    [
+
+                    ],
+                "columnDefs": [
+                    { responsivePriority: 1, targets: 0 },
+                    { responsivePriority: 2, targets: 1 },
+                    { responsivePriority: 3, targets: 2 },
+                    { responsivePriority: 4, targets: 3 }
+                ]
+            });
+
+            $('#tblreporte_filter').hide();
+            $('#tblreporte_paginate').hide();
+        }
+        fnlistarTablaReporte();
 
         function fn_Editar(paridusuario, parsnombres, parsapellidos, paritipodocumento,
             parsdocumento, parsruc, parsrazonsocial, parsfechareg, parshoraregistro,

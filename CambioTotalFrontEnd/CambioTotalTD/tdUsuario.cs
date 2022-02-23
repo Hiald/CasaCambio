@@ -196,6 +196,31 @@ namespace CambioTotalTD
 
         }
 
+        public List<edUsuarioReporte> tdListarUsuarioReporte(int tdpusuario)
+        {
+            List<edUsuarioReporte> renUsuario = new List<edUsuarioReporte>();
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(mysqlConexion))
+                {
+                    con.Open();
+                    using (MySqlTransaction scope = con.BeginTransaction())
+                    {
+                        iadUsuario = new adUsuario(con);
+                        renUsuario = iadUsuario.adListarUsuarioReporte(tdpusuario);
+                        scope.Commit();
+                    }
+                }
+                return renUsuario;
+            }
+            catch (MySqlException ex)
+            {
+                //UtlLog.toWrite(UtlConstantes.TProcessRN, UtlConstantes.LogNamespace_TProcessRN, this.GetType().Name.ToString(), MethodBase.GetCurrentMethod().Name, UtlConstantes.LogTipoError, "", ex.StackTrace.ToString(), ex.Message.ToString());
+                throw ex;
+            }
+
+        }
+
 
     }
 }
